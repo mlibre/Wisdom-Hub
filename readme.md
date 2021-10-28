@@ -107,10 +107,7 @@ echo "gamma is chengged"
 ```
 
 # Autostarts and Startup scripts and programs locations
-* nano .bash_profile
-* nano .bashrc
 * nano .profile
-* nano /etc/bash.bashrc
 * nano /etc/profile
 * ls /etc/profile.d/
 * ls ~/.config/autostart
@@ -125,3 +122,7 @@ echo "gamma is chengged"
 * cat ~/.xserverrc
 * ls /etc/xdg/lxsession/LXDE/autostart
 * ls ~/.config/lxsession/LXDE/autostart
+
+* nano .bash_profile
+* nano .bashrc
+* nano /etc/bash.bashrc
