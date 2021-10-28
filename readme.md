@@ -1,4 +1,4 @@
-# Chaning monitor, screen gamma
+# Changing monitor, screen gamma
 ```bash
 xrandr --output HDMI-A-0 --brightness 0.75
 ```
