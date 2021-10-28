@@ -24,11 +24,11 @@ sudo nano /lib/systemd/system/gamma-on-startup.service
 ``` 
 ```bash
 [Unit]
-Description=Set gamma on system boots up
+Description=Set gamma on system startup
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/xrandr --output HDMI-A-0 --brightness 0.75
+ExecStart=/usr/bin/resume
 
 [Install]
 WantedBy=graphical.target
@@ -49,7 +49,7 @@ sudo nano /etc/systemd/system/gamma-on-resume.service
 After=suspend.target
 [Service]  
 Type=simple
-ExecStart=/usr/bin/xrandr --output HDMI-A-0 --brightness 0.75
+ExecStart=/usr/bin/resume
 [Install]
 WantedBy=suspend.target
 ```
@@ -85,6 +85,26 @@ sudo systemctl enable resume
 systemctl show --property=UnitPath
 ```
 
+# XDG
+
+## Make a startup script using XDG startup
+```bash
+nano ~/.config/autostart/gamma-on-startup.desktop
+```
+```bash
+[Desktop Entry]
+Name=gamma-on-startup
+Type=Application
+Exec=/usr/bin/resume
+```
+```bash
+desktop-file-validate ~/.config/autostart/gamma-on-startup.desktop
+chmod +x ~/.config/autostart/gamma-on-startup.desktop
+cat /usr/bin/resume
+sleep 5
+xrandr --output HDMI-A-0 --brightness 0.75
+echo "gamma is chengged"
+```
 
 # Autostarts and Startup scripts and programs locations
 * nano .bash_profile
@@ -99,5 +119,9 @@ systemctl show --property=UnitPath
 * ls -1 /lib/systemd/system/*.service /etc/systemd/system/*.service
 * sudo systemctl list-unit-files --type=service --state=enabled --all
 * ls /etc/init.d/
+* nano ~/.xinitrc
+* nano /etc/X11/xinit/xinitrc
+* ls /etc/X11/xinit/xinitrc.d/
+* cat ~/.xserverrc
 * ls /etc/xdg/lxsession/LXDE/autostart
 * ls ~/.config/lxsession/LXDE/autostart
