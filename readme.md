@@ -1,3 +1,8 @@
+# Automatic Shutdown
+```bash
+sudo shutdown -P +220 # in 220 min
+```
+
 # Changing monitor, screen gamma
 ```bash
 xrandr --output HDMI-A-0 --brightness 0.75
@@ -25,64 +30,67 @@ SystemMaxUse=100M
 
 ## Starting a script after GUI has loaded
 ```bash
-sudo nano /lib/systemd/system/gamma-on-startup.service
+sudo nano /lib/systemd/system/myprogram.service
 ``` 
 ```bash
 [Unit]
-Description=Set gamma on system startup
+Description=Set gamma on system boots up
+After=network.target
+After=systemd-user-sessions.service
+After=network-online.target
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/resume
-
+Type=idle
+ExecStartPost=/bin/sleep 5
+ExecStart=/usr/bin/myprogram
 [Install]
 WantedBy=graphical.target
 ```
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable gamma-on-startup.service
-systemctl status gamma-on-startup
-journalctl -u gamma-on-startup
+sudo systemctl enable myprogram.service
+systemctl status myprogram
+journalctl -u myprogram
 ```
 
 ## Run a script after suspending has finished (resume)
 ```bash
-sudo nano /etc/systemd/system/gamma-on-resume.service
+sudo nano /etc/systemd/system/myprogram.service
 ```
 ```bash
 [Unit]
 After=suspend.target
 [Service]  
 Type=simple
-ExecStart=/usr/bin/resume
+ExecStart=/usr/bin/myprogram
 [Install]
 WantedBy=suspend.target
 ```
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable gamma-on-resume.service
-systemctl status gamma-on-resume
-journalctl -u gamma-on-resume
+sudo systemctl enable myprogram.service
+systemctl status myprogram
+journalctl -u myprogram
 ```
 
-## Run a script on resume
+## Run a script after system-sleep resume
 ```bash
-sudo nano /lib/systemd/system-sleep/resume.sh
+sudo nano /lib/systemd/system-sleep/myprogram.sh
 ```
 ```bash
 #!/bin/sh
 PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin
 case $1 in
 	post)
-		xrandr --output HDMI-A-0 --brightness 0.75
+		/usr/bin/myprogram
 	;;
 esac
 
 exit 0
 ```
 ```bash
-sudo chmod +x /lib/systemd/system-sleep/resume
-sudo systemctl enable resume
+sudo chmod +x /lib/systemd/system-sleep/myprogram
+sudo systemctl enable myprogram
 ```
 
 ## Unit files' locations
@@ -100,12 +108,14 @@ nano ~/.config/autostart/gamma-on-startup.desktop
 [Desktop Entry]
 Name=gamma-on-startup
 Type=Application
-Exec=/usr/bin/resume
+Exec=bash -c  '/usr/bin/resume &> resume.log' 
+Terminal=true
 ```
 ```bash
 desktop-file-validate ~/.config/autostart/gamma-on-startup.desktop
 chmod +x ~/.config/autostart/gamma-on-startup.desktop
 cat /usr/bin/resume
+
 sleep 5
 xrandr --output HDMI-A-0 --brightness 0.75
 echo "gamma is chengged"
