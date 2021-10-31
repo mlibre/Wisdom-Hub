@@ -144,3 +144,12 @@ echo "gamma is chengged"
 * nano .bash_profile
 * nano .bashrc
 * nano /etc/bash.bashrc
+
+# VPN
+
+## Redirects thw whole trafiic
+```bash
+sudo ip route add 192.168.1.0/24 dev ppp0
+# ppp0: vpn name
+# 192.168.1.0: IP range
+```
