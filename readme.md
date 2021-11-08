@@ -2,10 +2,26 @@
 
 Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 
+- [Automatic Shutdown](#automatic-shutdown)
+- [Changing monitor, screen gamma](#changing-monitor-screen-gamma)
+- [Systemd, systemctl](#systemd-systemctl)
+  - [Reloading](#reloading)
+  - [Find services failed to start](#find-services-failed-to-start)
+  - [Journal Size](#journal-size)
+  - [Starting a script after GUI has loaded](#starting-a-script-after-gui-has-loaded)
+  - [Run a script after suspending has finished resume](#run-a-script-after-suspending-has-finished-resume)
+  - [Run a script after system-sleep resume](#run-a-script-after-system-sleep-resume)
+  - [Unit files' locations](#unit-files-locations)
+- [XDG](#xdg)
+  - [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
+- [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
+- [VPN](#vpn)
+  - [Redirects thw whole traffic](#redirects-thw-whole-traffic)
+
 ## Automatic Shutdown
 
 ```bash
-sudo shutdown -P +220 ## in 220 min
+sudo shutdown -P +220 ## in 220 minutes
 ```
 
 ## Changing monitor, screen gamma
@@ -146,28 +162,28 @@ echo "gamma is changed"
 
 ## Autostarts and Startup scripts and programs locations
 
-* nano .profile
-* nano /etc/profile
-* ls /etc/profile.d/
-* ls ~/.config/autostart
-* ls /etc/xdg/autostart
-* ls /usr/share/xsessions
-* ls -1 /lib/systemd/system/*.service /etc/systemd/system/*.service
-* sudo systemctl list-unit-files --type=service --state=enabled --all
-* ls /etc/init.d/
-* nano ~/.xinitrc
-* nano /etc/X11/xinit/xinitrc
-* ls /etc/X11/xinit/xinitrc.d/
-* cat ~/.xserverrc
-* cat /etc/pam.d/
-* ls /etc/xdg/lxsession/LXDE/autostart
-* ls ~/.config/lxsession/LXDE/autostart
-* crontab -e
-* sudo crontab -e
+- nano .profile
+- nano /etc/profile
+- ls /etc/profile.d/
+- ls ~/.config/autostart
+- ls /etc/xdg/autostart
+- ls /usr/share/xsessions
+- ls -1 /lib/systemd/system/*.service /etc/systemd/system/*.service
+- sudo systemctl list-unit-files --type=service --state=enabled --all
+- ls /etc/init.d/
+- nano ~/.xinitrc
+- nano /etc/X11/xinit/xinitrc
+- ls /etc/X11/xinit/xinitrc.d/
+- cat ~/.xserverrc
+- cat /etc/pam.d/
+- ls /etc/xdg/lxsession/LXDE/autostart
+- ls ~/.config/lxsession/LXDE/autostart
+- crontab -e
+- sudo crontab -e
 
-* nano .bash_profile
-* nano .bashrc
-* nano /etc/bash.bashrc
+- nano .bash_profile
+- nano .bashrc
+- nano /etc/bash.bashrc
 
 ## VPN
 
