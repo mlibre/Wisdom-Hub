@@ -1,37 +1,49 @@
-# Automatic Shutdown
+# Linux Cheat Sheet
+
+Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
+
+## Automatic Shutdown
+
 ```bash
-sudo shutdown -P +220 # in 220 min
+sudo shutdown -P +220 ## in 220 min
 ```
 
-# Changing monitor, screen gamma
+## Changing monitor, screen gamma
+
 ```bash
 xrandr --output HDMI-A-0 --brightness 0.75
 ```
 
-# Systemd, systemctl
+## Systemd, systemctl
 
-## Reloading
+### Reloading
+
 ```bash
 systemctl daemon-reload
 ```
 
-## Find services failed to start
+### Find services failed to start
+
 ```bash
 systemctl --state=failed
 ```
 
-## Journal Size
+### Journal Size
+
 ```bash
 sudo nano /etc/systemd/journald.conf
 ```
+
 ```bash
 SystemMaxUse=100M
 ```
 
-## Starting a script after GUI has loaded
+### Starting a script after GUI has loaded
+
 ```bash
 sudo nano /lib/systemd/system/myprogram.service
-``` 
+```
+
 ```bash
 [Unit]
 Description=Set gamma on system boots up
@@ -46,6 +58,7 @@ ExecStart=/usr/bin/myprogram
 [Install]
 WantedBy=graphical.target
 ```
+
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable myprogram.service
@@ -53,10 +66,12 @@ systemctl status myprogram
 journalctl -u myprogram
 ```
 
-## Run a script after suspending has finished (resume)
+### Run a script after suspending has finished (resume)
+
 ```bash
 sudo nano /etc/systemd/system/myprogram.service
 ```
+
 ```bash
 [Unit]
 After=suspend.target
@@ -66,6 +81,7 @@ ExecStart=/usr/bin/myprogram
 [Install]
 WantedBy=suspend.target
 ```
+
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable myprogram.service
@@ -73,37 +89,43 @@ systemctl status myprogram
 journalctl -u myprogram
 ```
 
-## Run a script after system-sleep resume
+### Run a script after system-sleep resume
+
 ```bash
 sudo nano /lib/systemd/system-sleep/myprogram.sh
 ```
+
 ```bash
 #!/bin/sh
 PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin
 case $1 in
-	post)
-		/usr/bin/myprogram
-	;;
+ post)
+  /usr/bin/myprogram
+ ;;
 esac
 
 exit 0
 ```
+
 ```bash
 sudo chmod +x /lib/systemd/system-sleep/myprogram
 sudo systemctl enable myprogram
 ```
 
-## Unit files' locations
+### Unit files' locations
+
 ```bash
 systemctl show --property=UnitPath
 ```
 
-# XDG
+## XDG
 
-## Make a startup script using XDG startup
+### Make a startup script using XDG startup
+
 ```bash
 nano ~/.config/autostart/gamma-on-startup.desktop
 ```
+
 ```bash
 [Desktop Entry]
 Name=gamma-on-startup
@@ -111,6 +133,7 @@ Type=Application
 Exec=bash -c  '/usr/bin/resume &> resume.log' 
 Terminal=true
 ```
+
 ```bash
 desktop-file-validate ~/.config/autostart/gamma-on-startup.desktop
 chmod +x ~/.config/autostart/gamma-on-startup.desktop
@@ -118,10 +141,11 @@ cat /usr/bin/resume
 
 sleep 5
 xrandr --output HDMI-A-0 --brightness 0.75
-echo "gamma is chengged"
+echo "gamma is changed"
 ```
 
-# Autostarts and Startup scripts and programs locations
+## Autostarts and Startup scripts and programs locations
+
 * nano .profile
 * nano /etc/profile
 * ls /etc/profile.d/
@@ -145,9 +169,10 @@ echo "gamma is chengged"
 * nano .bashrc
 * nano /etc/bash.bashrc
 
-# VPN
+## VPN
 
-## Redirects thw whole trafiic
+### Redirects thw whole traffic
+
 ```bash
 sudo ip route add 192.168.1.0/24 dev ppp0
 # ppp0: vpn name
