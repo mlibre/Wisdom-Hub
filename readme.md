@@ -194,3 +194,28 @@ sudo ip route add 192.168.1.0/24 dev ppp0
 # ppp0: vpn name
 # 192.168.1.0: IP range
 ```
+
+## Font
+
+### Location
+
+- `~/.local/share/fonts/`
+- `/usr/local/share/fonts/`
+- `/usr/share/fonts/`
+
+### List
+
+List installed fonts
+
+```bash
+fc-match -a
+```
+
+### Fira Code
+
+A popular code font.
+
+```bash
+sudo pacman -S ttf-fira-code
+fc-match -a | grep -i fira
+```
