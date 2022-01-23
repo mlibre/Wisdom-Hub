@@ -30,10 +30,10 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 sudo shutdown -P +220 ## in 220 minutes, 3:30 hours
 ```
 
-## Changing monitor, screen gamma
+## Changing monitor or screen Brightness and Gamma
 
 ```bash
-xrandr --output HDMI-A-0 --brightness 0.75
+xrandr --output HDMI-A-0 --brightness 0.75 --gamma 0.9:0.9:0.9
 ```
 
 ## Systemd, systemctl
@@ -167,7 +167,7 @@ Example program:
 nano /usr/bin/gamma_on_startup
 
 sleep 5
-xrandr --output HDMI-A-0 --brightness 0.75
+xrandr --output HDMI-A-0 --brightness 0.75 --gamma 0.9:0.9:0.9
 echo "gamma is changed"
 ```
 
