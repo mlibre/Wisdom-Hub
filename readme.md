@@ -3,7 +3,7 @@
 Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 
 - [Automatic Shutdown](#automatic-shutdown)
-- [Changing monitor, screen gamma](#changing-monitor-screen-gamma)
+- [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
 - [Systemd, systemctl](#systemd-systemctl)
   - [Reloading](#reloading)
   - [Find services failed to start](#find-services-failed-to-start)
