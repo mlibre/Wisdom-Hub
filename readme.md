@@ -9,19 +9,25 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
   - [Find services failed to start](#find-services-failed-to-start)
   - [Journal Size](#journal-size)
   - [Starting a script after GUI has loaded](#starting-a-script-after-gui-has-loaded)
-  - [Run a script after suspending has finished resume](#run-a-script-after-suspending-has-finished-resume)
+  - [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
   - [Run a script after system-sleep resume](#run-a-script-after-system-sleep-resume)
   - [Unit files' locations](#unit-files-locations)
 - [XDG](#xdg)
   - [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
 - [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
 - [VPN](#vpn)
-  - [Redirects thw whole traffic](#redirects-thw-whole-traffic)
+  - [Redirecting the whole traffic](#redirecting-the-whole-traffic)
+- [Font](#font)
+  - [Location](#location)
+  - [List](#list)
+  - [Fira Code](#fira-code)
+- [Backup using Rsync](#backup-using-rsync)
+- [Things to do after installing Manjaro/Arch Linux](#things-to-do-after-installing-manjaroarch-linux)
 
 ## Automatic Shutdown
 
 ```bash
-sudo shutdown -P +220 ## in 220 minutes
+sudo shutdown -P +220 ## in 220 minutes, 3:30 hours
 ```
 
 ## Changing monitor, screen gamma
@@ -187,7 +193,7 @@ echo "gamma is changed"
 
 ## VPN
 
-### Redirects thw whole traffic
+### Redirecting the whole traffic
 
 ```bash
 sudo ip route add 192.168.1.0/24 dev ppp0
@@ -219,3 +225,23 @@ A popular code font.
 sudo pacman -S ttf-fira-code
 fc-match -a | grep -i fira
 ```
+
+## Backup using Rsync
+
+```bash
+sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","/swapfile",".npm*","node_modules*","mesa_shader_cache*","steamapps*"} / /run/media/mlibre/H/OS/full-copy/
+```
+
+## Things to do after installing Manjaro/Arch Linux
+
+```bash
+sudo pacman -Syyuu
+sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc  visual-studio-code-bin
+
+sudo freshclam
+sudo systemctl enable --now clamav-daemon
+sudo systemctl enable --now clamav-freshclam
+clamscan --recursive --infected /home
+
+sudo systemctl disable --now clamav-daemon
+sudo systemctl disable --now clamav-freshclam
