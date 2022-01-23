@@ -145,21 +145,26 @@ systemctl show --property=UnitPath
 ### Make a startup script using XDG startup
 
 ```bash
-nano ~/.config/autostart/gamma-on-startup.desktop
+nano ~/.config/autostart/gamma_on_startup.desktop
 ```
 
 ```bash
 [Desktop Entry]
 Name=gamma-on-startup
 Type=Application
-Exec=bash -c  '/usr/bin/resume &> resume.log' 
+Exec=bash -c  "/usr/bin/gamma_on_startup &> /dev/null" 
 Terminal=true
 ```
 
 ```bash
-desktop-file-validate ~/.config/autostart/gamma-on-startup.desktop
-chmod +x ~/.config/autostart/gamma-on-startup.desktop
-cat /usr/bin/resume
+desktop-file-validate ~/.config/autostart/gamma_on_startup.desktop
+chmod +x ~/.config/autostart/gamma_on_startup.desktop
+```
+
+Example program:
+
+```bash
+nano /usr/bin/gamma_on_startup
 
 sleep 5
 xrandr --output HDMI-A-0 --brightness 0.75
@@ -234,9 +239,46 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 
 ## Things to do after installing Manjaro/Arch Linux
 
+- Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
+- Make an XDG autostart script for gamma adjustment
+- Install vscode
+
 ```bash
+pamac update --force-refresh
+pamac install visual-studio-code-bin
+```
+
+- Install ProtonVPN
+  
+```bash
+pamac build protonvpn
+```
+
+- Pin Firefox, Terminal, ProtonVPN and VSCode to the panel
+- Software Center: Disable automatic updates, Add AUR support
+- Remove Virtual Desktops
+- Pacman downloads parallel
+
+```bash
+sudo nano /etc/pacman.conf
+ParallelDownloads = 5
+```
+
+- Theme: Breeze Dark
+- Font: +1 PT
+
+- Update & Upgrade
+- sudo remembers password
+
+```bash
+sudo nano /etc/sudoers
+Defaults        timestamp_timeout=300 # 5 hours
+```
+
+```bash
+sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent
 sudo pacman -Syyuu
-sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc  visual-studio-code-bin
+sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g
 
 sudo freshclam
 sudo systemctl enable --now clamav-daemon
