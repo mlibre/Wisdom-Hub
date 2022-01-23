@@ -246,6 +246,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 ```bash
 pamac update --force-refresh
 pamac install visual-studio-code-bin
+sudo pacman -S gnome-keyring libsecret
 ```
 
 - Install ProtonVPN
