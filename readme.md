@@ -268,7 +268,6 @@ ParallelDownloads = 5
 - Theme: Breeze Dark
 - Font: +1 PT
 
-- Update & Upgrade
 - sudo remembers password
 
 ```bash
@@ -278,8 +277,12 @@ Defaults        timestamp_timeout=300 # 5 hours
 
 ```bash
 sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent
+sudo pacman-mirrors --fasttrack
 sudo pacman -Syyuu
-sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g
+sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld
+sudo firewall-cmd --permanent --add-service=https
+sudo systemctl enable firewalld
+sudo systemctl restart firewalld
 
 sudo freshclam
 sudo systemctl enable --now clamav-daemon
