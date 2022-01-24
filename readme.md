@@ -2,27 +2,29 @@
 
 Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 
-- [Automatic Shutdown](#automatic-shutdown)
-- [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
-- [Systemd, systemctl](#systemd-systemctl)
-  - [Reloading](#reloading)
-  - [Find services failed to start](#find-services-failed-to-start)
-  - [Journal Size](#journal-size)
-  - [Starting a script after GUI has loaded](#starting-a-script-after-gui-has-loaded)
-  - [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
-  - [Run a script after system-sleep resume](#run-a-script-after-system-sleep-resume)
-  - [Unit files' locations](#unit-files-locations)
-- [XDG](#xdg)
-  - [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
-- [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
-- [VPN](#vpn)
-  - [Redirecting the whole traffic](#redirecting-the-whole-traffic)
-- [Font](#font)
-  - [Location](#location)
-  - [List](#list)
-  - [Fira Code](#fira-code)
-- [Backup using Rsync](#backup-using-rsync)
-- [Things to do after installing Manjaro/Arch Linux](#things-to-do-after-installing-manjaroarch-linux)
+* [Automatic Shutdown](#automatic-shutdown)
+* [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
+* [Systemd, systemctl](#systemd-systemctl)
+  * [Reloading](#reloading)
+  * [Find services failed to start](#find-services-failed-to-start)
+  * [Journal Size](#journal-size)
+  * [Starting a script after GUI has loaded](#starting-a-script-after-gui-has-loaded)
+  * [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
+  * [Run a script after system-sleep resume](#run-a-script-after-system-sleep-resume)
+  * [Unit files' locations](#unit-files-locations)
+* [XDG](#xdg)
+  * [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
+* [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
+* [VPN](#vpn)
+  * [Redirecting the whole traffic](#redirecting-the-whole-traffic)
+* [Font](#font)
+  * [Location](#location)
+  * [List](#list)
+  * [Fira Code](#fira-code)
+* [Backup using Rsync](#backup-using-rsync)
+* [Fixing broken grub](#fixing-broken-grub)
+* [Things to do after installing Manjaro/Arch Linux](#things-to-do-after-installing-manjaroarch-linux)
+* [Things to do after installing Windows 11](#things-to-do-after-installing-windows-11)
 
 ## Automatic Shutdown
 
@@ -173,28 +175,28 @@ echo "gamma is changed"
 
 ## Autostarts and Startup scripts and programs locations
 
-- nano .profile
-- nano /etc/profile
-- ls /etc/profile.d/
-- ls ~/.config/autostart
-- ls /etc/xdg/autostart
-- ls /usr/share/xsessions
-- ls -1 /lib/systemd/system/*.service /etc/systemd/system/*.service
-- sudo systemctl list-unit-files --type=service --state=enabled --all
-- ls /etc/init.d/
-- nano ~/.xinitrc
-- nano /etc/X11/xinit/xinitrc
-- ls /etc/X11/xinit/xinitrc.d/
-- cat ~/.xserverrc
-- cat /etc/pam.d/
-- ls /etc/xdg/lxsession/LXDE/autostart
-- ls ~/.config/lxsession/LXDE/autostart
-- crontab -e
-- sudo crontab -e
+* nano .profile
+* nano /etc/profile
+* ls /etc/profile.d/
+* ls ~/.config/autostart
+* ls /etc/xdg/autostart
+* ls /usr/share/xsessions
+* ls -1 /lib/systemd/system/*.service /etc/systemd/system/*.service
+* sudo systemctl list-unit-files --type=service --state=enabled --all
+* ls /etc/init.d/
+* nano ~/.xinitrc
+* nano /etc/X11/xinit/xinitrc
+* ls /etc/X11/xinit/xinitrc.d/
+* cat ~/.xserverrc
+* cat /etc/pam.d/
+* ls /etc/xdg/lxsession/LXDE/autostart
+* ls ~/.config/lxsession/LXDE/autostart
+* crontab -e
+* sudo crontab -e
 
-- nano .bash_profile
-- nano .bashrc
-- nano /etc/bash.bashrc
+* nano .bash_profile
+* nano .bashrc
+* nano /etc/bash.bashrc
 
 ## VPN
 
@@ -210,9 +212,9 @@ sudo ip route add 192.168.1.0/24 dev ppp0
 
 ### Location
 
-- `~/.local/share/fonts/`
-- `/usr/local/share/fonts/`
-- `/usr/share/fonts/`
+* `~/.local/share/fonts/`
+* `/usr/local/share/fonts/`
+* `/usr/share/fonts/`
 
 ### List
 
@@ -257,9 +259,9 @@ update-grub
 
 ## Things to do after installing Manjaro/Arch Linux
 
-- Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
-- Make an XDG autostart script for gamma adjustment
-- Install vscode
+* Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
+* Make an XDG autostart script for gamma adjustment
+* Install vscode
 
 ```bash
 pamac update --force-refresh
@@ -267,26 +269,26 @@ pamac install visual-studio-code-bin
 sudo pacman -S gnome-keyring libsecret
 ```
 
-- Install ProtonVPN
+* Install ProtonVPN
   
 ```bash
 pamac build protonvpn
 ```
 
-- Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
-- Software Center: Disable automatic updates, Add AUR support
-- Remove Virtual Desktops
-- Pacman downloads parallel
+* Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
+* Software Center: Disable automatic updates, Add AUR support
+* Remove Virtual Desktops
+* Pacman downloads parallel
 
 ```bash
 sudo nano /etc/pacman.conf
 ParallelDownloads = 5
 ```
 
-- Theme: Breeze Dark
-- Font: +1 PT
+* Theme: Breeze Dark
+* Font: +1 PT
 
-- sudo remembers password
+* sudo remembers password
 
 ```bash
 sudo nano /etc/sudoers
@@ -309,3 +311,23 @@ clamscan --recursive --infected /home
 
 sudo systemctl disable --now clamav-daemon
 sudo systemctl disable --now clamav-freshclam
+```
+
+## Things to do after installing Windows 11
+
+* Download and install all the updated
+* Enable Ransomware protection
+* Download DimScreen, Copy it to the download folder. Open. click on the settings. set brightness to 20%. Make a shortcut to the desktop
+* search for gamma calibration in windows settings. set it to minimum
+* Adjust date and time: auto. Timezone tehran +3:30
+* Downloading updates active hours: 24 hours format. 1->11
+* Disable all data usages settings in privacy and security
+* uninstall mail, teams, one drive. xbox, facebook, microsoft todo, sticky notes, tips, weather
+* Install firefox and login
+* Install protonVPN
+* personalize: sunrise
+* network connection: metered connection
+* Display: 3840x2160, 200%
+* Steam: add your custom games' location to the Games' folder library. make it as default
+* Pause windows updates for 5 weeks
+* Check windows startups apps
