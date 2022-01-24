@@ -241,7 +241,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 
 ## Fixing broken grub
 
-Boot a live manjarao image
+Boot a live Manjaro image
 
 ```bash
 sudo manjaro-chroot -a
@@ -261,6 +261,7 @@ update-grub
 
 * Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
 * Make an XDG autostart script for gamma adjustment
+* Put the gamma script in the .bashrc as well 
 * Install vscode
 
 ```bash
