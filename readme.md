@@ -273,7 +273,7 @@ sudo pacman -S gnome-keyring libsecret
 pamac build protonvpn
 ```
 
-- Pin Firefox, Terminal, ProtonVPN and VSCode to the panel
+- Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 - Software Center: Disable automatic updates, Add AUR support
 - Remove Virtual Desktops
 - Pacman downloads parallel
@@ -297,7 +297,7 @@ Defaults        timestamp_timeout=300 # 5 hours
 sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent
 sudo pacman-mirrors --fasttrack
 sudo pacman -Syyuu
-sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld
+sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family
 sudo firewall-cmd --permanent --add-service=https
 sudo systemctl enable firewalld
 sudo systemctl restart firewalld
