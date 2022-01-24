@@ -261,7 +261,7 @@ update-grub
 
 * Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
 * Make an XDG autostart script for gamma adjustment
-* Put the gamma script in the .bashrc as well
+* Put the gamma script in the `.bashrc` and `.zshrc` as well
 * Install vscode
 
 ```bash
