@@ -267,13 +267,13 @@ update-grub
 ```bash
 pamac update --force-refresh
 pamac install visual-studio-code-bin
-sudo pacman -S gnome-keyring libsecret
 ```
 
-* Install ProtonVPN
+* Install ProtonVPN, mailspring
   
 ```bash
 pamac build protonvpn
+pamac build mailspring
 ```
 
 * Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
@@ -311,7 +311,7 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent
 sudo pacman-mirrors --fasttrack
 sudo pacman -Syyuu
-sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family
+sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret
 sudo firewall-cmd --permanent --add-service=https
 sudo systemctl enable firewalld
 sudo systemctl restart firewalld
