@@ -313,6 +313,8 @@ sudo systemctl disable --now clamav-daemon
 sudo systemctl disable --now clamav-freshclam
 ```
 
+* Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
+
 ## Things to do after installing Windows 11
 
 * Download and install all the updated
