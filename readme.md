@@ -295,6 +295,17 @@ sudo nano /etc/sudoers
 Defaults        timestamp_timeout=300 # 5 hours
 ```
 
+* Make a Swapfile
+
+```bash
+sudo dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+cat /etc/fstab
+sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
+```
+
 ```bash
 sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent
 sudo pacman-mirrors --fasttrack
@@ -304,13 +315,15 @@ sudo firewall-cmd --permanent --add-service=https
 sudo systemctl enable firewalld
 sudo systemctl restart firewalld
 
-sudo freshclam
 sudo systemctl enable --now clamav-daemon
-sudo systemctl enable --now clamav-freshclam
+sudo systemctl restart --now clamav-daemon
+sudo systemctl disable --now clamav-freshclam
+# sudo systemctl enable --now clamav-freshclam
+
+sudo freshclam
 clamscan --recursive --infected /home
 
 sudo systemctl disable --now clamav-daemon
-sudo systemctl disable --now clamav-freshclam
 ```
 
 * Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
