@@ -237,6 +237,16 @@ fc-match -a | grep -i fira
 sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
 ```
 
+## Fixing broken grub
+
+Boot a live manjarao image
+
+```bash
+sudo manjaro-chroot -a
+grub-install
+update-grub
+```
+
 ## Things to do after installing Manjaro/Arch Linux
 
 - Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
