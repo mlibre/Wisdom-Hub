@@ -350,6 +350,7 @@ sudo systemctl disable --now clamav-daemon
 * personalize: sunrise
 * network connection: metered connection
 * Display: 3840x2160, 200%
-* Steam: add your custom games' location to the Games' folder library. make it as default
+* Steam: add your games' location to the Games' folder library. make it as default
+* Steam: If your games are in a `NTFS` file system, follow [this](https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows) to make game compatible with Linux.
 * Pause windows updates for 5 weeks
 * Check windows startups apps
