@@ -330,6 +330,10 @@ sudo systemctl disable --now clamav-daemon
 ```
 
 * Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
+* Konsole config:
+  * Font: Monospace 13pt
+  * Theme: Breath (customized, a bit darker)
+  * Shell: Manjaro zsh
 
 ## Things to do after installing Windows 11
 
