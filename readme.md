@@ -276,6 +276,8 @@ pamac build protonvpn
 pamac build mailspring
 ```
 
+* Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disable mail signature.
+
 * Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 * Software Center: Disable automatic updates, Add AUR support
 * Remove Virtual Desktops
