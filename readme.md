@@ -261,7 +261,7 @@ update-grub
 
 * Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
 * Make an XDG autostart script for gamma adjustment
-* Put the gamma script in the .bashrc as well 
+* Put the gamma script in the .bashrc as well
 * Install vscode
 
 ```bash
@@ -277,7 +277,7 @@ pamac build mailspring
 ```
 
 * Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disable mail signature.
-
+* Setting -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver and review background services.
 * Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 * Software Center: Disable automatic updates, Add AUR support
 * Remove Virtual Desktops
