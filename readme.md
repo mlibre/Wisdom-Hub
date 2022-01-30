@@ -239,6 +239,13 @@ fc-match -a | grep -i fira
 sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
 ```
 
+## Resetting sound, audio
+
+```bash
+pulseaudio --kill
+# pulseaudio --start
+```
+
 ## Fixing broken grub
 
 Boot a live Manjaro image
@@ -257,8 +264,9 @@ Then run:
 update-grub
 ```
 
-## Things to do after installing Manjaro/Arch Linux
+## Things to do after and before installing Manjaro/Arch Linux
 
+* Backup important data. Recovery-keys, Passwords, Postman and ...
 * Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
 * Make an XDG autostart script for gamma adjustment
 * Put the gamma script in the `.bashrc` and `.zshrc` as well
@@ -337,7 +345,7 @@ sudo systemctl disable --now clamav-daemon
 
 ## Things to do after installing Windows 11
 
-* Download and install all the updated
+* Download and install all the updates
 * Enable Ransomware protection
 * Download DimScreen, Copy it to the download folder. Open. click on the settings. set brightness to 20%. Make a shortcut to the desktop
 * search for gamma calibration in windows settings. set it to minimum
