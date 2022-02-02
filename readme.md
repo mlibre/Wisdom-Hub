@@ -318,7 +318,7 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 ```
 
 ```bash
-sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent
+sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin
 sudo pacman-mirrors --fasttrack
 sudo pacman -Syyuu
 sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret
@@ -329,6 +329,7 @@ sudo systemctl restart firewalld
 sudo systemctl enable --now clamav-daemon
 sudo systemctl restart --now clamav-daemon
 sudo systemctl disable --now clamav-freshclam
+sudo systemctl disable bluetooth.service
 # sudo systemctl enable --now clamav-freshclam
 
 sudo freshclam
