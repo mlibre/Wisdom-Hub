@@ -208,6 +208,12 @@ sudo ip route add 192.168.1.0/24 dev ppp0
 # 192.168.1.0: IP range
 ```
 
+## Install Genymotoin Android emulator
+
+```bash
+sudo pamac install genymotion
+```
+
 ## Font
 
 ### Location
