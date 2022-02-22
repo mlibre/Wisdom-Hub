@@ -327,7 +327,7 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin
 sudo pacman-mirrors --fasttrack
 sudo pacman -Syyuu
-sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret
+sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret telegram-desktop
 sudo firewall-cmd --permanent --add-service=https
 sudo systemctl enable firewalld
 sudo systemctl restart firewalld
@@ -344,6 +344,7 @@ clamscan --recursive --infected /home
 sudo systemctl disable --now clamav-daemon
 ```
 
+* Firefox: Enable DNS over HTTPS
 * Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
 * Konsole config:
   * Font: Monospace 13pt
