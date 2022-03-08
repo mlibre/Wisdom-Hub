@@ -327,7 +327,7 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin
 sudo pacman-mirrors --fasttrack
 sudo pacman -Syyuu
-sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret telegram-desktop core/iputils
+sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret telegram-desktop core/iputils clinfo
 sudo firewall-cmd --permanent --add-service=https
 sudo systemctl enable firewalld
 sudo systemctl restart firewalld
@@ -351,6 +351,22 @@ sudo systemctl disable --now clamav-daemon
   * Theme: Breath (customized, a bit darker)
   * Shell: Manjaro zsh
 
+### Install AMDGPU-PRO
+
+```bash
+pamac install vulkan-amdgpu-pro
+# pamac install amdgpu-pro-libgl
+# pamac install opencl-amd
+# pamac install amf-amdgpu-pro
+glxinfo | grep "OpenGL vendor string"
+```
+
+### Uninstall AMDGPU-PRO
+
+```bash
+pacman -R $(pacman -Qg Radeon_Software_for_Linux | cut -f2 -d" ")
+```
+
 ## Things to do after installing Windows 11
 
 * Download and install all the updates
@@ -370,6 +386,11 @@ sudo systemctl disable --now clamav-daemon
 * Steam: If your games are in a `NTFS` file system, follow [this](https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows) to make game compatible with Linux.
 * Pause windows updates for 5 weeks
 * Check windows startups apps
+* App store: disable automatic update
+* Leave "AMD user experience program". AMD settings. last tab , last option
+* windows features: WSL, virtual machine, hyper-v (for android and linux apps)
+* wsl --update
+* wsl --install -d Ubuntu
 
 ## Install a new os on the phone
 
@@ -415,7 +436,7 @@ adb reboot download
 
 ### Run Odin as administrator
 
-follow the instructions 
+follow the instructions
 <https://www.droidthunder.com/install-twrp-recovery-on-galaxy-A10/>
 
 ### Install bluestack
@@ -423,4 +444,3 @@ follow the instructions
 <https://www.bluestacks.com/>
 
 Download, login and install whatsapp, telegram and google
-
