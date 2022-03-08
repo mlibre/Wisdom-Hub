@@ -354,17 +354,28 @@ sudo systemctl disable --now clamav-daemon
 ### Install AMDGPU-PRO
 
 ```bash
+# https://wiki.archlinux.org/title/AMDGPU_PRO
 pamac install vulkan-amdgpu-pro
+pamac install lib32-vulkan-amdgpu-pro 
 # pamac install amdgpu-pro-libgl
+# pamac install lib32-amdgpu-pro-libgl
 # pamac install opencl-amd
 # pamac install amf-amdgpu-pro
 glxinfo | grep "OpenGL vendor string"
+lspci -v | grep -A 10 VGA
 ```
 
 ### Uninstall AMDGPU-PRO
 
 ```bash
 pacman -R $(pacman -Qg Radeon_Software_for_Linux | cut -f2 -d" ")
+```
+
+### Blacklist Radeon
+
+```bash
+sudo nano /etc/modprobe.d/radeon.conf 
+blacklist radeon
 ```
 
 ## Things to do after installing Windows 11
