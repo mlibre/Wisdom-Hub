@@ -398,10 +398,12 @@ blacklist radeon
 * Pause windows updates for 5 weeks
 * Check windows startups apps
 * App store: disable automatic update
-* Leave "AMD user experience program". AMD settings. last tab , last option
+* Leave from "AMD user experience program". AMD settings -> last tab -> last option
 * windows features: WSL, virtual machine, hyper-v (for android and linux apps)
 * wsl --update
 * wsl --install -d Ubuntu
+* Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable
+
 
 ## Install a new os on the phone
 
