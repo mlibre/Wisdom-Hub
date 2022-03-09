@@ -404,7 +404,6 @@ blacklist radeon
 * wsl --install -d Ubuntu
 * Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable
 
-
 ## Install a new os on the phone
 
 ### backup data
