@@ -305,7 +305,7 @@ ParallelDownloads = 5
 * Theme: Breeze Dark
 * Font: +1 PT
 
-* sudo remembers password
+* Remembers sudo password
 
 ```bash
 sudo nano /etc/sudoers
@@ -323,11 +323,19 @@ cat /etc/fstab
 sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 ```
 
+* open an application using tor over socks
+
+```bash
+torsocks deluge
+```
+
+* Softwares
+
 ```bash
 sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin
 sudo pacman-mirrors --fasttrack
 sudo pacman -Syyuu
-sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret telegram-desktop core/iputils clinfo tor
+sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret telegram-desktop core/iputils clinfo tor torsocks
 
 sudo systemctl disable bluetooth.service
 sudo systemctl disable tor.service
