@@ -329,6 +329,13 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 torsocks deluge
 ```
 
+* Fix time difference between linux and windows
+
+```bash
+timedatectl set-local-rtc 1 --adjust-system-clock
+# sudo timedatectl set-local-rtc 1
+```
+
 * Softwares
 
 ```bash
