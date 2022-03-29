@@ -334,6 +334,7 @@ torsocks deluge
 ```bash
 timedatectl set-local-rtc 1 --adjust-system-clock
 # sudo timedatectl set-local-rtc 1
+sudo ntpdate time.nist.gov # update time
 ```
 
 * Softwares
