@@ -348,6 +348,8 @@ sudo systemctl disable bluetooth.service
 sudo systemctl disable tor.service
 
 sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --permanent --add-port=30303/tcp # geth 
+sudo firewall-cmd --permanent --add-port=30303/udp # geth
 
 sudo systemctl enable firewalld
 sudo systemctl restart firewalld
