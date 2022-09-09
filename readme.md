@@ -330,6 +330,7 @@ update-grub
 - KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver and review background services.
 - KDE Settings -> Appearance -> Theme -> Breeze Dark, Breath Dark
 - KDE Settings -> Appearance -> Font -> Enabled Anti-Aliasing, RGB, Slight. all +1 PT
+- KDE Settings -> Workspace -> Search -> Disable Web Search Keywords
 - Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 - Software Center: Disable automatic updates, Add AUR support
 - Remove Virtual Desktops
