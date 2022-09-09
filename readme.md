@@ -272,45 +272,58 @@ update-grub
 
 ## Things to do after and before installing Manjaro/Arch Linux
 
-* Backup important data. Recovery-keys, Passwords, Postman and ...
+* Backup important data. Recovery-keys, Passwords, Postman and ...  
+
+  ```bash
+  cp -r /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/H/OS/caches/
+  ./my_data_rsync.bash
+  ```
+
 * Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
 * Make an XDG autostart script for gamma adjustment
 * Put the gamma script in the `.bashrc` and `.zshrc` as well
 * Install vscode
 
-```bash
-pamac update --force-refresh
-pamac install visual-studio-code-bin
-```
+  ```bash
+  pamac update --force-refresh
+  pamac install visual-studio-code-bin
+  ```
 
 * Install ProtonVPN, mailspring
   
-```bash
-pamac build protonvpn
-pamac build mailspring
-```
+  ```bash
+  pamac build protonvpn
+  pamac build mailspring
+  ```
 
 * Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disable mail signature.
-* Setting -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver and review background services.
+
+* Install mlocate
+
+  ```bash
+  sudo pacman -S mlocate
+  sudo updatedb
+  ```
+
+* KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver and review background services.
+* KDE Settings -> Appearance -> Theme -> Breeze Dark, Breath Dark
+* KDE Settings -> Appearance -> Font -> Enabled Anti-Aliasing, RGB, Slight. all +1 PT
 * Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 * Software Center: Disable automatic updates, Add AUR support
 * Remove Virtual Desktops
 * Pacman downloads parallel
 
-```bash
-sudo nano /etc/pacman.conf
-ParallelDownloads = 5
-```
-
-* Theme: Breeze Dark
-* Font: +1 PT
+  ```bash
+  sudo nano /etc/pacman.conf
+  ParallelDownloads = 5
+  ```
 
 * Remembers sudo password
 
-```bash
-sudo nano /etc/sudoers
-Defaults        timestamp_timeout=300 # 5 hours
-```
+  ```bash
+  sudo nano /etc/sudoers
+  Defaults        timestamp_timeout=300 # 5 hours
+  ```
 
 * Make a Swapfile
 
@@ -325,17 +338,17 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 
 * open an application using tor over socks
 
-```bash
-torsocks deluge
-```
+  ```bash
+  torsocks deluge
+  ```
 
 * Fix time difference between linux and windows
 
-```bash
-timedatectl set-local-rtc 1 --adjust-system-clock
-# sudo timedatectl set-local-rtc 1
-sudo ntpdate time.nist.gov # update time
-```
+  ```bash
+  timedatectl set-local-rtc 1 --adjust-system-clock
+  # sudo timedatectl set-local-rtc 1
+  sudo ntpdate time.nist.gov # update time
+  ```
 
 * Softwares
 
@@ -363,6 +376,12 @@ sudo systemctl disable --now clamav-daemon
 # sudo systemctl enable --now clamav-daemon
 # sudo systemctl enable --now clamav-freshclam
 ```
+
+* Caches
+
+  ```bash
+  cp -r /run/media/mlibre/H/OS/caches/TelegramDesktop /home/mlibre/.local/share/
+  ```
 
 * Firefox: Enable DNS over HTTPS
 * Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
