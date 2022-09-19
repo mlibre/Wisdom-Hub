@@ -3,7 +3,10 @@
 Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 
 - [Automatic Shutdown](#automatic-shutdown)
+- [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
 - [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
+- [XDG](#xdg)
+  - [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
 - [Systemd, systemctl](#systemd-systemctl)
   - [Reloading](#reloading)
   - [Find services failed to start](#find-services-failed-to-start)
@@ -12,8 +15,6 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
   - [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
   - [Run a script after system-sleep resume](#run-a-script-after-system-sleep-resume)
   - [Unit files' locations](#unit-files-locations)
-- [XDG](#xdg)
-  - [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
 - [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
 - [VPN](#vpn)
   - [Redirecting the whole traffic](#redirecting-the-whole-traffic)
@@ -25,7 +26,9 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 - [Backup using Rsync](#backup-using-rsync)
 - [Resetting sound, audio](#resetting-sound-audio)
 - [Fixing broken grub](#fixing-broken-grub)
-- [Things to do after and before installing Manjaro/Arch Linux](#things-to-do-after-and-before-installing-manjaroarch-linux)
+- [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
+- [Things to do before installing Manjaro/Arch Linux](#things-to-do-before-installing-manjaroarch-linux)
+- [Things to do after installing Manjaro/Arch Linux](#things-to-do-after-installing-manjaroarch-linux)
   - [Install AMDGPU-PRO](#install-amdgpu-pro)
   - [Uninstall AMDGPU-PRO](#uninstall-amdgpu-pro)
   - [Blacklist Radeon](#blacklist-radeon)
@@ -50,14 +53,49 @@ sudo shutdown -P +220 ## in 220 minutes, 3:30 hours
 ## Bash case-insensitive auto completion
 
 ```bash
-echo 'set completion-ignore-case On' >> /etc/inputrc
-# echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
+echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
+# echo 'set completion-ignore-case On' >> /etc/inputrc
 ```
 
 ## Changing monitor or screen Brightness and Gamma
 
 ```bash
 xrandr --output HDMI-A-0 --brightness 0.75 --gamma 0.75:0.75:0.75 
+```
+
+## XDG
+
+### Make a startup script using XDG startup
+
+```bash
+nano ~/.config/autostart/gamma_on_startup.desktop
+```
+
+```bash
+[Desktop Entry]
+Name=gamma-on-startup
+Type=Application
+Exec=bash -c  "/usr/local/bin/gamma_on_startup &> /dev/null" 
+Terminal=true
+```
+
+```bash
+desktop-file-validate ~/.config/autostart/gamma_on_startup.desktop
+chmod +x ~/.config/autostart/gamma_on_startup.desktop
+```
+
+Example program:
+
+```bash
+sudo chmod a+rwx /usr/local/bin/
+nano /usr/local/bin/gamma_on_startup
+
+sleep 5
+xrandr --output HDMI-A-0 --brightness 0.75 --gamma 0.75:0.75:0.75 
+```
+
+```bash
+sudo chmod a+rwx /usr/local/bin/gamma_on_startup
 ```
 
 ## Systemd, systemctl
@@ -164,37 +202,6 @@ sudo systemctl enable myprogram
 systemctl show --property=UnitPath
 ```
 
-## XDG
-
-### Make a startup script using XDG startup
-
-```bash
-nano ~/.config/autostart/gamma_on_startup.desktop
-```
-
-```bash
-[Desktop Entry]
-Name=gamma-on-startup
-Type=Application
-Exec=bash -c  "/usr/bin/gamma_on_startup &> /dev/null" 
-Terminal=true
-```
-
-```bash
-desktop-file-validate ~/.config/autostart/gamma_on_startup.desktop
-chmod +x ~/.config/autostart/gamma_on_startup.desktop
-```
-
-Example program:
-
-```bash
-nano /usr/bin/gamma_on_startup
-
-sleep 5
-xrandr --output HDMI-A-0 --brightness 0.75 --gamma 0.75:0.75:0.75 
-echo "gamma is changed"
-```
-
 ## Autostarts and Startup scripts and programs locations
 
 - nano .profile
@@ -292,16 +299,43 @@ Then run:
 update-grub
 ```
 
-## Things to do after and before installing Manjaro/Arch Linux
+## Open an application using tor over socks
+
+```bash
+torsocks deluge
+```
+
+## Things to do before installing Manjaro/Arch Linux
 
 - Backup important data. Recovery-keys, Passwords, Postman and ...  
 
   ```bash
   cp -r /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/H/OS/caches/
-  ./my_data_rsync.bash
+  rsync -aAXHv ~/my_data/ /run/media/mlibre/H/OS/my_data/
+  # ./data_rsync.bash
   ```
 
 - Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
+
+## Things to do after installing Manjaro/Arch Linux
+
+- Update System
+
+  ```bash
+  sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil
+  sudo pacman-mirrors --fasttrack
+  sudo pacman -Syyuu
+  sudo pacman -S telegram-desktop
+  ```
+
+- Import Data
+
+  ```bash
+  cp -r /run/media/mlibre/H/OS/caches/TelegramDesktop /home/mlibre/.local/share/
+  cp -r /run/media/mlibre/H/OS/my_data/ ~/my_data
+  # ./import_data.bash
+  ```
+
 - Make an XDG autostart script for gamma adjustment
 - Put the gamma script in the `.bashrc` and `.zshrc` as well
 - Install vscode
@@ -318,7 +352,7 @@ update-grub
   pamac build mailspring
   ```
 
-- Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disable mail signature.
+- Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disabsetle mail signature.
 
 - Install mlocate
 
@@ -327,10 +361,11 @@ update-grub
   sudo updatedb
   ```
 
-- KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver and review background services.
+- KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver, Review background services and Autostarts.
 - KDE Settings -> Appearance -> Theme -> Breeze Dark, Breath Dark
 - KDE Settings -> Appearance -> Font -> Enabled Anti-Aliasing, RGB, Slight. all +1 PT
 - KDE Settings -> Workspace -> Search -> Disable Web Search Keywords
+- KDE Settings -> Workspace Behavior -> Activities -> Privacy -> Dont remembersoft
 - Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 - Software Center: Disable automatic updates, Add AUR support
 - Remove Virtual Desktops
@@ -359,12 +394,6 @@ cat /etc/fstab
 sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 ```
 
-- open an application using tor over socks
-
-  ```bash
-  torsocks deluge
-  ```
-
 - Fix time difference between linux and windows
 
   ```bash
@@ -376,20 +405,21 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 - Softwares
 
 ```bash
-sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin
-sudo pacman-mirrors --fasttrack
-sudo pacman -Syyuu
-sudo pacman -S deluge clamav electrum chromium firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret telegram-desktop core/iputils clinfo tor torsocks
+sudo pacman -S deluge clamav electrum firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime
 
 sudo systemctl disable bluetooth.service
 sudo systemctl disable tor.service
-
-sudo firewall-cmd --permanent --add-service=https
-sudo firewall-cmd --permanent --add-port=30303/tcp # geth 
-sudo firewall-cmd --permanent --add-port=30303/udp # geth
+sudo systemctl disable samba
+sudo systemctl disable cups
 
 sudo systemctl enable firewalld
 sudo systemctl restart firewalld
+
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --permanent --add-port=30303/tcp
+sudo firewall-cmd --permanent --add-port=30303/udp
+
+
 
 sudo systemctl restart --now clamav-daemon
 sudo freshclam
@@ -399,12 +429,6 @@ sudo systemctl disable --now clamav-daemon
 # sudo systemctl enable --now clamav-daemon
 # sudo systemctl enable --now clamav-freshclam
 ```
-
-- Caches
-
-  ```bash
-  cp -r /run/media/mlibre/H/OS/caches/TelegramDesktop /home/mlibre/.local/share/
-  ```
 
 - Firefox: Enable DNS over HTTPS
 - Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
