@@ -101,14 +101,16 @@ VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/
 ## Dota 2
 
 ```bash
--high -map dota -nojoy -novid -novr -nohltv
+-high -nojoy -novid -novr -nohltv -map dota 
 ```
 
 - Disable steam overlay in game
 
 ```bash
 sudo mkdir -p /media/gamedisk
-sudo blkid
+sudo blkid # FA709D69709D2CFF
+id -u # 1000
+id -g # 1000
 sudo nano /etc/fstab
 UUID=FA709D69709D2CFF /media/gamedisk ntfs uid=1000,gid=1000,rw,user,exec,umask=000 0 0
 # UUID=FA709D69709D2CFF /media/gamedisk lowntfs-3g uid=1000,gid=1000,rw,user,exec,umask=000 0 0
