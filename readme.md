@@ -63,11 +63,14 @@ echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
 xrandr --output HDMI-A-0 --brightness 0.75 --gamma 0.75:0.75:0.75 
 ```
 
-## Disable Linux Watchdogs
+## Disable Linux Watchdogs, compaction and ...
 
 ```bash
 sudo sh -c "echo 'kernel.nmi_watchdog=0' >> /etc/sysctl.conf"
 sudo sh -c "echo 'kernel.watchdog=0' >> /etc/sysctl.conf"
+sudo sh -c "echo 'vm.compaction_proactiveness=0' >> /etc/sysctl.conf"
+sudo sh -c "echo 'vm.zone_reclaim_mode=0' >> /etc/sysctl.conf"
+sudo sh -c "echo 'vm.page_lock_unfairness=1' >> /etc/sysctl.conf"
 sudo sysctl -p
 ```
 
