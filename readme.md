@@ -63,7 +63,7 @@ echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
 xrandr --output HDMI-A-0 --brightness 0.75 --gamma 0.75:0.75:0.75 
 ```
 
-## Disable Linux Watchdogs, compaction and ...
+## Disable Linux Watchdogs, compaction and
 
 ```bash
 sudo sh -c "echo 'kernel.nmi_watchdog=0' >> /etc/sysctl.conf"
@@ -86,6 +86,26 @@ UUID=f74c37b2-8a12-4252-90a6-d31504507bcb /     ext4    defaults,noatime,commit=
 ```bash
 sudo tune2fs -f -O "^has_journal" /dev/sda2
 ```
+
+## Vulkan
+
+```bash
+sudo pacman -S vulkan-radeon lib32-vulkan-radeon
+```
+
+```bash
+sudo nano /etc/environment
+VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
+```
+
+## Dota 2
+
+```bash
+-high -map dota -nojoy -novid -novr -nohltv
+```
+
+- Disable steam overlay in game
+
 
 ## XDG
 
@@ -399,7 +419,7 @@ torsocks deluge
 - KDE Settings -> Appearance -> Font -> Enabled Anti-Aliasing, RGB, Slight. all +1 PT
 - KDE Settings -> Workspace -> Search -> Disable Web Search Keywords
 - KDE Settings -> Workspace Behavior -> Activities -> Privacy -> Dont remember soft
-- KDE Settings -> Search for KRuuner -> settings -> uncheck all 
+- KDE Settings -> Search for KRuuner -> settings -> uncheck all
 
 - Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 - Software Center: Disable automatic updates, Add AUR support
