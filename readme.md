@@ -351,7 +351,7 @@ torsocks deluge
 
   ```bash
   sudo systemctl disable pamac-daemon
-  sudo pacman -R print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil
+  sudo pacman -R matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
   sudo pacman -S telegram-desktop
