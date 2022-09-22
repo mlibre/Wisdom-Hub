@@ -63,6 +63,27 @@ echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
 xrandr --output HDMI-A-0 --brightness 0.75 --gamma 0.75:0.75:0.75 
 ```
 
+## Disable Linux Watchdogs
+
+```bash
+sudo sh -c "echo 'kernel.nmi_watchdog=0' >> /etc/sysctl.conf"
+sudo sh -c "echo 'kernel.watchdog=0' >> /etc/sysctl.conf"
+sudo sysctl -p
+```
+
+## Improve fstab performance
+
+```bash
+sudo nano /etc/fstab 
+UUID=f74c37b2-8a12-4252-90a6-d31504507bcb /     ext4    defaults,noatime,commit=60,barrier=0    0       1
+```
+
+## Disabling journaling
+
+```bash
+sudo tune2fs -f -O "^has_journal" /dev/sda2
+```
+
 ## XDG
 
 ### Make a startup script using XDG startup
@@ -99,6 +120,13 @@ sudo chmod a+rwx /usr/local/bin/gamma_on_startup
 ```
 
 ## Systemd, systemctl
+
+### Analyzing
+
+```bash
+systemd-analyze
+systemd-analyze blame
+```
 
 ### Reloading
 
@@ -322,7 +350,8 @@ torsocks deluge
 - Update System
 
   ```bash
-  sudo pacman -R thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf qbittorrent snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil
+  sudo systemctl disable pamac-daemon
+  sudo pacman -R print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
   sudo pacman -S telegram-desktop
@@ -360,12 +389,15 @@ torsocks deluge
   sudo pacman -S mlocate
   sudo updatedb
   ```
-
+  
+- KDE Settings -> Disable Mouse acceleration
 - KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver, Review background services and Autostarts.
 - KDE Settings -> Appearance -> Theme -> Breeze Dark, Breath Dark
 - KDE Settings -> Appearance -> Font -> Enabled Anti-Aliasing, RGB, Slight. all +1 PT
 - KDE Settings -> Workspace -> Search -> Disable Web Search Keywords
-- KDE Settings -> Workspace Behavior -> Activities -> Privacy -> Dont remembersoft
+- KDE Settings -> Workspace Behavior -> Activities -> Privacy -> Dont remember soft
+- KDE Settings -> Search for KRuuner -> settings -> uncheck all 
+
 - Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 - Software Center: Disable automatic updates, Add AUR support
 - Remove Virtual Desktops
@@ -392,6 +424,9 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 cat /etc/fstab
 sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
+
+sudo nano /etc/sysctl.conf
+# vm.swappiness=10
 ```
 
 - Fix time difference between linux and windows
@@ -405,7 +440,8 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 - Softwares
 
 ```bash
-sudo pacman -S deluge clamav electrum firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime
+sudo pacman -S qbittorrent deluge clamav firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime
+# sudo pacman -S electrum
 
 sudo systemctl disable bluetooth.service
 sudo systemctl disable tor.service
