@@ -106,6 +106,16 @@ VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/
 
 - Disable steam overlay in game
 
+```bash
+sudo mkdir -p /media/gamedisk
+sudo blkid
+sudo nano /etc/fstab
+UUID=FA709D69709D2CFF /media/gamedisk ntfs uid=1000,gid=1000,rw,user,exec,umask=000 0 0
+# UUID=FA709D69709D2CFF /media/gamedisk lowntfs-3g uid=1000,gid=1000,rw,user,exec,umask=000 0 0
+mkdir -p ~/.steam/steam/steamapps/compatdata
+sudo reboot
+ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
+```
 
 ## XDG
 
