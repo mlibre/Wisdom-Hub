@@ -100,11 +100,15 @@ VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/
 
 ## Dota 2
 
-```bash
--high -nojoy -novid -novr -nohltv -map dota 
-```
+- Move Dota 2 to your local linux machine
+- Dota 2 Options
 
-- Disable steam overlay in game
+  ```bash
+  -high -nojoy -novid -novr -nohltv -map dota 
+  ```
+
+- Disable steam overlay, steam inputs, ...
+- Link your NTFS game folder
 
 ```bash
 sudo mkdir -p /media/gamedisk
