@@ -189,78 +189,33 @@ sudo nano /etc/systemd/journald.conf
 SystemMaxUse=100M
 ```
 
-### Starting a script after GUI has loaded
-
-```bash
-sudo nano /lib/systemd/system/myprogram.service
-```
-
-```bash
-[Unit]
-Description=Set gamma on system boots up
-After=network.target
-After=systemd-user-sessions.service
-After=network-online.target
-
-[Service]
-Type=idle
-ExecStartPost=/bin/sleep 5
-ExecStart=/usr/bin/myprogram
-[Install]
-WantedBy=graphical.target
-```
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable myprogram.service
-systemctl status myprogram
-journalctl -u myprogram
-```
-
 ### Run a script after suspending has finished (resume)
 
 ```bash
-sudo nano /etc/systemd/system/myprogram.service
+sudo nano /etc/systemd/system/gamma.service
 ```
 
 ```bash
 [Unit]
-After=suspend.target
-[Service]  
-Type=simple
-ExecStart=/usr/bin/myprogram
+Description=Start Script in terminal
+After=suspend.target graphical.target network-online.target NetworkManager-wait-online.service
+
+[Service]
+User=mlibre
+Type=idle
+Environment=DISPLAY=:0
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/bin/xterm -e /usr/local/bin/gamma_on_startup
+
 [Install]
-WantedBy=suspend.target
+WantedBy=suspend.target graphical.target
 ```
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable myprogram.service
-systemctl status myprogram
-journalctl -u myprogram
-```
-
-### Run a script after system-sleep resume
-
-```bash
-sudo nano /lib/systemd/system-sleep/myprogram.sh
-```
-
-```bash
-#!/bin/sh
-PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin
-case $1 in
- post)
-  /usr/bin/myprogram
- ;;
-esac
-
-exit 0
-```
-
-```bash
-sudo chmod +x /lib/systemd/system-sleep/myprogram
-sudo systemctl enable myprogram
+sudo systemctl enable gamma.service
+systemctl status gamma
+journalctl -u gamma
 ```
 
 ### Unit files' locations
