@@ -60,7 +60,7 @@ echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
 ## Changing monitor or screen Brightness and Gamma
 
 ```bash
-xrandr --output HDMI-A-0 --brightness 0.75 --gamma 0.75:0.75:0.75 
+xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
 ```
 
 ## Disable Linux Watchdogs, compaction and
@@ -151,7 +151,8 @@ sudo chmod a+rwx /usr/local/bin/
 nano /usr/local/bin/gamma_on_startup
 
 sleep 5
-xrandr --output HDMI-A-0 --brightness 0.75 --gamma 0.75:0.75:0.75 
+export DISPLAY=:0
+xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
 ```
 
 ```bash
@@ -198,14 +199,14 @@ sudo nano /etc/systemd/system/gamma.service
 ```bash
 [Unit]
 Description=Start Script in terminal
-After=suspend.target graphical.target network-online.target NetworkManager-wait-online.service
+After=suspend.target graphical.target
 
 [Service]
 User=mlibre
 Type=idle
 Environment=DISPLAY=:0
 ExecStartPre=/bin/sleep 10
-ExecStart=/usr/bin/xterm -e /usr/local/bin/gamma_on_startup
+ExecStart=/bin/bash /usr/local/bin/gamma_on_startup
 
 [Install]
 WantedBy=suspend.target graphical.target
