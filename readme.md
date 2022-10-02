@@ -252,12 +252,40 @@ systemctl show --property=UnitPath
 
 ## VPN
 
+### yay using proxy
+
+```bash
+yay -S gcc-go
+yay -S yay
+# yay --rebuild yay
+```
+
+```bash
+sudo nano /etc/proxychains.conf 
+socks5  127.0.0.1 9090
+## comment proxy_dns
+# proxy_dns
+```
+
+```bash
+proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
+```
+
 ### Redirecting the whole traffic
 
 ```bash
 sudo ip route add 192.168.1.0/24 dev ppp0
 # ppp0: vpn name
 # 192.168.1.0: IP range
+```
+
+### Protonvpn
+
+```bash
+yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
+# proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
+protonvpn
+# proxychain protonvpn
 ```
 
 ## Install Genymotoin Android emulator
