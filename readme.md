@@ -287,14 +287,64 @@ sudo ip route add 192.168.1.0/24 dev ppp0
 # 192.168.1.0: IP range
 ```
 
+### VPNBook
+
+- Download OpenVpn file: <https://www.vpnbook.com/freevpn>
+- Import in NetworkManger
+- Enter username and password from here: <https://www.vpnbook.com/freevpn>
+
+### Protonvpn OpenVpn
+
+- Download openVpn config file form here: <https://account.protonvpn.com/downloads>
+- Copy openVPn credentials: <https://account.protonvpn.com/account>
+- Network Manager: New -> Import OpenVpn Saved Configuration. Paste credentials
+
+### Protonvpn WireGaurd
+
+```bash
+sudo pacman -R firewalld
+sudo nano /etc/sysctl.conf
+# add: net.ipv4.ip_forward=1
+sudo sysctl -p
+sudo pacman -S extra/wireguard-tools
+# yay -S  qomui
+# https://account.protonvpn.com/downloads#wireguard-configuration
+sudo nano /etc/wireguard/wg0.conf
+# past
+sudo wg-quick up wg0
+sudo wg-quick down wg0
+sudo wg
+```
+
 ### Protonvpn
 
 ```bash
+sudo systemctl stop firewalld.service
 yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
 # proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
 protonvpn
 # proxychain protonvpn
 ```
+
+### hide.me
+
+```bash
+sudo systemctl stop firewalld.service
+curl -L https://hide.me/download/linux-amd64 | tar -xJ && sudo ./install.sh
+# Extend free trail 
+# https://member.hide.me/en/
+proxychains sudo ./hide.me token free-unlimited.hideservers.net
+proxychains sudo ./hide.me connect free-unlimited.hideservers.net
+```
+
+### windscribe
+
+```bash
+sudo systemctl stop firewalld.service
+proxychains yay -S aur/windscribe-bin
+```
+
+### bluevps.com
 
 ## Install Genymotoin Android emulator
 
