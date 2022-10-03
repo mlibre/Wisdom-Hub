@@ -101,14 +101,16 @@ VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/
 ## Dota 2
 
 - Move Dota 2 to your local linux machine
-- Dota 2 Options
+
+### Dota 2 Options
 
   ```bash
   -high -nojoy -novid -novr -nohltv -map dota 
   ```
 
 - Disable steam overlay, steam inputs, ...
-- Link your NTFS game folder
+
+### Link your NTFS game folder
 
 ```bash
 sudo mkdir -p /media/gamedisk
@@ -121,6 +123,12 @@ UUID=FA709D69709D2CFF /media/gamedisk ntfs uid=1000,gid=1000,rw,user,exec,umask=
 mkdir -p ~/.steam/steam/steamapps/compatdata
 sudo reboot
 ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
+```
+
+### Run using proxy
+
+```bash
+proxychains steam steam://rungameid/570
 ```
 
 ## XDG
