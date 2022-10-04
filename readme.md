@@ -303,14 +303,19 @@ sudo ip route add 192.168.1.0/24 dev ppp0
 
 ```bash
 sudo pacman -R firewalld
+sudo ufw disable
 sudo nano /etc/sysctl.conf
 # add: net.ipv4.ip_forward=1
+# net.ipv6.conf.all.forwarding=1
 sudo sysctl -p
 sudo pacman -S extra/wireguard-tools
 # yay -S  qomui
 # https://account.protonvpn.com/downloads#wireguard-configuration
 sudo nano /etc/wireguard/wg0.conf
 # past
+
+resolvectl dns
+sudo resolvectl dns enp3s0 10.2.0.1 # ip addr:(enp3s0). resolvectl dnsglobal:(10.2.0.1). can be added in POSTup wirgurd conf
 sudo wg-quick up wg0
 sudo wg-quick down wg0
 sudo wg
