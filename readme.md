@@ -5,19 +5,37 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 - [Automatic Shutdown](#automatic-shutdown)
 - [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
 - [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
+- [Performance](#performance)
+  - [Disable Linux Watchdogs, compaction and](#disable-linux-watchdogs-compaction-and)
+  - [Improve fstab performance](#improve-fstab-performance)
+  - [Disabling journaling](#disabling-journaling)
+- [Vulkan](#vulkan)
+- [Dota 2](#dota-2)
+  - [Dota 2 Options](#dota-2-options)
+  - [Link NTFS game folder](#link-ntfs-game-folder)
+  - [Run using proxy](#run-using-proxy)
 - [XDG](#xdg)
   - [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
 - [Systemd, systemctl](#systemd-systemctl)
+  - [Analyzing](#analyzing)
   - [Reloading](#reloading)
   - [Find services failed to start](#find-services-failed-to-start)
   - [Journal Size](#journal-size)
-  - [Starting a script after GUI has loaded](#starting-a-script-after-gui-has-loaded)
   - [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
-  - [Run a script after system-sleep resume](#run-a-script-after-system-sleep-resume)
   - [Unit files' locations](#unit-files-locations)
 - [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
-- [VPN](#vpn)
+- [VPN And Proxy](#vpn-and-proxy)
+  - [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
+  - [Setup WireGuard VPN Server](#setup-wireguard-vpn-server)
+  - [yay using proxy](#yay-using-proxy)
   - [Redirecting the whole traffic](#redirecting-the-whole-traffic)
+  - [VPNBook](#vpnbook)
+  - [Protonvpn](#protonvpn)
+    - [Install](#install)
+    - [OpenVpn](#openvpn)
+    - [WireGuard](#wireguard)
+  - [Hide.me](#hideme)
+  - [Windscribe](#windscribe)
 - [Install Genymotoin Android emulator](#install-genymotoin-android-emulator)
 - [Font](#font)
   - [Location](#location)
@@ -26,7 +44,6 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 - [Backup using Rsync](#backup-using-rsync)
 - [Resetting sound, audio](#resetting-sound-audio)
 - [Fixing broken grub](#fixing-broken-grub)
-- [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
 - [Things to do before installing Manjaro/Arch Linux](#things-to-do-before-installing-manjaroarch-linux)
 - [Things to do after installing Manjaro/Arch Linux](#things-to-do-after-installing-manjaroarch-linux)
   - [Install AMDGPU-PRO](#install-amdgpu-pro)
@@ -34,7 +51,8 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
   - [Blacklist Radeon](#blacklist-radeon)
 - [Things to do after installing Windows 11](#things-to-do-after-installing-windows-11)
 - [Install a new os on the phone](#install-a-new-os-on-the-phone)
-  - [backup data](#backup-data)
+  - [Backup data](#backup-data)
+  - [Restore](#restore)
   - [Enable Developer options](#enable-developer-options)
   - [Install odin tools for Samsung >= 3.14](#install-odin-tools-for-samsung--314)
   - [Install samsung driver](#install-samsung-driver)
@@ -63,7 +81,9 @@ echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
 xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
 ```
 
-## Disable Linux Watchdogs, compaction and
+## Performance
+
+### Disable Linux Watchdogs, compaction and
 
 ```bash
 sudo sh -c "echo 'kernel.nmi_watchdog=0' >> /etc/sysctl.conf"
@@ -74,14 +94,14 @@ sudo sh -c "echo 'vm.page_lock_unfairness=1' >> /etc/sysctl.conf"
 sudo sysctl -p
 ```
 
-## Improve fstab performance
+### Improve fstab performance
 
 ```bash
 sudo nano /etc/fstab 
 UUID=f74c37b2-8a12-4252-90a6-d31504507bcb /     ext4    defaults,noatime,commit=60,barrier=0    0       1
 ```
 
-## Disabling journaling
+### Disabling journaling
 
 ```bash
 sudo tune2fs -f -O "^has_journal" /dev/sda2
@@ -110,7 +130,7 @@ VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/
 
 - Disable steam overlay, steam inputs, ...
 
-### Link your NTFS game folder
+### Link NTFS game folder
 
 ```bash
 sudo mkdir -p /media/gamedisk
@@ -258,7 +278,15 @@ systemctl show --property=UnitPath
 - nano .bashrc
 - nano /etc/bash.bashrc
 
-## VPN
+## VPN And Proxy
+
+### Open an application using tor over socks
+
+```bash
+torsocks deluge
+```
+
+### Setup WireGuard VPN Server
 
 ### yay using proxy
 
@@ -293,13 +321,25 @@ sudo ip route add 192.168.1.0/24 dev ppp0
 - Import in NetworkManger
 - Enter username and password from here: <https://www.vpnbook.com/freevpn>
 
-### Protonvpn OpenVpn
+### Protonvpn
+
+#### Install
+
+```bash
+sudo systemctl stop firewalld.service
+yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
+# proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
+protonvpn
+# proxychain protonvpn
+```
+
+#### OpenVpn
 
 - Download openVpn config file form here: <https://account.protonvpn.com/downloads>
 - Copy openVPn credentials: <https://account.protonvpn.com/account>
 - Network Manager: New -> Import OpenVpn Saved Configuration. Paste credentials
 
-### Protonvpn WireGaurd
+#### WireGuard
 
 ```bash
 sudo pacman -R firewalld
@@ -321,17 +361,7 @@ sudo wg-quick down wg0
 sudo wg
 ```
 
-### Protonvpn
-
-```bash
-sudo systemctl stop firewalld.service
-yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
-# proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
-protonvpn
-# proxychain protonvpn
-```
-
-### hide.me
+### Hide.me
 
 ```bash
 sudo systemctl stop firewalld.service
@@ -342,14 +372,12 @@ proxychains sudo ./hide.me token free-unlimited.hideservers.net
 proxychains sudo ./hide.me connect free-unlimited.hideservers.net
 ```
 
-### windscribe
+### Windscribe
 
 ```bash
 sudo systemctl stop firewalld.service
 proxychains yay -S aur/windscribe-bin
 ```
-
-### bluevps.com
 
 ## Install Genymotoin Android emulator
 
@@ -411,12 +439,6 @@ Then run:
 
 ```bash
 update-grub
-```
-
-## Open an application using tor over socks
-
-```bash
-torsocks deluge
 ```
 
 ## Things to do before installing Manjaro/Arch Linux
@@ -627,7 +649,6 @@ adb backup -apk -shared -all -f backup-file.ab
 ```bash
 adb restore file.ab
 ```
-
 
 ### Enable Developer options
 
