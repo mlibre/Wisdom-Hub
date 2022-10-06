@@ -614,11 +614,20 @@ blacklist radeon
 
 ## Install a new os on the phone
 
-### backup data
+### Backup data
 
 ```bash
-adb backup -apk -shared -all -f backup-file.adb
+sudo pacman -S android-tools
+sudo adb devices
+adb backup -apk -shared -all -f backup-file.ab
 ```
+
+### Restore
+
+```bash
+adb restore file.ab
+```
+
 
 ### Enable Developer options
 
