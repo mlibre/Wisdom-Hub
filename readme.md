@@ -288,6 +288,127 @@ torsocks deluge
 
 ### Setup WireGuard VPN Server
 
+```bash
+sudo pacman -Syyuu wireguard extra/wireguard-tools resolvconf
+sudo apt update
+sudo apt install wireguard wireguard-tools resolvconf
+
+### Port Forward
+
+sudo nano /etc/sysctl.conf
+
+net.ipv4.ip_forward=1
+
+sudo sysctl -p
+```
+
+#### Server Configuration
+
+```bash
+
+### dns
+
+sudo nano /etc/resolv.conf
+
+nameserver 208.67.222.222
+nameserver 208.67.220.220
+nameserver 178.22.122.100
+nameserver 185.51.200.2
+
+resolvectl dns eth0 # make sure dns is set
+# permanent? 
+### Firewall
+
+sudo ufw allow 51820/udp
+sudo ufw allow 51820/tcp
+sudo ufw allow 53/tcp
+sudo ufw allow 53/udp
+sudo ufw allow 80/udp
+sudo ufw allow 80/tcp
+sudo ufw allow OpenSSH
+
+sudo ufw disable
+sudo ufw enable
+sudo ufw status
+```
+
+```bash
+wg genkey | sudo tee /etc/wireguard/private.key
+sudo chmod go= /etc/wireguard/private.key
+sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
+ip route list default
+# Copy Device Name: eth0
+ip -brief address show eth0
+# Copy The server public ip
+```
+
+```bash
+sudo nano /etc/wireguard/wg0.conf
+
+[Interface]
+PrivateKey = base64_encoded_private_key_goes_here
+Address = 10.8.0.1/24
+ListenPort = 80
+SaveConfig = true
+PostUp = ufw route allow in on wg0 out on eth0 # eth0 is the device name
+PostUp = iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE # eth0 is the device name
+PreDown = ufw route delete allow in on wg0 out on eth0 # eth0 is the device name
+PreDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE # eth0 is the device name
+```
+
+```bash
+sudo systemctl enable wg-quick@wg0.service
+sudo systemctl start wg-quick@wg0.service
+sudo systemctl status wg-quick@wg0.service
+```
+
+```bash
+# remove a peer
+sudo wg set wg0 peer PEER_PUBLIC_KEY remove
+
+# add a peer
+sudo wg set wg0 peer PEER_PUBLICK_KEY allowed-ips 10.8.0.2,10.8.0.3,10.8.0.4,10.8.0.5,10.8.0.6
+```
+
+#### Peer Configuration
+
+```bash
+sudo pacman -R firewalld ufw
+
+wg genkey | sudo tee /etc/wireguard/private.key
+sudo chmod go= /etc/wireguard/private.key
+sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
+
+sudo nano /etc/wireguard/wg0.conf
+
+[Interface]
+PrivateKey = base64_encoded_peer_private_key_goes_here
+Address = 10.8.0.2/24
+DNS = 10.8.0.1, 208.67.222.222, 208.67.220.220, 178.22.122.100, 185.51.200.2
+
+[Peer]
+PublicKey = U9uE2kb/nrrzsEU58GD3pKFU3TLYDMCbetIsnV8eeFE=
+AllowedIPs = 10.8.0.0/24
+Endpoint = 203.0.113.1:80 # Server Public Ip
+PersistentKeepalive = 25
+
+### DNS
+
+resolvectl dns
+sudo resolvectl dns enp3s0 10.8.0.1
+# sudo resolvectl dns enp3s0 208.67.222.222
+
+# ON THE CLIENT
+sudo cat /etc/wireguard/public.key
+
+# ON THE SERVER
+sudo wg set wg0 peer PEER_PUBLICK_KEY allowed-ips 10.8.0.2,10.8.0.3,10.8.0.4,10.8.0.5,10.8.0.6
+
+# ON THE CLIENT
+sudo wg-quick up wg0
+sudo wg-quick down wg0
+```
+
 ### yay using proxy
 
 ```bash
