@@ -353,6 +353,7 @@ sslocal  -c /etc/shadowsocks/config.json
 ## Firefox
 socks host: 127.0.0.1
 socks port: 1080
+enable dns over proxy
 
 sudo resolvectl dns enp3s0 1.1.1.1
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
