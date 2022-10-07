@@ -278,6 +278,18 @@ systemctl show --property=UnitPath
 - nano .bashrc
 - nano /etc/bash.bashrc
 
+## FLush Network settings
+
+```bash
+sudo ip route flush table main;sudo systemctl daemon-reload;sudo ip route flush table main;sudo systemctl restart NetworkManager; sudo reboot
+
+sudo wg-quick down wg0
+sudo systemctl daemon-reload 
+sudo ip route flush table main
+sudo iptables --flush
+sudo systemctl  restart NetworkManager
+```
+
 ## VPN And Proxy
 
 ### Open an application using tor over socks
@@ -286,12 +298,26 @@ systemctl show --property=UnitPath
 torsocks deluge
 ```
 
+### Setup OpenVpn Server
+
+```bash
+https://github.com/mlibre/openvpn-install
+sudo resolvectl dns tun0 1.1.1.1
+sudo resolvectl dns 
+Global: 8.8.8.8
+Link 2 (enp3s0):
+Link 4 (tun0): 1.1.1.1
+```
+
 ### Setup WireGuard VPN Server
 
 ```bash
 sudo pacman -Syyuu wireguard extra/wireguard-tools resolvconf
 sudo apt update
-sudo apt install wireguard wireguard-tools resolvconf
+apt-get purge nftables
+sudo apt dist-upgrade
+sudo apt install htop sudo wireguard wireguard-tools resolvconf psmisc iptables net-tools ufw curl dnsmasq
+update-alternatives --set iptables /usr/sbin/iptables-legacy
 
 ### Port Forward
 
@@ -305,15 +331,54 @@ sudo sysctl -p
 #### Server Configuration
 
 ```bash
+ssh root@51.89.88.80
+passwd
+adduser mlibre
 
+nano /etc/sudoers
+mlibre  ALL=(ALL:ALL) ALL
+
+systemctl disable rsyslog
+systemctl disable apparmor.service
+systemctl disable systemd-journald
+
+sudo apt install dnsmasq
+sudo systemctl enable dnsmasq
+sudo systemctl status dnsmasq
+sudo systemctl restart dnsmasq
+
+sudo ufw enable
+sudo systemctl restart ufw
+sudo systemctl status ufw
+
+# CTRL +D
+ssh-copy-id -i ~/.ssh/id_rsa.pub mlibre@51.89.88.80
+ssh mlibre@51.89.88.80
 ### dns
 
-sudo nano /etc/resolv.conf
 
+# sudo nano /etc/resolv.conf
+# sudo nano /etc/resolvconf/resolv.conf.d/head
+sudo nano /etc/resolvconf/resolv.conf.d/base
 nameserver 208.67.222.222
 nameserver 208.67.220.220
-nameserver 178.22.122.100
-nameserver 185.51.200.2
+nameserver 8.8.8.8
+
+sudo systemctl enable resolvconf
+nano /etc/systemd/resolved.conf
+DNS=208.67.222.222 208.67.220.220 8.8.8.8
+
+sudo nano /etc/dhcp/dhclient.conf
+prepend domain-name-servers 208.67.222.222, 208.67.220.220, 8.8.8.8
+
+sudo nano /etc/network/interfaces
+iface eth0 inet static
+  dns-nameservers 208.67.222.222 208.67.220.220 8.8.8.8
+
+sudo nano /etc/hosts
+127.0.0.1       mlibre
+
+sudo reboot
 
 resolvectl dns eth0 # make sure dns is set
 # permanent? 
@@ -325,17 +390,18 @@ sudo ufw allow 53/tcp
 sudo ufw allow 53/udp
 sudo ufw allow 80/udp
 sudo ufw allow 80/tcp
+sudo ufw allow 22/tcp
 sudo ufw allow OpenSSH
+sudo ufw allow dns
+sudo ufw allow 5353/tcp
+sudo ufw allow 5353/udp
+sudo ufw allow bootps
 
 sudo ufw disable
-sudo ufw enable
 sudo ufw status
 ```
 
 ```bash
-wg genkey | sudo tee /etc/wireguard/private.key
-sudo chmod go= /etc/wireguard/private.key
-sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
 ip route list default
 # Copy Device Name: eth0
 ip -brief address show eth0
@@ -343,53 +409,33 @@ ip -brief address show eth0
 ```
 
 ```bash
-sudo nano /etc/wireguard/wg0.conf
-
-[Interface]
-PrivateKey = base64_encoded_private_key_goes_here
-Address = 10.8.0.1/24
-ListenPort = 80
-SaveConfig = true
-PostUp = ufw route allow in on wg0 out on eth0 # eth0 is the device name
-PostUp = iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE # eth0 is the device name
-PreDown = ufw route delete allow in on wg0 out on eth0 # eth0 is the device name
-PreDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE # eth0 is the device name
+# https://github.com/mlibre/wireguard-install
 ```
 
 ```bash
+sudo systemctl stop wg-quick@wg0.service
+sudo systemctl disable wg-quick@wg0.service
 sudo systemctl enable wg-quick@wg0.service
 sudo systemctl start wg-quick@wg0.service
 sudo systemctl status wg-quick@wg0.service
-```
-
-```bash
-# remove a peer
-sudo wg set wg0 peer PEER_PUBLIC_KEY remove
-
-# add a peer
-sudo wg set wg0 peer PEER_PUBLICK_KEY allowed-ips 10.8.0.2,10.8.0.3,10.8.0.4,10.8.0.5,10.8.0.6
+sudo wg
+# sudo wg-quick down wg0
+# sudo systemctl daemon-reload 
 ```
 
 #### Peer Configuration
 
 ```bash
+# https://github.com/mlibre/wireguard-install
 sudo pacman -R firewalld ufw
-
-wg genkey | sudo tee /etc/wireguard/private.key
-sudo chmod go= /etc/wireguard/private.key
-sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
 
 sudo nano /etc/wireguard/wg0.conf
 
 [Interface]
-PrivateKey = base64_encoded_peer_private_key_goes_here
-Address = 10.8.0.2/24
-DNS = 10.8.0.1, 208.67.222.222, 208.67.220.220, 178.22.122.100, 185.51.200.2
+DNS = 8.8.8.8, 208.67.222.222, 208.67.220.220, 178.22.122.100, 185.51.200.2
+PostUp = resolvectl dns enp3s0 208.67.222.222
 
 [Peer]
-PublicKey = U9uE2kb/nrrzsEU58GD3pKFU3TLYDMCbetIsnV8eeFE=
-AllowedIPs = 10.8.0.0/24
-Endpoint = 203.0.113.1:80 # Server Public Ip
 PersistentKeepalive = 25
 
 ### DNS
@@ -398,11 +444,6 @@ resolvectl dns
 sudo resolvectl dns enp3s0 10.8.0.1
 # sudo resolvectl dns enp3s0 208.67.222.222
 
-# ON THE CLIENT
-sudo cat /etc/wireguard/public.key
-
-# ON THE SERVER
-sudo wg set wg0 peer PEER_PUBLICK_KEY allowed-ips 10.8.0.2,10.8.0.3,10.8.0.4,10.8.0.5,10.8.0.6
 
 # ON THE CLIENT
 sudo wg-quick up wg0
