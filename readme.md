@@ -313,7 +313,8 @@ sudo nano /etc/shadowsocks-libev/config.json
     "password":"password",
     "timeout":86400,
     "method":"chacha20-ietf-poly1305",
-    "nameserver":"1.1.1.1"
+    "nameserver":"1.1.1.1",
+    "fast_open": true
 }
 sudo ufw allow 9090/udp
 sudo ufw allow 9090/tcp
@@ -334,7 +335,8 @@ sudo nano /etc/shadowsocks/config.json
           "port": 9090,
           "password": "password",
           "method":"chacha20-ietf-poly1305",
-          "timeout": 86400
+          "timeout": 86400,
+          "fast_open": true
       }
     ],
     "mode":"tcp_and_udp",
