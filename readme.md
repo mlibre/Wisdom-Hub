@@ -194,6 +194,8 @@ sudo chmod a+rwx /usr/local/bin/gamma_on_startup
 ```bash
 systemd-analyze
 systemd-analyze blame
+
+sudo systemctl list-unit-files --type=service --state=enabled --all
 ```
 
 ### Reloading
@@ -341,16 +343,40 @@ sudo nano /etc/shadowsocks/config.json
     ],
     "mode":"tcp_and_udp",
     "local_port":1080,
-    "local_address": "127.0.0.1"
+    "local_address": "127.0.0.1",
+    "fast_open": true
 }
 
-sudo systemctl disable shadowsocks-rust-local@config
+# sudo systemctl disable shadowsocks-rust-local@config
 # sudo systemctl enable shadowsocks-rust-local@config
 # sudo systemctl restart shadowsocks-rust-local@config
 # sudo systemctl status shadowsocks-rust-local@config
 # journalctl -f -u shadowsocks-rust-local@config
 
-sslocal  -d -c /etc/shadowsocks/config.json
+# sslocal  -d -c /etc/shadowsocks/config.json
+
+sudo nano /lib/systemd/system/shadowsocks-rust-local@.service
+[Unit]
+Description=Shadowsocks-rust Local Client Service for %I
+Documentation=https://github.com/shadowsocks/shadowsocks-rust
+After=network.target
+
+StartLimitIntervalSec=30s
+StartLimitBurst=5
+
+[Service]
+Type=simple
+DynamicUser=yes
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+ExecStart=/usr/bin/sslocal --log-without-time -c /etc/shadowsocks/config.json
+
+Restart=always
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.target
+
 
 ## Firefox
 socks host: 127.0.0.1
