@@ -348,7 +348,7 @@ sudo systemctl disable shadowsocks-rust-local@config
 # sudo systemctl status shadowsocks-rust-local@config
 # journalctl -f -u shadowsocks-rust-local@config
 
-sslocal  -c /etc/shadowsocks/config.json
+sslocal  -d -c /etc/shadowsocks/config.json
 
 ## Firefox
 socks host: 127.0.0.1
