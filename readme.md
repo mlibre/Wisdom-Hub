@@ -278,7 +278,7 @@ systemctl show --property=UnitPath
 - nano .bashrc
 - nano /etc/bash.bashrc
 
-## FLush Network settings
+## Flush Network settings
 
 ```bash
 sudo ip route flush table main;sudo systemctl daemon-reload;sudo ip route flush table main;sudo systemctl restart NetworkManager; sudo reboot
@@ -298,15 +298,86 @@ sudo systemctl  restart NetworkManager
 torsocks deluge
 ```
 
+### Setup Proxy Server
+
+```bash
+
+## Server
+
+sudo apt install shadowsocks-libev -y
+sudo nano /etc/shadowsocks-libev/config.json
+{
+    "server":["::1", "0.0.0.0"],
+    "mode":"tcp_and_udp",
+    "server_port":9090,
+    "password":"password",
+    "timeout":86400,
+    "method":"chacha20-ietf-poly1305",
+    "nameserver":"1.1.1.1"
+}
+sudo ufw allow 9090/udp
+sudo ufw allow 9090/tcp
+sudo ufw allow 1080/udp
+sudo ufw allow 1080/tcp
+sudo ufw allow 443
+sudo systemctl enable shadowsocks-libev.service
+sudo systemctl restart shadowsocks-libev.service
+sudo journalctl -f -u shadowsocks-libev.service
+
+## Client
+sudo pamac install shadowsocks-rust-bin
+sudo nano /etc/shadowsocks/config.json 
+{
+    "servers": [
+      {
+          "address": "51.89.88.80",
+          "port": 9090,
+          "password": "password",
+          "method":"chacha20-ietf-poly1305",
+          "timeout": 86400
+      }
+    ],
+    "mode":"tcp_and_udp",
+    "local_port":1080,
+    "local_address": "127.0.0.1"
+}
+
+sudo systemctl disable shadowsocks-rust-local@config
+# sudo systemctl enable shadowsocks-rust-local@config
+# sudo systemctl restart shadowsocks-rust-local@config
+# sudo systemctl status shadowsocks-rust-local@config
+# journalctl -f -u shadowsocks-rust-local@config
+
+sslocal  -c /etc/shadowsocks/config.json
+
+## Firefox
+socks host: 127.0.0.1
+socks port: 1080
+
+sudo resolvectl dns enp3s0 1.1.1.1
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+```
+
 ### Setup OpenVpn Server
 
 ```bash
 https://github.com/mlibre/openvpn-install
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+sudo wg-quick down wg0
+sudo systemctl daemon-reload 
+sudo ip route flush table main
+sudo iptables --flush
+sudo systemctl  restart NetworkManager
+
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
 sudo resolvectl dns tun0 1.1.1.1
-sudo resolvectl dns 
+sudo resolvectl dns enp3s0 1.1.1.1
+sudo resolvectl dns
 Global: 8.8.8.8
-Link 2 (enp3s0):
-Link 4 (tun0): 1.1.1.1
+Link 2 (enp3s0): 1.1.1.1
+Link 8 (tun0): 1.1.1.1
 ```
 
 ### Setup WireGuard VPN Server
@@ -432,8 +503,8 @@ sudo pacman -R firewalld ufw
 sudo nano /etc/wireguard/wg0.conf
 
 [Interface]
-DNS = 8.8.8.8, 208.67.222.222, 208.67.220.220, 178.22.122.100, 185.51.200.2
-PostUp = resolvectl dns enp3s0 208.67.222.222
+DNS = 1.1.1.1 
+PostUp = resolvectl dns enp3s0 1.1.1.1
 
 [Peer]
 PersistentKeepalive = 25
