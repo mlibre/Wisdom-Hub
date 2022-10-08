@@ -294,6 +294,17 @@ sudo systemctl  restart NetworkManager
 
 ## VPN And Proxy
 
+### SSH Dynamic Tunneling
+
+```bash
+ssh -D 0.0.0.0:8080 -N mlibre@51.89.88.80
+su
+sudo resolvectl dns enp3s0 1.1.1.1 
+sudo cat "nameserver 8.8.8.8" > /etc/resolv.conf
+sudo resolvectl dns enp1s0f0u6 1.1.1.1 
+sudo resolvectl dns
+```
+
 ### Open an application using tor over socks
 
 ```bash
@@ -338,7 +349,7 @@ sudo nano /etc/shadowsocks/config.json
           "password": "password",
           "method":"chacha20-ietf-poly1305",
           "timeout": 86400,
-          "fast_open": true
+          # "fast_open": true
       }
     ],
     "mode":"tcp_and_udp",
