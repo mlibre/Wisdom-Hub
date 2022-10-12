@@ -7,6 +7,7 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 - [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
 - [Resetting sound, audio](#resetting-sound-audio)
 - [Fixing broken grub](#fixing-broken-grub)
+  - [Using proxy](#using-proxy)
 - [Performance](#performance)
   - [Disable Linux Watchdogs, compaction and](#disable-linux-watchdogs-compaction-and)
   - [Improve fstab performance](#improve-fstab-performance)
@@ -24,18 +25,18 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 - [Flush Network settings](#flush-network-settings)
 - [Disable IPV6](#disable-ipv6)
 - [VPN And Proxy](#vpn-and-proxy)
+  - [Initialization](#initialization)
+  - [VPN over SSH](#vpn-over-ssh)
+  - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
   - [v2fly](#v2fly)
     - [Server](#server)
     - [Client](#client)
-  - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
-  - [VPN over SSH](#vpn-over-ssh)
   - [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
-  - [Setup Proxy Server](#setup-proxy-server)
-  - [Setup OpenVpn Server](#setup-openvpn-server)
-  - [Setup WireGuard VPN Server](#setup-wireguard-vpn-server)
+  - [shadowsocks](#shadowsocks)
+  - [OpenVpn Server](#openvpn-server)
+  - [WireGuard VPN Server](#wireguard-vpn-server)
     - [Server Configuration](#server-configuration)
     - [Peer Configuration](#peer-configuration)
-  - [yay using proxy](#yay-using-proxy)
   - [Redirecting the whole traffic](#redirecting-the-whole-traffic)
   - [VPNBook](#vpnbook)
   - [Protonvpn](#protonvpn)
@@ -115,6 +116,28 @@ Then run:
 
 ```bash
 update-grub
+```
+
+### Using proxy
+
+```bash
+proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
+proxychains git clone https://github.com/boypt/vmess2json.git
+sudo proxychains npm -g install v2ray-tools
+sudo proxychains pacman -Syyuu
+```
+
+```bash
+yay -S gcc-go
+yay -S yay
+# yay --rebuild yay
+```
+
+```bash
+sudo nano /etc/proxychains.conf 
+socks5  127.0.0.1 9090
+## comment proxy_dns
+# proxy_dns
 ```
 
 ## Performance
@@ -275,7 +298,7 @@ systemctl show --property=UnitPath
 ## Flush Network settings
 
 ```bash
-sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart netwrok;sudo systemctl restart NetworkManager
+sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart netwrok;sudo systemctl restart NetworkManager;sudo sysctl -p
 
 sudo ip link delete tun0
 sudo wg-quick down wg0
@@ -284,6 +307,7 @@ sudo ip route flush table main
 sudo iptables --flush
 sudo systemctl restart netwrok
 sudo systemctl restart NetworkManager
+sudo sysctl -p
 ```
 
 ## Disable IPV6
@@ -298,6 +322,108 @@ sudo sysctl -p
 ```
 
 ## VPN And Proxy
+
+- Server: NetherLand
+- OS: Ubuntu 22.04
+
+### Initialization
+
+```bash
+ssh root@51.89.88.80
+passwd
+adduser mlibre
+
+apt update
+apt dist-upgrade
+apt install htop sudo psmisc net-tools ufw curl
+
+nano /etc/sudoers
+mlibre  ALL=(ALL:ALL) ALL
+
+nano /etc/hosts
+127.0.0.1 mlibre
+
+systemctl disable rsyslog
+systemctl disable apparmor.service
+systemctl disable systemd-journald
+
+# CTRL +D
+ssh-keygen
+ssh-copy-id -i ~/.ssh/id_rsa.pub mlibre@51.89.88.80
+ssh mlibre@51.89.88.80
+
+su
+ssh-keygen
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@51.89.88.80
+
+## Both server and client
+sudo nano /etc/ssh/sshd_config
+PermitTunnel yes
+ClientAliveInterval 300
+ClientAliveCountMax 6
+TCPKeepAlive yes
+
+## client
+sudo nano $HOME/.ssh/config
+Host *
+   ServerAliveInterval 240
+   ServerAliveCountMax
+sudo chmod 600 ~/.ssh/config
+sudo sshd -T
+
+sudo systemctl daemon-reload
+sudo systemctl restart sshd
+sudo systemctl status sshd
+
+sudo nano /etc/sysctl.conf
+net.ipv4.ip_forward=1
+
+
+# sudo apt install dnsmasq
+
+sudo ufw allow 51820/udp
+sudo ufw allow 51820/tcp
+sudo ufw allow 53/tcp
+sudo ufw allow 53/udp
+sudo ufw allow 80/udp
+sudo ufw allow 80/tcp
+sudo ufw allow 22/tcp
+sudo ufw allow OpenSSH
+sudo ufw allow dns
+sudo ufw allow 5353/tcp
+sudo ufw allow 5353/udp
+sudo ufw allow bootps
+
+sudo ufw disable
+sudo ufw enable
+sudo systemctl restart ufw
+sudo systemctl status ufw
+sudo ufw status
+```
+
+### VPN over SSH
+
+```bash
+sudo proxychains pacman -S sshuttle
+sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
+# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
+sudo resolvectl dns enp3s0 1.1.1.1
+sudo resolvectl dns enp1s0f0u6 1.1.1.1
+```
+
+### SSH Dynamic Tunneling
+
+```bash
+ssh -D 0.0.0.0:8080 -N mlibre@51.89.88.80
+su
+resolvectl dns enp3s0 1.1.1.1 
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+resolvectl dns enp1s0f0u6 1.1.1.1 
+resolvectl dns
+
+firefox: settings -> network -> socks5, proxy over dns
+chromium: search proxy in the setting. open system proxy settings. manual specified: socks proxy: localhost 1080
+```
 
 ### v2fly
 
@@ -394,32 +520,6 @@ sudo pacman -Syyuu v2ray
 }
 
 v2ray run -c /etc/v2ray/config.json
-```
-
-### SSH Dynamic Tunneling
-
-```bash
-ssh -D 0.0.0.0:8080 -N mlibre@51.89.88.80
-su
-resolvectl dns enp3s0 1.1.1.1 
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-resolvectl dns enp1s0f0u6 1.1.1.1 
-resolvectl dns
-
-firefox: settings -> network -> socks5, proxy over dns
-chromium: search proxy in the setting. open system proxy settings. manual specified: socks proxy: localhost 1080
-```
-
-### VPN over SSH
-
-```bash
-sudo nano /etc/ssh/sshd_config
-PermitTunnel yes
-```
-
-```bash
-sudo proxychains pacman -S sshuttle
-sudo sshuttle -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
 ```
 
 ### Open an application using tor over socks
@@ -537,51 +637,25 @@ Link 2 (enp3s0): 1.1.1.1
 Link 8 (tun0): 1.1.1.1
 ```
 
-### Setup WireGuard VPN Server
+### WireGuard VPN Server
 
 ```bash
 sudo pacman -Syyuu wireguard extra/wireguard-tools resolvconf
 sudo apt update
 apt-get purge nftables
 sudo apt dist-upgrade
-sudo apt install htop sudo wireguard wireguard-tools resolvconf psmisc iptables net-tools ufw curl dnsmasq
+sudo apt install htop sudo wireguard wireguard-tools resolvconf iptables
 update-alternatives --set iptables /usr/sbin/iptables-legacy
-
-### Port Forward
-
-sudo nano /etc/sysctl.conf
-
-net.ipv4.ip_forward=1
-
-sudo sysctl -p
 ```
 
 #### Server Configuration
 
 ```bash
-ssh root@51.89.88.80
-passwd
-adduser mlibre
-
-nano /etc/sudoers
-mlibre  ALL=(ALL:ALL) ALL
-
-systemctl disable rsyslog
-systemctl disable apparmor.service
-systemctl disable systemd-journald
-
 sudo apt install dnsmasq
 sudo systemctl enable dnsmasq
 sudo systemctl status dnsmasq
 sudo systemctl restart dnsmasq
 
-sudo ufw enable
-sudo systemctl restart ufw
-sudo systemctl status ufw
-
-# CTRL +D
-ssh-copy-id -i ~/.ssh/id_rsa.pub mlibre@51.89.88.80
-ssh mlibre@51.89.88.80
 ### dns
 
 
@@ -603,30 +677,10 @@ sudo nano /etc/network/interfaces
 iface eth0 inet static
   dns-nameservers 208.67.222.222 208.67.220.220 8.8.8.8
 
-sudo nano /etc/hosts
-127.0.0.1       mlibre
-
 sudo reboot
 
 resolvectl dns eth0 # make sure dns is set
 # permanent? 
-### Firewall
-
-sudo ufw allow 51820/udp
-sudo ufw allow 51820/tcp
-sudo ufw allow 53/tcp
-sudo ufw allow 53/udp
-sudo ufw allow 80/udp
-sudo ufw allow 80/tcp
-sudo ufw allow 22/tcp
-sudo ufw allow OpenSSH
-sudo ufw allow dns
-sudo ufw allow 5353/tcp
-sudo ufw allow 5353/udp
-sudo ufw allow bootps
-
-sudo ufw disable
-sudo ufw status
 ```
 
 ```bash
@@ -676,25 +730,6 @@ sudo resolvectl dns enp3s0 10.8.0.1
 # ON THE CLIENT
 sudo wg-quick up wg0
 sudo wg-quick down wg0
-```
-
-### yay using proxy
-
-```bash
-yay -S gcc-go
-yay -S yay
-# yay --rebuild yay
-```
-
-```bash
-sudo nano /etc/proxychains.conf 
-socks5  127.0.0.1 9090
-## comment proxy_dns
-# proxy_dns
-```
-
-```bash
-proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
 ```
 
 ### Redirecting the whole traffic
