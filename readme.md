@@ -336,6 +336,7 @@ adduser mlibre
 apt update
 apt dist-upgrade
 apt install htop sudo psmisc net-tools ufw curl
+sudo apt purge snapd
 
 nano /etc/sudoers
 mlibre  ALL=(ALL:ALL) ALL
@@ -366,10 +367,11 @@ TCPKeepAlive yes
 ## client
 sudo nano $HOME/.ssh/config
 Host *
-   ServerAliveInterval 240
-   ServerAliveCountMax
+   ServerAliveInterval 20
+   ServerAliveCountMax 20
 sudo chmod 600 ~/.ssh/config
 sudo sshd -T
+## client finish
 
 sudo systemctl daemon-reload
 sudo systemctl restart sshd
@@ -377,6 +379,12 @@ sudo systemctl status sshd
 
 sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
+
+sudo nano /etc/resolv.conf
+nameserver 1.1.1.1      
+nameserver 208.67.222.222
+nameserver 208.67.220.220
+nameserver 8.8.8.8
 
 
 # sudo apt install dnsmasq
@@ -405,10 +413,15 @@ sudo ufw status
 
 ```bash
 sudo proxychains pacman -S sshuttle
-sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
+sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
+# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
 # sudo sshuttle -vvvv -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
-sudo resolvectl dns enp3s0 1.1.1.1
-sudo resolvectl dns enp1s0f0u6 1.1.1.1
+su
+resolvectl dns enp3s0 1.1.1.1 
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+resolvectl dns enp3s0 1.1.1.1
+resolvectl dns enp1s0f0u6 1.1.1.1
+# resolvectl dns
 ```
 
 ### SSH Dynamic Tunneling
