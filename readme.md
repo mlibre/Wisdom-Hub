@@ -298,8 +298,10 @@ systemctl show --property=UnitPath
 ## Flush Network settings
 
 ```bash
-sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart netwrok;sudo systemctl restart NetworkManager;sudo sysctl -p
+sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart netwrok;sudo systemctl restart NetworkManager;sudo sysctl -p; sudo systemd-resolve --flush-caches; sudo resolvectl flush-caches
 
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
 sudo ip link delete tun0
 sudo wg-quick down wg0
 sudo systemctl daemon-reload
@@ -400,9 +402,14 @@ sudo ufw allow OpenSSH
 sudo ufw allow dns
 sudo ufw allow 5353/tcp
 sudo ufw allow 5353/udp
+sudo ufw allow 443/tcp
+sudo ufw allow https
+sudo ufw allow ssh
+sudo ufw allow www
 sudo ufw allow bootps
 
 sudo ufw disable
+sudo systemctl enable ufw
 sudo ufw enable
 sudo systemctl restart ufw
 sudo systemctl status ufw
@@ -632,13 +639,11 @@ echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
 ```bash
 https://github.com/mlibre/openvpn-install
-sudo systemd-resolve --flush-caches
-sudo resolvectl flush-caches
-sudo wg-quick down wg0
-sudo systemctl daemon-reload 
-sudo ip route flush table main
-sudo iptables --flush
-sudo systemctl  restart NetworkManager
+curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
+chmod +x openvpn-install.sh
+sudo ./openvpn-install.sh
+port: 443, tcp, compression no
+scp mlibre@51.89.88.80:/home/mlibre/mlibre.ovpn ~/
 
 sudo systemd-resolve --flush-caches
 sudo resolvectl flush-caches
