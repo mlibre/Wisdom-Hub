@@ -5,15 +5,12 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 - [Automatic Shutdown](#automatic-shutdown)
 - [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
 - [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
+- [Resetting sound, audio](#resetting-sound-audio)
+- [Fixing broken grub](#fixing-broken-grub)
 - [Performance](#performance)
   - [Disable Linux Watchdogs, compaction and](#disable-linux-watchdogs-compaction-and)
   - [Improve fstab performance](#improve-fstab-performance)
   - [Disabling journaling](#disabling-journaling)
-- [Vulkan](#vulkan)
-- [Dota 2](#dota-2)
-  - [Dota 2 Options](#dota-2-options)
-  - [Link NTFS game folder](#link-ntfs-game-folder)
-  - [Run using proxy](#run-using-proxy)
 - [XDG](#xdg)
   - [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
 - [Systemd, systemctl](#systemd-systemctl)
@@ -24,9 +21,20 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
   - [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
   - [Unit files' locations](#unit-files-locations)
 - [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
+- [Flush Network settings](#flush-network-settings)
+- [Disable IPV6](#disable-ipv6)
 - [VPN And Proxy](#vpn-and-proxy)
+  - [v2fly](#v2fly)
+    - [Server](#server)
+    - [Client](#client)
+  - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
+  - [VPN over SSH](#vpn-over-ssh)
   - [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
+  - [Setup Proxy Server](#setup-proxy-server)
+  - [Setup OpenVpn Server](#setup-openvpn-server)
   - [Setup WireGuard VPN Server](#setup-wireguard-vpn-server)
+    - [Server Configuration](#server-configuration)
+    - [Peer Configuration](#peer-configuration)
   - [yay using proxy](#yay-using-proxy)
   - [Redirecting the whole traffic](#redirecting-the-whole-traffic)
   - [VPNBook](#vpnbook)
@@ -36,14 +44,17 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
     - [WireGuard](#wireguard)
   - [Hide.me](#hideme)
   - [Windscribe](#windscribe)
-- [Install Genymotoin Android emulator](#install-genymotoin-android-emulator)
 - [Font](#font)
   - [Location](#location)
   - [List](#list)
   - [Fira Code](#fira-code)
 - [Backup using Rsync](#backup-using-rsync)
-- [Resetting sound, audio](#resetting-sound-audio)
-- [Fixing broken grub](#fixing-broken-grub)
+- [Vulkan](#vulkan)
+- [Dota 2](#dota-2)
+  - [Dota 2 Options](#dota-2-options)
+  - [Link NTFS game folder](#link-ntfs-game-folder)
+  - [Run using proxy](#run-using-proxy)
+- [Install Genymotoin Android emulator](#install-genymotoin-android-emulator)
 - [Things to do before installing Manjaro/Arch Linux](#things-to-do-before-installing-manjaroarch-linux)
 - [Things to do after installing Manjaro/Arch Linux](#things-to-do-after-installing-manjaroarch-linux)
   - [Install AMDGPU-PRO](#install-amdgpu-pro)
@@ -81,6 +92,31 @@ echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
 xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
 ```
 
+## Resetting sound, audio
+
+```bash
+pulseaudio --kill
+# pulseaudio --start
+```
+
+## Fixing broken grub
+
+Boot a live Manjaro image
+
+```bash
+sudo manjaro-chroot -a
+grub-install
+update-grub
+```
+
+It will detect your current installed linux.  
+Restart the computer and it will boot the installed linux.  
+Then run:
+
+```bash
+update-grub
+```
+
 ## Performance
 
 ### Disable Linux Watchdogs, compaction and
@@ -105,50 +141,6 @@ UUID=f74c37b2-8a12-4252-90a6-d31504507bcb /     ext4    defaults,noatime,commit=
 
 ```bash
 sudo tune2fs -f -O "^has_journal" /dev/sda2
-```
-
-## Vulkan
-
-```bash
-sudo pacman -S vulkan-radeon lib32-vulkan-radeon
-```
-
-```bash
-sudo nano /etc/environment
-VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
-```
-
-## Dota 2
-
-- Move Dota 2 to your local linux machine
-
-### Dota 2 Options
-
-  ```bash
-  -high -nojoy -novid -novr -nohltv -map dota 
-  ```
-
-- Disable steam overlay, steam inputs, ...
-
-### Link NTFS game folder
-
-```bash
-sudo mkdir -p /media/gamedisk
-sudo blkid # FA709D69709D2CFF
-id -u # 1000
-id -g # 1000
-sudo nano /etc/fstab
-UUID=FA709D69709D2CFF /media/gamedisk ntfs uid=1000,gid=1000,rw,user,exec,umask=000 0 0
-# UUID=FA709D69709D2CFF /media/gamedisk lowntfs-3g uid=1000,gid=1000,rw,user,exec,umask=000 0 0
-mkdir -p ~/.steam/steam/steamapps/compatdata
-sudo reboot
-ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
-```
-
-### Run using proxy
-
-```bash
-proxychains steam steam://rungameid/570
 ```
 
 ## XDG
@@ -283,26 +275,151 @@ systemctl show --property=UnitPath
 ## Flush Network settings
 
 ```bash
-sudo ip route flush table main;sudo systemctl daemon-reload;sudo ip route flush table main;sudo systemctl restart NetworkManager; sudo reboot
+sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart netwrok;sudo systemctl restart NetworkManager
 
+sudo ip link delete tun0
 sudo wg-quick down wg0
-sudo systemctl daemon-reload 
+sudo systemctl daemon-reload
 sudo ip route flush table main
 sudo iptables --flush
-sudo systemctl  restart NetworkManager
+sudo systemctl restart netwrok
+sudo systemctl restart NetworkManager
+```
+
+## Disable IPV6
+
+```bash
+sudo nano /etc/sysctl.conf
+
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+
+sudo sysctl -p 
 ```
 
 ## VPN And Proxy
+
+### v2fly
+
+#### Server
+
+```bash
+su
+# /etc/systemd/system/v2ray.service
+# /etc/systemd/system/v2ray.service.d/10-donot_touch_single_conf.conf
+# v2ray --config=/etc/v2ray/config.json
+# To remove: bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh) --remove
+bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+systemctl enable v2ray
+systemctl start v2ray
+sudo nano  /usr/local/etc/v2ray/config.json
+{
+ "inbounds": [
+  {
+   "port": 10086, // server listening port
+   "protocol": "vmess",
+   "settings": {
+    "clients": [
+     {
+      "id": "b831381d-6324-4d53-ad4f-8cda48b30811"
+     }
+    ]
+   }
+  }
+ ],
+ "outbounds": [
+  {
+   "protocol": "freedom",
+   "settings": {}
+  }
+ ]
+}
+sudo systemctl daemon-reload
+v2ray test -c /usr/local/etc/v2ray/config.json
+sudo systemctl restart v2ray
+sudo systemctl status v2ray
+sudo ufw allow 10086/udp
+sudo ufw allow 10086/tcp
+```
+
+#### Client
+
+```bash
+sudo pacman -Syyuu v2ray
+# sudo proxychains pacman -Su v2ray
+
+// https://www.v2fly.org/
+{
+ "log": {
+  //              "access": "./v2ray.log",
+  //              "error": "./v2ray-e.log",
+  "loglevel": "warning"
+ },
+ "inbounds": [
+  {
+   "port": 2080,
+   "listen": "0.0.0.0",
+   "tag": "socks-inbound",
+   "protocol": "socks",
+   "settings": {
+    "auth": "noauth"
+   },
+   "sniffing": {
+    "enabled": true,
+    "destOverride": [
+     "http",
+     "tls"
+    ]
+   }
+  }
+ ],
+ "outbounds": [
+  {
+   "protocol": "vmess",
+   "settings": {
+    "vnext": [
+     {
+      "address": "51.89.88.80", // server address, please modify it to your own server ip or domain name
+      "port": 10086, // server port
+      "users": [
+       {
+        "id": "b831381d-6324-4d53-ad4f-8cda48b30811"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}
+
+v2ray run -c /etc/v2ray/config.json
+```
 
 ### SSH Dynamic Tunneling
 
 ```bash
 ssh -D 0.0.0.0:8080 -N mlibre@51.89.88.80
 su
-sudo resolvectl dns enp3s0 1.1.1.1 
-sudo cat "nameserver 8.8.8.8" > /etc/resolv.conf
-sudo resolvectl dns enp1s0f0u6 1.1.1.1 
-sudo resolvectl dns
+resolvectl dns enp3s0 1.1.1.1 
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+resolvectl dns enp1s0f0u6 1.1.1.1 
+resolvectl dns
+
+firefox: settings -> network -> socks5, proxy over dns
+chromium: search proxy in the setting. open system proxy settings. manual specified: socks proxy: localhost 1080
+```
+
+### VPN over SSH
+
+```bash
+sudo nano /etc/ssh/sshd_config
+PermitTunnel yes
+```
+
+```bash
+sudo proxychains pacman -S sshuttle
+sudo sshuttle -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
 ```
 
 ### Open an application using tor over socks
@@ -311,7 +428,7 @@ sudo resolvectl dns
 torsocks deluge
 ```
 
-### Setup Proxy Server
+### shadowsocks
 
 ```bash
 
@@ -398,7 +515,7 @@ sudo resolvectl dns enp3s0 1.1.1.1
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 ```
 
-### Setup OpenVpn Server
+### OpenVpn Server
 
 ```bash
 https://github.com/mlibre/openvpn-install
@@ -652,12 +769,6 @@ sudo systemctl stop firewalld.service
 proxychains yay -S aur/windscribe-bin
 ```
 
-## Install Genymotoin Android emulator
-
-```bash
-sudo pamac install genymotion
-```
-
 ## Font
 
 ### Location
@@ -689,29 +800,54 @@ fc-match -a | grep -i fira
 sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
 ```
 
-## Resetting sound, audio
+## Vulkan
 
 ```bash
-pulseaudio --kill
-# pulseaudio --start
+sudo pacman -S vulkan-radeon lib32-vulkan-radeon
 ```
 
-## Fixing broken grub
-
-Boot a live Manjaro image
-
 ```bash
-sudo manjaro-chroot -a
-grub-install
-update-grub
+sudo nano /etc/environment
+VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
 ```
 
-It will detect your current installed linux.  
-Restart the computer and it will boot the installed linux.  
-Then run:
+## Dota 2
+
+- Move Dota 2 to your local linux machine
+
+### Dota 2 Options
+
+  ```bash
+  -high -nojoy -novid -novr -nohltv -map dota 
+  ```
+
+- Disable steam overlay, steam inputs, ...
+
+### Link NTFS game folder
 
 ```bash
-update-grub
+sudo mkdir -p /media/gamedisk
+sudo blkid # FA709D69709D2CFF
+id -u # 1000
+id -g # 1000
+sudo nano /etc/fstab
+UUID=FA709D69709D2CFF /media/gamedisk ntfs uid=1000,gid=1000,rw,user,exec,umask=000 0 0
+# UUID=FA709D69709D2CFF /media/gamedisk lowntfs-3g uid=1000,gid=1000,rw,user,exec,umask=000 0 0
+mkdir -p ~/.steam/steam/steamapps/compatdata
+sudo reboot
+ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
+```
+
+### Run using proxy
+
+```bash
+proxychains steam steam://rungameid/570
+```
+
+## Install Genymotoin Android emulator
+
+```bash
+sudo pamac install genymotion
 ```
 
 ## Things to do before installing Manjaro/Arch Linux
