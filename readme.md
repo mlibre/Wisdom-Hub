@@ -921,6 +921,8 @@ sudo pamac install genymotion
 
   ```bash
   sudo systemctl disable pamac-daemon
+  sudo systemctl disable pamac-mirrorlist.timer
+  sudo systemctl disable pamac-mirrorlist.service
   sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
