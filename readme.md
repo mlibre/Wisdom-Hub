@@ -642,7 +642,7 @@ https://github.com/mlibre/openvpn-install
 curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
 chmod +x openvpn-install.sh
 sudo ./openvpn-install.sh
-port: 443, tcp, compression no
+port: 443, tcp, compression yes
 scp mlibre@51.89.88.80:/home/mlibre/mlibre.ovpn ~/
 
 sudo systemd-resolve --flush-caches
