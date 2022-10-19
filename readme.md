@@ -211,6 +211,7 @@ systemd-analyze
 systemd-analyze blame
 
 sudo systemctl list-unit-files --type=service --state=enabled --all
+systemctl list-unit-files | grep enabled
 ```
 
 ### Reloading
@@ -301,6 +302,7 @@ systemctl show --property=UnitPath
 sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart netwrok;sudo systemctl restart NetworkManager;sudo sysctl -p; sudo systemd-resolve --flush-caches; sudo resolvectl flush-caches
 
 sudo systemd-resolve --flush-caches
+sudo killall sslocal
 sudo resolvectl flush-caches
 sudo ip link delete tun0
 sudo wg-quick down wg0
@@ -337,8 +339,9 @@ adduser mlibre
 
 apt update
 apt dist-upgrade
-apt install htop sudo psmisc net-tools ufw curl
+apt install htop sudo psmisc net-tools ufw curl ntpdate
 sudo apt purge snapd
+sudo ntpdate time.nist.gov
 
 nano /etc/sudoers
 mlibre  ALL=(ALL:ALL) ALL
@@ -443,6 +446,30 @@ resolvectl dns
 
 firefox: settings -> network -> socks5, proxy over dns
 chromium: search proxy in the setting. open system proxy settings. manual specified: socks proxy: localhost 1080
+```
+
+### Jump server
+
+> Cleint -> local ShadowSocks:1080->9090, IP: Server A
+> -> Server A -> ssh -> Server B, ShadowSocks:9090
+
+- Install shadowSocks in Server B
+- run following command in server A
+
+```bash
+ssh -N -L 0.0.0.0:9090:95.216.162.13:9090 mlibre@95.216.162.13 -p 8756
+                  APort              BPort                        BSSHPort
+
+nano ssh.bash
+# !/bin/bash
+
+tmux new-session -d -s SshPF -n PortForwarder
+tmux send-keys "while true; do ssh -N -L 0.0.0.0:9090:95.216.162.13:9090 esx@95.216.162.13 -p 8756; done" C-m
+tmux send-keys "echo reserved" C-m
+
+nano /etc/rc.local
+/home/mlibre/sshPF.sh
+exit 0;
 ```
 
 ### v2fly
@@ -585,8 +612,7 @@ sudo nano /etc/shadowsocks/config.json
           "port": 9090,
           "password": "password",
           "method":"chacha20-ietf-poly1305",
-          "timeout": 86400,
-          # "fast_open": true
+          "timeout": 86400
       }
     ],
     "mode":"tcp_and_udp",
@@ -642,7 +668,7 @@ https://github.com/mlibre/openvpn-install
 curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
 chmod +x openvpn-install.sh
 sudo ./openvpn-install.sh
-port: 443, tcp, compression yes
+port: default/443, tcp, compression no
 scp mlibre@51.89.88.80:/home/mlibre/mlibre.ovpn ~/
 
 sudo systemd-resolve --flush-caches
@@ -653,6 +679,41 @@ sudo resolvectl dns
 Global: 8.8.8.8
 Link 2 (enp3s0): 1.1.1.1
 Link 8 (tun0): 1.1.1.1
+```
+
+### VPN Chaining
+
+#### route
+
+- Client -> Server A -> Server B -> Internet
+
+1. Install ubuntu 20.04 in both servers
+2. Setup OpenVpn in server A And B (with default configs)
+3. Generate `mlibreger.ovpn` in server b
+4. Connect from A to B:
+
+    ```bash
+    ssh serverA
+    sudo openvpn --config mlibreger.ovpn
+    ```
+
+5. Now you have eth0, lo and tun0 in server A
+
+    ```bash
+    tun0: flags=4305<UP,POINTOPOINT,RUNNING,NOARP,MULTICAST>  mtu 1500
+    inet 10.8.0.1  netmask 255.255.255.0  destination 10.8.0.1
+    ```
+
+6.
+
+```bash
+sudo iptables -t nat -D POSTROUTING -s 10.7.0.0/24 ! -d 10.7.0.0/24 -j SNAT --to-source 51.89.88.80
+sudo iptables -A FORWARD -i tun0 -o wg0 -j ACCEPT
+sudo iptables -A FORWARD -i wg0 -o tun0 -j ACCEPT 
+sudo iptables -A FORWARD -d 10.7.0.0/24 -m state --state ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -t nat -A POSTROUTING -s 10.7.0.0/24 -j SNAT --to-source 10.8.0.2
+sudo ip route add default via 10.8.0.2 table 120 
+sudo ip rule add from 10.7.0.0/24 table 120 
 ```
 
 ### WireGuard VPN Server
