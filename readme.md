@@ -2,38 +2,43 @@
 
 Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 
-- [Automatic Shutdown](#automatic-shutdown)
-- [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
-- [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
-- [Resetting sound, audio](#resetting-sound-audio)
-- [Fixing broken grub](#fixing-broken-grub)
-  - [Using proxy](#using-proxy)
+- [Tricks](#tricks)
+  - [Automatic Shutdown](#automatic-shutdown)
+  - [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
+  - [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
+  - [Resetting sound, audio](#resetting-sound-audio)
+  - [Fixing broken grub](#fixing-broken-grub)
+  - [Using proxies](#using-proxies)
+- [Backup using Rsync](#backup-using-rsync)
 - [Performance](#performance)
-  - [Disable Linux Watchdogs, compaction and](#disable-linux-watchdogs-compaction-and)
+  - [Disable Linux Watchdogs, compaction and more](#disable-linux-watchdogs-compaction-and-more)
   - [Improve fstab performance](#improve-fstab-performance)
   - [Disabling journaling](#disabling-journaling)
+  - [Journal Size](#journal-size)
 - [XDG](#xdg)
   - [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
 - [Systemd, systemctl](#systemd-systemctl)
+  - [Unit files' locations](#unit-files-locations)
   - [Analyzing](#analyzing)
   - [Reloading](#reloading)
-  - [Find services failed to start](#find-services-failed-to-start)
-  - [Journal Size](#journal-size)
   - [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
-  - [Unit files' locations](#unit-files-locations)
 - [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
-- [Flush Network settings](#flush-network-settings)
-- [Disable IPV6](#disable-ipv6)
-- [VPN And Proxy](#vpn-and-proxy)
-  - [Initialization](#initialization)
+- [Network](#network)
+  - [Flush Network settings](#flush-network-settings)
+  - [Disable IPV6](#disable-ipv6)
   - [VPN over SSH](#vpn-over-ssh)
+- [VPN, Proxy Server Setup](#vpn-proxy-server-setup)
+  - [Initialization](#initialization)
   - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
+  - [Jump server](#jump-server)
   - [v2fly](#v2fly)
     - [Server](#server)
     - [Client](#client)
   - [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
   - [shadowsocks](#shadowsocks)
   - [OpenVpn Server](#openvpn-server)
+  - [VPN Chaining](#vpn-chaining)
+    - [route](#route)
   - [WireGuard VPN Server](#wireguard-vpn-server)
     - [Server Configuration](#server-configuration)
     - [Peer Configuration](#peer-configuration)
@@ -49,12 +54,15 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
   - [Location](#location)
   - [List](#list)
   - [Fira Code](#fira-code)
-- [Backup using Rsync](#backup-using-rsync)
 - [Vulkan](#vulkan)
 - [Dota 2](#dota-2)
   - [Dota 2 Options](#dota-2-options)
   - [Link NTFS game folder](#link-ntfs-game-folder)
   - [Run using proxy](#run-using-proxy)
+- [lutris](#lutris)
+  - [Installation](#installation)
+  - [With Proxy](#with-proxy)
+  - [Unexpected error](#unexpected-error)
 - [Install Genymotoin Android emulator](#install-genymotoin-android-emulator)
 - [Things to do before installing Manjaro/Arch Linux](#things-to-do-before-installing-manjaroarch-linux)
 - [Things to do after installing Manjaro/Arch Linux](#things-to-do-after-installing-manjaroarch-linux)
@@ -905,7 +913,6 @@ sudo pacman -S ttf-fira-code
 fc-match -a | grep -i fira
 ```
 
-
 ## Vulkan
 
 ```bash
@@ -952,6 +959,12 @@ proxychains steam steam://rungameid/570
 
 ## lutris
 
+### Installation
+
+```bash
+sudo pacman -S telegram-desktop lutris vkd3d
+```
+
 ### With Proxy
 
 ```bash
@@ -993,7 +1006,7 @@ sudo pamac install genymotion
   sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
-  sudo pacman -S telegram-desktop lutris vkd3d
+  sudo pacman -S telegram-desktop
   ```
 
 - Import Data
