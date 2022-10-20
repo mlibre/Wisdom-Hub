@@ -313,8 +313,9 @@ journalctl -u gamma
 ```bash
 sudo killall sslocal; sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart network;sudo systemctl restart NetworkManager;sudo sysctl -p; sudo systemd-resolve --flush-caches; sudo resolvectl flush-caches
 
+sudo killall sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e
+sudo killall -9 sslocal winedevice.exe wineserver services.exe
 sudo systemd-resolve --flush-caches
-sudo killall sslocal
 sudo resolvectl flush-caches
 sudo ip link delete tun0
 sudo wg-quick down wg0
@@ -324,6 +325,8 @@ sudo iptables --flush
 sudo systemctl restart network
 sudo systemctl restart NetworkManager
 sudo sysctl -p
+
+sudo systemctl restart shadowsocks-rust-local@config
 ```
 
 ### Disable IPV6
@@ -870,6 +873,7 @@ sudo pacman -S telegram-desktop lutris vkd3d
 ### With Proxy
 
 ```bash
+# make sure proxy_dns is commneted
 proxychains lutris
 ```
 
