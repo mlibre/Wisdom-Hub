@@ -163,6 +163,16 @@ UUID=f74c37b2-8a12-4252-90a6-d31504507bcb / ext4  defaults,noatime,commit=60,bar
 sudo tune2fs -f -O "^has_journal" /dev/sda2
 ```
 
+### Journal Size
+
+```bash
+sudo nano /etc/systemd/journald.conf
+```
+
+```bash
+SystemMaxUse=100M
+```
+
 ## XDG
 
 ### Make a startup script using XDG startup
@@ -201,36 +211,28 @@ sudo chmod a+rwx /usr/local/bin/gamma_on_startup
 
 ## Systemd, systemctl
 
+### Unit files' locations
+
+```bash
+systemctl show --property=UnitPath
+```
+
 ### Analyzing
 
 ```bash
 systemd-analyze
 systemd-analyze blame
 
+systemctl --state=failed
+
 sudo systemctl list-unit-files --type=service --state=enabled --all
-systemctl list-unit-files | grep enabled
+sudo systemctl list-unit-files | grep enabled
 ```
 
 ### Reloading
 
 ```bash
 systemctl daemon-reload
-```
-
-### Find services failed to start
-
-```bash
-systemctl --state=failed
-```
-
-### Journal Size
-
-```bash
-sudo nano /etc/systemd/journald.conf
-```
-
-```bash
-SystemMaxUse=100M
 ```
 
 ### Run a script after suspending has finished (resume)
@@ -262,12 +264,6 @@ systemctl status gamma
 journalctl -u gamma
 ```
 
-### Unit files' locations
-
-```bash
-systemctl show --property=UnitPath
-```
-
 ## Autostarts and Startup scripts and programs locations
 
 - nano .profile
@@ -296,7 +292,7 @@ systemctl show --property=UnitPath
 ## Flush Network settings
 
 ```bash
-sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart netwrok;sudo systemctl restart NetworkManager;sudo sysctl -p; sudo systemd-resolve --flush-caches; sudo resolvectl flush-caches
+sudo killall sslocal; sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart network;sudo systemctl restart NetworkManager;sudo sysctl -p; sudo systemd-resolve --flush-caches; sudo resolvectl flush-caches
 
 sudo systemd-resolve --flush-caches
 sudo killall sslocal
@@ -306,7 +302,7 @@ sudo wg-quick down wg0
 sudo systemctl daemon-reload
 sudo ip route flush table main
 sudo iptables --flush
-sudo systemctl restart netwrok
+sudo systemctl restart network
 sudo systemctl restart NetworkManager
 sudo sysctl -p
 ```
@@ -322,7 +318,22 @@ net.ipv6.conf.default.disable_ipv6=1
 sudo sysctl -p 
 ```
 
-## VPN And Proxy
+## VPN over SSH
+
+```bash
+sudo proxychains pacman -S sshuttle
+sudo sshuttle -v -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
+# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
+# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
+
+su
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+resolvectl dns enp3s0 1.1.1.1 
+resolvectl dns enp1s0f0u6 1.1.1.1
+resolvectl dns
+```
+
+## VPN, Proxy Server Setup
 
 - Server: NetherLand
 - OS: Ubuntu 22.04
@@ -366,15 +377,6 @@ ClientAliveInterval 300
 ClientAliveCountMax 6
 TCPKeepAlive yes
 
-## client
-sudo nano $HOME/.ssh/config
-Host *
-   ServerAliveInterval 20
-   ServerAliveCountMax 20
-sudo chmod 600 ~/.ssh/config
-sudo sshd -T
-## client finish
-
 sudo systemctl daemon-reload
 sudo systemctl restart sshd
 sudo systemctl status sshd
@@ -388,9 +390,10 @@ nameserver 208.67.222.222
 nameserver 208.67.220.220
 nameserver 8.8.8.8
 
-
 # sudo apt install dnsmasq
 
+sudo ufw allow 9090/udp
+sudo ufw allow 9090/tcp
 sudo ufw allow 51820/udp
 sudo ufw allow 51820/tcp
 sudo ufw allow 53/tcp
@@ -416,20 +419,7 @@ sudo systemctl status ufw
 sudo ufw status
 ```
 
-### VPN over SSH
 
-```bash
-sudo proxychains pacman -S sshuttle
-sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
-# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
-# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
-su
-resolvectl dns enp3s0 1.1.1.1 
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-resolvectl dns enp3s0 1.1.1.1
-resolvectl dns enp1s0f0u6 1.1.1.1
-# resolvectl dns
-```
 
 ### SSH Dynamic Tunneling
 
