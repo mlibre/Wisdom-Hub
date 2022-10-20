@@ -119,13 +119,16 @@ Then run:
 update-grub
 ```
 
-### Using proxy, proxychains
+### Using proxies
 
 ```bash
 proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
 proxychains git clone https://github.com/boypt/vmess2json.git
 sudo proxychains npm -g install v2ray-tools
 sudo proxychains pacman -Syyuu
+
+export http_proxy=socks5://127.0.0.1:1080
+export https_proxy=socks5://127.0.0.1:1080
 ```
 
 > proxychains config
@@ -135,6 +138,12 @@ sudo nano /etc/proxychains.conf
 socks5  127.0.0.1 1080
 ## comment proxy_dns
 # proxy_dns
+```
+
+## Backup using Rsync
+
+```bash
+sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
 ```
 
 ## Performance
@@ -289,7 +298,9 @@ journalctl -u gamma
 - nano .bashrc
 - nano /etc/bash.bashrc
 
-## Flush Network settings
+## Network
+
+### Flush Network settings
 
 ```bash
 sudo killall sslocal; sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart network;sudo systemctl restart NetworkManager;sudo sysctl -p; sudo systemd-resolve --flush-caches; sudo resolvectl flush-caches
@@ -307,7 +318,7 @@ sudo systemctl restart NetworkManager
 sudo sysctl -p
 ```
 
-## Disable IPV6
+### Disable IPV6
 
 ```bash
 sudo nano /etc/sysctl.conf
@@ -318,10 +329,11 @@ net.ipv6.conf.default.disable_ipv6=1
 sudo sysctl -p 
 ```
 
-## VPN over SSH
+### VPN over SSH
 
 ```bash
 sudo proxychains pacman -S sshuttle
+
 sudo sshuttle -v -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
 # sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
 # sudo sshuttle -vvvv -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
@@ -418,8 +430,6 @@ sudo systemctl restart ufw
 sudo systemctl status ufw
 sudo ufw status
 ```
-
-
 
 ### SSH Dynamic Tunneling
 
@@ -895,11 +905,6 @@ sudo pacman -S ttf-fira-code
 fc-match -a | grep -i fira
 ```
 
-## Backup using Rsync
-
-```bash
-sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
-```
 
 ## Vulkan
 
@@ -918,9 +923,9 @@ VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/
 
 ### Dota 2 Options
 
-  ```bash
-  -high -nojoy -novid -novr -nohltv -map dota 
-  ```
+```bash
+-high -nojoy -novid -novr -nohltv -map dota 
+```
 
 - Disable steam overlay, steam inputs, ...
 
@@ -943,6 +948,20 @@ ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
 
 ```bash
 proxychains steam steam://rungameid/570
+```
+
+## lutris
+
+### With Proxy
+
+```bash
+proxychains lutris
+```
+
+### Unexpected error
+
+```bash
+rm -r ~/.wine
 ```
 
 ## Install Genymotoin Android emulator
@@ -974,7 +993,7 @@ sudo pamac install genymotion
   sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
-  sudo pacman -S telegram-desktop
+  sudo pacman -S telegram-desktop lutris vkd3d
   ```
 
 - Import Data
@@ -991,7 +1010,7 @@ sudo pamac install genymotion
 
   ```bash
   pamac update --force-refresh
-  pamac install visual-studio-code-bin
+  pamac install visual-studio-code-bin onlyoffice-bin
   ```
 
 - Install ProtonVPN, mailspring
