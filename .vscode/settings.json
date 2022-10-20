@@ -2,5 +2,9 @@
 	"editor.fontFamily": "'Fira Code Retina','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 	"cSpell.words": [
 		"Konsole"
-	]
+	],
+	"editor.cursorSmoothCaretAnimation": true,
+	"workbench.list.smoothScrolling": true,
+	"editor.smoothScrolling": true,
+	"terminal.integrated.smoothScrolling": true
 }

@@ -74,35 +74,37 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
   - [Run Odin as administrator](#run-odin-as-administrator)
   - [Install bluestack](#install-bluestack)
 
-## Automatic Shutdown
+## Tricks
+
+### Automatic Shutdown
 
 ```bash
 sudo shutdown -P +220 ## in 220 minutes, 3:30 hours
 ```
 
-## Bash case-insensitive auto completion
+### Bash case-insensitive auto completion
 
 ```bash
 echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
-# echo 'set completion-ignore-case On' >> /etc/inputrc
+# echo 'set completion-ignore-case On' >> /etc/inputrc # as root
 ```
 
-## Changing monitor or screen Brightness and Gamma
+### Changing monitor or screen Brightness and Gamma
 
 ```bash
 xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
 ```
 
-## Resetting sound, audio
+### Resetting sound, audio
 
 ```bash
 pulseaudio --kill
-# pulseaudio --start
+pulseaudio --start
 ```
 
-## Fixing broken grub
+### Fixing broken grub
 
-Boot a live Manjaro image
+> Boot a live Manjaro image
 
 ```bash
 sudo manjaro-chroot -a
@@ -110,15 +112,14 @@ grub-install
 update-grub
 ```
 
-It will detect your current installed linux.  
-Restart the computer and it will boot the installed linux.  
+> It will detect your current installed linux.  Restart the computer and it will boot the installed linux.  
 Then run:
 
 ```bash
 update-grub
 ```
 
-### Using proxy
+### Using proxy, proxychains
 
 ```bash
 proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
@@ -127,22 +128,18 @@ sudo proxychains npm -g install v2ray-tools
 sudo proxychains pacman -Syyuu
 ```
 
-```bash
-yay -S gcc-go
-yay -S yay
-# yay --rebuild yay
-```
+> proxychains config
 
 ```bash
 sudo nano /etc/proxychains.conf 
-socks5  127.0.0.1 9090
+socks5  127.0.0.1 1080
 ## comment proxy_dns
 # proxy_dns
 ```
 
 ## Performance
 
-### Disable Linux Watchdogs, compaction and
+### Disable Linux Watchdogs, compaction and more
 
 ```bash
 sudo sh -c "echo 'kernel.nmi_watchdog=0' >> /etc/sysctl.conf"
@@ -157,7 +154,7 @@ sudo sysctl -p
 
 ```bash
 sudo nano /etc/fstab 
-UUID=f74c37b2-8a12-4252-90a6-d31504507bcb /     ext4    defaults,noatime,commit=60,barrier=0    0       1
+UUID=f74c37b2-8a12-4252-90a6-d31504507bcb / ext4  defaults,noatime,commit=60,barrier=0  0 1
 ```
 
 ### Disabling journaling
