@@ -867,10 +867,20 @@ proxychains steam steam://rungameid/570
 ### Installation
 
 ```bash
-sudo pacman -S telegram-desktop lutris vkd3d
+sudo pacman -S telegram-desktop lutris vkd3d tsocks proxychains
 ```
 
 ### With Proxy
+
+```bash
+sudo nano /etc/tsocks.conf
+
+server = 127.0.0.1
+server_port = 1080
+server_type = 5
+
+tsocks lutris
+```
 
 ```bash
 # make sure proxy_dns is commneted
