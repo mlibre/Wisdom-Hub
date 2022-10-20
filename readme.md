@@ -455,7 +455,7 @@ chromium: search proxy in the setting. open system proxy settings. manual specif
 
 ### Jump server
 
-> Cleint -> local ShadowSocks:1080->9090, IP: Server A
+> Client -> local ShadowSocks:1080->9090, IP: Server A
 > -> Server A -> ssh -> Server B, ShadowSocks:9090
 
 - Install shadowSocks in Server B
@@ -477,110 +477,13 @@ nano /etc/rc.local
 exit 0;
 ```
 
-### v2fly
-
-#### Server
-
-```bash
-su
-# /etc/systemd/system/v2ray.service
-# /etc/systemd/system/v2ray.service.d/10-donot_touch_single_conf.conf
-# v2ray --config=/etc/v2ray/config.json
-# To remove: bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh) --remove
-bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
-systemctl enable v2ray
-systemctl start v2ray
-sudo nano  /usr/local/etc/v2ray/config.json
-{
- "inbounds": [
-  {
-   "port": 10086, // server listening port
-   "protocol": "vmess",
-   "settings": {
-    "clients": [
-     {
-      "id": "b831381d-6324-4d53-ad4f-8cda48b30811"
-     }
-    ]
-   }
-  }
- ],
- "outbounds": [
-  {
-   "protocol": "freedom",
-   "settings": {}
-  }
- ]
-}
-sudo systemctl daemon-reload
-v2ray test -c /usr/local/etc/v2ray/config.json
-sudo systemctl restart v2ray
-sudo systemctl status v2ray
-sudo ufw allow 10086/udp
-sudo ufw allow 10086/tcp
-```
-
-#### Client
-
-```bash
-sudo pacman -Syyuu v2ray
-# sudo proxychains pacman -Su v2ray
-
-// https://www.v2fly.org/
-{
- "log": {
-  //              "access": "./v2ray.log",
-  //              "error": "./v2ray-e.log",
-  "loglevel": "warning"
- },
- "inbounds": [
-  {
-   "port": 2080,
-   "listen": "0.0.0.0",
-   "tag": "socks-inbound",
-   "protocol": "socks",
-   "settings": {
-    "auth": "noauth"
-   },
-   "sniffing": {
-    "enabled": true,
-    "destOverride": [
-     "http",
-     "tls"
-    ]
-   }
-  }
- ],
- "outbounds": [
-  {
-   "protocol": "vmess",
-   "settings": {
-    "vnext": [
-     {
-      "address": "51.89.88.80", // server address, please modify it to your own server ip or domain name
-      "port": 10086, // server port
-      "users": [
-       {
-        "id": "b831381d-6324-4d53-ad4f-8cda48b30811"
-       }
-      ]
-     }
-    ]
-   }
-  }
- ]
-}
-
-v2ray run -c /etc/v2ray/config.json
-```
-
 ### Open an application using tor over socks
 
 ```bash
 torsocks deluge
 ```
 
-### shadowsocks
+### ShadowSocks
 
 ```bash
 
@@ -637,7 +540,6 @@ sudo nano /etc/shadowsocks/config.json
 sudo nano /lib/systemd/system/shadowsocks-rust-local@.service
 [Unit]
 Description=Shadowsocks-rust Local Client Service for %I
-Documentation=https://github.com/shadowsocks/shadowsocks-rust
 After=network.target
 
 StartLimitIntervalSec=30s
