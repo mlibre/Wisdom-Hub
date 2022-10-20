@@ -891,6 +891,14 @@ tsocks lutris
 proxychains lutris
 ```
 
+### Proxy per game
+
+```bash
+# Check show advanced options
+# Put /usr/bin/tsocks in
+# Game -> configuration -> System options -> command prefix
+```
+
 ### Unexpected error
 
 ```bash
