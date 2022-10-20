@@ -313,8 +313,12 @@ journalctl -u gamma
 ```bash
 sudo killall sslocal; sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart network;sudo systemctl restart NetworkManager;sudo sysctl -p; sudo systemd-resolve --flush-caches; sudo resolvectl flush-caches
 
-sudo killall sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e
-sudo killall -9 sslocal winedevice.exe wineserver services.exe
+sudo killall sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:
+sudo killall -9 sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:
+pkill -f -e -c lutris-wrapper
+pkill -f -e -c lutris
+pkill -f -e -c wine
+
 sudo systemd-resolve --flush-caches
 sudo resolvectl flush-caches
 sudo ip link delete tun0
