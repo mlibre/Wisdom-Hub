@@ -313,11 +313,12 @@ journalctl -u gamma
 ```bash
 sudo killall sslocal; sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart network;sudo systemctl restart NetworkManager;sudo sysctl -p; sudo systemd-resolve --flush-caches; sudo resolvectl flush-caches
 
-sudo killall sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:
-sudo killall -9 sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:
+sudo killall sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper: steamwebhelper
+sudo killall -9 sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper: steamwebhelper
 pkill -f -e -c lutris-wrapper
 pkill -f -e -c lutris
 pkill -f -e -c wine
+qdbus org.kde.KWin /Compositor suspend
 
 sudo systemd-resolve --flush-caches
 sudo resolvectl flush-caches
@@ -864,6 +865,13 @@ ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
 
 ```bash
 proxychains steam steam://rungameid/570
+```
+
+### Disable desktop effects
+
+```bash
+qdbus org.kde.KWin /Compositor suspend
+# qdbus org.kde.KWin /Compositor resume
 ```
 
 ## lutris
