@@ -378,7 +378,7 @@ adduser mlibre
 
 apt update
 apt dist-upgrade
-apt install htop sudo psmisc net-tools ufw curl ntpdate
+apt install htop sudo psmisc net-tools curl ntpdate ufw
 sudo apt purge snapd
 sudo ntpdate time.nist.gov
 
@@ -427,6 +427,14 @@ sudo ufw allow 9090/udp
 sudo ufw allow 9090/tcp
 sudo ufw allow 51820/udp
 sudo ufw allow 51820/tcp
+sudo ufw allow 51449
+sudo ufw allow 51449/tcp
+sudo ufw allow 51449/udp
+sudo ufw allow 64920
+sudo ufw allow 64920/udp
+sudo ufw allow 64920/tcp
+sudo ufw allow 56777/udp
+sudo ufw allow 56777/tcp
 sudo ufw allow 53/tcp
 sudo ufw allow 53/udp
 sudo ufw allow 80/udp
@@ -464,6 +472,27 @@ firefox: settings -> network -> socks5, proxy over dns
 chromium: search proxy in the setting. open system proxy settings. manual specified: socks proxy: localhost 1080
 ```
 
+### Outline
+
+1. Download outline manager in your local linux system
+2. <https://getoutline.org/get-started/#step-1>
+3. Run and follow instructions
+4. In server: open ssh, https and other ports + ports mentioned in outline manager settings:
+
+  ```bash
+    sudo ufw allow 51449
+    sudo ufw allow 51449/tcp
+    sudo ufw allow 51449/udp
+    sudo ufw allow 64920
+    sudo ufw allow 64920/udp
+    sudo ufw allow 64920/tcp
+  ```
+
+5. Open Manager
+6. Create keys
+7. Share keys
+8. You can also open keys with ShadowSocks
+
 ### Jump server
 
 > Client -> local ShadowSocks:1080->9090, IP: Server A
@@ -486,6 +515,26 @@ tmux send-keys "echo reserved" C-m
 nano /etc/rc.local
 /home/mlibre/sshPF.sh
 exit 0;
+```
+
+```bash
+#!/bin/bash
+
+tmux new-session -d -s SshPF -n PortForwarder
+for i in `seq 1 2`;
+do
+        tmux split-window -h
+        tmux select-layout tiled
+done
+
+tmux select-pane -t 0
+tmux send-keys "while true; do ssh -N -L 0.0.0.0:50:localhost:55 ehsan@51.89.170.129 -p 6969; done" C-m
+
+tmux select-pane -t 1
+tmux send-keys "while true; do ssh -N -L 0.0.0.0:70:51.89.170.129:77 ehsan@51.89.170.129 -p 6969; done" C-m
+
+
+tmux send-keys "echo reserved" C-m
 ```
 
 ### Open an application using tor over socks
