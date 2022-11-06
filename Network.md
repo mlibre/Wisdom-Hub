@@ -1,5 +1,33 @@
 # Network
 
+- [Disable IPV6](#disable-ipv6)
+- [Setup DNS](#setup-dns)
+- [Flush Network settings](#flush-network-settings)
+- [VPN, Proxy Server Setup](#vpn-proxy-server-setup)
+  - [Initialization](#initialization)
+  - [Outline](#outline)
+  - [Jump server](#jump-server)
+    - [ShadowSocks config example](#shadowsocks-config-example)
+    - [Make startup script](#make-startup-script)
+- [VPN over SSH](#vpn-over-ssh)
+- [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
+- [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
+- [ShadowSocks](#shadowsocks)
+- [OpenVpn Server](#openvpn-server)
+- [VPN Chaining](#vpn-chaining)
+  - [route](#route)
+- [WireGuard VPN Server](#wireguard-vpn-server)
+  - [Server Configuration](#server-configuration)
+  - [Peer Configuration](#peer-configuration)
+- [Redirecting the whole traffic](#redirecting-the-whole-traffic)
+- [VPNBook](#vpnbook)
+- [Protonvpn](#protonvpn)
+  - [Install](#install)
+  - [OpenVpn](#openvpn)
+  - [WireGuard](#wireguard)
+- [Hide.me](#hideme)
+- [Windscribe](#windscribe)
+
 ## Disable IPV6
 
 ```bash

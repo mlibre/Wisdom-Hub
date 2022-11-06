@@ -2,6 +2,8 @@
 
 Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 
+- [Network](Network.md)
+
 - [Tricks](#tricks)
   - [Automatic Shutdown](#automatic-shutdown)
   - [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
@@ -23,33 +25,6 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
   - [Reloading](#reloading)
   - [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
 - [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
-- [Network](#network)
-  - [Flush Network settings](#flush-network-settings)
-  - [Disable IPV6](#disable-ipv6)
-  - [VPN over SSH](#vpn-over-ssh)
-- [VPN, Proxy Server Setup](#vpn-proxy-server-setup)
-  - [Initialization](#initialization)
-  - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
-  - [Jump server](#jump-server)
-  - [v2fly](#v2fly)
-    - [Server](#server)
-    - [Client](#client)
-  - [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
-  - [shadowsocks](#shadowsocks)
-  - [OpenVpn Server](#openvpn-server)
-  - [VPN Chaining](#vpn-chaining)
-    - [route](#route)
-  - [WireGuard VPN Server](#wireguard-vpn-server)
-    - [Server Configuration](#server-configuration)
-    - [Peer Configuration](#peer-configuration)
-  - [Redirecting the whole traffic](#redirecting-the-whole-traffic)
-  - [VPNBook](#vpnbook)
-  - [Protonvpn](#protonvpn)
-    - [Install](#install)
-    - [OpenVpn](#openvpn)
-    - [WireGuard](#wireguard)
-  - [Hide.me](#hideme)
-  - [Windscribe](#windscribe)
 - [Font](#font)
   - [Location](#location)
   - [List](#list)
@@ -59,9 +34,11 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
   - [Dota 2 Options](#dota-2-options)
   - [Link NTFS game folder](#link-ntfs-game-folder)
   - [Run using proxy](#run-using-proxy)
+  - [Disable desktop effects](#disable-desktop-effects)
 - [lutris](#lutris)
   - [Installation](#installation)
   - [With Proxy](#with-proxy)
+  - [Proxy per game](#proxy-per-game)
   - [Unexpected error](#unexpected-error)
 - [Install Genymotoin Android emulator](#install-genymotoin-android-emulator)
 - [Things to do before installing Manjaro/Arch Linux](#things-to-do-before-installing-manjaroarch-linux)
@@ -306,7 +283,6 @@ journalctl -u gamma
 - nano .bash_profile
 - nano .bashrc
 - nano /etc/bash.bashrc
-
 
 ## Font
 
