@@ -297,6 +297,7 @@ journalctl -u gamma
 - ls /etc/X11/xinit/xinitrc.d/
 - cat ~/.xserverrc
 - cat /etc/pam.d/
+- ls /etc/rc*
 - ls /etc/xdg/lxsession/LXDE/autostart
 - ls ~/.config/lxsession/LXDE/autostart
 - crontab -e
