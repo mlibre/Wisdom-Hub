@@ -3,30 +3,31 @@
 - [Disable IPV6](#disable-ipv6)
 - [Setup DNS](#setup-dns)
 - [Flush Network settings](#flush-network-settings)
-- [VPN, Proxy Server Setup](#vpn-proxy-server-setup)
-  - [Initialization](#initialization)
-  - [Outline](#outline)
-  - [Jump server](#jump-server)
-    - [ShadowSocks config example](#shadowsocks-config-example)
-    - [Make startup script](#make-startup-script)
 - [VPN over SSH](#vpn-over-ssh)
 - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
 - [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
-- [ShadowSocks](#shadowsocks)
+- [Outline Proxy + Jump Server](#outline-proxy--jump-server)
+  - [Initialization](#initialization)
+  - [Outline](#outline)
+  - [Jump server](#jump-server)
+    - [Make startup script](#make-startup-script)
+    - [ShadowSocks config example ( rust version )](#shadowsocks-config-example--rust-version-)
+- [ShadowSocks Server](#shadowsocks-server)
+  - [Server](#server)
+  - [Client](#client)
 - [OpenVpn Server](#openvpn-server)
-- [VPN Chaining](#vpn-chaining)
-  - [route](#route)
 - [WireGuard VPN Server](#wireguard-vpn-server)
   - [Server Configuration](#server-configuration)
   - [Peer Configuration](#peer-configuration)
-- [Redirecting the whole traffic](#redirecting-the-whole-traffic)
-- [VPNBook](#vpnbook)
-- [Protonvpn](#protonvpn)
-  - [Install](#install)
-  - [OpenVpn](#openvpn)
-  - [WireGuard](#wireguard)
-- [Hide.me](#hideme)
-- [Windscribe](#windscribe)
+- [Redirecting the whole network traffic](#redirecting-the-whole-network-traffic)
+- [Free VPNs](#free-vpns)
+  - [VPNBook](#vpnbook)
+  - [Protonvpn](#protonvpn)
+    - [Install](#install)
+    - [OpenVpn](#openvpn)
+    - [WireGuard](#wireguard)
+  - [Hide.me](#hideme)
+  - [Windscribe](#windscribe)
 
 ## Disable IPV6
 
@@ -78,7 +79,34 @@ sudo sysctl -p
 sudo systemctl restart shadowsocks-rust-local@config
 ```
 
-## VPN, Proxy Server Setup
+## VPN over SSH
+
+```bash
+sudo proxychains pacman -S sshuttle
+
+sudo sshuttle -v -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
+# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
+# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
+```
+
+## SSH Dynamic Tunneling
+
+```bash
+ssh -D 0.0.0.0:8080 -N mlibre@51.89.88.80
+
+# Setup DNS
+
+firefox: settings -> network -> socks5, proxy over dns
+chromium: search proxy in the setting. open system proxy settings. manual specified: socks proxy: localhost 1080
+```
+
+## Open an application using tor over socks
+
+```bash
+torsocks deluge
+```
+
+## Outline Proxy + Jump Server
 
 - Server: NetherLand
 - OS: Ubuntu 22.04
@@ -191,6 +219,12 @@ sudo ufw status
 5. Open Manager
 6. Create keys
 7. Share keys
+
+  ```bash
+  # Keys are like this
+  ss://BASE64 STRING@IP:PORT/?outline=1
+  ```
+
 8. You can also open keys with ShadowSocks
 9. You can also extract URL information: <https://shadowsocks.org/guide/sip002.html#sip002-uri-scheme>
 
@@ -213,26 +247,6 @@ sudo ssh-copy-id -i /root/.ssh/id_rsa.pub root@46.249.49.193 -p 56777
 
 ssh -N -L 0.0.0.0:64920:46.249.49.193:64920 mlibre@46.249.49.193 -p 56777
 #                 APort BIP           BPort       BIP               BSSHPort
-```
-
-#### ShadowSocks config example
-
-```json
-{
-    "servers": [
-      {
-          "address": "87.107.164.69",
-          "port": 64920,
-          "password": "1",
-          "method":"chacha20-ietf-poly1305",
-          "timeout": 86400
-      }
-    ],
-    "mode":"tcp_and_udp",
-    "local_port":1080,
-    "local_address": "127.0.0.1",
-    "fast_open": true
-}
 ```
 
 #### Make startup script
@@ -259,42 +273,31 @@ sudo systemctl status sshtunnel
 sudo journalctl -f -u sshtunnel
 ```
 
-## VPN over SSH
+#### ShadowSocks config example ( rust version )
 
-```bash
-sudo proxychains pacman -S sshuttle
-
-sudo sshuttle -v -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
-# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
-# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
+```json
+{
+    "servers": [
+      {
+          "address": "87.107.164.69", // Server A IP Address
+          "port": 64920,
+          "password": "password", // Extracted OUTLINE Key Information
+          "method":"chacha20-ietf-poly1305", // Extracted OUTLINE Key Information
+          "timeout": 86400
+      }
+    ],
+    "mode":"tcp_and_udp",
+    "local_port":1080,
+    "local_address": "127.0.0.1",
+    "fast_open": true
+}
 ```
 
-## SSH Dynamic Tunneling
+## ShadowSocks Server
+
+### Server
 
 ```bash
-ssh -D 0.0.0.0:8080 -N mlibre@51.89.88.80
-su
-resolvectl dns enp3s0 1.1.1.1 
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-resolvectl dns enp1s0f0u6 1.1.1.1 
-resolvectl dns
-
-firefox: settings -> network -> socks5, proxy over dns
-chromium: search proxy in the setting. open system proxy settings. manual specified: socks proxy: localhost 1080
-```
-
-## Open an application using tor over socks
-
-```bash
-torsocks deluge
-```
-
-## ShadowSocks
-
-```bash
-
-## Server
-
 sudo apt install shadowsocks-libev -y
 sudo nano /etc/shadowsocks-libev/config.json
 {
@@ -315,8 +318,11 @@ sudo ufw allow 443
 sudo systemctl enable shadowsocks-libev.service
 sudo systemctl restart shadowsocks-libev.service
 sudo journalctl -f -u shadowsocks-libev.service
+```
 
-## Client
+### Client
+
+```bash
 sudo pamac install shadowsocks-rust-bin
 sudo nano /etc/shadowsocks/config.json 
 {
@@ -392,41 +398,6 @@ sudo resolvectl dns
 Global: 8.8.8.8
 Link 2 (enp3s0): 1.1.1.1
 Link 8 (tun0): 1.1.1.1
-```
-
-## VPN Chaining
-
-### route
-
-- Client -> Server A -> Server B -> Internet
-
-1. Install ubuntu 20.04 in both servers
-2. Setup OpenVpn in server A And B (with default configs)
-3. Generate `mlibreger.ovpn` in server b
-4. Connect from A to B:
-
-    ```bash
-    ssh serverA
-    sudo openvpn --config mlibreger.ovpn
-    ```
-
-5. Now you have eth0, lo and tun0 in server A
-
-    ```bash
-    tun0: flags=4305<UP,POINTOPOINT,RUNNING,NOARP,MULTICAST>  mtu 1500
-    inet 10.8.0.1  netmask 255.255.255.0  destination 10.8.0.1
-    ```
-
-6.
-
-```bash
-sudo iptables -t nat -D POSTROUTING -s 10.7.0.0/24 ! -d 10.7.0.0/24 -j SNAT --to-source 51.89.88.80
-sudo iptables -A FORWARD -i tun0 -o wg0 -j ACCEPT
-sudo iptables -A FORWARD -i wg0 -o tun0 -j ACCEPT 
-sudo iptables -A FORWARD -d 10.7.0.0/24 -m state --state ESTABLISHED,RELATED -j ACCEPT
-sudo iptables -t nat -A POSTROUTING -s 10.7.0.0/24 -j SNAT --to-source 10.8.0.2
-sudo ip route add default via 10.8.0.2 table 120 
-sudo ip rule add from 10.7.0.0/24 table 120 
 ```
 
 ## WireGuard VPN Server
@@ -524,7 +495,7 @@ sudo wg-quick up wg0
 sudo wg-quick down wg0
 ```
 
-## Redirecting the whole traffic
+## Redirecting the whole network traffic
 
 ```bash
 sudo ip route add 192.168.1.0/24 dev ppp0
@@ -532,15 +503,17 @@ sudo ip route add 192.168.1.0/24 dev ppp0
 # 192.168.1.0: IP range
 ```
 
-## VPNBook
+## Free VPNs
+
+### VPNBook
 
 - Download OpenVpn file: <https://www.vpnbook.com/freevpn>
 - Import in NetworkManger
 - Enter username and password from here: <https://www.vpnbook.com/freevpn>
 
-## Protonvpn
+### Protonvpn
 
-### Install
+#### Install
 
 ```bash
 sudo systemctl stop firewalld.service
@@ -550,13 +523,13 @@ protonvpn
 # proxychain protonvpn
 ```
 
-### OpenVpn
+#### OpenVpn
 
 - Download openVpn config file form here: <https://account.protonvpn.com/downloads>
 - Copy openVPn credentials: <https://account.protonvpn.com/account>
 - Network Manager: New -> Import OpenVpn Saved Configuration. Paste credentials
 
-### WireGuard
+#### WireGuard
 
 ```bash
 sudo pacman -R firewalld
@@ -578,7 +551,7 @@ sudo wg-quick down wg0
 sudo wg
 ```
 
-## Hide.me
+### Hide.me
 
 ```bash
 sudo systemctl stop firewalld.service
@@ -589,7 +562,7 @@ proxychains sudo ./hide.me token free-unlimited.hideservers.net
 proxychains sudo ./hide.me connect free-unlimited.hideservers.net
 ```
 
-## Windscribe
+### Windscribe
 
 ```bash
 sudo systemctl stop firewalld.service

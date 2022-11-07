@@ -3,7 +3,6 @@
 Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 
 - [Network](Network.md)
-
 - [Tricks](#tricks)
   - [Automatic Shutdown](#automatic-shutdown)
   - [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
