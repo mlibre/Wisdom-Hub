@@ -321,6 +321,29 @@ sudo ufw allow 443
 sudo systemctl enable shadowsocks-libev.service
 sudo systemctl restart shadowsocks-libev.service
 sudo journalctl -f -u shadowsocks-libev.service
+
+# Custom instance
+sudo nano /etc/systemd/system/direct.service
+[Unit]
+Description=Shadowsocks
+After=network.target
+
+StartLimitIntervalSec=30s
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=mlibre
+Group=mlibre
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+ExecStart=ss-server -c /etc/shadowsocks-libev/config.json
+
+Restart=always
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.target
 ```
 
 ### Client
