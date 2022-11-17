@@ -167,6 +167,9 @@ nameserver 8.8.8.8
 
 sudo ufw allow 9090/udp
 sudo ufw allow 9090/tcp
+sudo ufw allow 1194
+sudo ufw allow 1194/tcp
+sudo ufw allow 1194/udp
 sudo ufw allow 51820/udp
 sudo ufw allow 51820/tcp
 sudo ufw allow 51449
