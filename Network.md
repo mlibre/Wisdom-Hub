@@ -178,6 +178,9 @@ sudo ufw allow 51449/udp
 sudo ufw allow 64920
 sudo ufw allow 64920/udp
 sudo ufw allow 64920/tcp
+sudo ufw allow 53263
+sudo ufw allow 53263/udp
+sudo ufw allow 53263/tcp
 sudo ufw allow 56777/udp
 sudo ufw allow 56777/tcp
 sudo ufw allow 53/tcp
@@ -440,14 +443,28 @@ update-alternatives --set iptables /usr/sbin/iptables-legacy
 ### Server Configuration
 
 ```bash
-sudo apt install dnsmasq
-sudo systemctl enable dnsmasq
-sudo systemctl status dnsmasq
-sudo systemctl restart dnsmasq
+https://github.com/angristan/wireguard-install
+curl -O https://raw.githubusercontent.com/angristan/wireguard-install/master/wireguard-install.sh
+chmod +x wireguard-install.sh
+sudo ./wireguard-install.sh
+```
+
+### Peer Configuration
+
+```bash
+resolvectl dns
+sudo resolvectl dns enp3s0 10.8.0.1
+# sudo resolvectl dns enp3s0 208.67.222.222
+
+
+# ON THE CLIENT
+sudo wg-quick up wg0
+sudo wg-quick down wg0
+```
 
 ### dns
 
-
+```bash
 # sudo nano /etc/resolv.conf
 # sudo nano /etc/resolvconf/resolv.conf.d/head
 sudo nano /etc/resolvconf/resolv.conf.d/base
@@ -494,32 +511,7 @@ sudo wg
 # sudo systemctl daemon-reload 
 ```
 
-### Peer Configuration
 
-```bash
-# https://github.com/mlibre/wireguard-install
-sudo pacman -R firewalld ufw
-
-sudo nano /etc/wireguard/wg0.conf
-
-[Interface]
-DNS = 1.1.1.1 
-PostUp = resolvectl dns enp3s0 1.1.1.1
-
-[Peer]
-PersistentKeepalive = 25
-
-### DNS
-
-resolvectl dns
-sudo resolvectl dns enp3s0 10.8.0.1
-# sudo resolvectl dns enp3s0 208.67.222.222
-
-
-# ON THE CLIENT
-sudo wg-quick up wg0
-sudo wg-quick down wg0
-```
 
 ## Redirecting the whole network traffic
 
