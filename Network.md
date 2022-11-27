@@ -2,6 +2,7 @@
 
 - [Disable IPV6](#disable-ipv6)
 - [Setup DNS](#setup-dns)
+  - [Advance](#advance)
 - [Flush Network settings](#flush-network-settings)
 - [VPN over SSH](#vpn-over-ssh)
 - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
@@ -48,6 +49,54 @@ echo "nameserver 8.8.8.8" > /etc/resolv.conf
 resolvectl dns enp3s0 1.1.1.1 
 resolvectl dns enp1s0f0u6 1.1.1.1
 resolvectl dns
+```
+
+### Advance
+
+```bash
+sudo nano /etc/resolv.conf
+nameserver 1.1.1.1
+nameserver 208.67.222.222
+nameserver 208.67.220.220
+nameserver 8.8.8.8
+```
+
+```bash
+sudo systemctl enable resolvconf
+sudo nano /etc/resolvconf/resolv.conf.d/head
+sudo nano /etc/resolvconf/resolv.conf.d/base
+nameserver 1.1.1.1
+nameserver 208.67.222.222
+nameserver 208.67.220.220
+nameserver 8.8.8.8
+```
+
+```bash
+sudo nano /etc/systemd/resolved.conf
+[Resolve]
+DNS=1.1.1.1 208.67.222.222 208.67.220.220 8.8.8.8
+
+sudo nano /run/systemd/resolve/stub-resolv.conf
+nameserver 1.1.1.1
+nameserver 208.67.222.222
+nameserver 208.67.220.220
+nameserver 8.8.8.8
+
+sudo systemctl enable systemd-resolved
+```
+
+```bash
+sudo nano /etc/dhcp/dhclient.conf
+prepend domain-name-servers 208.67.222.222, 208.67.220.220, 8.8.8.8
+
+sudo nano /etc/network/interfaces
+iface eth0 inet static
+  dns-nameservers 208.67.222.222 208.67.220.220 8.8.8.8
+```
+
+```bash
+resolvectl dns eth0 # make sure dns is set
+# permanent? 
 ```
 
 ## Flush Network settings
@@ -462,33 +511,6 @@ sudo wg-quick up wg0
 sudo wg-quick down wg0
 ```
 
-### dns
-
-```bash
-# sudo nano /etc/resolv.conf
-# sudo nano /etc/resolvconf/resolv.conf.d/head
-sudo nano /etc/resolvconf/resolv.conf.d/base
-nameserver 208.67.222.222
-nameserver 208.67.220.220
-nameserver 8.8.8.8
-
-sudo systemctl enable resolvconf
-nano /etc/systemd/resolved.conf
-DNS=208.67.222.222 208.67.220.220 8.8.8.8
-
-sudo nano /etc/dhcp/dhclient.conf
-prepend domain-name-servers 208.67.222.222, 208.67.220.220, 8.8.8.8
-
-sudo nano /etc/network/interfaces
-iface eth0 inet static
-  dns-nameservers 208.67.222.222 208.67.220.220 8.8.8.8
-
-sudo reboot
-
-resolvectl dns eth0 # make sure dns is set
-# permanent? 
-```
-
 ```bash
 ip route list default
 # Copy Device Name: eth0
@@ -510,8 +532,6 @@ sudo wg
 # sudo wg-quick down wg0
 # sudo systemctl daemon-reload 
 ```
-
-
 
 ## Redirecting the whole network traffic
 
