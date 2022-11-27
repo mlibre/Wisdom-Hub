@@ -346,7 +346,7 @@ ssh -N -L 0.0.0.0:64920:46.249.49.193:64920 mlibre@46.249.49.193 -p 56777
 #                 APort BIP           BPort       BIP               BSSHPort
 ```
 
-#### Make startup script
+- Make a startup script
 
 ```bash
 sudo nano /etc/systemd/system/sshtunnel.service
