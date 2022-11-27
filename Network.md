@@ -370,7 +370,11 @@ sudo systemctl status sshtunnel
 sudo journalctl -f -u sshtunnel
 ```
 
-#### ShadowSocks config example ( rust version )
+#### Optimization
+
+https://github.com/shadowsocks/shadowsocks/wiki/Optimizing-Shadowsocks
+
+### Client - ShadowSocks config example ( rust version )
 
 ```json
 {
