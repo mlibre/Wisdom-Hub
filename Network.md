@@ -126,6 +126,8 @@ sudo systemctl restart NetworkManager
 sudo sysctl -p
 
 sudo systemctl restart shadowsocks-rust-local@config
+sync; echo 3 > /proc/sys/vm/drop_caches
+rm ~/.cache/ksycoca5*
 ```
 
 ## VPN over SSH
