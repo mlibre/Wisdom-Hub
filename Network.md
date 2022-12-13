@@ -192,9 +192,11 @@ mlibre  ALL=(ALL:ALL) ALL
 nano /etc/hosts
 127.0.0.1 mlibre
 
-systemctl disable rsyslog
-systemctl disable apparmor.service
-systemctl disable systemd-journald
+sudo systemctl disable rsyslog
+sudo systemctl disable apparmor.service
+sudo systemctl disable systemd-journald
+sudo systemctl disable apport-autoreport.path
+sudo systemctl disable apport-forward.socket
 
 # CTRL +D
 ssh-keygen
@@ -218,6 +220,7 @@ sudo systemctl status sshd
 
 sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
+sudo sysctl -p
 
 sudo nano /etc/resolv.conf
 nameserver 1.1.1.1      
@@ -323,7 +326,7 @@ COMMIT
 COMMIT
 # Completed on Sun Nov 27 20:17:17 2022
 
-sudo systemctl restart enable netfilter-persistent.service
+sudo systemctl enable netfilter-persistent.service
 sudo systemctl restart netfilter-persistent.service
 ```
 
