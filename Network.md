@@ -399,6 +399,14 @@ https://github.com/shadowsocks/shadowsocks/wiki/Optimizing-Shadowsocks
 }
 ```
 
+```bash
+su
+echo "nameserver 1.1.1.1" > /etc/resolv.conf
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo "nameserver 8.8.4.4" > /etc/resolv.conf
+resolvectl dns enp3s0 1.1.1.1
+```
+
 ## ShadowSocks Server
 
 ### Server
