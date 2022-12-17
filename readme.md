@@ -435,7 +435,7 @@ sudo pamac install genymotion
   ```bash
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
-  sudo pacman -S telegram-desktop
+  sudo pacman -S telegram-desktop unzip
   ```
 
 - Import Data
@@ -580,6 +580,15 @@ pacman -R $(pacman -Qg Radeon_Software_for_Linux | cut -f2 -d" ")
 ```bash
 sudo nano /etc/modprobe.d/radeon.conf 
 blacklist radeon
+```
+
+### Install Wine
+
+```bash
+# pamac install wine-stable
+sudo pacman -S wine winetricks
+winetricks corefonts vcrun2013 vcrun2015 winhttp allcodecs d3dcompiler_42 d3dcompiler_43 d3dcompiler_47 d3dx9 dotnet dxvk quartz
+sudo setcap cap_net_raw+epi /usr/bin/wine 
 ```
 
 ## Things to do after installing Windows 11
