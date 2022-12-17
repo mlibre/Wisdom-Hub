@@ -201,6 +201,7 @@ sudo systemctl disable apport-forward.socket
 # CTRL +D
 ssh-keygen
 ssh-copy-id -i ~/.ssh/id_rsa.pub mlibre@51.89.88.80
+# ssh-copy-id -i ~/.ssh/id_rsa.pub -p 2138 mlibre@87.107.164.69
 ssh mlibre@51.89.88.80
 
 su

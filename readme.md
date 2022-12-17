@@ -410,8 +410,10 @@ sudo pamac install genymotion
 
   ```bash
   cp -r /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/H/OS/caches/
+  cp $HISTFILE /run/media/mlibre/H/OS/caches/
   rsync -aAXHv ~/my_data/ /run/media/mlibre/H/OS/my_data/
   # ./data_rsync.bash
+  # Copy systemctl units
   ```
 
 - Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
@@ -425,6 +427,12 @@ sudo pamac install genymotion
   sudo systemctl disable pamac-mirrorlist.timer
   sudo systemctl disable pamac-mirrorlist.service
   sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro
+  ```
+
+- Enable Pacman parallel download
+- Upgrade
+
+  ```bash
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
   sudo pacman -S telegram-desktop
@@ -447,9 +455,10 @@ sudo pamac install genymotion
   pamac install visual-studio-code-bin onlyoffice-bin
   ```
 
-- Install ProtonVPN, mailspring
+- Install ProtonVPN, mailspring, shadowsocks
   
   ```bash
+  sudo pamac install shadowsocks-rust-bin
   pamac build protonvpn
   pamac build mailspring
   ```
@@ -469,7 +478,7 @@ sudo pamac install genymotion
 - KDE Settings -> Appearance -> Font -> Enabled Anti-Aliasing, RGB, Slight. all +1 PT
 - KDE Settings -> Workspace -> Search -> Disable Web Search Keywords
 - KDE Settings -> Workspace Behavior -> Activities -> Privacy -> Dont remember soft
-- KDE Settings -> Search for KRuuner -> settings -> uncheck all
+- KDE Settings -> Search for kRunner -> settings -> uncheck all
 
 - Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 - Software Center: Disable automatic updates, Add AUR support
