@@ -5,18 +5,22 @@
   - [Advance](#advance)
 - [Flush Network settings](#flush-network-settings)
 - [VPN over SSH](#vpn-over-ssh)
+  - [VPN Over Socks Proxy](#vpn-over-socks-proxy)
 - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
 - [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
 - [Outline Proxy + Jump Server](#outline-proxy--jump-server)
   - [Initialization](#initialization)
-  - [Outline](#outline)
+  - [Outline Server](#outline-server)
   - [Jump server](#jump-server)
-    - [Make startup script](#make-startup-script)
-    - [ShadowSocks config example ( rust version )](#shadowsocks-config-example--rust-version-)
+    - [With IPTables](#with-iptables)
+    - [Using SSH Forward](#using-ssh-forward)
+    - [Optimization](#optimization)
+    - [Confusion Traffic script](#confusion-traffic-script)
+  - [Client - ShadowSocks config example ( rust version )](#client---shadowsocks-config-example--rust-version-)
+- [OpenVpn Server](#openvpn-server)
 - [ShadowSocks Server](#shadowsocks-server)
   - [Server](#server)
   - [Client](#client)
-- [OpenVpn Server](#openvpn-server)
 - [WireGuard VPN Server](#wireguard-vpn-server)
   - [Server Configuration](#server-configuration)
   - [Peer Configuration](#peer-configuration)
@@ -380,6 +384,11 @@ sudo journalctl -f -u sshtunnel
 
 https://github.com/shadowsocks/shadowsocks/wiki/Optimizing-Shadowsocks
 
+#### Confusion Traffic script
+
+```bash
+```
+
 ### Client - ShadowSocks config example ( rust version )
 
 ```json
@@ -406,6 +415,33 @@ echo "nameserver 1.1.1.1" > /etc/resolv.conf
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 echo "nameserver 8.8.4.4" > /etc/resolv.conf
 resolvectl dns enp3s0 1.1.1.1
+```
+
+## OpenVpn Server
+
+```bash
+https://github.com/mlibre/openvpn-install
+curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
+chmod +x openvpn-install.sh
+sudo ./openvpn-install.sh
+port: default/443, tcp, compression no
+scp mlibre@51.89.88.80:/home/mlibre/mlibre.ovpn ~/
+
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+sudo resolvectl dns tun0 1.1.1.1
+sudo resolvectl dns enp3s0 1.1.1.1
+sudo resolvectl dns
+Global: 8.8.8.8
+Link 2 (enp3s0): 1.1.1.1
+Link 8 (tun0): 1.1.1.1
+
+
+Add these lines to your .ovpn file:
+
+socks-proxy 127.0.0.1 1080
+route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
+
 ```
 
 ## ShadowSocks Server
@@ -516,26 +552,6 @@ enable dns over proxy
 
 sudo resolvectl dns enp3s0 1.1.1.1
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
-```
-
-## OpenVpn Server
-
-```bash
-https://github.com/mlibre/openvpn-install
-curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
-chmod +x openvpn-install.sh
-sudo ./openvpn-install.sh
-port: default/443, tcp, compression no
-scp mlibre@51.89.88.80:/home/mlibre/mlibre.ovpn ~/
-
-sudo systemd-resolve --flush-caches
-sudo resolvectl flush-caches
-sudo resolvectl dns tun0 1.1.1.1
-sudo resolvectl dns enp3s0 1.1.1.1
-sudo resolvectl dns
-Global: 8.8.8.8
-Link 2 (enp3s0): 1.1.1.1
-Link 8 (tun0): 1.1.1.1
 ```
 
 ## WireGuard VPN Server

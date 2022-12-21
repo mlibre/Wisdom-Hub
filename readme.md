@@ -76,6 +76,7 @@ echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
 ### Changing monitor or screen Brightness and Gamma
 
 ```bash
+xrandr
 xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
 ```
 
@@ -588,7 +589,7 @@ blacklist radeon
 # pamac install wine-stable
 sudo pacman -S wine winetricks
 winetricks corefonts vcrun2013 vcrun2015 winhttp allcodecs d3dcompiler_42 d3dcompiler_43 d3dcompiler_47 d3dx9 dotnet dxvk quartz
-sudo setcap cap_net_raw+epi /usr/bin/wine 
+sudo setcap cap_net_raw+epi /usr/bin/wine
 ```
 
 ## Things to do after installing Windows 11
