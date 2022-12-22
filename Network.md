@@ -15,9 +15,10 @@
     - [With IPTables](#with-iptables)
     - [Using SSH Forward](#using-ssh-forward)
     - [Optimization](#optimization)
-    - [Confusion Traffic script](#confusion-traffic-script)
+    - [Fake Traffic script](#fake-traffic-script)
   - [Client - ShadowSocks config example ( rust version )](#client---shadowsocks-config-example--rust-version-)
 - [OpenVpn Server](#openvpn-server)
+- [V2Ray Server](#v2ray-server)
 - [ShadowSocks Server](#shadowsocks-server)
   - [Server](#server)
   - [Client](#client)
@@ -382,9 +383,9 @@ sudo journalctl -f -u sshtunnel
 
 #### Optimization
 
-https://github.com/shadowsocks/shadowsocks/wiki/Optimizing-Shadowsocks
+<https://github.com/shadowsocks/shadowsocks/wiki/Optimizing-Shadowsocks>
 
-#### Confusion Traffic script
+#### Fake Traffic script
 
 ```bash
 ```
@@ -449,9 +450,17 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
 ```
+
 1. Open Panel
-2. Create simple GRPC inbound
-3. Install https://github.com/Matsuridayo/nekoray/releases
+2. Create a simple GRPC inbound
+3. Install <https://github.com/Matsuridayo/nekoray/releases>
+
+  ```bash
+  aria2c -x 10 "https://github.com/MatsuriDayo/nekoray/releases/download/2.9/nekoray-2.9-2022-12-19-linux64.zip"
+  unzip nekoray-2.9-2022-12-19-linux64.zip
+  cd nekoray
+  ./nekoray
+  ```
 
 ## ShadowSocks Server
 
