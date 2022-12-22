@@ -316,6 +316,13 @@ sudo ufw status
 1. Download outline manager in your local linux system
 2. <https://getoutline.org/get-started/#step-1>
 3. Run and follow instructions
+4. Save the credentials
+
+  ```bash
+  ...
+  {"apiUrl":"https://41.249.49.191:13108/112-XA1EFIGPw","certSha256":"121"}
+  ```
+
 4. In server: open ssh, https and other ports + ports mentioned in outline manager settings:
 
   ```bash
@@ -490,6 +497,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/ma
 
 ### Nekoray
 
+- Nekoray Supports SS, Vmess and ....
 - Download from <https://github.com/Matsuridayo/nekoray/releases>
 
 ```bash
@@ -500,7 +508,7 @@ cd nekoray
 ```
 
 - Setup A DNS server using Systemctl
-- Open Nekoray -> Routing Settings -> remote DNS: 87.107.164.69 
+- Open Nekoray -> Routing Settings -> remote DNS: 87.107.164.69
 
 ## ShadowSocks Server
 
