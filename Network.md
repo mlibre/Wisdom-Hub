@@ -8,6 +8,9 @@
   - [VPN Over Socks Proxy](#vpn-over-socks-proxy)
 - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
 - [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
+- [Setup DNS Server](#setup-dns-server)
+  - [Using Systemd](#using-systemd)
+  - [Using dnsmasq](#using-dnsmasq)
 - [Outline Proxy + Jump Server](#outline-proxy--jump-server)
   - [Initialization](#initialization)
   - [Outline Server](#outline-server)
@@ -18,7 +21,8 @@
     - [Fake Traffic script](#fake-traffic-script)
   - [Client - ShadowSocks config example ( rust version )](#client---shadowsocks-config-example--rust-version-)
 - [OpenVpn Server](#openvpn-server)
-- [V2Ray Server](#v2ray-server)
+- [V2Ray VPN/Proxy Server](#v2ray-vpnproxy-server)
+  - [Nekoray](#nekoray)
 - [ShadowSocks Server](#shadowsocks-server)
   - [Server](#server)
   - [Client](#client)
@@ -171,6 +175,36 @@ chromium: search proxy in the setting. open system proxy settings. manual specif
 
 ```bash
 torsocks deluge
+tsokcs deluge
+```
+
+## Setup DNS Server
+
+### Using Systemd
+
+```bash
+sudo nano /etc/systemd/resolved.conf
+[Resolve]
+DNS=1.1.1.1 9.9.9.9#dns.quad9.net 8.8.8.8
+FallbackDNS=208.67.222.222 208.67.220.220
+#Domains=
+#LLMNR=no
+#MulticastDNS=no
+DNSSEC=yes
+DNSOverTLS=yes
+Cache=yes        
+DNSStubListener=yes
+ReadEtcHosts=yes
+
+sudo systemctl enable systemd-resolved.service
+sudo systemctl restart systemd-resolved.service
+sudo systemctl restart NetworkManager
+```
+
+### Using dnsmasq
+
+```bash
+# sudo apt install dnsmasq
 ```
 
 ## Outline Proxy + Jump Server
@@ -445,22 +479,28 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 
 ```
 
-## V2Ray Server
+## V2Ray VPN/Proxy Server
 
 ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
 ```
 
-1. Open Panel
-2. Create a simple GRPC inbound
-3. Install <https://github.com/Matsuridayo/nekoray/releases>
+*. Open Panel
+*. Create a simple vmess-GRPC inbound
 
-  ```bash
-  aria2c -x 10 "https://github.com/MatsuriDayo/nekoray/releases/download/2.9/nekoray-2.9-2022-12-19-linux64.zip"
-  unzip nekoray-2.9-2022-12-19-linux64.zip
-  cd nekoray
-  ./nekoray
-  ```
+### Nekoray
+
+- Download from <https://github.com/Matsuridayo/nekoray/releases>
+
+```bash
+aria2c -x 10 "https://github.com/MatsuriDayo/nekoray/releases/download/2.9/nekoray-2.9-2022-12-19-linux64.zip"
+unzip nekoray-2.9-2022-12-19-linux64.zip
+cd nekoray
+./nekoray
+```
+
+- Setup A DNS server using Systemctl
+- Open Nekoray -> Routing Settings -> remote DNS: 87.107.164.69 
 
 ## ShadowSocks Server
 
