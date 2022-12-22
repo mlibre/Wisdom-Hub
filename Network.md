@@ -444,6 +444,15 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 
 ```
 
+## V2Ray Server
+
+```bash
+bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
+```
+1. Open Panel
+2. Create simple GRPC inbound
+3. Install https://github.com/Matsuridayo/nekoray/releases
+
 ## ShadowSocks Server
 
 ### Server
