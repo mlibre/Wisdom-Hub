@@ -529,6 +529,7 @@ sudo systemd-resolve --flush-caches
 sudo resolvectl flush-caches
 sudo resolvectl dns tun0 1.1.1.1
 sudo resolvectl dns enp3s0 1.1.1.1
+sudo resolvectl dns enp5s0 1.1.1.1
 sudo resolvectl dns
 Global: 8.8.8.8
 Link 2 (enp3s0): 1.1.1.1
