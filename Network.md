@@ -515,6 +515,11 @@ echo "nameserver 8.8.4.4" > /etc/resolv.conf
 resolvectl dns enp3s0 1.1.1.1
 ```
 
+## Proxy udp traffic from ssh
+
+https://superuser.com/questions/53103/udp-traffic-through-ssh-tunnel
+
+
 ## OpenVpn Server
 
 ```bash
