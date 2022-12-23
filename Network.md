@@ -251,9 +251,13 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@51.89.88.80
 ## Both server and client
 sudo nano /etc/ssh/sshd_config
 PermitTunnel yes
-ClientAliveInterval 300
-ClientAliveCountMax 6
+# ClientAliveInterval 300
+# ClientAliveCountMax 6
 TCPKeepAlive yes
+AllowAgentForwarding yes
+AllowTcpForwarding yes
+PermitTunnel yes
+GatewayPorts yes
 
 sudo systemctl daemon-reload
 sudo systemctl restart sshd
@@ -261,6 +265,8 @@ sudo systemctl status sshd
 
 sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
+net.ipv4.tcp_fastopen=3
+fs.file-max = 5000000
 sudo sysctl -p
 
 sudo nano /etc/resolv.conf
@@ -346,26 +352,6 @@ sudo ufw status
 
 8. You can also open keys with ShadowSocks
 9. You can also extract URL information: <https://shadowsocks.org/guide/sip002.html#sip002-uri-scheme>
-10. SSHD configs:
-
-  ```bash
-  sudo nano /etc/ssh/sshd_config
-  AllowAgentForwarding yes
-  AllowTcpForwarding yes
-  TCPKeepAlive yes
-  PermitTunnel yes
-  GatewayPorts yes
-  ```
-
-11. SysCtl Settings:
-
-  ```bash
-  sudo nano /etc/sysctl.conf
-  net.ipv4.tcp_fastopen=3
-  net.ipv4.ip_forward=1
-
-  sudo sysctl -p
-  ```
 
 ### Jump server
 
