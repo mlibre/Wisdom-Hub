@@ -197,7 +197,7 @@ FallbackDNS=208.67.222.222 208.67.220.220
 #LLMNR=no
 #MulticastDNS=no
 DNSSEC=yes
-DNSOverTLS=yes
+DNSOverTLS=no
 Cache=yes        
 DNSStubListener=yes
 ReadEtcHosts=yes
@@ -487,6 +487,8 @@ sudo journalctl -f -u sshtunnel
   sudo sysctl -p
   ```
 
+- Disable Your Router DHCP Server
+
 #### ShadowSocks config example ( rust version )
 
 ```json
@@ -517,8 +519,7 @@ resolvectl dns enp3s0 1.1.1.1
 
 ## Proxy udp traffic from ssh
 
-https://superuser.com/questions/53103/udp-traffic-through-ssh-tunnel
-
+<https://superuser.com/questions/53103/udp-traffic-through-ssh-tunnel>
 
 ## OpenVpn Server
 
