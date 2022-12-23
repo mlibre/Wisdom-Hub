@@ -61,7 +61,7 @@ resolvectl dns enp1s0f0u6 1.1.1.1
 resolvectl dns
 ```
 
-### Advance
+### Using resolv.cong
 
 ```bash
 sudo nano /etc/resolv.conf
@@ -81,6 +81,8 @@ nameserver 208.67.220.220
 nameserver 8.8.8.8
 ```
 
+### Using systemd
+
 ```bash
 sudo nano /etc/systemd/resolved.conf
 [Resolve]
@@ -93,7 +95,10 @@ nameserver 208.67.220.220
 nameserver 8.8.8.8
 
 sudo systemctl enable systemd-resolved
+sudo systemctl restart systemd-resolved
 ```
+
+### dhclient
 
 ```bash
 sudo nano /etc/dhcp/dhclient.conf
@@ -517,8 +522,8 @@ https://github.com/mlibre/openvpn-install
 curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
 chmod +x openvpn-install.sh
 sudo ./openvpn-install.sh
-port: default/443, tcp, compression no
-scp mlibre@51.89.88.80:/home/mlibre/mlibre.ovpn ~/
+port: random, tcp, curreny system resolver, compression yes
+scp -P 2138 mlibre@87.107.164.69:/home/mlibre/mlibre.ovpn .
 
 sudo systemd-resolve --flush-caches
 sudo resolvectl flush-caches
