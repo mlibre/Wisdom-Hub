@@ -20,6 +20,7 @@
     - [Optimization](#optimization)
     - [Fake Traffic script](#fake-traffic-script)
   - [Client - ShadowSocks config example ( rust version )](#client---shadowsocks-config-example--rust-version-)
+    - [ShadowSocks config example ( rust version )](#shadowsocks-config-example--rust-version-)
 - [OpenVpn Server](#openvpn-server)
 - [V2Ray VPN/Proxy Server](#v2ray-vpnproxy-server)
   - [Nekoray](#nekoray)
@@ -345,8 +346,49 @@ sudo ufw status
 
 8. You can also open keys with ShadowSocks
 9. You can also extract URL information: <https://shadowsocks.org/guide/sip002.html#sip002-uri-scheme>
+10. SSHD configs:
+
+  ```bash
+  sudo nano /etc/ssh/sshd_config
+  AllowAgentForwarding yes
+  AllowTcpForwarding yes
+  TCPKeepAlive yes
+  PermitTunnel yes
+  GatewayPorts yes
+  ```
+
+11. SysCtl Settings:
+
+  ```bash
+  sudo nano /etc/sysctl.conf
+  net.ipv4.tcp_fastopen=3
+  net.ipv4.ip_forward=1
+
+  sudo sysctl -p
+  ```
 
 ### Jump server
+
+- SSHD configs:
+
+  ```bash
+  sudo nano /etc/ssh/sshd_config
+  AllowAgentForwarding yes
+  AllowTcpForwarding yes
+  TCPKeepAlive yes
+  PermitTunnel yes
+  GatewayPorts yes
+  ```
+
+- SysCtl Settings:
+
+  ```bash
+  sudo nano /etc/sysctl.conf
+  net.ipv4.tcp_fastopen=3
+  net.ipv4.ip_forward=1
+
+  sudo sysctl -p
+  ```
 
 #### With IPTables
 
@@ -432,6 +474,29 @@ sudo journalctl -f -u sshtunnel
 ```
 
 ### Client - ShadowSocks config example ( rust version )
+
+- SSHD configs:
+
+  ```bash
+  sudo nano /etc/ssh/sshd_config
+  AllowAgentForwarding yes
+  AllowTcpForwarding yes
+  TCPKeepAlive yes
+  PermitTunnel yes
+  GatewayPorts yes
+  ```
+
+- SysCtl Settings:
+
+  ```bash
+  sudo nano /etc/sysctl.conf
+  net.ipv4.tcp_fastopen=3
+  net.ipv4.ip_forward=1
+
+  sudo sysctl -p
+  ```
+
+#### ShadowSocks config example ( rust version )
 
 ```json
 {
