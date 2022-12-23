@@ -549,8 +549,9 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
 ```
 
-*. Open Panel
-*. Create a simple vmess-GRPC inbound
+- Open Panel
+- Create a simple vmess-GRPC inbound
+- Create a simple torjan-noTLS inbound
 
 ### Nekoray
 
@@ -562,6 +563,7 @@ aria2c -x 10 "https://github.com/MatsuriDayo/nekoray/releases/download/2.9/nekor
 unzip nekoray-2.9-2022-12-19-linux64.zip
 cd nekoray
 ./nekoray
+# Settings -> security -> Skip TLS certificate
 ```
 
 - Setup A DNS server using Systemctl
