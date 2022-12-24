@@ -424,6 +424,7 @@ sudo pamac install genymotion
 - Update System
 
   ```bash
+  echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
   sudo systemctl disable pamac-daemon
   sudo systemctl disable pamac-mirrorlist.timer
   sudo systemctl disable pamac-mirrorlist.service
