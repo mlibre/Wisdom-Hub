@@ -2,16 +2,18 @@
 
 - [Disable IPV6](#disable-ipv6)
 - [Setup DNS](#setup-dns)
-  - [Advance](#advance)
-- [Flush Network settings](#flush-network-settings)
+  - [Using resolv.conf](#using-resolvconf)
+  - [Using systemd](#using-systemd)
+  - [DNS Server - dhclient](#dns-server---dhclient)
+- [Flush System Settings](#flush-system-settings)
 - [VPN over SSH](#vpn-over-ssh)
-  - [VPN Over Socks Proxy](#vpn-over-socks-proxy)
+  - [VPN Over Socks  ( openVPN )](#vpn-over-socks---openvpn-)
 - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
-- [Open an application using tor over socks](#open-an-application-using-tor-over-socks)
+- [Open an application using over socks](#open-an-application-using-over-socks)
 - [Setup DNS Server](#setup-dns-server)
-  - [Using Systemd](#using-systemd)
+  - [Using Systemd](#using-systemd-1)
   - [Using dnsmasq](#using-dnsmasq)
-- [Outline Proxy + Jump Server](#outline-proxy--jump-server)
+- [Outline Proxy Server + Jump Server](#outline-proxy-server--jump-server)
   - [Initialization](#initialization)
   - [Outline Server](#outline-server)
   - [Jump server](#jump-server)
@@ -19,8 +21,10 @@
     - [Using SSH Forward](#using-ssh-forward)
     - [Optimization](#optimization)
     - [Fake Traffic script](#fake-traffic-script)
-  - [Client - ShadowSocks config example ( rust version )](#client---shadowsocks-config-example--rust-version-)
-    - [ShadowSocks config example ( rust version )](#shadowsocks-config-example--rust-version-)
+  - [Client-Side](#client-side)
+    - [ShadowSocks Json config example ( rust )](#shadowsocks-json-config-example--rust-)
+    - [ShadowSocks SS URL Format](#shadowsocks-ss-url-format)
+- [Proxy udp traffic from ssh](#proxy-udp-traffic-from-ssh)
 - [OpenVpn Server](#openvpn-server)
 - [V2Ray VPN/Proxy Server](#v2ray-vpnproxy-server)
   - [Nekoray](#nekoray)
@@ -439,6 +443,13 @@ sudo systemctl enable sshtunnel
 sudo systemctl restart sshtunnel
 sudo systemctl status sshtunnel
 sudo journalctl -f -u sshtunnel
+```
+
+#### Using socat
+
+```bash
+sudo socat -dd TCP4-LISTEN:8000,fork TCP4:Shadowsocks-server-ip:9000
+sudo socat -dd UDP-LISTEN:8000,fork UDP:Shadowsocks-server-ip:9000
 ```
 
 #### Optimization
