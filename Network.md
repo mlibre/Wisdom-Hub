@@ -538,7 +538,6 @@ Add these lines to your .ovpn file:
 
 socks-proxy 127.0.0.1 1080
 route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
-
 ```
 
 ## V2Ray VPN/Proxy Server
@@ -548,10 +547,9 @@ bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/ma
 ```
 
 - Open Panel
-- Create a simple vmess-GRPC inbound
-- Create a simple vmess-ws inbound
-- Create a simple vless-grpc inbound
-- Create a simple torjan-noTLS inbound
+- Create a vmess-GRPC inbound
+- Create a vmess-ws inbound
+- Create a vless-grpc inbound
 
 ### Nekoray
 
