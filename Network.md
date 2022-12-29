@@ -467,7 +467,7 @@ sudo journalctl -f -u sshtunnel
 ```bash
 ```
 
-### Client - ShadowSocks config example ( rust version )
+### Client
 
 - SSHD configs:
 
@@ -518,6 +518,12 @@ echo "nameserver 1.1.1.1" > /etc/resolv.conf
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 echo "nameserver 8.8.4.4" > /etc/resolv.conf
 resolvectl dns enp3s0 1.1.1.1
+```
+
+#### ShadowSocks SS URL Format
+
+```bash
+sslocal --server-url "ss://dsadsadasda@11.11.49.193:11111" --local-addr "127.0.0.1:1080"
 ```
 
 ## Proxy udp traffic from ssh
@@ -814,5 +820,6 @@ proxychains sudo ./hide.me connect free-unlimited.hideservers.net
 
 ```bash
 sudo systemctl stop firewalld.service
-proxychains yay -S aur/windscribe-bin
+yay -S aur/windscribe-bin
+# proxychains yay -S aur/windscribe-bin
 ```
