@@ -1,0 +1,49 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    "@babel/preset-typescript",
+    [
+      "@babel/preset-env",
+      {
+        "corejs": {
+          "version": "3",
+          "proposals": true
+        },
+        "useBuiltIns": "usage"
+      }
+    ]
+  ],
+  "plugins": [
+    "lodash",
+    "styled-components",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    "@babel/plugin-transform-destructuring",
+    "@babel/plugin-transform-regenerator",
+    "transform-class-properties"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "displayName": false
+          }
+        ]
+      ],
+      "ignore": [
+        "**/*.test.ts"
+      ]
+    },
+    "development": {
+      "ignore": [
+        "**/*.test.ts"
+      ]
+    }
+  }
+}

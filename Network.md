@@ -53,15 +53,7 @@ sudo sysctl -p
 
 ## Setup DNS
 
-```bash
-su
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-resolvectl dns enp3s0 1.1.1.1 
-resolvectl dns enp1s0f0u6 1.1.1.1
-resolvectl dns
-```
-
-### Using resolv.cong
+### Using resolv.conf
 
 ```bash
 sudo nano /etc/resolv.conf
@@ -69,6 +61,8 @@ nameserver 1.1.1.1
 nameserver 208.67.222.222
 nameserver 208.67.220.220
 nameserver 8.8.8.8
+
+# echo "nameserver 8.8.8.8" > /etc/resolv.conf
 ```
 
 ```bash
@@ -96,9 +90,13 @@ nameserver 8.8.8.8
 
 sudo systemctl enable systemd-resolved
 sudo systemctl restart systemd-resolved
+
+# resolvectl dns enp3s0 1.1.1.1 
+# resolvectl dns enp1s0f0u6 1.1.1.1
+# resolvectl dns
 ```
 
-### dhclient
+### DNS Server - dhclient
 
 ```bash
 sudo nano /etc/dhcp/dhclient.conf
@@ -114,38 +112,37 @@ resolvectl dns eth0 # make sure dns is set
 # permanent? 
 ```
 
-## Flush Network settings
+## Flush System Settings
 
 ```bash
-sudo killall sslocal; sudo ip link delete tun0;sudo wg-quick down wg0;sudo systemctl daemon-reload;sudo ip route flush table main;sudo iptables --flush;sudo systemctl restart network;sudo systemctl restart NetworkManager;sudo sysctl -p; sudo systemd-resolve --flush-caches; sudo resolvectl flush-caches
+sudo killall sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:;
+sudo killall steamwebhelper gitstatusd steam;
+sudo killall -9 sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:; sudo killall -9 steamwebhelper gitstatusd steam;
+pkill -f -e -c lutris-wrapper;
+pkill -f -e -c lutris;
+pkill -f -e -c wine;
+pkill -f -e -c steam;
+pkill -f -e -c sslocal;
+qdbus org.kde.KWin /Compositor suspend;
+sudo systemctl stop shadowsocks-rust-local@config;
 
-sudo killall sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper: steamwebhelper gitstatusd steam
-sudo killall -9 sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper: steamwebhelper gitstatusd steam
-pkill -f -e -c lutris-wrapper
-pkill -f -e -c lutris
-pkill -f -e -c wine
-pkill -f -e -c steam
-pkill -f -e -c sslocal
-qdbus org.kde.KWin /Compositor suspend
-sudo systemctl stop shadowsocks-rust-local@config
+sudo systemd-resolve --flush-caches;
+sudo resolvectl flush-caches;
+sudo ip link delete tun0;
+sudo wg-quick down wg0;
+sudo systemctl daemon-reload;
+sudo ip route flush table main;
+sudo iptables --flush;
+sudo systemctl restart network;
+sudo systemctl restart NetworkManager;
+sudo sysctl -p;
 
-sudo systemd-resolve --flush-caches
-sudo resolvectl flush-caches
-sudo ip link delete tun0
-sudo wg-quick down wg0
-sudo systemctl daemon-reload
-sudo ip route flush table main
-sudo iptables --flush
-sudo systemctl restart network
-sudo systemctl restart NetworkManager
-sudo sysctl -p
-
-sudo systemctl restart shadowsocks-rust-local@config
-sync; echo 3 > /proc/sys/vm/drop_caches
-rm ~/.cache/ksycoca5*
-kquitapp5 plasmashell
-killall plasmashell
-kstart5 plasmashell
+sudo systemctl restart shadowsocks-rust-local@config;
+sync; echo 3 > /proc/sys/vm/drop_caches;
+rm ~/.cache/ksycoca5*;
+kquitapp5 plasmashell;
+killall plasmashell;
+kstart5 plasmashell;
 ```
 
 ## VPN over SSH
@@ -158,7 +155,7 @@ sudo sshuttle -v -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
 # sudo sshuttle -vvvv -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
 ```
 
-### VPN Over Socks Proxy
+### VPN Over Socks  ( openVPN )
 
 > SS server address: 87.107.164.69
 
@@ -180,7 +177,7 @@ firefox: settings -> network -> socks5, proxy over dns
 chromium: search proxy in the setting. open system proxy settings. manual specified: socks proxy: localhost 1080
 ```
 
-## Open an application using tor over socks
+## Open an application using over socks
 
 ```bash
 torsocks deluge
@@ -213,10 +210,10 @@ sudo systemctl restart NetworkManager
 ### Using dnsmasq
 
 ```bash
-# sudo apt install dnsmasq
+sudo apt install dnsmasq
 ```
 
-## Outline Proxy + Jump Server
+## Outline Proxy Server + Jump Server
 
 - Server: NetherLand
 - OS: Ubuntu 22.04
@@ -230,12 +227,12 @@ adduser mlibre
 
 apt update
 apt dist-upgrade
-apt install htop sudo psmisc net-tools curl ntpdate ufw
-sudo apt purge snapd
+apt install htop sudo psmisc net-tools curl ntpdate
+sudo apt purge snapd ufw
 sudo ntpdate time.nist.gov
 
 nano /etc/sudoers
-mlibre  ALL=(ALL:ALL) ALL
+mlibre  ALL=(ALL:ALL) NOPASSWD: ALL
 
 nano /etc/hosts
 127.0.0.1 mlibre
@@ -283,31 +280,9 @@ nameserver 208.67.222.222
 nameserver 208.67.220.220
 nameserver 8.8.8.8
 
-# sudo apt install dnsmasq
-
 sudo ufw allow 9090/udp
 sudo ufw allow 9090/tcp
-sudo ufw allow 1194
-sudo ufw allow 1194/tcp
-sudo ufw allow 1194/udp
-sudo ufw allow 51820/udp
-sudo ufw allow 51820/tcp
-sudo ufw allow 51449
-sudo ufw allow 51449/tcp
-sudo ufw allow 51449/udp
-sudo ufw allow 64920
-sudo ufw allow 64920/udp
-sudo ufw allow 64920/tcp
-sudo ufw allow 53263
-sudo ufw allow 53263/udp
-sudo ufw allow 53263/tcp
-sudo ufw allow 56777/udp
-sudo ufw allow 56777/tcp
-sudo ufw allow 53/tcp
-sudo ufw allow 53/udp
-sudo ufw allow 80/udp
-sudo ufw allow 80/tcp
-sudo ufw allow 22/tcp
+sudo ufw allow 9090
 sudo ufw allow OpenSSH
 sudo ufw allow dns
 sudo ufw allow 5353/tcp
@@ -359,30 +334,33 @@ sudo ufw status
   ```
 
 8. You can also open keys with ShadowSocks
-9. You can also extract URL information: <https://shadowsocks.org/guide/sip002.html#sip002-uri-scheme>
+9. You can extract the URI information: using [This script](.assets/ss-format-parse.js)
+10. Run [BBR script](https://github.com/teddysun/across/blob/master/bbr.sh)
 
 ### Jump server
 
 - SSHD configs:
 
-  ```bash
-  sudo nano /etc/ssh/sshd_config
-  AllowAgentForwarding yes
-  AllowTcpForwarding yes
-  TCPKeepAlive yes
-  PermitTunnel yes
-  GatewayPorts yes
-  ```
+```bash
+sudo nano /etc/ssh/sshd_config
+AllowAgentForwarding yes
+AllowTcpForwarding yes
+TCPKeepAlive yes
+PermitTunnel yes
+GatewayPorts yes
+```
 
 - SysCtl Settings:
 
-  ```bash
-  sudo nano /etc/sysctl.conf
-  net.ipv4.tcp_fastopen=3
-  net.ipv4.ip_forward=1
+```bash
+sudo nano /etc/sysctl.conf
+net.ipv4.tcp_fastopen=3
+net.ipv4.ip_forward=1
 
-  sudo sysctl -p
-  ```
+sudo sysctl -p
+```
+
+- [BBR script](https://github.com/teddysun/across/blob/master/bbr.sh)
 
 #### With IPTables
 
@@ -390,7 +368,6 @@ sudo ufw status
 sudo apt install iptables-persistent
 sudo nano /etc/iptables/rules.v4
 
-# Generated by iptables-save v1.8.4 on Sun Nov 27 20:17:17 2022
 *filter
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
@@ -470,35 +447,32 @@ sudo journalctl -f -u sshtunnel
 
 #### Fake Traffic script
 
-```bash
-```
+> [namizun](https://github.com/malkemit/namizun)
 
-### Client
+### Client-Side
 
 - SSHD configs:
 
-  ```bash
-  sudo nano /etc/ssh/sshd_config
-  AllowAgentForwarding yes
-  AllowTcpForwarding yes
-  TCPKeepAlive yes
-  PermitTunnel yes
-  GatewayPorts yes
-  ```
+```bash
+sudo nano /etc/ssh/sshd_config
+AllowAgentForwarding yes
+AllowTcpForwarding yes
+TCPKeepAlive yes
+PermitTunnel yes
+GatewayPorts yes
+```
 
 - SysCtl Settings:
 
-  ```bash
-  sudo nano /etc/sysctl.conf
-  net.ipv4.tcp_fastopen=3
-  net.ipv4.ip_forward=1
+```bash
+sudo nano /etc/sysctl.conf
+net.ipv4.tcp_fastopen=3
+net.ipv4.ip_forward=1
 
-  sudo sysctl -p
-  ```
+sudo sysctl -p
+```
 
-- Disable Your Router DHCP Server
-
-#### ShadowSocks config example ( rust version )
+#### ShadowSocks Json config example ( rust )
 
 ```json
 {
@@ -516,14 +490,6 @@ sudo journalctl -f -u sshtunnel
     "local_address": "127.0.0.1",
     "fast_open": true
 }
-```
-
-```bash
-su
-echo "nameserver 1.1.1.1" > /etc/resolv.conf
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-echo "nameserver 8.8.4.4" > /etc/resolv.conf
-resolvectl dns enp3s0 1.1.1.1
 ```
 
 #### ShadowSocks SS URL Format
