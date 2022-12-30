@@ -509,10 +509,6 @@ sudo sysctl -p
 sslocal --server-url "ss://dsadsadasda@11.11.49.193:11111" --local-addr "127.0.0.1:1080"
 ```
 
-## Proxy udp traffic from ssh
-
-<https://superuser.com/questions/53103/udp-traffic-through-ssh-tunnel>
-
 ## OpenVpn Server
 
 ```bash
@@ -739,6 +735,10 @@ sudo ip route add 192.168.1.0/24 dev ppp0
 # ppp0: vpn name
 # 192.168.1.0: IP range
 ```
+
+## Proxy udp traffic from ssh
+
+<https://superuser.com/questions/53103/udp-traffic-through-ssh-tunnel>
 
 ## Free VPNs
 
