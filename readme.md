@@ -557,6 +557,8 @@ sudo systemctl disable --now clamav-daemon
   - Theme: Breath (customized, a bit darker)
   - Shell: Manjaro zsh
 
+- Steam: Allow auto-update only between 1AM - 11AM
+
 ### Install AMDGPU-PRO
 
 ```bash
