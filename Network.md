@@ -539,13 +539,36 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 ## V2Ray VPN/Proxy Server
 
 ```bash
+sudo su
+cd
 bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
+x-ui
+# Open all ports
+# install BBR
+# Install ACME, domain certificate (no.domain.ga)
+ls
+acme.sh --info
+acme.sh --list
+# lsof -i :80
 ```
 
-- Open Panel
+- Add domain to the cloudflare
+  - SSL/TLS: Full (strict)
+  - Disable DNSSEC
+  - Enable TLS 1.3
+  - Add a "A" DNS record: no.domain.ga, DNS only ( no proxy )
+  - Add a "A" DNS record: domain.ga, proxy
+
+- Open Panel (http://no.cloudfale-dns-cheker.ga:54924/xui/inbounds)
 - Create a vmess-GRPC inbound
 - Create a vmess-ws inbound
 - Create a vless-grpc inbound
+- Create a Trojan-444-xtls-rpx-direct-xtls-filepath-snifing
+
+- Create a free domain from freenom.com
+  > Use Shekan DNS, Use fake american IP address
+
+- Get a valid certificate using certbot
 
 ### Nekoray
 
