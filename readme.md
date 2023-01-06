@@ -405,7 +405,9 @@ rm -r ~/.wine
 sudo pamac install genymotion
 ```
 
-### Make windows 11 bootable usb
+## Make windows 11 boatable usb
+
+### WoeUsb
 
 ```bash
 sudo pacman -Suy p7zip python-pip python-wxpython
@@ -414,17 +416,25 @@ sudo pip3 install .
 sudo woeusb --workaround-skip-grub --target-filesystem NTFS --device ~/Win11_22H2_English_x64v1.iso  /dev/sdb
 ```
 
+## Win2USB
+
+```bash
+https://github.com/ValdikSS/windows2usb
+chmod +x windows2usb*
+./windows2usb-0.2.4-x86_64.AppImage /dev/sdb ~/Win11_22H2_English_x64v1.iso gpt+uefintfs
+```
+
 ## Things to do before installing Manjaro/Arch Linux
 
 - Backup important data. Recovery-keys, Passwords, Postman and ...  
 
-  ```bash
-  cp -r /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/H/OS/caches/
-  cp $HISTFILE /run/media/mlibre/H/OS/caches/
-  rsync -aAXHv ~/my_data/ /run/media/mlibre/H/OS/my_data/
-  # ./data_rsync.bash
-  # Copy systemctl units
-  ```
+```bash
+cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/caches
+cp $HISTFILE /run/media/mlibre/D/caches/
+rsync -aAXHv ~/my_data/ /run/media/mlibre/H/OS/my_data/
+# ./data_rsync.bash
+# Copy systemctl units
+```
 
 - Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
 
