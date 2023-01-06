@@ -458,7 +458,8 @@ sudo cp -r /etc /run/media/mlibre/D/caches
   ```bash
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
-  sudo pacman -S telegram-desktop unzip
+  sudo pacman -S telegram-desktop unzip sudo thermald
+  sudo systemctl enable --now thermald.service
   ```
 
 - Import Data
