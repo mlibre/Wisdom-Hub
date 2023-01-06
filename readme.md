@@ -432,6 +432,7 @@ chmod +x windows2usb*
 cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/caches
 cp $HISTFILE /run/media/mlibre/D/caches/
 rsync -aAXHv ~/my_data/ /run/media/mlibre/H/OS/my_data/
+sudo cp -r /etc /run/media/mlibre/D/caches
 # ./data_rsync.bash
 # Copy systemctl units
 ```
