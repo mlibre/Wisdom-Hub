@@ -565,11 +565,11 @@ sudo rm /etc/xdg/autostart/print-applet.desktop
 # sudo firewall-cmd --permanent --add-port=30303/tcp
 # sudo firewall-cmd --permanent --add-port=30303/udp
 
-sudo systemctl restart --now clamav-daemon
-sudo freshclam
-clamscan --recursive --infected /home
-sudo systemctl disable --now clamav-freshclam
-sudo systemctl disable --now clamav-daemon
+# sudo systemctl restart --now clamav-daemon
+# sudo freshclam
+# clamscan --recursive --infected /home
+# sudo systemctl disable --now clamav-freshclam
+# sudo systemctl disable --now clamav-daemon
 # sudo systemctl enable --now clamav-daemon
 # sudo systemctl enable --now clamav-freshclam
 ```
