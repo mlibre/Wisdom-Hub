@@ -405,6 +405,15 @@ rm -r ~/.wine
 sudo pamac install genymotion
 ```
 
+### Make windows 11 bootable usb
+
+```bash
+sudo pacman -Suy p7zip python-pip python-wxpython
+git clone https://github.com/WoeUSB/WoeUSB-ng.git
+sudo pip3 install .
+sudo woeusb --workaround-skip-grub --target-filesystem NTFS --device ~/Win11_22H2_English_x64v1.iso  /dev/sdb
+```
+
 ## Things to do before installing Manjaro/Arch Linux
 
 - Backup important data. Recovery-keys, Passwords, Postman and ...  
