@@ -279,6 +279,7 @@ journalctl -u gamma
 - ls ~/.config/lxsession/LXDE/autostart
 - crontab -e
 - sudo crontab -e
+- ls -rla /etc/cron.*
 
 - nano .bash_profile
 - nano .bashrc
@@ -448,18 +449,19 @@ sudo cp -r /etc /run/media/mlibre/D/caches
   sudo systemctl disable pamac-daemon
   sudo systemctl disable pamac-mirrorlist.timer
   sudo systemctl disable pamac-mirrorlist.service
-  sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro
-  balooctl disable && balooctl purge &&
+  sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma
   ```
 
 - Enable Pacman parallel download
 - Upgrade
 
   ```bash
+  pamac update --force-refresh
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
   sudo pacman -S telegram-desktop unzip sudo thermald
   sudo systemctl enable --now thermald.service
+  pamac install visual-studio-code-bin onlyoffice-bin
   ```
 
 - Import Data
@@ -472,12 +474,6 @@ sudo cp -r /etc /run/media/mlibre/D/caches
 
 - Make an XDG autostart script for gamma adjustment
 - Put the gamma script in the `.bashrc` and `.zshrc` as well
-- Install vscode
-
-  ```bash
-  pamac update --force-refresh
-  pamac install visual-studio-code-bin onlyoffice-bin
-  ```
 
 - Install ProtonVPN, mailspring, shadowsocks
   
@@ -546,22 +542,28 @@ sudo nano /etc/sysctl.conf
 - Softwares
 
 ```bash
-sudo pacman -S qbittorrent deluge clamav firefox gimp gparted libreoffice-fresh meld vlc ntfs-3g firewalld aria2 ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime
-# sudo pacman -S electrum
+sudo pacman -S qbittorrent firefox libreoffice-fresh meld vlc ntfs-3g  aria2 ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime
+# sudo pacman -S electrum gimp gparted firewalld clamav deluge
 
 sudo systemctl disable bluetooth.service
 sudo systemctl disable tor.service
 sudo systemctl disable samba
 sudo systemctl disable cups
+balooctl disable && balooctl purge &&
+sudo rm /etc/cron.d/0hourly
+sudo rm /etc/xdg/autostart/baloo_file.desktop
+sudo rm /etc/xdg/autostart/pamac-tray-budgie.desktop
+sudo rm /etc/xdg/autostart/pamac-tray.desktop
+sudo rm /etc/xdg/autostart/msm_kde_notifier.desktop
+sudo rm /etc/xdg/autostart/org.gnome.SettingsDaemon*
+sudo rm /etc/xdg/autostart/print-applet.desktop
 
-sudo systemctl enable firewalld
-sudo systemctl restart firewalld
+# sudo systemctl enable firewalld
+# sudo systemctl restart firewalld
 
-sudo firewall-cmd --permanent --add-service=https
-sudo firewall-cmd --permanent --add-port=30303/tcp
-sudo firewall-cmd --permanent --add-port=30303/udp
-
-
+# sudo firewall-cmd --permanent --add-service=https
+# sudo firewall-cmd --permanent --add-port=30303/tcp
+# sudo firewall-cmd --permanent --add-port=30303/udp
 
 sudo systemctl restart --now clamav-daemon
 sudo freshclam
