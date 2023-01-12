@@ -598,8 +598,8 @@ sudo nano /etc/shadowsocks-libev/config.json
     "mode":"tcp_and_udp",
     "server_port":9090,
     "password":"password",
-    "timeout":86400,
     "method":"chacha20-ietf-poly1305",
+    "timeout":1000,
     "nameserver":"1.1.1.1",
     "fast_open": true
 }
@@ -648,13 +648,15 @@ sudo nano /etc/shadowsocks/config.json
           "port": 9090,
           "password": "password",
           "method":"chacha20-ietf-poly1305",
-          "timeout": 86400
+          "timeout": 1000
       }
     ],
     "mode":"tcp_and_udp",
     "local_port":1080,
     "local_address": "127.0.0.1",
-    "fast_open": true
+    "fast_open": true,
+    "dns": "1.1.1.1",
+    "remote_dns_address": "8.8.8.8"
 }
 
 # sudo systemctl disable shadowsocks-rust-local@config
@@ -663,7 +665,8 @@ sudo nano /etc/shadowsocks/config.json
 # sudo systemctl status shadowsocks-rust-local@config
 # journalctl -f -u shadowsocks-rust-local@config
 
-# sslocal  -d -c /etc/shadowsocks/config.json
+# sslocal -c /etc/shadowsocks/config.json -d
+# sslocal --config /etc/shadowsocks-rust/germany.json -v --outbound-bind-interface lo --tun-interface-name tun0
 
 sudo nano /lib/systemd/system/shadowsocks-rust-local@.service
 [Unit]
