@@ -544,6 +544,7 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
   - Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network tab
   - Add a "A" DNS record: domain.ga, DNS only ( no proxy )
   - Add a "A" DNS record: portal.domain.ga, proxy
+  - Enable Development mode
 
 - XUI Panel
 
