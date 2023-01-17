@@ -538,6 +538,15 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 
 ## V2Ray VPN/Proxy Server
 
+- Add domain to the cloudflare
+  - SSL/TLS: Full
+  - Disable DNSSEC
+  - Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network tab
+  - Add a "A" DNS record: domain.ga, DNS only ( no proxy )
+  - Add a "A" DNS record: portal.domain.ga, proxy
+
+- XUI Panel
+
 ```bash
 sudo su
 cd
@@ -545,30 +554,21 @@ bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/ma
 x-ui
 # Open all ports
 # install BBR
-# Install ACME, domain certificate (no.domain.ga)
+# Install ACME, certificate the root domain using cloudflare APIs
+# Set Panel port 8443
+# Set the certs address for panel
 ls
 acme.sh --info
 acme.sh --list
 # lsof -i :80
 ```
 
-- Add domain to the cloudflare
-  - SSL/TLS: Full (strict)
-  - Disable DNSSEC
-  - Enable TLS 1.3
-  - Add a "A" DNS record: no.domain.ga, DNS only ( no proxy )
-  - Add a "A" DNS record: domain.ga, proxy
+- Open Panel (https://domain.ga:8443/xui/inbounds)
+- Create a MC-vmess-2086-ws inbound ( image included )
 
-- Open Panel (http://no.cloudfale-dns-cheker.ga:54924/xui/inbounds)
-- Create a vmess-GRPC inbound
-- Create a vmess-ws inbound
-- Create a vless-grpc inbound
-- Create a Trojan-444-xtls-rpx-direct-xtls-filepath-snifing
-
-- Create a free domain from freenom.com
-  > Use Shekan DNS, Use fake american IP address
-
-- Get a valid certificate using certbot
+<!-- - Create a free domain from freenom.com
+  > Use Shekan DNS, Use fake american IP address -->
+<!-- - Get a valid certificate using certbot -->
 
 ### Nekoray
 
@@ -583,8 +583,7 @@ cd nekoray
 # Settings -> security -> Skip TLS certificate
 ```
 
-- Setup A DNS server using Systemctl
-- Open Nekoray -> Routing Settings -> remote DNS: 87.107.164.69
+- Open Nekoray -> Routing Settings -> remote DNS: localhost
 
 ## ShadowSocks Server
 
