@@ -566,7 +566,7 @@ acme.sh --list
 
 - Open Panel (https://domain.ga:8443/xui/inbounds)
 - Create a MC-vmess-2086-ws inbound ( image included )
-
+- In firefox: Check Proxy DNS when using SOCKS v5
 <!-- - Create a free domain from freenom.com
   > Use Shekan DNS, Use fake american IP address -->
 <!-- - Get a valid certificate using certbot -->
