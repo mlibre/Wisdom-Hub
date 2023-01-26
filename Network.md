@@ -544,6 +544,8 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
   - Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network tab
   - Add a "A" DNS record: domain.ga, DNS only ( no proxy )
   - Add a "A" DNS record: portal.domain.ga, proxy
+  - Add a "AAAA" DNS record: v6.domain.ga, DNS
+  - Add a "AAAA" DNS record: iv6.domain.ga, proxy
   - Enable Development mode
 
 - XUI Panel
@@ -567,6 +569,7 @@ acme.sh --list
 - Open Panel (https://domain.ga:8443/xui/inbounds)
 - Create a MC-vmess-2086-ws inbound ( image included )
 - In firefox: Check Proxy DNS when using SOCKS v5
+
 <!-- - Create a free domain from freenom.com
   > Use Shekan DNS, Use fake american IP address -->
 <!-- - Get a valid certificate using certbot -->
@@ -582,6 +585,8 @@ unzip nekoray-2.9-2022-12-19-linux64.zip
 cd nekoray
 ./nekoray
 # Settings -> security -> Skip TLS certificate
+# paste vmess setting. Address: portal.domain.ga, host: portal.domain.ga
+# paste vmess setting. Address: iv6.domain.ga, host: iv6.domain.ga
 ```
 
 - Open Nekoray -> Routing Settings -> remote DNS: localhost
