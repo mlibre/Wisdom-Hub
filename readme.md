@@ -72,20 +72,33 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 ### Automatic Shutdown
 
 ```bash
-sudo shutdown -P +220 ## in 220 minutes, 3:30 hours
+# Schedule a shutdown for 220 minutes (3 hours and 30 minutes) in the future
+sudo shutdown -P +220
+
+# Shutdown the system immediately
+sudo shutdown -h now
 ```
 
 ### Bash case-insensitive auto completion
 
 ```bash
+# Add the following line to the /etc/inputrc file to enable case-insensitive auto completion
 echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
-# echo 'set completion-ignore-case On' >> /etc/inputrc # as root
+
+# or as root
+echo 'set completion-ignore-case On' >> /etc/inputrc 
+
+# or for current user only
+echo "set completion-ignore-case on" >> ~/.inputrc
 ```
 
 ### Changing monitor or screen Brightness and Gamma
 
 ```bash
+# List available outputs
 xrandr
+
+# Change the brightness and gamma of the HDMI-A-0 output
 xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
 ```
 
@@ -118,6 +131,7 @@ update-grub
 #### Second method
 
 ```bash
+# Mount the file system and efi partition
 sudo mount /dev/nvme0n1p4 /mnt
 sudo mount --bind /dev /mnt/dev
 sudo mount --bind /dev/pts /mnt/dev/pts
@@ -125,6 +139,8 @@ sudo mount --bind /proc /mnt/proc
 sudo mount --bind /sys /mnt/sys
 sudo mkdir /efi
 sudo mount /dev/nvme0n1p1 /efi
+
+# Install grub and update grub configuration
 sudo grub-install --root-directory=/mnt/ /dev/nvme0 --efi-directory=/efi --target=x86_64-efi --recheck
 sudo chroot /mnt
 sudo blkid -s UUID -o value /dev/nvme0n1p1
@@ -135,16 +151,18 @@ sudo update-grub
 ### Using proxies
 
 ```bash
+# Use proxychains to run yay, git, npm and pacman
 proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
 proxychains git clone https://github.com/boypt/vmess2json.git
 sudo proxychains npm -g install v2ray-tools
 sudo proxychains pacman -Syyuu
 
+# Set the http and https proxy environment variables
 export http_proxy=socks5://127.0.0.1:1080
 export https_proxy=socks5://127.0.0.1:1080
 ```
 
-> proxychains config
+#### proxychains config
 
 ```bash
 sudo nano /etc/proxychains.conf 
@@ -158,10 +176,16 @@ socks5  127.0.0.1 1080
 ### Rsync
 
 ```bash
-# rsync -avz /path/to/source /path/to/destination
-# rsync -avz /path/to/local/directory user@remote.server:/path/to/remote/directory
-# rsync -avz --delete /path/to/local/directory user@remote.server:/path/to/remote/directory
+# Backup local directory to another location
+rsync -avz /path/to/source /path/to/destination
 
+# Backup local directory to remote server
+rsync -avz /path/to/local/directory user@remote.server:/path/to/remote/directory
+
+# Backup local directory to remote server, deleting files on remote server if they are deleted locally
+rsync -avz --delete /path/to/local/directory user@remote.server:/path/to/remote/directory
+
+# Create a full backup of the system to an external drive
 sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
 ```
 
