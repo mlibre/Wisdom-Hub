@@ -220,6 +220,7 @@ sudo tune2fs -f -O "^has_journal" /dev/sda2
 ```bash
 sudo nano /etc/systemd/journald.conf
 SystemMaxUse=100M
+sudo systemctl restart systemd-journald
 ```
 
 ## XDG
