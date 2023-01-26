@@ -2,15 +2,17 @@
 
 Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 
-- [Network](Network.md)
-- [Tricks](#tricks)
+- [Tips and Tricks](#tips-and-tricks)
   - [Automatic Shutdown](#automatic-shutdown)
   - [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
   - [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
   - [Resetting sound, audio](#resetting-sound-audio)
   - [Fixing broken grub](#fixing-broken-grub)
+    - [EZ method](#ez-method)
+    - [Second method](#second-method)
   - [Using proxies](#using-proxies)
-- [Backup using Rsync](#backup-using-rsync)
+- [Backup](#backup)
+  - [Rsync](#rsync)
 - [Performance](#performance)
   - [Disable Linux Watchdogs, compaction and more](#disable-linux-watchdogs-compaction-and-more)
   - [Improve fstab performance](#improve-fstab-performance)
@@ -18,14 +20,14 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
   - [Journal Size](#journal-size)
 - [XDG](#xdg)
   - [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
-- [Systemd, systemctl](#systemd-systemctl)
+- [Systemd](#systemd)
   - [Unit files' locations](#unit-files-locations)
   - [Analyzing](#analyzing)
   - [Reloading](#reloading)
   - [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
 - [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
 - [Font](#font)
-  - [Location](#location)
+  - [Locations](#locations)
   - [List](#list)
   - [Fira Code](#fira-code)
 - [Vulkan](#vulkan)
@@ -40,25 +42,32 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
   - [Proxy per game](#proxy-per-game)
   - [Unexpected error](#unexpected-error)
 - [Install Genymotoin Android emulator](#install-genymotoin-android-emulator)
-- [Things to do before installing Manjaro/Arch Linux](#things-to-do-before-installing-manjaroarch-linux)
-- [Things to do after installing Manjaro/Arch Linux](#things-to-do-after-installing-manjaroarch-linux)
+- [Windows 11](#windows-11)
+  - [Make boatable usb](#make-boatable-usb)
+    - [WoeUsb](#woeusb)
+    - [Win2USB](#win2usb)
+    - [Things to do after installing Windows 11](#things-to-do-after-installing-windows-11)
+- [Manjaro/Arch Linux](#manjaroarch-linux)
+  - [Things to do before installing](#things-to-do-before-installing)
+  - [Things to do after installing](#things-to-do-after-installing)
   - [Install AMDGPU-PRO](#install-amdgpu-pro)
   - [Uninstall AMDGPU-PRO](#uninstall-amdgpu-pro)
   - [Blacklist Radeon](#blacklist-radeon)
-- [Things to do after installing Windows 11](#things-to-do-after-installing-windows-11)
+  - [Install Wine](#install-wine)
 - [Install a new os on the phone](#install-a-new-os-on-the-phone)
   - [Backup data](#backup-data)
   - [Restore](#restore)
   - [Enable Developer options](#enable-developer-options)
-  - [Install odin tools for Samsung >= 3.14](#install-odin-tools-for-samsung--314)
+  - [Install odin tools for Samsung \>= 3.14](#install-odin-tools-for-samsung--314)
   - [Install samsung driver](#install-samsung-driver)
   - [Install adb](#install-adb)
   - [Download TWRP](#download-twrp)
     - [convert it to .md5](#convert-it-to-md5)
   - [Run Odin as administrator](#run-odin-as-administrator)
   - [Install bluestack](#install-bluestack)
+  - [Youtube-dl](#youtube-dl)
 
-## Tricks
+## Tips and Tricks
 
 ### Automatic Shutdown
 
@@ -144,7 +153,9 @@ socks5  127.0.0.1 1080
 # proxy_dns
 ```
 
-## Backup using Rsync
+## Backup
+
+### Rsync
 
 ```bash
 # rsync -avz /path/to/source /path/to/destination
@@ -224,7 +235,7 @@ xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70
 sudo chmod a+rwx /usr/local/bin/gamma_on_startup
 ```
 
-## Systemd, systemctl
+## Systemd
 
 ### Unit files' locations
 
@@ -430,9 +441,11 @@ rm -r ~/.wine
 sudo pamac install genymotion
 ```
 
-## Make windows 11 boatable usb
+## Windows 11
 
-### WoeUsb
+### Make boatable usb
+
+#### WoeUsb
 
 ```bash
 sudo pacman -Suy p7zip python-pip python-wxpython
@@ -441,7 +454,7 @@ sudo pip3 install .
 sudo woeusb --workaround-skip-grub --target-filesystem NTFS --device ~/Win11_22H2_English_x64v1.iso  /dev/sdb
 ```
 
-## Win2USB
+#### Win2USB
 
 ```bash
 https://github.com/ValdikSS/windows2usb
@@ -449,7 +462,35 @@ chmod +x windows2usb*
 ./windows2usb-0.2.4-x86_64.AppImage /dev/sdb ~/Win11_22H2_English_x64v1.iso gpt+uefintfs
 ```
 
-## Things to do before installing Manjaro/Arch Linux
+#### Things to do after installing Windows 11
+
+- Download and install all the updates
+- Enable Ransomware protection
+- Download DimScreen, Copy it to the download folder. Open. click on the settings. set brightness to 20%. Make a shortcut to the desktop
+- search for gamma calibration in windows settings. set it to minimum
+- Adjust date and time: auto. Timezone tehran +3:30
+- Downloading updates active hours: 24 hours format. 1->11
+- Disable all data usages settings in privacy and security
+- uninstall mail, teams, one drive. xbox, facebook, microsoft todo, sticky notes, tips, weather
+- Install firefox and login
+- Install protonVPN
+- personalize: sunrise
+- network connection: metered connection
+- Display: 3840x2160, 200%
+- Steam: add your games' location to the Games' folder library. make it as default
+- Steam: If your games are in a `NTFS` file system, follow [this](https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows) to make game compatible with Linux.
+- Pause windows updates for 5 weeks
+- Check windows startups apps
+- App store: disable automatic update
+- Leave from "AMD user experience program". AMD settings -> last tab -> last option
+- windows features: WSL, virtual machine, hyper-v (for android and linux apps)
+- wsl --update
+- wsl --install -d Ubuntu
+- Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable
+
+## Manjaro/Arch Linux
+
+### Things to do before installing
 
 - Backup important data. Recovery-keys, Passwords, Postman and ...  
 
@@ -457,16 +498,16 @@ chmod +x windows2usb*
 cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/caches
 cp $HISTFILE /run/media/mlibre/D/caches/
 rsync -aAXHv ~/my_data/ /run/media/mlibre/H/OS/my_data/
-sudo cp -r /etc /run/media/mlibre/D/caches
+sudo cp -r /etc /run/media/mlibre/D/caches/
 # ./data_rsync.bash
 # Copy systemctl units
 ```
 
 - Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
 
-## Things to do after installing Manjaro/Arch Linux
+### Things to do after installing
 
-- Update System
+- Remove and disable unnecessary packages
 
   ```bash
   echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
@@ -476,7 +517,13 @@ sudo cp -r /etc /run/media/mlibre/D/caches
   sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma
   ```
 
-- Enable Pacman parallel download
+- Pacman downloads parallel
+
+  ```bash
+  sudo nano /etc/pacman.conf
+  ParallelDownloads = 5
+  ```
+  
 - Upgrade
 
   ```bash
@@ -527,13 +574,6 @@ sudo cp -r /etc /run/media/mlibre/D/caches
 - Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 - Software Center: Disable automatic updates, Add AUR support
 - Remove Virtual Desktops
-- Pacman downloads parallel
-
-  ```bash
-  sudo nano /etc/pacman.conf
-  ParallelDownloads = 5
-  ```
-
 - Remembers sudo password
 
   ```bash
@@ -643,31 +683,6 @@ winetricks corefonts vcrun2013 vcrun2015 winhttp allcodecs d3dcompiler_42 d3dcom
 sudo setcap cap_net_raw+epi /usr/bin/wine
 ```
 
-## Things to do after installing Windows 11
-
-- Download and install all the updates
-- Enable Ransomware protection
-- Download DimScreen, Copy it to the download folder. Open. click on the settings. set brightness to 20%. Make a shortcut to the desktop
-- search for gamma calibration in windows settings. set it to minimum
-- Adjust date and time: auto. Timezone tehran +3:30
-- Downloading updates active hours: 24 hours format. 1->11
-- Disable all data usages settings in privacy and security
-- uninstall mail, teams, one drive. xbox, facebook, microsoft todo, sticky notes, tips, weather
-- Install firefox and login
-- Install protonVPN
-- personalize: sunrise
-- network connection: metered connection
-- Display: 3840x2160, 200%
-- Steam: add your games' location to the Games' folder library. make it as default
-- Steam: If your games are in a `NTFS` file system, follow [this](https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows) to make game compatible with Linux.
-- Pause windows updates for 5 weeks
-- Check windows startups apps
-- App store: disable automatic update
-- Leave from "AMD user experience program". AMD settings -> last tab -> last option
-- windows features: WSL, virtual machine, hyper-v (for android and linux apps)
-- wsl --update
-- wsl --install -d Ubuntu
-- Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable
 
 ## Install a new os on the phone
 
