@@ -147,6 +147,10 @@ socks5  127.0.0.1 1080
 ## Backup using Rsync
 
 ```bash
+# rsync -avz /path/to/source /path/to/destination
+# rsync -avz /path/to/local/directory user@remote.server:/path/to/remote/directory
+# rsync -avz --delete /path/to/local/directory user@remote.server:/path/to/remote/directory
+
 sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
 ```
 
@@ -167,7 +171,7 @@ sudo sysctl -p
 
 ```bash
 sudo nano /etc/fstab 
-UUID=f74c37b2-8a12-4252-90a6-d31504507bcb / ext4  defaults,noatime,commit=60,barrier=0  0 1
+UUID=f74c37b2-8a12-4252-90a6-d31504507bcb / ext4  defaults,noatime,nodiratime,commit=60,barrier=0  0 1
 ```
 
 ### Disabling journaling
@@ -180,9 +184,6 @@ sudo tune2fs -f -O "^has_journal" /dev/sda2
 
 ```bash
 sudo nano /etc/systemd/journald.conf
-```
-
-```bash
 SystemMaxUse=100M
 ```
 
@@ -191,6 +192,7 @@ SystemMaxUse=100M
 ### Make a startup script using XDG startup
 
 ```bash
+mkdir -p ~/.config/autostart
 nano ~/.config/autostart/gamma_on_startup.desktop
 ```
 
@@ -240,6 +242,7 @@ systemctl --state=failed
 
 sudo systemctl list-unit-files --type=service --state=enabled --all
 sudo systemctl list-unit-files | grep enabled
+systemctl journal -u example.service
 ```
 
 ### Reloading
@@ -281,11 +284,14 @@ journalctl -u gamma
 
 - nano .profile
 - nano /etc/profile
+- nano ~/.bash_profile
+- nano .bashrc
+- nano /etc/bash.bashrc
 - ls /etc/profile.d/
 - ls ~/.config/autostart
 - ls /etc/xdg/autostart
 - ls /usr/share/xsessions
-- ls -1 /lib/systemd/system/*.service /etc/systemd/system/*.service
+- ls -1 /lib/systemd/system/.service /etc/systemd/system/.service
 - sudo systemctl list-unit-files --type=service --state=enabled --all
 - ls /etc/init.d/
 - nano ~/.xinitrc
@@ -300,13 +306,9 @@ journalctl -u gamma
 - sudo crontab -e
 - ls -rla /etc/cron.*
 
-- nano .bash_profile
-- nano .bashrc
-- nano /etc/bash.bashrc
-
 ## Font
 
-### Location
+### Locations
 
 - `~/.local/share/fonts/`
 - `/usr/local/share/fonts/`
@@ -318,6 +320,7 @@ List installed fonts
 
 ```bash
 fc-match -a
+fc-list : file
 ```
 
 ### Fira Code
@@ -378,6 +381,8 @@ proxychains steam steam://rungameid/570
 ```bash
 qdbus org.kde.KWin /Compositor suspend
 # qdbus org.kde.KWin /Compositor resume
+xset -dpms
+xset s off
 ```
 
 ## lutris
