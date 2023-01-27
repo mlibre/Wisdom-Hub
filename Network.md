@@ -62,9 +62,11 @@ sudo sysctl -p
 ```bash
 sudo nano /etc/resolv.conf
 nameserver 1.1.1.1
+nameserver 1.0.0.1
 nameserver 208.67.222.222
 nameserver 208.67.220.220
 nameserver 8.8.8.8
+nameserver 8.8.4.4
 
 # echo "nameserver 8.8.8.8" > /etc/resolv.conf
 ```
@@ -97,7 +99,7 @@ sudo systemctl restart systemd-resolved
 
 # resolvectl dns enp3s0 1.1.1.1 
 # resolvectl dns enp1s0f0u6 1.1.1.1
-# resolvectl dns
+resolvectl dns
 ```
 
 ### DNS Server - dhclient
@@ -121,13 +123,13 @@ resolvectl dns eth0 # make sure dns is set
 ```bash
 sudo killall sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:;
 sudo killall steamwebhelper gitstatusd steam;
-sudo killall -9 sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:; sudo killall -9 steamwebhelper gitstatusd steam;
+sudo killall -9 sslocal winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:;
+sudo killall -9 steamwebhelper gitstatusd steam;
 pkill -f -e -c lutris-wrapper;
 pkill -f -e -c lutris;
 pkill -f -e -c wine;
 pkill -f -e -c steam;
 pkill -f -e -c sslocal;
-qdbus org.kde.KWin /Compositor suspend;
 sudo systemctl stop shadowsocks-rust-local@config;
 
 sudo systemd-resolve --flush-caches;
@@ -143,16 +145,12 @@ sudo sysctl -p;
 
 sudo systemctl restart shadowsocks-rust-local@config;
 sync; echo 3 > /proc/sys/vm/drop_caches;
-rm ~/.cache/ksycoca5*;
-kquitapp5 plasmashell;
-killall plasmashell;
-kstart5 plasmashell;
 ```
 
 ## VPN over SSH
 
 ```bash
-sudo proxychains pacman -S sshuttle
+sudo pacman -S sshuttle
 
 sudo sshuttle -v -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
 # sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
@@ -161,12 +159,12 @@ sudo sshuttle -v -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
 
 ### VPN Over Socks  ( openVPN )
 
-> SS server address: 87.107.164.69
+> SS server address: 87.80.80.80
 
 ```bash
 nano mlibre.ovpn
 socks-proxy 127.0.0.1 1090
-route 87.107.164.69 255.255.255.255 net_gateway
+route 87.80.80.80 255.255.255.255 net_gateway
 route 192.168.0.0 255.255.0.0 net_gateway
 ```
 
@@ -181,7 +179,7 @@ firefox: settings -> network -> socks5, proxy over dns
 chromium: search proxy in the setting. open system proxy settings. manual specified: socks proxy: localhost 1080
 ```
 
-## Open an application using over socks
+## Open an application over socks
 
 ```bash
 torsocks deluge

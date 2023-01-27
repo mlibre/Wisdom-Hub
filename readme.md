@@ -171,6 +171,16 @@ socks5  127.0.0.1 1080
 # proxy_dns
 ```
 
+### Resetting KDE
+
+```bash
+qdbus org.kde.KWin /Compositor suspend;
+rm ~/.cache/ksycoca5*;
+kquitapp5 plasmashell;
+killall plasmashell;
+kstart5 plasmashell;
+```
+
 ## Backup
 
 ### Rsync
