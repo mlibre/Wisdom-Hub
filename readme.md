@@ -1,6 +1,7 @@
 # Linux Cheat Sheet
 
-Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
+Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.  
+And a comprehensive guide to various aspects of Linux operating system
 
 - [Tips and Tricks](#tips-and-tricks)
   - [Automatic Shutdown](#automatic-shutdown)

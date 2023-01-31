@@ -1,5 +1,7 @@
 # Network
 
+This section is a comprehensive guide to various topics related to Networking, including disabling IPv6, setting up DNS servers, VPN servers, and proxy servers. There are also topics on how to use different VPN services and redirect network traffic. This section provides in-depth information on how to configure different VPN protocols like OpenVPN, V2Ray, ShadowSocks, and WireGuard.
+
 - [Disable IPV6](#disable-ipv6)
 - [Setup DNS](#setup-dns)
   - [Using resolv.conf](#using-resolvconf)
@@ -9,7 +11,7 @@
 - [VPN over SSH](#vpn-over-ssh)
   - [VPN Over Socks  ( openVPN )](#vpn-over-socks---openvpn-)
 - [SSH Dynamic Tunneling](#ssh-dynamic-tunneling)
-- [Open an application using over socks](#open-an-application-using-over-socks)
+- [Open an application over socks](#open-an-application-over-socks)
 - [Setup DNS Server](#setup-dns-server)
   - [Using Systemd](#using-systemd-1)
   - [Using dnsmasq](#using-dnsmasq)
@@ -19,12 +21,12 @@
   - [Jump server](#jump-server)
     - [With IPTables](#with-iptables)
     - [Using SSH Forward](#using-ssh-forward)
+    - [Using socat](#using-socat)
     - [Optimization](#optimization)
     - [Fake Traffic script](#fake-traffic-script)
   - [Client-Side](#client-side)
     - [ShadowSocks Json config example ( rust )](#shadowsocks-json-config-example--rust-)
     - [ShadowSocks SS URL Format](#shadowsocks-ss-url-format)
-- [Proxy udp traffic from ssh](#proxy-udp-traffic-from-ssh)
 - [OpenVpn Server](#openvpn-server)
 - [V2Ray VPN/Proxy Server](#v2ray-vpnproxy-server)
   - [Nekoray](#nekoray)
@@ -35,6 +37,7 @@
   - [Server Configuration](#server-configuration)
   - [Peer Configuration](#peer-configuration)
 - [Redirecting the whole network traffic](#redirecting-the-whole-network-traffic)
+- [Proxy udp traffic from ssh](#proxy-udp-traffic-from-ssh)
 - [Free VPNs](#free-vpns)
   - [VPNBook](#vpnbook)
   - [Protonvpn](#protonvpn)
