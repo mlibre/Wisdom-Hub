@@ -67,6 +67,7 @@ And a comprehensive guide to various aspects of Linux operating system
   - [Run Odin as administrator](#run-odin-as-administrator)
   - [Install bluestack](#install-bluestack)
   - [Youtube-dl](#youtube-dl)
+- [Network](Network.md)
 
 ## Tips and Tricks
 
