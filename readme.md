@@ -787,3 +787,8 @@ Download, login and install whatsapp, telegram and google
 ```bash
 youtube-dl -f best --proxy socks5://127.0.0.1:1080/ --write-auto-sub "https://www.youtube.com/link"
 ```
+
+## Network
+
+This section is a comprehensive guide to various topics related to Networking.  
+[Open article](./Network.md)
