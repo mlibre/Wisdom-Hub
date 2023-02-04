@@ -234,6 +234,7 @@ apt update
 apt dist-upgrade
 apt install htop sudo psmisc net-tools curl ntpdate
 sudo apt purge snapd ufw
+sudo apt autoremove --purge
 sudo ntpdate time.nist.gov
 
 nano /etc/sudoers
@@ -277,6 +278,7 @@ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
 net.ipv4.tcp_fastopen=3
 fs.file-max = 5000000
+
 sudo sysctl -p
 
 sudo nano /etc/resolv.conf
@@ -544,9 +546,9 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
   - Disable DNSSEC
   - Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network tab
   - Add a "A" DNS record: domain.ga, DNS only ( no proxy )
-  - Add a "A" DNS record: portal.domain.ga, proxy
-  - Add a "AAAA" DNS record: v6.domain.ga, DNS
-  - Add a "AAAA" DNS record: iv6.domain.ga, proxy
+  - Add a "A" DNS record: v4p.domain.ga, proxy
+  - Add a "AAAA" DNS record: v6d.domain.ga, DNS
+  - Add a "AAAA" DNS record: v6p.domain.ga, proxy
   - Enable Development mode
 
 - XUI Panel
