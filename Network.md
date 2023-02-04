@@ -543,13 +543,13 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 
 - Add domain to the cloudflare
   - SSL/TLS: Full
-  - Disable DNSSEC
-  - Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network tab
+  - Disable DNSSEC, Always Use HTTPS, Automatic HTTPS Rewrites 
+  - Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network/SSL tab
+  - Enable Development mode
   - Add a "A" DNS record: domain.ga, DNS only ( no proxy )
   - Add a "A" DNS record: v4p.domain.ga, proxy
   - Add a "AAAA" DNS record: v6d.domain.ga, DNS
   - Add a "AAAA" DNS record: v6p.domain.ga, proxy
-  - Enable Development mode
 
 - XUI Panel
 
