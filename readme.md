@@ -696,7 +696,56 @@ sudo rm /etc/xdg/autostart/print-applet.desktop
 
 - Steam: Allow auto-update only between 1AM - 11AM
 
-### Install AMDGPU-PRO
+### AMDGPU
+
+#### TearFree, EnablePageFlip, DRI3
+
+```bash
+# settings files
+/usr/share/X11/xorg.conf.d/
+/etc/X11/xorg.conf.d/
+
+sudo nano /usr/share/X11/xorg.conf.d/10-amdgpu.conf
+
+Section "OutputClass"
+    Identifier "AMDgpu"
+    MatchDriver "amdgpu"
+    Driver "amdgpu"
+    Option "TearFree" "true"
+    Option "DRI" "3"
+    Option "EnablePageFlip" "on"
+EndSection
+```
+
+#### Reducing DRI latency
+
+```bash
+sudo nano /etc/drirc
+
+<driconf>
+   <device>
+       <application name="Default">
+           <option name="vblank_mode" value="0" />
+       </application>
+   </device>
+</driconf>
+```
+
+#### check xorg config file
+
+```bash
+sudo Xorg -config /usr/share/X11/xorg.conf.d/10-amdgpu.conf
+```
+
+#### Blocking radon
+
+```bash
+sudo nano /etc/modprobe.d/radeon.conf
+
+blacklist radeon
+```
+
+#### Install AMDGPU-PRO
 
 ```bash
 # https://wiki.archlinux.org/title/AMDGPU_PRO
@@ -710,7 +759,7 @@ glxinfo | grep "OpenGL vendor string"
 lspci -v | grep -A 10 VGA
 ```
 
-### Uninstall AMDGPU-PRO
+#### Uninstall AMDGPU-PRO
 
 ```bash
 pacman -R $(pacman -Qg Radeon_Software_for_Linux | cut -f2 -d" ")
@@ -731,7 +780,6 @@ sudo pacman -S wine winetricks
 winetricks corefonts vcrun2013 vcrun2015 winhttp allcodecs d3dcompiler_42 d3dcompiler_43 d3dcompiler_47 d3dx9 dotnet dxvk quartz
 sudo setcap cap_net_raw+epi /usr/bin/wine
 ```
-
 
 ## Install a new os on the phone
 
