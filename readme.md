@@ -215,6 +215,8 @@ sudo sh -c "echo 'kernel.perf_event_paranoid=-1' >> /etc/sysctl.conf"
 sudo sh -c "echo 'fs.inode-nr=200000' >> /etc/sysctl.conf"
 sudo sh -c "echo 'vm.dirty_background_ratio=5' >> /etc/sysctl.conf"
 sudo sh -c "echo 'vm.vfs_cache_pressure=50' >> /etc/sysctl.conf"
+sudo sh -c "echo 'net.ipv4.tcp_tw_reuse=1' >> /etc/sysctl.conf"
+sudo sh -c "echo 'net.ipv4.tcp_max_syn_backlog=8192' >> /etc/sysctl.conf"
 sudo sysctl -p
 ```
 
@@ -561,7 +563,7 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
   sudo systemctl disable pamac-daemon
   sudo systemctl disable pamac-mirrorlist.timer
   sudo systemctl disable pamac-mirrorlist.service
-  sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma
+  sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma kdeconnect
   ```
 
 - Pacman downloads parallel
