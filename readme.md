@@ -211,14 +211,24 @@ sudo sh -c "echo 'kernel.watchdog=0' >> /etc/sysctl.conf"
 sudo sh -c "echo 'vm.compaction_proactiveness=0' >> /etc/sysctl.conf"
 sudo sh -c "echo 'vm.zone_reclaim_mode=0' >> /etc/sysctl.conf"
 sudo sh -c "echo 'vm.page_lock_unfairness=1' >> /etc/sysctl.conf"
+sudo sh -c "echo 'kernel.perf_event_paranoid=-1' >> /etc/sysctl.conf"
+sudo sh -c "echo 'fs.inode-nr=200000' >> /etc/sysctl.conf"
+sudo sh -c "echo 'vm.dirty_background_ratio=5' >> /etc/sysctl.conf"
+sudo sh -c "echo 'vm.vfs_cache_pressure=50' >> /etc/sysctl.conf"
 sudo sysctl -p
 ```
 
-### Improve fstab performance
+### Improve fstab, ssd, nvme performance
 
 ```bash
 sudo nano /etc/fstab 
 UUID=f74c37b2-8a12-4252-90a6-d31504507bcb / ext4  defaults,noatime,nodiratime,commit=60,barrier=0  0 1
+```
+
+```bash
+sudo nano /etc/udev/rules.d/60-ioschedulers.rules
+
+ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/scheduler}="none"
 ```
 
 ### Disabling journaling
