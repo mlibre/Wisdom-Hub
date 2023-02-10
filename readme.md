@@ -418,7 +418,7 @@ VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/
 ### Dota 2 Options
 
 ```bash
--high -nojoy -novid -novr -nohltv -map dota 
+-nod3d9ex -nomicsettings -high -nojoy -nohltv -novid -novr -map dota
 ```
 
 - Disable steam overlay, steam inputs, ...
