@@ -580,6 +580,8 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
   sudo pacman -S telegram-desktop unzip sudo thermald
   sudo systemctl enable --now thermald.service
   pamac install visual-studio-code-bin onlyoffice-bin microsoft-edge-stable-bin
+
+  # Disable "Show mini menu when selecting text" in microsoft edge settings
   ```
 
 - Import Data
@@ -593,7 +595,7 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
 - Make an XDG autostart script for gamma adjustment
 - Put the gamma script in the `.bashrc` and `.zshrc` as well
 
-- Install ProtonVPN, mailspring, shadowsocks
+- Install ProtonVPN, mailspring, shadowsocks, Nekoray
   
   ```bash
   sudo pamac install shadowsocks-rust-bin
