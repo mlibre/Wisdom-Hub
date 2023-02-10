@@ -579,7 +579,7 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
   sudo pacman -Syyuu
   sudo pacman -S telegram-desktop unzip sudo thermald
   sudo systemctl enable --now thermald.service
-  pamac install visual-studio-code-bin onlyoffice-bin
+  pamac install visual-studio-code-bin onlyoffice-bin microsoft-edge-stable-bin
   ```
 
 - Import Data
