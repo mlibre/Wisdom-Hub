@@ -220,6 +220,28 @@ sudo sh -c "echo 'net.ipv4.tcp_max_syn_backlog=8192' >> /etc/sysctl.conf"
 sudo sysctl -p
 ```
 
+- Also:
+
+```bash
+sudo systemctl start systemd-sysctl.service
+sudo systemctl enable systemd-sysctl.service
+sudo nano /etc/sysctl.d/sys.conf
+
+net.ipv4.tcp_fastopen=3
+net.ipv4.ip_forward=1
+kernel.nmi_watchdog=0
+kernel.watchdog=0
+vm.compaction_proactiveness=0
+vm.zone_reclaim_mode=0
+vm.page_lock_unfairness=1
+kernel.perf_event_paranoid=-1
+fs.inode-nr = 200000
+vm.dirty_background_ratio=5
+vm.vfs_cache_pressure=50
+net.ipv4.tcp_max_syn_backlog = 8192
+net.ipv4.tcp_tw_reuse=1
+```
+
 ### Improve fstab, ssd, nvme performance
 
 ```bash
