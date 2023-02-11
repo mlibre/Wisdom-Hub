@@ -11,12 +11,15 @@ And a comprehensive guide to various aspects of Linux operating system
   - [Fixing broken grub](#fixing-broken-grub)
     - [EZ method](#ez-method)
     - [Second method](#second-method)
+  - [Check boot errors](#check-boot-errors)
   - [Using proxies](#using-proxies)
+    - [proxychains config](#proxychains-config)
+  - [Resetting KDE](#resetting-kde)
 - [Backup](#backup)
   - [Rsync](#rsync)
 - [Performance](#performance)
   - [Disable Linux Watchdogs, compaction and more](#disable-linux-watchdogs-compaction-and-more)
-  - [Improve fstab performance](#improve-fstab-performance)
+  - [Improve fstab, ssd, nvme performance](#improve-fstab-ssd-nvme-performance)
   - [Disabling journaling](#disabling-journaling)
   - [Journal Size](#journal-size)
 - [XDG](#xdg)
@@ -51,8 +54,13 @@ And a comprehensive guide to various aspects of Linux operating system
 - [Manjaro/Arch Linux](#manjaroarch-linux)
   - [Things to do before installing](#things-to-do-before-installing)
   - [Things to do after installing](#things-to-do-after-installing)
-  - [Install AMDGPU-PRO](#install-amdgpu-pro)
-  - [Uninstall AMDGPU-PRO](#uninstall-amdgpu-pro)
+  - [AMDGPU](#amdgpu)
+    - [TearFree, EnablePageFlip, DRI3](#tearfree-enablepageflip-dri3)
+    - [Reducing DRI latency](#reducing-dri-latency)
+    - [check xorg config file](#check-xorg-config-file)
+    - [Blocking radon](#blocking-radon)
+    - [Install AMDGPU-PRO](#install-amdgpu-pro)
+    - [Uninstall AMDGPU-PRO](#uninstall-amdgpu-pro)
   - [Blacklist Radeon](#blacklist-radeon)
   - [Install Wine](#install-wine)
 - [Install a new os on the phone](#install-a-new-os-on-the-phone)
@@ -67,7 +75,7 @@ And a comprehensive guide to various aspects of Linux operating system
   - [Run Odin as administrator](#run-odin-as-administrator)
   - [Install bluestack](#install-bluestack)
   - [Youtube-dl](#youtube-dl)
-- [Network](Network.md)
+- [Network](#network)
 
 ## Tips and Tricks
 
@@ -148,6 +156,13 @@ sudo chroot /mnt
 sudo blkid -s UUID -o value /dev/nvme0n1p1
 nano /etc/fstab
 sudo update-grub
+```
+
+### Check boot errors, logs
+
+```bash
+sudo dmesg --level=emerg,alert,crit,err
+# Open KsystemLog
 ```
 
 ### Using proxies
@@ -373,6 +388,8 @@ journalctl -u gamma
 - crontab -e
 - sudo crontab -e
 - ls -rla /etc/cron.*
+- cat /usr/lib/sddm/sddm.conf.d/default.conf
+- cat /etc/sddm.conf.d/00_manjaro_settings.conf
 
 ## Font
 
@@ -587,7 +604,7 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
   pamac update --force-refresh
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
-  sudo pacman -S telegram-desktop unzip sudo thermald
+  sudo pacman -S telegram-desktop unzip thermald ntfs-3g
   sudo systemctl enable --now thermald.service
   pamac install visual-studio-code-bin onlyoffice-bin microsoft-edge-stable-bin
 
@@ -725,6 +742,8 @@ Section "OutputClass"
     Option "DRI" "3"
     Option "EnablePageFlip" "on"
 EndSection
+
+cat /var/log/Xorg.0.log | grep -i tear
 ```
 
 #### Reducing DRI latency
