@@ -417,6 +417,13 @@ sudo pacman -S ttf-fira-code
 fc-match -a | grep -i fira
 ```
 
+### Cache
+
+```bash
+sudo rm -v /var/cache/fontconfig/*
+fc-cache -r
+```
+
 ## Vulkan
 
 ```bash
