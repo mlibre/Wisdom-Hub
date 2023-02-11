@@ -793,6 +793,7 @@ pamac install amdgpu-pro-oglp lib32-amdgpu-pro-oglp
 # pamac install amf-amdgpu-pro
 glxinfo | grep "OpenGL vendor string"
 lspci -v | grep -A 10 VGA
+vk_pro steam
 ```
 
 #### Uninstall AMDGPU-PRO
