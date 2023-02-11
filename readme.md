@@ -785,8 +785,8 @@ blacklist radeon
 
 ```bash
 # https://wiki.archlinux.org/title/AMDGPU_PRO
-pamac install vulkan-amdgpu-pro
-pamac install lib32-vulkan-amdgpu-pro 
+pamac install vulkan-amdgpu-pro lib32-vulkan-amdgpu-pro 
+pamac install amdgpu-pro-oglp lib32-amdgpu-pro-oglp 
 # pamac install amdgpu-pro-libgl
 # pamac install lib32-amdgpu-pro-libgl
 # pamac install opencl-amd
