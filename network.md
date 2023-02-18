@@ -548,12 +548,12 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
     # preserve_hostname: true
     
     sudo nano /etc/hostname
-    programmingnet.shop
+    domain.ga
 
     sudo nano /etc/hosts
-    127.0.1.1 programmingnet.shop
+    127.0.1.1 domain.ga
 
-    sudo hostnamectl set-hostname programmingnet.shop
+    sudo hostnamectl set-hostname domain.ga
   ```
 
 - Add domain to the cloudflare
