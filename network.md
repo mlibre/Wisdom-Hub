@@ -546,6 +546,8 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
   - vultr.com -> server setting -> ipv4 -> reverse DNS
 
   ```bash
+    proxychains ssh -p port true@000.000.13.13
+
     sudo nano /etc/cloud/cloud.cfg
     # preserve_hostname: true
     
@@ -575,6 +577,9 @@ sudo su
 cd
 bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
 # cat /usr/local/x-ui/bin/config.json
+# tar -czvf x-ui.tgz /usr/local/x-ui/
+# proxychains scp -P 3612 true@199.247.13.13:x-ui.tgz .
+
 
 x-ui
 # Open all ports
