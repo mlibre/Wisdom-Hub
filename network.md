@@ -541,36 +541,46 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 
 ## V2Ray VPN/Proxy Server
 
-- Change server hostname
+### disable ping
+
+```bash
+sudo nano /etc/sysctl.conf
+net.ipv4.conf.icmp_echo_ignore_all = 1
+
+sudo nano /etc/sysctl.d/sys.conf
+net.ipv4.conf.icmp_echo_ignore_all = 1
+```
+
+### Change server hostname
   
-  - vultr.com -> server setting -> ipv4 -> reverse DNS
+- vultr.com -> server setting -> ipv4 -> reverse DNS
 
-  ```bash
-    proxychains ssh -p port true@000.000.13.13
+```bash
+  proxychains ssh -p port true@000.000.13.13
 
-    sudo nano /etc/cloud/cloud.cfg
-    # preserve_hostname: true
-    
-    sudo nano /etc/hostname
-    domain.ga
+  sudo nano /etc/cloud/cloud.cfg
+  # preserve_hostname: true
+  
+  sudo nano /etc/hostname
+  domain.ga
 
-    sudo nano /etc/hosts
-    127.0.1.1 domain.ga
+  sudo nano /etc/hosts
+  127.0.1.1 domain.ga
 
-    sudo hostnamectl set-hostname domain.ga
-    
-  ```
+  sudo hostnamectl set-hostname domain.ga
+```
 
-- Add domain to the cloudflare
-  - SSL/TLS: Full
-  - Disable DNSSEC, Always Use HTTPS, Automatic HTTPS Rewrites
-  - Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network/SSL tab
-  - Enable Development mode
-  - Add a "A" DNS record: domain.ga, DNS only ( no proxy )
-  - Add a "A" DNS record: v4p.domain.ga, proxy
-  - Add a "AAAA" DNS record: v6.domain.ga, proxy ( don't make dns-only for ipv6 )
+### Add domain to the cloudflare
+  
+- SSL/TLS: Full
+- Disable DNSSEC, Always Use HTTPS, Automatic HTTPS Rewrites
+- Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network/SSL tab
+- Enable Development mode
+- Add a "A" DNS record: domain.ga, DNS only ( no proxy )
+- Add a "A" DNS record: v4p.domain.ga, proxy
+- Add a "AAAA" DNS record: v6.domain.ga, proxy ( don't make dns-only for ipv6 )
 
-- XUI Panel
+### XUI Panel
 
 ```bash
 sudo su
@@ -579,6 +589,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/ma
 # cat /usr/local/x-ui/bin/config.json
 # tar -czvf x-ui.tgz /usr/local/x-ui/
 # proxychains scp -P 3612 true@199.247.13.13:x-ui.tgz .
+# proxychains scp -P 3612 root@199.247.13.13:cert.crt .
+# proxychains scp -P 3612 root@199.247.13.13:private.key .
 
 
 x-ui
@@ -593,7 +605,7 @@ acme.sh --list
 # lsof -i :80
 ```
 
-- Open Panel (https://domain.ga:8443/xui/inbounds)
+- Open Panel (<https://domain.ga:8443/xui/inbounds>)
 - Create a vmess-2086-ws-no-tls inbound ( image included )
 - Create a vless-2052-grpc-nosniff inbound ( image included )
   - Add this header => "X-Forwarded-Proto: https"
