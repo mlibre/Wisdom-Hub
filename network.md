@@ -541,15 +541,29 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 
 ## V2Ray VPN/Proxy Server
 
+- Change server hostname
+  
+  ```bash
+    sudo nano /etc/cloud/cloud.cfg
+    # preserve_hostname: true
+    
+    sudo nano /etc/hostname
+    programmingnet.shop
+
+    sudo nano /etc/hosts
+    127.0.1.1 programmingnet.shop
+
+    sudo hostnamectl set-hostname programmingnet.shop
+  ```
+
 - Add domain to the cloudflare
   - SSL/TLS: Full
-  - Disable DNSSEC, Always Use HTTPS, Automatic HTTPS Rewrites 
+  - Disable DNSSEC, Always Use HTTPS, Automatic HTTPS Rewrites
   - Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network/SSL tab
   - Enable Development mode
   - Add a "A" DNS record: domain.ga, DNS only ( no proxy )
   - Add a "A" DNS record: v4p.domain.ga, proxy
-  - Add a "AAAA" DNS record: v6d.domain.ga, DNS
-  - Add a "AAAA" DNS record: v6p.domain.ga, proxy
+  - Add a "AAAA" DNS record: v6.domain.ga, proxy ( don't make dns-only for ipv6 )
 
 - XUI Panel
 
@@ -557,6 +571,8 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 sudo su
 cd
 bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
+# cat /usr/local/x-ui/bin/config.json
+
 x-ui
 # Open all ports
 # install BBR
@@ -570,7 +586,10 @@ acme.sh --list
 ```
 
 - Open Panel (https://domain.ga:8443/xui/inbounds)
-- Create a MC-vmess-2086-ws inbound ( image included )
+- Create a vmess-2086-ws-no-tls inbound ( image included )
+- Create a vless-2052-grpc-nosniff inbound ( image included )
+  - Add this header => "X-Forwarded-Proto: https"
+- Create a trojan-xtls-443-direct-domain inbound ( image included )
 - In firefox: Check Proxy DNS when using SOCKS v5
 
 <!-- - Create a free domain from freenom.com

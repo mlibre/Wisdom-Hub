@@ -11,7 +11,7 @@ And a comprehensive guide to various aspects of Linux operating system
   - [Fixing broken grub](#fixing-broken-grub)
     - [EZ method](#ez-method)
     - [Second method](#second-method)
-  - [Check boot errors](#check-boot-errors)
+  - [Check boot errors, logs](#check-boot-errors-logs)
   - [Using proxies](#using-proxies)
     - [proxychains config](#proxychains-config)
   - [Resetting KDE](#resetting-kde)
@@ -34,6 +34,7 @@ And a comprehensive guide to various aspects of Linux operating system
   - [Locations](#locations)
   - [List](#list)
   - [Fira Code](#fira-code)
+  - [Cache](#cache)
 - [Vulkan](#vulkan)
 - [Dota 2](#dota-2)
   - [Dota 2 Options](#dota-2-options)
@@ -887,4 +888,4 @@ youtube-dl -f best --proxy socks5://127.0.0.1:1080/ --write-auto-sub "https://ww
 ## Network
 
 This section is a comprehensive guide to various topics related to Networking.  
-[Open article](./Network.md)
+[Open article](./network.md)
