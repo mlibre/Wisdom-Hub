@@ -543,6 +543,8 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
 
 - Change server hostname
   
+  - vultr.com -> server setting -> ipv4 -> reverse DNS
+
   ```bash
     sudo nano /etc/cloud/cloud.cfg
     # preserve_hostname: true
@@ -554,6 +556,7 @@ route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
     127.0.1.1 domain.ga
 
     sudo hostnamectl set-hostname domain.ga
+    
   ```
 
 - Add domain to the cloudflare
