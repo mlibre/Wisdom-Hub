@@ -15,6 +15,7 @@ And a comprehensive guide to various aspects of Linux operating system
   - [Using proxies](#using-proxies)
     - [proxychains config](#proxychains-config)
   - [Resetting KDE](#resetting-kde)
+  - [Click on the screen](#click-on-the-screen)
 - [Backup](#backup)
   - [Rsync](#rsync)
 - [Performance](#performance)
@@ -207,6 +208,45 @@ sudo pacman -S xdotool
 xdotool mousemove <x> <y> click 1
 # xdotool getmouselocation
 # xdotool mousemove 843 1044 click 1
+```
+
+> Simple script to click on the screen for given minutes and sleep time
+
+```bash
+#!/bin/bash
+
+# Check for two arguments
+if [[ $# -ne 2 ]]; then
+    echo "Usage: $0 <minutes> <sleep>"
+    exit 1
+fi
+
+# Convert minutes to seconds
+RUN_TIME=$(echo "$1 * 60" | bc)
+
+while [[ $(echo "$RUN_TIME > 0" | bc) -eq 1 ]]; do
+    # Get screen resolution
+    RES=$(xdpyinfo | grep dimensions | awk '{print $2}')
+    WIDTH=$(echo $RES | awk -Fx '{print $1}')
+    HEIGHT=$(echo $RES | awk -Fx '{print $2}')
+
+    # Move mouse to center of screen and click
+    xdotool mousemove $((WIDTH/2)) $((HEIGHT/2))
+    xdotool click 1
+
+    # Sleep for specified time
+    sleep $2
+
+    # Decrement run time by sleep time
+    RUN_TIME=$(echo "$RUN_TIME - $2" | bc)
+done
+```
+
+And run:
+
+```bash
+chmod +x click.sh
+./click.sh 10 0.5
 ```
 
 ## Backup
