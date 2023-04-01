@@ -205,6 +205,7 @@ kstart5 plasmashell;
 # Install xdotool
 sudo pacman -S xdotool
 xdotool mousemove <x> <y> click 1
+# xdotool getmouselocation
 # xdotool mousemove 843 1044 click 1
 ```
 
