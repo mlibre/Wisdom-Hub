@@ -199,6 +199,15 @@ killall plasmashell;
 kstart5 plasmashell;
 ```
 
+### Click on the screen
+
+```bash
+# Install xdotool
+sudo pacman -S xdotool
+xdotool mousemove <x> <y> click 1
+# xdotool mousemove 843 1044 click 1
+```
+
 ## Backup
 
 ### Rsync
