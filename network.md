@@ -945,13 +945,14 @@ sudo resolvectl dns
 ```bash
 sudo nano /etc/hosts
 
+10.202.10.4 securetoken.googleapis.com
+50.7.87.84  identitytoolkit.googleapis.com
+50.7.87.84  bard.google.com
+50.7.85.222 openai.com
 50.7.85.220 chat.openai.com
 50.7.87.85  cdn.openai.com
-50.7.85.222 auth0.openai.com
-50.7.85.222 openai.com
-50.7.87.84  bard.google.com
 188.68.52.244 www.bing.com
 50.7.87.85  marketplace.visualstudio.com
-50.7.87.84  identitytoolkit.googleapis.com
+50.7.85.222 auth0.openai.com
 50.7.85.218 api.codium.ai
 ```
