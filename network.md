@@ -29,6 +29,10 @@ This section is a comprehensive guide to various topics related to Networking, i
     - [ShadowSocks SS URL Format](#shadowsocks-ss-url-format)
 - [OpenVpn Server](#openvpn-server)
 - [V2Ray VPN/Proxy Server](#v2ray-vpnproxy-server)
+  - [disable ping](#disable-ping)
+  - [Change server hostname](#change-server-hostname)
+  - [Add domain to the cloudflare](#add-domain-to-the-cloudflare)
+  - [XUI Panel](#xui-panel)
   - [Nekoray](#nekoray)
 - [ShadowSocks Server](#shadowsocks-server)
   - [Server](#server)
@@ -46,6 +50,10 @@ This section is a comprehensive guide to various topics related to Networking, i
     - [WireGuard](#wireguard)
   - [Hide.me](#hideme)
   - [Windscribe](#windscribe)
+- [Set System-wide DNS](#set-system-wide-dns)
+  - [Shekan DNS](#shekan-dns)
+  - [403 DNS](#403-dns)
+  - [Global DNS](#global-dns)
 
 ## Disable IPV6
 
@@ -878,4 +886,55 @@ proxychains sudo ./hide.me connect free-unlimited.hideservers.net
 sudo systemctl stop firewalld.service
 yay -S aur/windscribe-bin
 # proxychains yay -S aur/windscribe-bin
+```
+
+## Set System-wide DNS
+
+### Shekan DNS
+
+```bash
+# resolvectl query identitytoolkit.googleapis.com
+DNS_SERVER="178.22.122.100"
+sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
+sudo systemctl daemon-reload; wait;
+sudo systemctl restart systemd-networkd; wait;
+sudo systemctl restart systemd-resolved; wait;
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+sudo resolvectl dns tun0 "$DNS_SERVER"
+sudo resolvectl dns enp3s0 "$DNS_SERVER"
+sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns
+```
+
+### 403 DNS
+
+```bash
+DNS_SERVER="10.202.10.102"
+sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
+sudo systemctl daemon-reload; wait;
+sudo systemctl restart systemd-networkd; wait;
+sudo systemctl restart systemd-resolved; wait;
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+sudo resolvectl dns tun0 "$DNS_SERVER"
+sudo resolvectl dns enp3s0 "$DNS_SERVER"
+sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns
+```
+
+### Global DNS
+
+```bash
+DNS_SERVER="1.1.1.1"
+sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
+sudo systemctl daemon-reload; wait;
+sudo systemctl restart systemd-networkd; wait;
+sudo systemctl restart systemd-resolved; wait;
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+sudo resolvectl dns tun0 "$DNS_SERVER"
+sudo resolvectl dns enp3s0 "$DNS_SERVER"
+sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns
 ```
