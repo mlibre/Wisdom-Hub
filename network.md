@@ -54,6 +54,7 @@ This section is a comprehensive guide to various topics related to Networking, i
   - [Shekan DNS](#shekan-dns)
   - [403 DNS](#403-dns)
   - [Global DNS](#global-dns)
+  - [Setting domains directly in /etc/hosts](#setting-domains-directly-in-etchosts)
 
 ## Disable IPV6
 
@@ -937,4 +938,20 @@ sudo resolvectl dns tun0 "$DNS_SERVER"
 sudo resolvectl dns enp3s0 "$DNS_SERVER"
 sudo resolvectl dns enp5s0 "$DNS_SERVER"
 sudo resolvectl dns
+```
+
+### Setting domains directly in /etc/hosts
+
+```bash
+sudo nano /etc/hosts
+
+50.7.85.220 chat.openai.com
+50.7.87.85  cdn.openai.com
+50.7.85.222 auth0.openai.com
+50.7.85.222 openai.com
+50.7.87.84  bard.google.com
+188.68.52.244 www.bing.com
+50.7.87.85  marketplace.visualstudio.com
+50.7.87.84  identitytoolkit.googleapis.com
+50.7.85.218 api.codium.ai
 ```
