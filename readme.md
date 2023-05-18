@@ -937,5 +937,10 @@ youtube-dl -f best --proxy socks5://127.0.0.1:1080/ --write-auto-sub "https://ww
 
 ## Network
 
-This section is a comprehensive guide to various topics related to Networking.  
+This section is a comprehensive guide to various topics related to Networking  
 [Open article](./network.md)
+
+## Raspberry pi
+
+This section is a comprehensive guide to various topics related to Raspberry pi  
+[Open article](./raspberry%20pi.md)
