@@ -896,6 +896,7 @@ yay -S aur/windscribe-bin
 ```bash
 # resolvectl query identitytoolkit.googleapis.com
 DNS_SERVER="178.22.122.100"
+sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
 sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
 sudo systemctl daemon-reload; wait;
 sudo systemctl restart systemd-networkd; wait;
@@ -912,6 +913,24 @@ sudo resolvectl dns
 
 ```bash
 DNS_SERVER="10.202.10.102"
+sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
+sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
+sudo systemctl daemon-reload; wait;
+sudo systemctl restart systemd-networkd; wait;
+sudo systemctl restart systemd-resolved; wait;
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+sudo resolvectl dns tun0 "$DNS_SERVER"
+sudo resolvectl dns enp3s0 "$DNS_SERVER"
+sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns
+```
+
+### electrotm DNS
+
+```bash
+DNS_SERVER="78.157.42.101"
+sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
 sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
 sudo systemctl daemon-reload; wait;
 sudo systemctl restart systemd-networkd; wait;
@@ -928,6 +947,7 @@ sudo resolvectl dns
 
 ```bash
 DNS_SERVER="1.1.1.1"
+sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
 sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
 sudo systemctl daemon-reload; wait;
 sudo systemctl restart systemd-networkd; wait;
