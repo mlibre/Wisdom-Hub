@@ -65,7 +65,7 @@ sudo passwd
 ```bash
 sudo rm cron.daily/apt-compat
 
-sudo apt-get purge geany mariadb-common apt-listchanges
+sudo apt-get purge geany mariadb-common apt-listchanges cups cups-browsed cups-daemon apparmor
 sudo apt autoremove --purge
 sudo rpi-update
 # rollback from rpi-update
@@ -208,6 +208,28 @@ framebuffer_height=1080
 hdmi_force_hotplug=1
 hdmi_group=2
 hdmi_mode=16
+```
+
+## Docker
+
+```bash
+curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker $USER
+newgrp docker
+# Dont use sudo anymore
+docker run hello-world
+
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+```
+
+### Fix permission
+
+If you encounter any permission issue
+
+```bash
+sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+sudo chmod g+rwx "$HOME/.docker" -R
 ```
 
 ## Install Ajenti 2
