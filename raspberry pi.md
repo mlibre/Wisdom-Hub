@@ -140,12 +140,6 @@ dtoverlay=disable-wifi
 dtoverlay=disable-bt
 ```
 
-### Find rpi in the Network
-
-```bash
-sudo nmap -sP 192.168.1.0/24 | grep -B 2 -i raspberry
-```
-
 ### Enable ipv4 forwarding
 
 ```bash
@@ -154,6 +148,25 @@ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
 
 sudo sysctl -p
+```
+
+### Find rpi in the Network
+
+```bash
+sudo nmap -sP 192.168.1.0/24 | grep -B 2 -i raspberry
+```
+
+### Improve Performace
+
+```bash
+sudo nano /etc/sysctl.conf
+net.ipv4.tcp_rmem = 4096 87380 629145
+net.ipv4.tcp_wmem = 4096 65536 16777216
+net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.tcp_moderate_rcvbuf = 1
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_sack = 0
+net.ipv4.tcp_window_scaling = 1
 ```
 
 ### Static DNS
@@ -230,6 +243,19 @@ If you encounter any permission issue
 ```bash
 sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
 sudo chmod g+rwx "$HOME/.docker" -R
+```
+
+### Make a custom docker image
+
+```bash
+docker pull ubuntu
+docker ps -a
+docker images
+docker run --name proxy_container -it ubuntu /bin/bash
+apt update
+apt install sudo htop
+docker commit proxy_container proxy_image
+docker save proxy_image proxy_image.tar
 ```
 
 ## Install Ajenti 2

@@ -18,6 +18,7 @@ And a comprehensive guide to various aspects of Linux operating system
   - [Click on the screen](#click-on-the-screen)
 - [Backup](#backup)
   - [Rsync](#rsync)
+  - [Partical Backup using locate](#partical-backup-using-locate)
 - [Performance](#performance)
   - [Disable Linux Watchdogs, compaction and more](#disable-linux-watchdogs-compaction-and-more)
   - [Improve fstab, ssd, nvme performance](#improve-fstab-ssd-nvme-performance)
@@ -78,6 +79,7 @@ And a comprehensive guide to various aspects of Linux operating system
   - [Install bluestack](#install-bluestack)
   - [Youtube-dl](#youtube-dl)
 - [Network](#network)
+- [Raspberry pi](#raspberry-pi)
 
 ## Tips and Tricks
 
@@ -265,6 +267,12 @@ rsync -avz --delete /path/to/local/directory user@remote.server:/path/to/remote/
 
 # Create a full backup of the system to an external drive
 sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
+```
+
+### Partical Backup using locate
+
+```bash
+sudo tar -czvf backup.tar.gz $(locate x-ui)
 ```
 
 ## Performance

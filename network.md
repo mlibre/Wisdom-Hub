@@ -903,9 +903,11 @@ sudo systemctl restart systemd-networkd; wait;
 sudo systemctl restart systemd-resolved; wait;
 sudo systemd-resolve --flush-caches
 sudo resolvectl flush-caches
+sudo resolvectl dns eth0 "$DNS_SERVER"
 sudo resolvectl dns tun0 "$DNS_SERVER"
 sudo resolvectl dns enp3s0 "$DNS_SERVER"
 sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
@@ -920,9 +922,11 @@ sudo systemctl restart systemd-networkd; wait;
 sudo systemctl restart systemd-resolved; wait;
 sudo systemd-resolve --flush-caches
 sudo resolvectl flush-caches
+sudo resolvectl dns eth0 "$DNS_SERVER"
 sudo resolvectl dns tun0 "$DNS_SERVER"
 sudo resolvectl dns enp3s0 "$DNS_SERVER"
 sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
@@ -937,9 +941,11 @@ sudo systemctl restart systemd-networkd; wait;
 sudo systemctl restart systemd-resolved; wait;
 sudo systemd-resolve --flush-caches
 sudo resolvectl flush-caches
+sudo resolvectl dns eth0 "$DNS_SERVER"
 sudo resolvectl dns tun0 "$DNS_SERVER"
 sudo resolvectl dns enp3s0 "$DNS_SERVER"
 sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
@@ -954,9 +960,11 @@ sudo systemctl restart systemd-networkd; wait;
 sudo systemctl restart systemd-resolved; wait;
 sudo systemd-resolve --flush-caches
 sudo resolvectl flush-caches
+sudo resolvectl dns eth0 "$DNS_SERVER"
 sudo resolvectl dns tun0 "$DNS_SERVER"
 sudo resolvectl dns enp3s0 "$DNS_SERVER"
 sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
