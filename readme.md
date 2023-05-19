@@ -281,6 +281,8 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 ```bash
 sudo tar -czvf backup.tar.gz $(locate x-ui)
 sudo tar -czvf backup.tar.gz $(locate x-ui) /root/cert /root/cert.crt /root/private.key /root/.acme.sh
+
+sudo tar xvf backup.tar.gz -C / # Extract in root directory
 ```
 
 ## Performance
