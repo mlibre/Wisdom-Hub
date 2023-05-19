@@ -531,13 +531,21 @@ sudo ./openvpn-install.sh
 port: random, tcp, curreny system resolver, compression yes
 scp -P 2138 mlibre@87.107.164.69:/home/mlibre/mlibre.ovpn .
 
+DNS_SERVER="1.1.1.1"
+sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
+sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
+sudo systemctl daemon-reload; wait;
+sudo systemctl restart systemd-networkd; wait;
+sudo systemctl restart systemd-resolved; wait;
 sudo systemd-resolve --flush-caches
 sudo resolvectl flush-caches
-sudo resolvectl dns tun0 1.1.1.1
-sudo resolvectl dns enp3s0 1.1.1.1
-sudo resolvectl dns enp5s0 1.1.1.1
+sudo resolvectl dns eth0 "$DNS_SERVER"
+sudo resolvectl dns tun0 "$DNS_SERVER"
+sudo resolvectl dns enp3s0 "$DNS_SERVER"
+sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
-Global: 8.8.8.8
+Global: 1.1.1.1
 Link 2 (enp3s0): 1.1.1.1
 Link 8 (tun0): 1.1.1.1
 
