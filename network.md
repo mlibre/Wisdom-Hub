@@ -992,3 +992,9 @@ sudo nano /etc/hosts
 50.7.85.222 auth0.openai.com
 50.7.85.218 api.codium.ai
 ```
+
+## Simple python http.server
+
+```bash
+python3 -m http.server --bind 0.0.0.0 --cgi 8000
+```

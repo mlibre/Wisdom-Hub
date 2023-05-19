@@ -16,6 +16,7 @@ And a comprehensive guide to various aspects of Linux operating system
     - [proxychains config](#proxychains-config)
   - [Resetting KDE](#resetting-kde)
   - [Click on the screen](#click-on-the-screen)
+  - [Instant cloud file share](#instant-cloud-file-share)
 - [Backup](#backup)
   - [Rsync](#rsync)
   - [Partical Backup using locate](#partical-backup-using-locate)
@@ -251,6 +252,12 @@ chmod +x click.sh
 ./click.sh 10 0.5
 ```
 
+### Instant cloud file share
+
+```bash
+curl https://oshi.at -F f=@/home/true/backup.tar.gz -F expire=5 autodestroy=1 # autodestroy on download or expire in 5 minutes
+```
+
 ## Backup
 
 ### Rsync
@@ -273,6 +280,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 
 ```bash
 sudo tar -czvf backup.tar.gz $(locate x-ui)
+sudo tar -czvf backup.tar.gz $(locate x-ui) /root/cert /root/cert.crt /root/private.key /root/.acme.sh
 ```
 
 ## Performance
