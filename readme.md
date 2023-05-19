@@ -255,7 +255,7 @@ chmod +x click.sh
 ### Instant cloud file share
 
 ```bash
-curl https://oshi.at -F f=@/home/true/backup.tar.gz -F expire=5 autodestroy=1 # autodestroy on download or expire in 5 minutes
+curl https://oshi.at -F f=@/home/true/backup.tar.gz -F expire=5 # -F autodestroy=1 autodestroy on download or expire in 5 minutes
 ```
 
 ## Backup
