@@ -257,6 +257,7 @@ chmod +x click.sh
 ```bash
 # -F autodestroy=1 autodestroy on download or expire in 5
 curl https://oshi.at -F f=@/home/true/backup.tar.gz -F expire=5 minutes
+curl -F "file=@/home/mlibre/Downloads/backup.tar.gz" "https://file.io/?expires=1w"
 ```
 
 ## Backup
