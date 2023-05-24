@@ -897,6 +897,44 @@ yay -S aur/windscribe-bin
 # proxychains yay -S aur/windscribe-bin
 ```
 
+### Warp
+
+```bash
+pamac insatll cloudflare-warp-bin
+
+sudo nano /etc/systemd/resolved.conf
+ResolveUnicastSingleLabel=yes
+sudo systemctl restart systemd-resolved.service
+
+sudo systemctl restart warp-svc.service 
+sudo systemctl enable warp-svc.service 
+warp-cli set-families-mode off
+warp-cli delete
+warp-cli register
+warp-cli disconnect
+
+warp-cli connect
+warp-cli status
+warp-cli settings
+
+warp-cli set-mode --help
+warp-cli set-mode warp
+warp-cli set-mode doh
+warp-cli set-mode warp+doh
+warp-cli set-mode proxy
+warp-cli set-proxy-port 4040 # Set the listening port for WARP proxy (127.0.0.1:{port})
+
+warp-cli -vvv -l connect
+warp-cli -l status
+warp-cli enable-dns-log
+warp-cli -l enable-dns-log
+journalctl -xeu warp-svc.service
+journalctl -u systemd-resolved -f
+warp-diag
+
+proxychains midori
+```
+
 ## Set System-wide DNS
 
 ### Shekan DNS
@@ -942,6 +980,25 @@ sudo resolvectl dns
 
 ```bash
 DNS_SERVER="78.157.42.101"
+sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
+sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
+sudo systemctl daemon-reload; wait;
+sudo systemctl restart systemd-networkd; wait;
+sudo systemctl restart systemd-resolved; wait;
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+sudo resolvectl dns eth0 "$DNS_SERVER"
+sudo resolvectl dns tun0 "$DNS_SERVER"
+sudo resolvectl dns enp3s0 "$DNS_SERVER"
+sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns docker0 "$DNS_SERVER"
+sudo resolvectl dns
+```
+
+### OpenDns
+
+```bash
+DNS_SERVER="208.67.222.222"
 sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
 sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
 sudo systemctl daemon-reload; wait;
