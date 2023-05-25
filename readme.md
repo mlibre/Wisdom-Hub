@@ -507,16 +507,9 @@ sudo nano /etc/environment
 VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
 ```
 
-## Dota 2
+## Steam Games
 
-- Move Dota 2 to your local linux machine
-
-### Dota 2 Options
-
-```bash
--nod3d9ex -nomicsettings -high -nojoy -nohltv -novid -novr -map dota
-```
-
+- Move Games to your local linux machine
 - Disable steam overlay, steam inputs, ...
 
 ### Link NTFS game folder
@@ -537,7 +530,7 @@ ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
 ### Run using proxy
 
 ```bash
-proxychains steam steam://rungameid/570
+proxychains steam steam://rungameid/100
 ```
 
 ### Disable desktop effects
