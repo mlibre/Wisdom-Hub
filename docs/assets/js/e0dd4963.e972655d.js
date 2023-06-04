@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[7969],{4695:e=>{e.exports=JSON.parse('{"label":"facebook","permalink":"/linux-cheat-sheet/blog/tags/facebook","allTagsPath":"/linux-cheat-sheet/blog/tags","count":1}')}}]);
