@@ -23,7 +23,7 @@ cd website
 
 ```bash
 nano package.json
-"mybuild": "rm -r .docusaurus/; rm -r docs/*;cp ../*.md docs/;cp ../readme.md docs/intro.md;rm docs/readme.md; docusaurus build; rm -rf ../docs ; cp -r build ../docs",
+"mybuild": "rm -r .docusaurus/; rm -r docs/*;cp ../*.md docs/; docusaurus build; rm -rf ../docs ; cp -r build ../docs",
 "build": "rm -rf build; docusaurus build",
 
 nano docusaurus.config.js

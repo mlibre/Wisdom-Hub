@@ -30,8 +30,10 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js')
+          sidebarPath: require.resolve('./sidebars.js'),
+          // routeBasePath: '/', // Serve the docs at the site's root
         },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
