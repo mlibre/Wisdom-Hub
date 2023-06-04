@@ -11,10 +11,10 @@ const config = {
   favicon: 'img/start.png',
 
   url: 'https://mlibre.github.io/',
-  baseUrl: '/linux-cheat-sheet/',
+  baseUrl: '/cheat-sheet/',
 
   organizationName: 'mlibre',
-  projectName: 'linux-cheat-sheet',
+  projectName: 'cheat-sheet',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',

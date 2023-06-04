@@ -33,7 +33,7 @@ nano package.json
 "build": "rm -rf build; docusaurus build",
 
 nano docusaurus.config.js
-# Visit https://github.com/mlibre/linux-cheat-sheet/blob/master/website/docusaurus.config.js
+# Visit https://github.com/mlibre/cheat-sheet/blob/master/website/docusaurus.config.js
 ```
 
 ## Run

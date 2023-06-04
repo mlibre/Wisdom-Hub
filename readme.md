@@ -12,7 +12,7 @@ tags:
 
 Welcome to the Mlibre Cheat Sheet Repository!
 
-This is the official repository for the [Mlibre Cheat Sheet website](https://mlibre.github.io/linux-cheat-sheet/).  Here, you will find various tutorials and documentation related to `Linux`, `Raspberry Pi`, `networking`, and more.
+This is the official repository for the [Mlibre Cheat Sheet website](https://mlibre.github.io/cheat-sheet/).  Here, you will find various tutorials and documentation related to `Linux`, `Raspberry Pi`, `networking`, and more.
 
 ## Repository Structure
 
