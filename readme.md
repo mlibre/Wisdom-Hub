@@ -1,4 +1,5 @@
 ---
+render_with_liquid: false
 title: Introduction
 slug: /
 sidebar_position: 1
@@ -7,6 +8,7 @@ tags:
   - Cheat
   - Sheet
 ---
+
 # Mlibre Cheat Sheet
 
 Welcome to the Mlibre Cheat Sheet Repository!
