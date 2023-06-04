@@ -21,9 +21,24 @@ cd website
 
 ```bash
 nano package.json
-"build": "docusaurus build ; rm -rf ../docs ; mv build ../docs",
+"mybuild": "docusaurus build ; rm -rf ../docs ; mv build ../docs",
+"build": "rm -rf build; docusaurus build",
 
 nano docusaurus.config.js
+
+const config = {
+  title: 'Mlibre ',
+  tagline: 'Cheat Sheets',
+  favicon: 'img/favicon.ico',
+
+  url: 'https://mlibre.github.io/',
+  baseUrl: '/linux-cheat-sheet/',
+
+  organizationName: 'mlibre',
+  projectName: 'linux-cheat-sheet',
+
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 ```
 
 ## Run
