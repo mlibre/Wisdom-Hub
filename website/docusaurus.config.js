@@ -31,7 +31,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // routeBasePath: '/', // Serve the docs at the site's root
+          routeBasePath: '/', // Serve the docs at the site's root
         },
         blog: false,
         theme: {
@@ -54,12 +54,6 @@ const config = {
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {
             href: 'https://github.com/mlibre/linux-cheat-sheet/',
             label: 'GitHub',
             position: 'right',
@@ -74,7 +68,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/',
+                to: '/',
               },
             ],
           },

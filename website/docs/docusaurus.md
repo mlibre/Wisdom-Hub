@@ -1,3 +1,9 @@
+---
+sidebar_position: 5
+tags:
+  - Docusaurus
+---
+
 # Docusaurus
 
 Docusaurus is a static-site generator. It builds a single-page application with fast client-side navigation.  
@@ -27,16 +33,6 @@ nano package.json
 "build": "rm -rf build; docusaurus build",
 
 nano docusaurus.config.js
-
-  title: 'Mlibre ',
-  tagline: 'Cheat Sheets',
-  favicon: 'img/start.png',
-
-  url: 'https://mlibre.github.io/',
-  baseUrl: '/linux-cheat-sheet/',
-
-  organizationName: 'mlibre',
-  projectName: 'linux-cheat-sheet',
 ```
 
 ## Run

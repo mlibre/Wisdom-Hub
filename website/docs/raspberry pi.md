@@ -1,3 +1,9 @@
+---
+sidebar_position: 4
+tags:
+  - Raspberry pi
+---
+
 # Raspberry pi
 
 - [Raspberry Pi OS](#raspberry-pi-os)

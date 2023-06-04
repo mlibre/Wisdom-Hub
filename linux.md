@@ -1,3 +1,10 @@
+---
+sidebar_position: 2
+tags:
+  - linux
+  - Cheat
+  - Sheet
+---
 # Linux
 
 Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.  
