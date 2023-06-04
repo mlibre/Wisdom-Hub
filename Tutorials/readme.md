@@ -7,7 +7,7 @@ tags:
   - Mlibre
   - Cheat
   - Sheet
-
+layout: none
 ---
 
 # Mlibre Cheat Sheet
