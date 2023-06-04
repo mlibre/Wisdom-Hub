@@ -54,7 +54,7 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/mlibre/linux-cheat-sheet/',
+            href: 'https://github.com/mlibre/cheat-sheet/',
             label: 'GitHub',
             position: 'right',
           },
@@ -86,7 +86,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/mlibre/linux-cheat-sheet',
+                href: 'https://github.com/mlibre/cheat-sheet',
               },
             ],
           },
