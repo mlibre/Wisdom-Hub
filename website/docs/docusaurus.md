@@ -29,10 +29,11 @@ cd website
 
 ```bash
 nano package.json
-"mybuild": "rm -r .docusaurus/; rm -r docs/*;cp ../*.md docs/; docusaurus build; rm -rf ../docs ; cp -r build ../docs",
+"mybuild": "rm -r .docusaurus/; rm -r docs/*; rm -rf ../docs; cp ../*.md docs/; docusaurus build; cp -r build ../docs",
 "build": "rm -rf build; docusaurus build",
 
 nano docusaurus.config.js
+# Visit https://github.com/mlibre/linux-cheat-sheet/blob/master/website/docusaurus.config.js
 ```
 
 ## Run
@@ -43,6 +44,9 @@ npm start
 
 # Bundles your website into static files for production into the "build" folder
 npm run build
+
+# Build  website for github pages
+npm run mybuild
 
 # Serves the built website locally
 npm run serve
