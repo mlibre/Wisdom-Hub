@@ -13,7 +13,7 @@ tags:
 
 Welcome to the Mlibre Cheat Sheet Repository!
 
-## Repository Structure
+## Tutorials
 
 This repository is organized into several markdown files, each containing tutorials for specific topics. Here's a brief overview of the files:
 
