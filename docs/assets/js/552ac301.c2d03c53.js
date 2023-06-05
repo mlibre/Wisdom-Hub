@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[90],{1571:e=>{e.exports=JSON.parse('{"label":"Raspberry pi","permalink":"/cheat-sheet/tags/raspberry-pi","allTagsPath":"/cheat-sheet/tags","count":1,"items":[{"id":"raspberry pi","title":"Raspberry pi","description":"- Raspberry Pi OS","permalink":"/cheat-sheet/raspberry pi"}]}')}}]);
