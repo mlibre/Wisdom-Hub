@@ -59,7 +59,9 @@ npm deploy
 ```bash
 mkdir -p .github/workflows
 nano .github/workflows/npm.yml
+```
 
+```yml
 name: Generate Docs Folder
 
 on:
@@ -91,7 +93,22 @@ jobs:
           git add .
           git commit -m "Build docs"
           git push
+```
 
+## Troubleshooting
+
+Refresh the git repo, if anything is wrong with it:
+
+```bash
+git config --global user.name "mlibre"
+git config --global user.email "m.gh@linuxmail.org"
+git config --global core.autocrlf input
+git config --global core.fileMode false
+git config core.autocrlf input
+git config core.fileMode false
+git add --renormalize .
+git commit -m "Build docs"
+git push
 ```
 
 ## Resources
