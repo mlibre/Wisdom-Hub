@@ -1,5 +1,6 @@
 ---
-sidebar_position: 6
+title: Vscode
+sidebar_position: 4
 tags:
   - vscode
 ---

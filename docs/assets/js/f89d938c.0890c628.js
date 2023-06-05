@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[722],{4869:e=>{e.exports=JSON.parse('{"label":"vscode","permalink":"/cheat-sheet/tags/vscode","allTagsPath":"/cheat-sheet/tags","count":1,"items":[{"id":"vscode","title":"Vscode","description":"A cheat sheet for Vscode.","permalink":"/cheat-sheet/vscode"}]}')}}]);
