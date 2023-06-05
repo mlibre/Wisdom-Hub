@@ -83,7 +83,7 @@ jobs:
       - name: Commit and push changes
         run: |
           git config --global user.name "mlibre"
-          git config --global user.email "m.gh@linux.com"
+          git config --global user.email "m.gh@linuxmail.org"
           git config --global core.autocrlf true
           git add .
           git commit -m "Build docs"
