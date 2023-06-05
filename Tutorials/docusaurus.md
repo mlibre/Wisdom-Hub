@@ -68,6 +68,7 @@ on:
 
 jobs:
   build:
+    name: Make Website
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -77,18 +78,15 @@ jobs:
       
       - name: Build docs
         working-directory: ./docusaurus
-      - run: npm install
-        run: npm run mybuild
+        run: npm install; npm run mybuild
 
       - name: Commit and push changes
-      run: |
+        run: |
           git config --global user.name "mlibre"
           git config --global user.email "m.gh@linux.com"
           git add .
           git commit -m "Build docs"
           git push
-        # env:
-          # NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
 ```
 
