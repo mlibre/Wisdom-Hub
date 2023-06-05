@@ -6,24 +6,37 @@ tags:
 
 # Raspberry pi
 
+Welcome to the `Raspberry Pi` Readme! This guide covers lots of topics.  
+From `performance` tweaks to `network configuration`, `Docker setup` to custom Python installation.  
+Let's get started and unlock the full potential of your Raspberry Pi!
+
 - [Raspberry Pi OS](#raspberry-pi-os)
 - [First Things](#first-things)
 - [rasp-config](#rasp-config)
 - [Fix $PATH](#fix-path)
+- [Usuals](#usuals)
+  - [bash completion](#bash-completion)
+  - [No Password](#no-password)
+- [Performance](#performance)
+  - [Logs](#logs)
+  - [sysctl](#sysctl)
 - [Network](#network)
   - [Disable ipv6](#disable-ipv6)
   - [Disable WiFi and Bluetooth](#disable-wifi-and-bluetooth)
-  - [Find rpi in the Network](#find-rpi-in-the-network)
   - [Enable ipv4 forwarding](#enable-ipv4-forwarding)
+  - [Find rpi in the Network](#find-rpi-in-the-network)
   - [Static DNS](#static-dns)
 - [Make Swap File](#make-swap-file)
 - [VNC](#vnc)
   - [Enable VNC](#enable-vnc)
   - [Fix VNC Low Resolution](#fix-vnc-low-resolution)
-- [Install Ajenti 2](#install-ajenti-2)
-- [Install Nekoray](#install-nekoray)
-- [Install NodeJs](#install-nodejs)
-- [Install Whisper](#install-whisper)
+- [Docker](#docker)
+  - [Fix permission](#fix-permission)
+  - [Make a custom docker image](#make-a-custom-docker-image)
+- [Ajenti 2](#ajenti-2)
+- [Nekoray](#nekoray)
+- [NodeJs](#nodejs)
+- [Whisper](#whisper)
 - [Install Latest Python](#install-latest-python)
 - [AUTOMATIC1111 Stable diffusion webui](#automatic1111-stable-diffusion-webui)
 - [chroot](#chroot)
@@ -70,16 +83,19 @@ sudo passwd
 
 ```bash
 sudo rm cron.daily/apt-compat
+sudo rm /etc/cron.weekly/update-notifier-common
+sudo rm /etc/cron.daily/update-notifier-common
 
-sudo apt-get purge geany mariadb-common apt-listchanges cups cups-browsed cups-daemon apparmor
+sudo apt-get purge geany mariadb-common apt-listchanges cups cups-browsed cups-daemon apparmor snapd apport
 sudo apt autoremove --purge
 sudo rpi-update
+
 # rollback from rpi-update
 # sudo apt install --reinstall raspberrypi-bootloader raspberrypi-kernel raspberrypi-kernel-headers
 
 sudo apt update
 sudo apt full-upgrade
-sudo apt install -y protobuf-compiler protobuf-c-compiler libyaml-cpp0.6 libyaml-cpp-dev libzxingcore-dev libzxingcore1 qtbase5-dev qtbase5-dev-tools build-essential cmake linux-headers-arm64 ninja-build libqt5svg5-dev qttools5-dev mlocate ruby-google-protobuf python3-protobuf r-cran-rprotobuf libupb0 libupb-dev gogoprotobuf golang-gitaly-proto-dev golang-github-gogo-googleapis-dev golang-gogoprotobuf-dev gradle-plugin-protobuf grpc-proto libactivemq-protobuf-java libarcus-dev libarcus3 libghc-protobuf-dev libghc-protobuf-prof libhawtbuf-java g++ git bazel-bootstrap python3-grpc-tools python3-arcus protoc-gen-go libprotozero-dev libprotoc-dev libqt5x11extras5-dev fswebcam python3-pip libsdl2-dev wget git python3 python3-venv libgdbm-dev libsqlite3-dev tk-dev libncursesw5-dev aria2 libdb5.3-dev llvm autoconf rfkill raspberrypi-ui-mods realvnc-vnc-server raspberrypi-bootloader raspberrypi-kernel raspberrypi-kernel-headers 
+sudo apt install -y protobuf-compiler protobuf-c-compiler libyaml-cpp0.6 libyaml-cpp-dev libzxingcore-dev libzxingcore1 qtbase5-dev qtbase5-dev-tools build-essential cmake make linux-headers-arm64 ninja-build libqt5svg5-dev qttools5-dev mlocate ruby-google-protobuf python3-protobuf r-cran-rprotobuf libupb0 libupb-dev gogoprotobuf golang-gitaly-proto-dev golang-github-gogo-googleapis-dev golang-gogoprotobuf-dev gradle-plugin-protobuf grpc-proto libactivemq-protobuf-java libarcus-dev libarcus3 libghc-protobuf-dev libghc-protobuf-prof libhawtbuf-java g++ git bazel-bootstrap python3-grpc-tools python3-arcus protoc-gen-go libprotozero-dev libprotoc-dev libqt5x11extras5-dev fswebcam python3-pip libsdl2-dev wget git python3 python3-venv libgdbm-dev libsqlite3-dev tk-dev libncursesw5-dev aria2 libdb5.3-dev llvm autoconf rfkill raspberrypi-ui-mods realvnc-vnc-server raspberrypi-bootloader raspberrypi-kernel raspberrypi-kernel-headers libssl-dev automake libjansson-dev autotools-dev unzip gcc
 
 sudo apt clean
 sudo apt autoclean
@@ -114,6 +130,44 @@ nano .bashrc
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+```
+
+## Usuals
+
+### bash completion
+
+```bash
+echo set completion-ignore-case on | sudo tee -a /etc/inputrc
+```
+
+### No Password
+
+```bsah
+sudo nano /etc/sudoers
+%sys ALL=(ALL) NOPASSWD: ALL
+mlibre ALL=(ALL) NOPASSWD: ALL
+```
+
+## Performance
+
+### Logs
+
+```bash
+sudo systemctl disable syslog.socket
+sudo systemctl disable rsyslog
+```
+
+### sysctl
+
+```bash
+sudo nano /etc/sysctl.conf
+net.ipv4.tcp_rmem = 4096 87380 629145
+net.ipv4.tcp_wmem = 4096 65536 16777216
+net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.tcp_moderate_rcvbuf = 1
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_sack = 0
+net.ipv4.tcp_window_scaling = 1
 ```
 
 ## Network
@@ -160,19 +214,6 @@ sudo sysctl -p
 
 ```bash
 sudo nmap -sP 192.168.1.0/24 | grep -B 2 -i raspberry
-```
-
-### Improve Performace
-
-```bash
-sudo nano /etc/sysctl.conf
-net.ipv4.tcp_rmem = 4096 87380 629145
-net.ipv4.tcp_wmem = 4096 65536 16777216
-net.ipv4.tcp_no_metrics_save = 1
-net.ipv4.tcp_moderate_rcvbuf = 1
-net.ipv4.tcp_timestamps = 0
-net.ipv4.tcp_sack = 0
-net.ipv4.tcp_window_scaling = 1
 ```
 
 ### Static DNS
@@ -264,7 +305,7 @@ docker commit proxy_container proxy_image
 docker save proxy_image proxy_image.tar
 ```
 
-## Install Ajenti 2
+## Ajenti 2
 
 ```bash
 curl https://raw.githubusercontent.com/ajenti/ajenti/master/scripts/install.sh | sudo bash -s -
@@ -275,7 +316,7 @@ sudo tail -f /var/log/ajenti/ajenti.log
 
 - Open `http://192.168.1.136:8000` and login with `root` and `password`
 
-## Install Nekoray
+## Nekoray
 
 ```bash
 # https://github.com/MatsuriDayo/nekoray/blob/main/docs/Build_Linux.md
@@ -290,14 +331,14 @@ ninja
 
 - Install `Traffic Widget`, `Cron`, `Date And Time` and `Network` plugins
 
-## Install NodeJs
+## NodeJs
 
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo bash -
 sudo apt-get install -y nodejs
 ```
 
-## Install Whisper
+## Whisper
 
 ```bash
 git clone https://github.com/ggerganov/whisper.cpp.git
