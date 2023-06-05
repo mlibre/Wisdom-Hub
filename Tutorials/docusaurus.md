@@ -29,8 +29,7 @@ cd website
 
 ```bash
 nano package.json
-"mybuild": "rm -r .docusaurus/; rm -r docs/; rm -rf ../docs; cp -r ../Tutorials docs/; docusaurus build; cp -r build ../docs",
-"build": "rm -rf build; docusaurus build",
+"mybuild": "rm -r .docusaurus/; rm -r docs/; rm -rf ../docs; cp -r ../Tutorials docs/; docusaurus build; cp -r build ../docs"
 
 nano docusaurus.config.js
 # Visit https://github.com/mlibre/cheat-sheet/blob/master/website/docusaurus.config.js
@@ -53,6 +52,44 @@ npm run serve
 
 # Publishes the website to GitHub pages
 npm deploy
+```
+
+## Github Actions
+
+```bash
+mkdir -p .github/workflows
+nano .github/workflows/npm.yml
+
+name: Generate Docs Folder
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      
+      - name: Build docs
+        working-directory: ./docusaurus
+      - run: npm install
+        run: npm run mybuild
+
+      - name: Commit and push changes
+      run: |
+          git config --global user.name "mlibre"
+          git config --global user.email "m.gh@linux.com"
+          git add .
+          git commit -m "Build docs"
+          git push
+        # env:
+          # NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
 ```
 
 ## Resources
