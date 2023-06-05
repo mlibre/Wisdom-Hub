@@ -13,10 +13,12 @@ A cheat sheet for Vscode.
 - [Extensions](#extensions)
 - [Editor Shortcuts](#editor-shortcuts)
 - [Keybindings](#keybindings)
-- [Common Git Config](#common-git-config)
-- [Github Actions](#github-actions)
-  - [Publish A Package On the NPM Registry](#publish-a-package-on-the-npm-registry)
-  - [Bundling and Committing a Node Module using Browserify](#bundling-and-committing-a-node-module-using-browserify)
+- [Git](#git)
+  - [Vscode for merge and diff](#vscode-for-merge-and-diff)
+  - [Git Configs](#git-configs)
+  - [Github Actions](#github-actions)
+    - [Publish A Package On the NPM Registry](#publish-a-package-on-the-npm-registry)
+    - [Bundling and Committing a Node Module using Browserify](#bundling-and-committing-a-node-module-using-browserify)
 - [Cleaning NPM Cache](#cleaning-npm-cache)
 - [Settings JSON](#settings-json)
 - [Eslint Configuration](#eslint-configuration)
@@ -171,9 +173,9 @@ Disable all the extensions by default. Use enable for workspace option in projec
 ]
 ```
 
-## Common Git Config
+## Git
 
-Set **vscode** as default `merge` and `diff` tool
+### Vscode for merge and diff
 
 ```bash
 git config --global merge.tool vscode
@@ -183,15 +185,26 @@ git config --global difftool.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'
 git config --global core.autocrlf true
 ```
 
+### Git Configs
+
 ```bash
 git config user.email m.gh@linuxmail.org
 git config user.name mlibre
 git config --global credential.helper store
+
+git config --global user.name "mlibre"
+git config --global user.email "m.gh@linuxmail.org"
+git config --global core.autocrlf input
+git config --global core.fileMode false
+git config core.autocrlf input
+git config core.fileMode false
+
+git add --renormalize .
 ```
 
-## Github Actions
+### Github Actions
 
-### Publish A Package On the NPM Registry
+#### Publish A Package On the NPM Registry
 
 1. Create an NPM token: **<https://www.npmjs.com/settings/mlibre/tokens/>**
 2. Create a secret variable named `NPM_TOKEN` from the Github repository settings: **<https://github.com/mlibre/Ethereum-Smart-Contract-Deployer/settings/secrets/actions/new>**
@@ -218,7 +231,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 ```
 
-### Bundling and Committing a Node Module using Browserify
+#### Bundling and Committing a Node Module using Browserify
 
 Create a yml file in the repository: `.github/workflows/browserify.yml`
 
