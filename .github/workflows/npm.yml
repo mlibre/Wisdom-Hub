@@ -20,7 +20,10 @@ jobs:
         run: |
           git config --global user.name "mlibre"
           git config --global user.email "m.gh@linuxmail.org"
-          git config --global core.autocrlf true
+          git config --global core.autocrlf input
+          git config --global core.fileMode false
+          git config core.autocrlf input
+          git config core.fileMode false
           git add .
           git commit -m "Build docs"
           git push
