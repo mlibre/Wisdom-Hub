@@ -4,8 +4,8 @@ Welcome to the Mlibre Cheat Sheet Repository!
 
 `Tutorials` about various topics like `Linux`, `Raspberry Pi`, `Vscode`, `Network`, and others.
 
-* Website: <https://mlibre.github.io/cheat-sheet/>
-* Folder: [Link](./Tutorials/readme.md)
+* [Website](https://mlibre.github.io/cheat-sheet/)
+* [Folder](./Tutorials/readme.md)
 
 Good Luck!
 
