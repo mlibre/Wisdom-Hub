@@ -1,5 +1,4 @@
 ---
-render_with_liquid: false
 title: Introduction
 slug: /
 sidebar_position: 1
