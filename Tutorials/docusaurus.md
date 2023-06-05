@@ -19,7 +19,7 @@ It provides out-of-the-box documentation features but can be used to create any 
 nano .gitignore
 node_modules
 
-npx create-docusaurus@latest website classic
+npx create-docusaurus@latest docusaurus classic
 cd website
 
 # npx create-docusaurus@latest --help
