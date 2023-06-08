@@ -953,5 +953,7 @@ Download, login and install whatsapp, telegram and google
 ### Youtube-dl
 
 ```bash
+sudo pacman -S youtube-dl yt-dlp
+yt-dlp --write-auto-sub "https://www.youtube.com/link" --proxy socks5://127.0.0.1:1080/
 youtube-dl -f best --proxy socks5://127.0.0.1:1080/ --write-auto-sub "https://www.youtube.com/link"
 ```
