@@ -953,7 +953,25 @@ Download, login and install whatsapp, telegram and google
 ### Youtube-dl
 
 ```bash
+# Install
 sudo pacman -S youtube-dl yt-dlp
-yt-dlp --write-auto-sub "https://www.youtube.com/link" --proxy socks5://127.0.0.1:1080/
-youtube-dl -f best --proxy socks5://127.0.0.1:1080/ --write-auto-sub "https://www.youtube.com/link"
+
+# Download best quality
+yt-dlp "https://www.youtube.com/link"
+
+yt-dlp -f b --write-description  --write-auto-sub --write-subs --embed-subs --write-info-json --max-filesize 100M --download-sections "*6:02-13:40" --proxy socks5://127.0.0.1:1080/ --verbose "https://www.youtube.com/link"
+
+# List formats and sizes
+yt-dlp -F "https://www.youtube.com/link"
+yt-dlp -f 22 "https://www.youtube.com/link" 
+
+youtube-dl -f best "https://www.youtube.com/link"
+```
+
+### Add Alias
+
+```bash
+nano ~/.bashrc
+alias yd='yt-dlp -f b --write-auto-sub --write-subs --embed-subs --write-info-json --max-filesize 100M'
+yd "link"
 ```
