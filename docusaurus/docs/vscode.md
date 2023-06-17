@@ -545,7 +545,7 @@ sudo pacman -S nodejs-lts-fermium npm
  "workbench.layoutControl.enabled": false,
  "workbench.list.smoothScrolling": true,
  "editor.smoothScrolling": true,
- "editor.cursorSmoothCaretAnimation": true,
+ "editor.cursorSmoothCaretAnimation": "on",
  "editor.stickyScroll.enabled": true,
  "mergeEditor.diffAlgorithm": "experimental",
  "window.zoomLevel": 1,
