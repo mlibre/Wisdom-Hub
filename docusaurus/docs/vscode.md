@@ -366,6 +366,9 @@ sudo pacman -S nodejs-lts-fermium npm
  "terminal.integrated.scrollback": 10000,
  "terminal.integrated.defaultProfile.linux": "JavaScript Debug Terminal",
  "terminal.integrated.persistentSessionScrollback": 1000,
+ "markdownlint.config": {
+  "single-h1": false
+ },
  "terminal.integrated.profiles.linux": {
   "bash": {
    "path": "bash",
@@ -435,6 +438,7 @@ sudo pacman -S nodejs-lts-fermium npm
   "Datahub",
   "dbaeumer",
   "difftool",
+  "Doomslug",
   "Dota",
   "Eleuther",
   "fileupload",
@@ -515,6 +519,7 @@ sudo pacman -S nodejs-lts-fermium npm
   "swapon",
   "syncmode",
   "Syyuu",
+  "Thresholded",
   "tmpfs",
   "TOKENNAME",
   "torsocks",
@@ -561,7 +566,9 @@ sudo pacman -S nodejs-lts-fermium npm
  "cSpell.diagnosticLevel": "Hint",
  "cSpell.showStatus": false,
  "cody.serverEndpoint": "https://sourcegraph.com/",
- "cody.experimental.inline": true
+ "cody.experimental.inline": true,
+ "markdown.extension.tableFormatter.normalizeIndentation": true,
+ "markdown.extension.toc.unorderedList.marker": "*"
 }
 ```
 
