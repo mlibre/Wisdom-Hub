@@ -1,6 +1,6 @@
-# Mlibre Cheat Sheet
+# Tutorials - Mlibre
 
-Welcome to the Mlibre Cheat Sheet Repository!
+Welcome to my education Repository!
 
 **Tutorials** about various topics, `Linux`, `Blockchain`, `Raspberry Pi`, `Vscode`, `Network`, and more
 
