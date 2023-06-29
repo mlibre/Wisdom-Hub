@@ -1,13 +1,26 @@
-# My Blockchain Repository
+---
+title: Introduction
+slug: /
+sidebar_position: 1
+tags:
+  - Mlibre
+  - blockchain
+---
 
-Welcome to my blockchain Repository!
+# Learn Blockchain
 
-`Tutorials` about various `blockchain` topics like `Bitcoin`, `Cryptography`, `Ethereum`, `LBRY`, `NEAR` and others.
+Welcome to my blockchain tutorials!
 
-* [Website](https://mlibre.github.io/blockchain/)
-* [Contents](./Tutorials/readme.md)
+## Tutorials
 
-Good Luck!
+This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
+
+* [Bitcoin](Bitcoin/)
+* [Cryptography](Cryptography/)
+* [Ethereum](Ethereum/)
+* [LBRY](LBRY/)
+* [NEAR](NEAR/)
+* [Polygon](Polygon/)
 
 ## My ETH Address
 
