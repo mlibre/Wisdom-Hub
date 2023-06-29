@@ -1,6 +1,5 @@
 ---
 title: Blockchain
-slug: /
 sidebar_position: 2
 tags:
   - Mlibre
