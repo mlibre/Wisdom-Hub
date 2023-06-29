@@ -32,7 +32,7 @@ nano package.json
 "mybuild": "rm -r .docusaurus/; rm -r docs/; rm -rf ../docs; cp -r ../Tutorials docs/; docusaurus build; cp -r build ../docs"
 
 nano docusaurus.config.js
-# Visit https://github.com/mlibre/cheat-sheet/blob/master/website/docusaurus.config.js
+# Visit https://github.com/mlibre/Tutorials/blob/master/website/docusaurus.config.js
 ```
 
 ## Run

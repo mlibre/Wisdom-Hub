@@ -4,7 +4,7 @@ Welcome to the Mlibre Cheat Sheet Repository!
 
 **Tutorials** about various topics, `Linux`, `Blockchain`, `Raspberry Pi`, `Vscode`, `Network`, and more
 
-* [Website](https://mlibre.github.io/cheat-sheet/)
+* [Website](https://mlibre.github.io/Tutorials/)
 * [Contents](./Tutorials/readme.md)
 
 Good Luck!

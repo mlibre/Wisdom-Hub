@@ -11,10 +11,10 @@ const config = {
   favicon: 'img/start.png',
 
   url: 'https://mlibre.github.io/',
-  baseUrl: '/cheat-sheet/',
+  baseUrl: '/Tutorials/',
 
   organizationName: 'mlibre',
-  projectName: 'cheat-sheet',
+  projectName: 'Tutorials',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -54,7 +54,7 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/mlibre/cheat-sheet/',
+            href: 'https://github.com/mlibre/Tutorials/',
             label: 'GitHub',
             position: 'right',
           },
@@ -86,7 +86,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/mlibre/cheat-sheet',
+                href: 'https://github.com/mlibre/Tutorials',
               },
             ],
           },
