@@ -1,7 +1,7 @@
 ---
-title: Introduction
+title: Blockchain
 slug: /
-sidebar_position: 1
+sidebar_position: 2
 tags:
   - Mlibre
   - blockchain
