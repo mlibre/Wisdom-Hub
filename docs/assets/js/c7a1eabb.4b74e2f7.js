@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[7778],{5675:e=>{e.exports=JSON.parse('{"label":"linux","permalink":"/Tutorials/tags/linux","allTagsPath":"/Tutorials/tags","count":1,"items":[{"id":"linux","title":"Linux","description":"Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.","permalink":"/Tutorials/linux"}]}')}}]);
