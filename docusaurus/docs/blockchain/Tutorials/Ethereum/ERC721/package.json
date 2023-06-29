@@ -1,0 +1,16 @@
+{
+  "name": "ethereum",
+  "version": "1.0.0",
+  "main": "deploy_contract.js",
+  "author": "",
+  "license": "CC0",
+  "dependencies": {
+    "@openzeppelin/contract-loader": "^0.6.3",
+    "@openzeppelin/contracts": "^4.3.1",
+    "ethereum-smart-contract-deployer": "^1.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-plugin-node": "^11.1.0"
+  }
+}

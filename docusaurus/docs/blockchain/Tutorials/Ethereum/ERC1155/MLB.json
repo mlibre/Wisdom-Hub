@@ -1,0 +1,7 @@
+{
+	"name": "MLB",
+	"description": "ERC-1155 example",
+	"properties": {
+		"first": "hey"
+	}
+}

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[675],{1426:e=>{e.exports=JSON.parse('{"label":"blockchain","permalink":"/blockchain/tags/blockchain","allTagsPath":"/blockchain/tags","count":1,"items":[{"id":"readme","title":"Introduction","description":"Welcome to my blockchain Repository!","permalink":"/blockchain/"}]}')}}]);
