@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@maticnetwork/maticjs": "^2.0.46",
+    "@truffle/hdwallet-provider": "^1.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-node": "^11.1.0"
+  }
+}

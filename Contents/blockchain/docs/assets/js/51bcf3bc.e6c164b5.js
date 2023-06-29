@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[890],{6222:e=>{e.exports=JSON.parse('{"label":"Mlibre","permalink":"/blockchain/tags/mlibre","allTagsPath":"/blockchain/tags","count":1,"items":[{"id":"readme","title":"Introduction","description":"Welcome to my blockchain Repository!","permalink":"/blockchain/"}]}')}}]);

@@ -1,0 +1,20 @@
+[package]
+name = "exchange"
+version = "1.0.0"
+authors = ["Mlibre <m.gh@linuxmail.org>"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = "3.1.0"
+
+[profile.release]
+codegen-units = 1
+# Tell `rustc` to optimize for small code size.
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true

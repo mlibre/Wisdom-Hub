@@ -6,7 +6,7 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "rm -rf build; docusaurus build",
-    "mybuild": "rm -r .docusaurus/; rm -r docs/; rm -rf ../docs; cp -r ../Tutorials docs/; docusaurus build; cp -r build ../docs",
+    "mybuild": "rm -r .docusaurus/; rm -r docs/; rm -rf ../docs; cp -r ../Contents docs/; docusaurus build; cp -r build ../docs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

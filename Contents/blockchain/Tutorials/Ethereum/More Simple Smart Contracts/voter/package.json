@@ -1,0 +1,14 @@
+{
+  "name": "ethereum",
+  "version": "1.0.0",
+  "main": "deploy_contract.js",
+  "author": "",
+  "license": "CC0",
+  "dependencies": {
+    "ethereum-smart-contract-deployer": "^1.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-plugin-node": "^11.1.0"
+  }
+}
