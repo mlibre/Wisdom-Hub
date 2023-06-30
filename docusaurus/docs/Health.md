@@ -1,3 +1,8 @@
+---
+tags:
+  - Health
+---
+
 # General
 
 * Avoid `artificial sweeteners` as they weaken the `immune system` and have other negative effects.
