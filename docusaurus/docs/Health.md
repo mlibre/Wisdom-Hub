@@ -14,7 +14,7 @@ tags:
 * Maintain your body's energy.
 * Avoid self-indulgence and masturbation, as it weakens the body.
 * Reduce stress levels, as stress weakens the immune system.
-* Do `not drink water` with (or before and after ) `meals`, as it puts pressure on the stomach.
+* Do not drink **water** with (or before and after ) **meals**, as it puts pressure on the stomach.
 * Going to bed late is not good for digestion. you should be Sleep by 11 max.
 * Sleep properly. Lie on your back or side, but not on your stomach.
 * Proper posture when sitting
