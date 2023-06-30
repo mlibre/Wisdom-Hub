@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Mlibre ',
   tagline: 'Cheat Sheets',
-  favicon: 'img/start.png',
+  favicon: 'img/gt.png',
 
   url: 'https://mlibre.github.io/',
   baseUrl: '/Tutorials/',
@@ -50,7 +50,7 @@ const config = {
         title: 'Home',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/start.png',
+          src: 'img/gt.png',
         },
         items: [
           {
