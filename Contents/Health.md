@@ -6,10 +6,9 @@ tags:
 
 # General
 
-* **Processed foods** (sausages, sausages, etc.), processed or industrial sauces and oils, Processed drinks (soda, industrial malt, etc.) are completely **prohibited**
+* **Avoid processed foods**: sausages, processed or industrial sauces and oils, Processed drinks (soda, industrial malt, etc.)
 
-* Avoid `artificial sweeteners` as they weaken the `immune system` and have other negative effects.
-* Avoid consuming `processed foods` such as `processed chocolate milk`, `processed banana milk`, `processed fruit juice`, and other artificially made combinations that contain unhealthy additives such as `refined or added sugar` and `preservatives`.
+* **Avoid artificial sweeteners and added sugar**: `processed chocolate milk`, `processed banana milk`, `processed fruit juice`, and other artificially made combinations that contain unhealthy additives such as `refined or added sugar` and `preservatives`. These `refined sugar` weaken the `immune system` and have other negative effects
 * Limit daily `milk` intake to `one` glass maximum. `Mixed` with **honey**. Drinking more than one glass can be harmful.
 
 * Avoid straining to poop, as it can put pressure on the stomach.
