@@ -6,15 +6,17 @@ tags:
 
 # General
 
+* **Processed foods** (sausages, sausages, etc.), processed or industrial sauces and oils, Processed drinks (soda, industrial malt, etc.) are completely **prohibited**
+
 * Avoid `artificial sweeteners` as they weaken the `immune system` and have other negative effects.
 * Avoid consuming `processed foods` such as `processed chocolate milk`, `processed banana milk`, `processed fruit juice`, and other artificially made combinations that contain unhealthy additives such as `refined or added sugar` and `preservatives`.
-* Limit daily `milk` intake to `one` glass maximum. Drinking more than one glass can be harmful.
+* Limit daily `milk` intake to `one` glass maximum. `Mixed` with **honey**. Drinking more than one glass can be harmful.
 
 * Avoid straining to poop, as it can put pressure on the stomach.
 * Maintain your body's energy.
 * Avoid self-indulgence and masturbation, as it weakens the body.
 * Reduce stress levels, as stress weakens the immune system.
-* Do not drink **water** with (or before and after ) **meals**, as it puts pressure on the stomach.
+* Do not drink **water** with **meals**. From half an hour before the meal to 1.5 hours after the meal. It puts pressure on the stomach.
 * Going to bed late is not good for digestion. you should be Sleep by 11 max.
 * Sleep properly. Lie on your back or side, but not on your stomach.
 * Proper posture when sitting
@@ -33,7 +35,7 @@ tags:
 * Avoid bending your neck backward too much or keeping your neck bent backward for extended periods
 Foods
 
-# Healthy Juice
+# Juice
 
 * Strawberry juice
 * Pineapple juice
@@ -42,7 +44,7 @@ Foods
 * Mulberry juice
 * Carrot juice
 
-# Healthy Foods
+# Foods
 
 * Sesame seeds
 * Figs
@@ -50,8 +52,13 @@ Foods
 * Lentils
 * Honey
 
-# Healthy Drinks
+# Drinks
 
-* Honey boiled with lukewarm water + syrup egg
-* Honey with warm boiled water + rose water
+* Honey boiled with lukewarm water + Chia seed
+* Honey with warm boiled water + Rose water
 * Honey with lukewarm boiled water + lemon
+
+# disinfection
+
+* 10 minutes of breathing onion or mint fumes. 3 onions
+* Lemon and honey
