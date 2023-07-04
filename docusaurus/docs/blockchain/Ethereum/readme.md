@@ -1,24 +1,18 @@
 # Ethereum
 
-`Ethereum` is a decentralized blockchain. A platform for smart contracts. Smart contracts are applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third party interference.
+`Ethereum` is a decentralized blockchain. It uses proof-of-stake (PoS) consensus mechanism.  
+ One of the key features of `Ethereum` is the ability to create and execute `smart contracts`. `Smart contracts` are simply programs written and can be executed on the blockchain.
 
 ## Table of content
 
-- [Table of content](#table-of-content)
-- [Accounts vs UTXOs](#accounts-vs-utxos)
-  - [Merkle Patricia Trees](#merkle-patricia-trees)
-- [Gas](#gas)
-- [Geth](#geth)
-  - [Installation](#installation)
-  - [Features](#features)
-  - [Starting](#starting)
-  - [Importing accounts](#importing-accounts)
-  - [Interacting with Ethereum](#interacting-with-ethereum)
-- [MetaMask](#metamask)
-- [Infura](#infura)
-- [Ethereum Explorer](#ethereum-explorer)
-- [References](#references)
-- [My ETH Address](#my-eth-address)
+* [Accounts vs UTXOs](#accounts-vs-utxos)
+  * [Merkle Patricia Trees](#merkle-patricia-trees)
+* [Gas](#gas)
+* [MetaMask](#metamask)
+* [Infura](#infura)
+* [Ethereum Explorer](#ethereum-explorer)
+* [References](#references)
+* [My ETH Address](#my-eth-address)
 
 ## Accounts vs UTXOs
 
@@ -65,9 +59,9 @@ If we run out of gas in the middle of an Ethereum transaction, the transaction w
 
 There are several ways to interact with the Ethereum blockchain.
 
-- Running a local node with `Geth` for example
-- Calling web APIs. for example [blockcypher](https://www.blockcypher.com/)
-- ...
+* Running a local node with `Geth` for example
+* Calling web APIs. for example [blockcypher](https://www.blockcypher.com/)
+* ...
 
 > **Metamask** is a client-side browser extension that provides a high-level javascript library to interact with the Ethereum network. [metamask.io](https://metamask.io/)
 
@@ -85,17 +79,17 @@ As it says they are providing APIs, so we can easily communicate with the Ethere
 
 ## Ethereum Explorer
 
-- <https://etherscan.io/>
+* <https://etherscan.io/>
 
-- <https://rinkeby.etherscan.io/address/CONTRACT_ADDRESS>
+* <https://rinkeby.etherscan.io/address/CONTRACT_ADDRESS>
 
 ## References
 
-- <https://ethereum.org/en/developers/docs/>
-- <https://docs.infura.io/networks/ethereum>
-- <https://eips.ethereum.org/>
-- <https://github.com/web3/web3.js>
-- <https://web3-js-docs.pages.dev/>
+* <https://ethereum.org/en/developers/docs/>
+* <https://docs.infura.io/networks/ethereum>
+* <https://eips.ethereum.org/>
+* <https://github.com/web3/web3.js>
+* <https://web3-js-docs.pages.dev/>
 
 ## My ETH Address
 
