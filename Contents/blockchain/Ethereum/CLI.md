@@ -96,5 +96,7 @@ voter.addOption("mlibre" , {from: "0xD8f24D419153E5D03d614C5155f900f4B5C8A65C"})
 ## Block info
 
 ```js
-geth console
+geth attach https://eth.getblock.io/token/mainnet/
+
+web3.eth.getBlock(eth.blockNumber)
 ```
