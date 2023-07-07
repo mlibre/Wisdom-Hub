@@ -70,7 +70,11 @@ We have decided that, particularly because we are dealing with dapps containing 
 
 One weakness of the account paradigm is that in order to prevent replay attacks, every transaction must have a **nonce**, such that the account keeps track of the nonces used and only accepts a transaction if its nonce is 1 after the last nonce used. This means that even no-longer-used accounts can never be pruned from the account state. A simple solution to this problem is to require transactions to contain a block number, making them un-repayable after some period of time, and reset nonces once every period. Miners or other users will need to “ping” unused accounts in order to delete them from the state, as it would be too expensive to do a full sweep as part of the blockchain protocol itself. We did not go with this mechanism only to speed up development for 1.0; 1.1 and beyond will likely use such a system.
 
-### Merkle Patricia Trees
+## Blocks
+
+Blocks are batches of transactions with a hash of the previous block in the chain. This links blocks together (in a chain) because hashes are cryptographically derived from the block data
+
+## Merkle Patricia Trees
 
 The Merkle Patricia tree/trie, previously envisioned by Alan Reiner and implemented in the Ripple protocol, is the primary data structure of Ethereum, and is used to store all account state, as well as transactions and receipts in each block.
 
@@ -114,7 +118,7 @@ As it says they are providing APIs, so we can easily communicate with the Ethere
 * <https://docs.infura.io/networks/ethereum>
 * <https://eips.ethereum.org/>
 * <https://github.com/web3/web3.js>
-* <https://web3-js-docs.pages.dev/>
+* <https://web3js.org>
 
 ## My ETH Address
 
