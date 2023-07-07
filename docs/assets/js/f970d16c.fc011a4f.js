@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[7175],{6467:e=>{e.exports=JSON.parse('{"label":"Tutorial","permalink":"/Tutorials/tags/tutorial","allTagsPath":"/Tutorials/tags","count":1,"items":[{"id":"readme","title":"Introduction","description":"Welcome to the Mlibre Cheat Sheet Repository!","permalink":"/Tutorials/"}]}')}}]);

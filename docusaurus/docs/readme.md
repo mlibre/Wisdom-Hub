@@ -6,6 +6,7 @@ tags:
   - Mlibre
   - Cheat
   - Sheet
+  - Tutorial
 ---
 
 # Mlibre Cheat Sheet
@@ -18,9 +19,10 @@ This repository is organized into several markdown files, each containing tutori
 
 * [Linux](./linux.md): Contains various Linux-related tips and tricks
 * [Blockchain](./blockchain/readme.md): Contains various Linux-related tips and tricks
+* [Raspberry pi](./raspberry%20pi.md): Contains guides and tutorials related to Raspberry Pi, such as installing an operating system
 * [Network](./network.md): Contains tutorials and tips related to networking in Linux, such as setting up a VPN or configuring a firewall
 * [Vscode](./vscode.md): A cheat sheet for Vscode
-* [Raspberry pi](./raspberry%20pi.md): Contains guides and tutorials related to Raspberry Pi, such as installing an operating system
+* [Lovely Tools](./Lovely%20Tools.md): **lovely**, **simple**, and **friendly** tools
 * [Docusaurus](./docusaurus.md): Contains documentation related to Docusaurus, a static site generator used to build the Linux Cheat Sheet website
 
 ## My ETH Address
