@@ -14,9 +14,34 @@
 * [References](#references)
 * [My ETH Address](#my-eth-address)
 
-## Accounts vs UTXOs
+## Ether
 
-Bitcoin, along with many of its derivatives, stores data about users’ balances in a structure based on unspent transaction outputs (UTXOs): the entire state of the system consists of a set of “unspent outputs” (think, “coins”), such that each coin has an owner and a value, and a transaction spends one or more coins and creates one or more new coins, subject to the validity constraints:
+Ether (ETH) is the cryptocurrency used for many things on the Ethereum network. Fundamentally, it is the only acceptable form of payment for transaction fees, and is required to validate and propose blocks on Mainnet
+
+## Accounts
+
+Ethereum has two account types:
+
+* Externally-owned account (EOA) – controlled by anyone with the private keys
+  * Creating an account costs nothing
+  * Can initiate transactions
+  * Transactions between externally-owned accounts can only be ETH/token transfers
+  * Made up of a cryptographic pair of keys: public and private keys that control account activities
+* Contract account – a smart contract deployed to the network, controlled by code. Learn about smart contracts
+  * Creating a contract has a cost because you're using network storage
+  * Can only send transactions in response to receiving a transaction
+  * Transactions from an external account to a contract account can trigger code which can execute many different actions, such as transferring tokens or even creating a new contract
+  * Contract accounts don't have private keys. Instead, they are controlled by the logic of the smart contract code
+
+Both account types have the ability to:
+
+* Receive, hold and send ETH and tokens
+* Interact with deployed smart contracts
+
+### Accounts vs UTXOs
+
+`Bitcoin`, along with many of its derivatives, stores data about users’ balances in a structure based on `unspent transaction outputs (UTXOs)`.  
+The entire state of the system consists of a set of “unspent outputs” (think, “coins”), such that each coin has an owner and a value, and a transaction spends one or more coins and creates one or more new coins, subject to the validity constraints:
 
 1. Every referenced input must be valid and not yet spent
 2. The transaction must have a signature matching the owner of the input for every input
@@ -43,7 +68,7 @@ The benefits of accounts are:
 
 We have decided that, particularly because we are dealing with dapps containing arbitrary state and code, the benefits of accounts massively outweigh the alternatives. Additionally, in the spirit of the We Have No Features principle, we note that if people really do care about privacy then mixers and coinjoin can be built via signed-data-packet protocols inside of contracts.
 
-One weakness of the account paradigm is that in order to prevent replay attacks, every transaction must have a “nonce”, such that the account keeps track of the nonces used and only accepts a transaction if its nonce is 1 after the last nonce used. This means that even no-longer-used accounts can never be pruned from the account state. A simple solution to this problem is to require transactions to contain a block number, making them un-repayable after some period of time, and reset nonces once every period. Miners or other users will need to “ping” unused accounts in order to delete them from the state, as it would be too expensive to do a full sweep as part of the blockchain protocol itself. We did not go with this mechanism only to speed up development for 1.0; 1.1 and beyond will likely use such a system.
+One weakness of the account paradigm is that in order to prevent replay attacks, every transaction must have a **nonce**, such that the account keeps track of the nonces used and only accepts a transaction if its nonce is 1 after the last nonce used. This means that even no-longer-used accounts can never be pruned from the account state. A simple solution to this problem is to require transactions to contain a block number, making them un-repayable after some period of time, and reset nonces once every period. Miners or other users will need to “ping” unused accounts in order to delete them from the state, as it would be too expensive to do a full sweep as part of the blockchain protocol itself. We did not go with this mechanism only to speed up development for 1.0; 1.1 and beyond will likely use such a system.
 
 ### Merkle Patricia Trees
 
