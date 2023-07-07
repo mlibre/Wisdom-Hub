@@ -104,6 +104,30 @@ A transaction in ETH-2 looks like this:
 ```js
 {
   accessList: [],
+  blockHash: "0x24635aee8638d9c34f01fdc3a6a80b39dc081df59d33550be92a0badff0c93bb",
+  blockNumber: 17641198,
+  chainId: "0x1",
+  from: "0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5",
+  gas: 21000,
+  gasPrice: 22310851574,
+  hash: "0xa78d2e8e676ad408ad75399c36946ee27968beec36fe38f4c284ffd2c39f20af",
+  input: "0x",
+  maxFeePerGas: 22310851574,
+  maxPriorityFeePerGas: 0,
+  nonce: 383610,
+  r: "0x16bb14d65b1e768d6671e69c7ee6189ca070b90a8519c34e97169a4fe0e72865",
+  s: "0x3107edfd2b4a1cf2d03ce305b74323486e70e9ee0c29ee02c61ed74376e88298",
+  to: "0xe688b84b23f322a994a53dbf8e15fa82cdb71127",
+  transactionIndex: 168,
+  type: "0x2",
+  v: "0x0",
+  value: 44186254496743523
+}
+
+// OR
+
+{
+  accessList: [],
   blockHash: "0x424483e1970781103b9f4f22b2d906eeb25ebab5d417b8d706802fec10b4197d",
   blockNumber: 17619068,
   chainId: "0x1",
