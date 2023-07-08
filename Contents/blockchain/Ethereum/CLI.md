@@ -6,6 +6,22 @@ it is not possible to run an execution client on its own anymore. After The Merg
 
 :::
 
+## Table of content
+
+* [Online APIs](#online-apis)
+  * [getblock.io](#getblockio)
+* [Run your own node](#run-your-own-node)
+  * [Geth](#geth)
+    * [Installation](#installation)
+    * [Features](#features)
+    * [Starting](#starting)
+    * [Importing accounts](#importing-accounts)
+    * [Interacting With Geth](#interacting-with-geth)
+* [Transaction Info](#transaction-info)
+* [Block info](#block-info)
+* [MetaMask](#metamask)
+* [Infura](#infura)
+
 You can either run your `own` ethereum `layers` (node) or use `free providers`.
 
 ## Online APIs
@@ -211,3 +227,25 @@ A block in eth2 looks like this:
   withdrawalsRoot: "0x4915e375cb0b2df0dfb9115fab5c0acef3abebd037cdc693edc065f3a8da44b0"
 }
 ```
+
+## MetaMask
+
+There are several ways to interact with the Ethereum blockchain.
+
+* Running a local node with `Geth` for example
+* Calling web APIs. for example [blockcypher](https://www.blockcypher.com/)
+* ...
+
+> **Metamask** is a client-side browser extension that provides a high-level javascript library to interact with the Ethereum network. [metamask.io](https://metamask.io/)
+
+It is also a crypto wallet.  
+On the backend side, it uses **infura** or other API providers to comminute with Ethereum blockchain.  
+So basically you as a **developer** don't have to worry about making/signing/sending transactions, ...  
+And as a **user**, it makes things much easier. for example, you don't have to sign a proof message to prove you are the owner of an address  
+`MetaMask` is also offering other features custom network, ...
+
+## Infura
+
+> Ethereum & IPFS APIs [infura.io](https://infura.io/)
+
+As it says they are providing APIs, so we can easily communicate with the Ethereum network. in the background, they probably have `geth` nodes or other kinds of nodes running.

@@ -5,18 +5,36 @@
 
 ## Table of content
 
-* [Accounts vs UTXOs](#accounts-vs-utxos)
-  * [Merkle Patricia Trees](#merkle-patricia-trees)
+* [Table of content](#table-of-content)
+* [Proof-of-stake protocol](#proof-of-stake-protocol)
+* [Ether](#ether)
 * [Gas](#gas)
-* [MetaMask](#metamask)
-* [Infura](#infura)
+* [Accounts](#accounts)
+  * [Accounts vs UTXOs](#accounts-vs-utxos)
+* [Blocks](#blocks)
+* [Merkle Patricia Trees](#merkle-patricia-trees)
 * [Ethereum Explorer](#ethereum-explorer)
 * [References](#references)
 * [My ETH Address](#my-eth-address)
 
+## Proof-of-stake protocol
+
+Proof-of-stake means the following:
+
+* Validating nodes have to stake 32 ETH into a deposit contract as collateral against bad behavior. This helps protect the network because provably dishonest activity leads to some or all of that stake being destroyed.
+* In every slot (spaced twelve seconds apart) a validator is randomly selected to be the block proposer. They bundle transactions together, execute them and determine a new 'state'. They wrap this information into a block and pass it around to other validators.
+* Other validators who hear about the new block re-execute the transactions to ensure they agree with the proposed change to the global state. Assuming the block is valid, they add it to their own database.
+* If a validator hears about two conflicting blocks for the same slot they use their fork-choice algorithm to pick the one supported by the most staked ETH.
+
 ## Ether
 
 Ether (ETH) is the cryptocurrency used for many things on the Ethereum network. Fundamentally, it is the only acceptable form of payment for transaction fees, and is required to validate and propose blocks on Mainnet
+
+## Gas
+
+What happens when we run out of gas in the middle of an Ethereum transaction?
+
+If we run out of gas in the middle of an Ethereum transaction, the transaction will fail and the state of the blockchain will revert to what it was before. However, we will still have to pay for the gas that was consumed up to that
 
 ## Accounts
 
@@ -78,38 +96,11 @@ Blocks are batches of transactions with a hash of the previous block in the chai
 
 The Merkle Patricia tree/trie, previously envisioned by Alan Reiner and implemented in the Ripple protocol, is the primary data structure of Ethereum, and is used to store all account state, as well as transactions and receipts in each block.
 
-## Gas
-
-What happens when we run out of gas in the middle of an Ethereum transaction?
-
-If we run out of gas in the middle of an Ethereum transaction, the transaction will fail and the state of the blockchain will revert to what it was before. However, we will still have to pay for the gas that was consumed up to that point. This is because gas is used to pay validators for the resources needed to conduct transactions.
-
-## MetaMask
-
-There are several ways to interact with the Ethereum blockchain.
-
-* Running a local node with `Geth` for example
-* Calling web APIs. for example [blockcypher](https://www.blockcypher.com/)
-* ...
-
-> **Metamask** is a client-side browser extension that provides a high-level javascript library to interact with the Ethereum network. [metamask.io](https://metamask.io/)
-
-It is also a crypto wallet.  
-On the backend side, it uses **infura** or other API providers to comminute with Ethereum blockchain.  
-So basically you as a **developer** don't have to worry about making/signing/sending transactions, ...  
-And as a **user**, it makes things much easier. for example, you don't have to sign a proof message to prove you are the owner of an address  
-`MetaMask` is also offering other features custom network, ...
-
-## Infura
-
-> Ethereum & IPFS APIs [infura.io](https://infura.io/)
-
-As it says they are providing APIs, so we can easily communicate with the Ethereum network. in the background, they probably have `geth` nodes or other kinds of nodes running.
+ point. This is because gas is used to pay validators for the resources needed to conduct transactions.
 
 ## Ethereum Explorer
 
 * <https://etherscan.io/>
-
 * <https://rinkeby.etherscan.io/address/CONTRACT_ADDRESS>
 
 ## References
