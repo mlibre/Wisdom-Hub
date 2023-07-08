@@ -318,7 +318,10 @@ sudo pacman -S nodejs-lts-fermium npm
  "diffEditor.ignoreTrimWhitespace": false,
  "extensions.autoCheckUpdates": false,
  "extensions.autoUpdate": "onlyEnabledExtensions",
+ "markdown.extension.tableFormatter.normalizeIndentation": true,
+ "markdown.extension.toc.unorderedList.marker": "*",
  "markdown.extension.toc.updateOnSave": false,
+ "markdown.extension.toc.levels": "2..6",
  "markdown.extension.completion.respectVscodeSearchExclude": true,
  "markdown.extension.theming.decoration.renderCodeSpan": false,
  "eslint.codeAction.showDocumentation": {
@@ -421,6 +424,7 @@ sudo pacman -S nodejs-lts-fermium npm
   "AUTOMINE",
   "Automount",
   "Autostarts",
+  "Balena",
   "bigscience",
   "bindgen",
   "bitcoinjs",
@@ -446,6 +450,7 @@ sudo pacman -S nodejs-lts-fermium npm
   "Fullscreen",
   "Genymotoin",
   "geoip",
+  "getblock",
   "getfunding",
   "goodchain",
   "Grammarly",
@@ -512,6 +517,7 @@ sudo pacman -S nodejs-lts-fermium npm
   "skynet",
   "solcjs",
   "sshuttle",
+  "Stretchly",
   "struct",
   "stylesheet",
   "subaccounts",
@@ -566,9 +572,7 @@ sudo pacman -S nodejs-lts-fermium npm
  "cSpell.diagnosticLevel": "Hint",
  "cSpell.showStatus": false,
  "cody.serverEndpoint": "https://sourcegraph.com/",
- "cody.experimental.inline": true,
- "markdown.extension.tableFormatter.normalizeIndentation": true,
- "markdown.extension.toc.unorderedList.marker": "*"
+ "cody.experimental.inline": true
 }
 ```
 
