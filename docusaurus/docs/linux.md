@@ -10,84 +10,82 @@ tags:
 Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.  
 And a comprehensive guide to various aspects of Linux operating system
 
-- [Tips and Tricks](#tips-and-tricks)
-  - [Automatic Shutdown](#automatic-shutdown)
-  - [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
-  - [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
-  - [Resetting sound, audio](#resetting-sound-audio)
-  - [Fixing broken grub](#fixing-broken-grub)
-    - [EZ method](#ez-method)
-    - [Second method](#second-method)
-  - [Check boot errors, logs](#check-boot-errors-logs)
-  - [Using proxies](#using-proxies)
-    - [proxychains config](#proxychains-config)
-  - [Resetting KDE](#resetting-kde)
-  - [Click on the screen](#click-on-the-screen)
-  - [Instant cloud file share](#instant-cloud-file-share)
-- [Backup](#backup)
-  - [Rsync](#rsync)
-  - [Partical Backup using locate](#partical-backup-using-locate)
-- [Performance](#performance)
-  - [Disable Linux Watchdogs, compaction and more](#disable-linux-watchdogs-compaction-and-more)
-  - [Improve fstab, ssd, nvme performance](#improve-fstab-ssd-nvme-performance)
-  - [Disabling journaling](#disabling-journaling)
-  - [Journal Size](#journal-size)
-- [XDG](#xdg)
-  - [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
-- [Systemd](#systemd)
-  - [Unit files' locations](#unit-files-locations)
-  - [Analyzing](#analyzing)
-  - [Reloading](#reloading)
-  - [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
-- [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
-- [Font](#font)
-  - [Locations](#locations)
-  - [List](#list)
-  - [Fira Code](#fira-code)
-  - [Cache](#cache)
-- [Vulkan](#vulkan)
-- [Dota 2](#dota-2)
-  - [Dota 2 Options](#dota-2-options)
-  - [Link NTFS game folder](#link-ntfs-game-folder)
-  - [Run using proxy](#run-using-proxy)
-  - [Disable desktop effects](#disable-desktop-effects)
-- [lutris](#lutris)
-  - [Installation](#installation)
-  - [With Proxy](#with-proxy)
-  - [Proxy per game](#proxy-per-game)
-  - [Unexpected error](#unexpected-error)
-- [Install Genymotoin Android emulator](#install-genymotoin-android-emulator)
-- [Windows 11](#windows-11)
-  - [Make boatable usb](#make-boatable-usb)
-    - [WoeUsb](#woeusb)
-    - [Win2USB](#win2usb)
-    - [Things to do after installing Windows 11](#things-to-do-after-installing-windows-11)
-- [Manjaro/Arch Linux](#manjaroarch-linux)
-  - [Things to do before installing](#things-to-do-before-installing)
-  - [Things to do after installing](#things-to-do-after-installing)
-  - [AMDGPU](#amdgpu)
-    - [TearFree, EnablePageFlip, DRI3](#tearfree-enablepageflip-dri3)
-    - [Reducing DRI latency](#reducing-dri-latency)
-    - [check xorg config file](#check-xorg-config-file)
-    - [Blocking radon](#blocking-radon)
-    - [Install AMDGPU-PRO](#install-amdgpu-pro)
-    - [Uninstall AMDGPU-PRO](#uninstall-amdgpu-pro)
-  - [Blacklist Radeon](#blacklist-radeon)
-  - [Install Wine](#install-wine)
-- [Install a new os on the phone](#install-a-new-os-on-the-phone)
-  - [Backup data](#backup-data)
-  - [Restore](#restore)
-  - [Enable Developer options](#enable-developer-options)
-  - [Install odin tools for Samsung \>= 3.14](#install-odin-tools-for-samsung--314)
-  - [Install samsung driver](#install-samsung-driver)
-  - [Install adb](#install-adb)
-  - [Download TWRP](#download-twrp)
-    - [convert it to .md5](#convert-it-to-md5)
-  - [Run Odin as administrator](#run-odin-as-administrator)
-  - [Install bluestack](#install-bluestack)
-  - [Youtube-dl](#youtube-dl)
-- [Network](#network)
-- [Raspberry pi](#raspberry-pi)
+* [Tips and Tricks](#tips-and-tricks)
+  * [Automatic Shutdown](#automatic-shutdown)
+  * [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
+  * [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
+  * [Resetting sound, audio](#resetting-sound-audio)
+  * [Fixing broken grub](#fixing-broken-grub)
+    * [EZ method](#ez-method)
+    * [Second method](#second-method)
+  * [Check boot errors, logs](#check-boot-errors-logs)
+  * [Using proxies](#using-proxies)
+    * [proxychains config](#proxychains-config)
+  * [Resetting KDE](#resetting-kde)
+  * [Click on the screen](#click-on-the-screen)
+  * [Instant cloud file share](#instant-cloud-file-share)
+* [Backup](#backup)
+  * [Rsync](#rsync)
+  * [Partial Backup using locate](#partial-backup-using-locate)
+* [Performance](#performance)
+  * [Disable Linux Watchdogs, compaction and more](#disable-linux-watchdogs-compaction-and-more)
+  * [Improve fstab, ssd, nvme performance](#improve-fstab-ssd-nvme-performance)
+  * [Disabling journaling](#disabling-journaling)
+  * [Journal Size](#journal-size)
+* [XDG](#xdg)
+  * [Make a startup script using XDG startup](#make-a-startup-script-using-xdg-startup)
+* [Systemd](#systemd)
+  * [Unit files' locations](#unit-files-locations)
+  * [Analyzing](#analyzing)
+  * [Reloading](#reloading)
+  * [Run a script after suspending has finished (resume)](#run-a-script-after-suspending-has-finished-resume)
+* [Autostarts and Startup scripts and programs locations](#autostarts-and-startup-scripts-and-programs-locations)
+* [Font](#font)
+  * [Locations](#locations)
+  * [List](#list)
+  * [Fira Code](#fira-code)
+  * [Cache](#cache)
+* [Vulkan](#vulkan)
+* [Steam Games](#steam-games)
+  * [Link NTFS game folder](#link-ntfs-game-folder)
+  * [Run using proxy](#run-using-proxy)
+  * [Disable desktop effects](#disable-desktop-effects)
+* [lutris](#lutris)
+  * [Installation](#installation)
+  * [With Proxy](#with-proxy)
+  * [Proxy per game](#proxy-per-game)
+  * [Unexpected error](#unexpected-error)
+* [Install Genymotoin Android emulator](#install-genymotoin-android-emulator)
+* [Windows 11](#windows-11)
+  * [Make boatable usb](#make-boatable-usb)
+    * [WoeUsb](#woeusb)
+    * [Win2USB](#win2usb)
+    * [Things to do after installing Windows 11](#things-to-do-after-installing-windows-11)
+* [Manjaro/Arch Linux](#manjaroarch-linux)
+  * [Things to do before installing](#things-to-do-before-installing)
+  * [Things to do after installing](#things-to-do-after-installing)
+  * [AMDGPU](#amdgpu)
+    * [TearFree, EnablePageFlip, DRI3](#tearfree-enablepageflip-dri3)
+    * [Reducing DRI latency](#reducing-dri-latency)
+    * [check xorg config file](#check-xorg-config-file)
+    * [Blocking radon](#blocking-radon)
+    * [Install AMDGPU-PRO](#install-amdgpu-pro)
+    * [Uninstall AMDGPU-PRO](#uninstall-amdgpu-pro)
+  * [Blacklist Radeon](#blacklist-radeon)
+  * [Install Wine](#install-wine)
+* [Install a new os on the phone](#install-a-new-os-on-the-phone)
+  * [Backup data](#backup-data)
+  * [Restore](#restore)
+  * [Enable Developer options](#enable-developer-options)
+  * [Install odin tools for Samsung \>= 3.14](#install-odin-tools-for-samsung--314)
+  * [Install samsung driver](#install-samsung-driver)
+  * [Install adb](#install-adb)
+  * [Download TWRP](#download-twrp)
+    * [convert it to .md5](#convert-it-to-md5)
+  * [Run Odin as administrator](#run-odin-as-administrator)
+  * [Install bluestack](#install-bluestack)
+  * [Youtube-dl](#youtube-dl)
+  * [Add Alias](#add-alias)
 
 ## Tips and Tricks
 
@@ -285,7 +283,7 @@ rsync -avz --delete /path/to/local/directory user@remote.server:/path/to/remote/
 sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
 ```
 
-### Partical Backup using locate
+### Partial Backup using locate
 
 ```bash
 sudo tar -czvf backup.tar.gz $(locate x-ui)
@@ -444,39 +442,40 @@ journalctl -u gamma
 
 ## Autostarts and Startup scripts and programs locations
 
-- nano .profile
-- nano /etc/profile
-- nano ~/.bash_profile
-- nano .bashrc
-- nano /etc/bash.bashrc
-- ls /etc/profile.d/
-- ls ~/.config/autostart
-- ls /etc/xdg/autostart
-- ls /usr/share/xsessions
-- ls -1 /lib/systemd/system/.service /etc/systemd/system/.service
-- sudo systemctl list-unit-files --type=service --state=enabled --all
-- ls /etc/init.d/
-- nano ~/.xinitrc
-- nano /etc/X11/xinit/xinitrc
-- ls /etc/X11/xinit/xinitrc.d/
-- cat ~/.xserverrc
-- ls /etc/pam.d/
-- ls /etc/rc*
-- cat /etc/xdg/lxsession/LXDE/autostart
-- ls ~/.config/lxsession/LXDE/autostart
-- crontab -e
-- sudo crontab -e
-- ls -rla /etc/cron.*
-- cat /usr/lib/sddm/sddm.conf.d/default.conf
-- cat /etc/sddm.conf.d/00_manjaro_settings.conf
+* nano .profile
+* nano /etc/profile
+* nano ~/.bash_profile
+* nano .bashrc
+* nano /etc/bash.bashrc
+* ls /etc/profile.d/
+* ls ~/.config/autostart
+* ls /etc/xdg/autostart
+* ls /usr/share/xsessions
+* ls -1 /lib/systemd/system/*.service /etc/systemd/system/*.service
+* ls usr/share/dbus-1/system-services/
+* sudo systemctl list-unit-files --type=service --state=enabled --all
+* ls /etc/init.d/
+* nano ~/.xinitrc
+* nano /etc/X11/xinit/xinitrc
+* ls /etc/X11/xinit/xinitrc.d/
+* cat ~/.xserverrc
+* ls /etc/pam.d/
+* ls /etc/rc*
+* cat /etc/xdg/lxsession/LXDE/autostart
+* ls ~/.config/lxsession/LXDE/autostart
+* crontab -e
+* sudo crontab -e
+* ls -rla /etc/cron.*
+* cat /usr/lib/sddm/sddm.conf.d/default.conf
+* cat /etc/sddm.conf.d/00_manjaro_settings.conf
 
 ## Font
 
 ### Locations
 
-- `~/.local/share/fonts/`
-- `/usr/local/share/fonts/`
-- `/usr/share/fonts/`
+* `~/.local/share/fonts/`
+* `/usr/local/share/fonts/`
+* `/usr/share/fonts/`
 
 ### List
 
@@ -516,8 +515,8 @@ VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/
 
 ## Steam Games
 
-- Move Games to your local linux machine
-- Disable steam overlay, steam inputs, ...
+* Move Games to your local linux machine
+* Disable steam overlay, steam inputs, ...
 
 ### Link NTFS game folder
 
@@ -617,35 +616,35 @@ chmod +x windows2usb*
 
 #### Things to do after installing Windows 11
 
-- Download and install all the updates
-- Enable Ransomware protection
-- Download DimScreen, Copy it to the download folder. Open. click on the settings. set brightness to 20%. Make a shortcut to the desktop
-- search for gamma calibration in windows settings. set it to minimum
-- Adjust date and time: auto. Timezone tehran +3:30
-- Downloading updates active hours: 24 hours format. 1->11
-- Disable all data usages settings in privacy and security
-- uninstall mail, teams, one drive. xbox, facebook, microsoft todo, sticky notes, tips, weather
-- Install firefox and login
-- Install protonVPN
-- personalize: sunrise
-- network connection: metered connection
-- Display: 3840x2160, 200%
-- Steam: add your games' location to the Games' folder library. make it as default
-- Steam: If your games are in a `NTFS` file system, follow [this](https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows) to make game compatible with Linux.
-- Pause windows updates for 5 weeks
-- Check windows startups apps
-- App store: disable automatic update
-- Leave from "AMD user experience program". AMD settings -> last tab -> last option
-- windows features: WSL, virtual machine, hyper-v (for android and linux apps)
-- wsl --update
-- wsl --install -d Ubuntu
-- Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable
+* Download and install all the updates
+* Enable Ransomware protection
+* Download DimScreen, Copy it to the download folder. Open. click on the settings. set brightness to 20%. Make a shortcut to the desktop
+* search for gamma calibration in windows settings. set it to minimum
+* Adjust date and time: auto. Timezone tehran +3:30
+* Downloading updates active hours: 24 hours format. 1->11
+* Disable all data usages settings in privacy and security
+* uninstall mail, teams, one drive. xbox, facebook, microsoft todo, sticky notes, tips, weather
+* Install firefox and login
+* Install protonVPN
+* personalize: sunrise
+* network connection: metered connection
+* Display: 3840x2160, 200%
+* Steam: add your games' location to the Games' folder library. make it as default
+* Steam: If your games are in a `NTFS` file system, follow [this](https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows) to make game compatible with Linux.
+* Pause windows updates for 5 weeks
+* Check windows startups apps
+* App store: disable automatic update
+* Leave from "AMD user experience program". AMD settings -> last tab -> last option
+* windows features: WSL, virtual machine, hyper-v (for android and linux apps)
+* wsl --update
+* wsl --install -d Ubuntu
+* Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable
 
 ## Manjaro/Arch Linux
 
 ### Things to do before installing
 
-- Backup important data. Recovery-keys, Passwords, Postman and ...  
+* Backup important data. Recovery-keys, Passwords, Postman and ...  
 
 ```bash
 cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/caches
@@ -656,11 +655,11 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
 # Copy systemctl units
 ```
 
-- Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
+* Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
 
 ### Things to do after installing
 
-- Remove and disable unnecessary packages
+* Remove and disable unnecessary packages
 
   ```bash
   echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
@@ -670,14 +669,14 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
   sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma kdeconnect
   ```
 
-- Pacman downloads parallel
+* Pacman downloads parallel
 
   ```bash
   sudo nano /etc/pacman.conf
   ParallelDownloads = 5
   ```
   
-- Upgrade
+* Upgrade
 
   ```bash
   pamac update --force-refresh
@@ -686,11 +685,9 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
   sudo pacman -S telegram-desktop unzip thermald ntfs-3g
   sudo systemctl enable --now thermald.service
   pamac install visual-studio-code-bin onlyoffice-bin microsoft-edge-stable-bin
-
-  # Disable "Show mini menu when selecting text" in microsoft edge settings
   ```
 
-- Import Data
+* Import Data
 
   ```bash
   cp -r /run/media/mlibre/H/OS/caches/TelegramDesktop /home/mlibre/.local/share/
@@ -698,10 +695,10 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
   # ./import_data.bash
   ```
 
-- Make an XDG autostart script for gamma adjustment
-- Put the gamma script in the `.bashrc` and `.zshrc` as well
+* Make an XDG autostart script for gamma adjustment
+* Put the gamma script in the `.bashrc` and `.zshrc` as well
 
-- Install ProtonVPN, mailspring, shadowsocks, Nekoray
+* Install ProtonVPN, mailspring, shadowsocks, Nekoray
   
   ```bash
   sudo pamac install shadowsocks-rust-bin
@@ -709,34 +706,34 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
   pamac build mailspring
   ```
 
-- Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disabsetle mail signature.
+* Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disabsetle mail signature.
 
-- Install mlocate
+* Install mlocate
 
   ```bash
   sudo pacman -S mlocate
   sudo updatedb
   ```
   
-- KDE Settings -> Disable Mouse acceleration
-- KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver, Review background services and Autostarts.
-- KDE Settings -> Appearance -> Theme -> Breeze Dark, Breath Dark
-- KDE Settings -> Appearance -> Font -> Enabled Anti-Aliasing, RGB, Slight. all +1 PT
-- KDE Settings -> Workspace -> Search -> Disable Web Search Keywords
-- KDE Settings -> Workspace Behavior -> Activities -> Privacy -> Dont remember soft
-- KDE Settings -> Search for kRunner -> settings -> uncheck all
+* KDE Settings -> Disable Mouse acceleration
+* KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver, Review background services and Autostarts.
+* KDE Settings -> Appearance -> Theme -> Breeze Dark, Breath Dark
+* KDE Settings -> Appearance -> Font -> Enabled Anti-Aliasing, RGB, Slight. all +1 PT
+* KDE Settings -> Workspace -> Search -> Disable Web Search Keywords
+* KDE Settings -> Workspace Behavior -> Activities -> Privacy -> Dont remember soft
+* KDE Settings -> Search for kRunner -> settings -> uncheck all
 
-- Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
-- Software Center: Disable automatic updates, Add AUR support
-- Remove Virtual Desktops
-- Remembers sudo password
+* Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
+* Software Center: Disable automatic updates, Add AUR support
+* Remove Virtual Desktops
+* Remembers sudo password
 
   ```bash
   sudo nano /etc/sudoers
   Defaults        timestamp_timeout=300 # 5 hours
   ```
 
-- Make a Swapfile
+* Make a Swapfile
 
 ```bash
 sudo dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
@@ -750,7 +747,7 @@ sudo nano /etc/sysctl.conf
 # vm.swappiness=10
 ```
 
-- Fix time difference between linux and windows
+* Fix time difference between linux and windows
 
   ```bash
   sudo timedatectl set-local-rtc 1 --adjust-system-clock
@@ -758,12 +755,25 @@ sudo nano /etc/sysctl.conf
   sudo ntpdate time.nist.gov # update time
   ```
 
-- Softwares
+* Softwares
 
 ```bash
 sudo pacman -S qbittorrent firefox libreoffice-fresh meld vlc ntfs-3g  aria2 ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime
 # sudo pacman -S electrum gimp gparted firewalld clamav deluge
+```
 
+* Firefox: Enable DNS over HTTPS
+* Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
+* Konsole config:
+  * Font: Monospace 13pt
+  * Theme: Breath (customized, a bit darker)
+  * Shell: Manjaro zsh
+
+* Steam: Allow auto-update only between 1AM - 11AM
+
+* Performance
+
+```bash
 sudo systemctl disable bluetooth.service
 sudo systemctl disable tor.service
 sudo systemctl disable samba
@@ -792,15 +802,6 @@ sudo rm /etc/xdg/autostart/print-applet.desktop
 # sudo systemctl enable --now clamav-daemon
 # sudo systemctl enable --now clamav-freshclam
 ```
-
-- Firefox: Enable DNS over HTTPS
-- Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
-- Konsole config:
-  - Font: Monospace 13pt
-  - Theme: Breath (customized, a bit darker)
-  - Shell: Manjaro zsh
-
-- Steam: Allow auto-update only between 1AM - 11AM
 
 ### AMDGPU
 
@@ -907,9 +908,9 @@ adb restore file.ab
 
 ### Enable Developer options
 
-- Several times clicks on the kernel tab
-- Allow OEM unlocking
-- Enter Download mod:
+* Several times clicks on the kernel tab
+* Allow OEM unlocking
+* Enter Download mod:
   1. Turn off the phone.  
   2. Hold vol key up + down.
   3. Now in the warning message page. choose "unlocking bootloader" that will perform a factory reset
