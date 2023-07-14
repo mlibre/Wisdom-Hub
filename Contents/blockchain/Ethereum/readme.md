@@ -17,6 +17,12 @@
 * [References](#references)
 * [My ETH Address](#my-eth-address)
 
+## A visual representation of how Ethereum works - detailed diagram
+
+A mind map of how Ethereum works:
+
+![Ethereum](./overview.png)
+
 ## Proof-of-stake protocol
 
 Proof-of-stake means the following:
