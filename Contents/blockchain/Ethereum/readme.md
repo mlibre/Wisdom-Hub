@@ -6,6 +6,7 @@
 ## Table of content
 
 * [Table of content](#table-of-content)
+* [A visual representation of how Ethereum works - detailed diagram](#a-visual-representation-of-how-ethereum-works---detailed-diagram)
 * [Proof-of-stake protocol](#proof-of-stake-protocol)
 * [Ether](#ether)
 * [Gas](#gas)
@@ -22,6 +23,8 @@
 A mind map of how Ethereum works:
 
 ![Ethereum](./overview.png)
+
+You can find the `Pencil` project file here: [pencil-file](./eth.epgz)
 
 ## Proof-of-stake protocol
 
