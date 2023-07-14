@@ -46,8 +46,9 @@ And a comprehensive guide to various aspects of Linux operating system
   * [Fira Code](#fira-code)
   * [Cache](#cache)
 * [Vulkan](#vulkan)
-* [Steam Games](#steam-games)
-  * [Link NTFS game folder](#link-ntfs-game-folder)
+* [Steam](#steam)
+  * [Fix common bugs](#fix-common-bugs)
+  * [Scaling Interface](#scaling-interface)
   * [Run using proxy](#run-using-proxy)
   * [Disable desktop effects](#disable-desktop-effects)
 * [lutris](#lutris)
@@ -513,12 +514,13 @@ sudo nano /etc/environment
 VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
 ```
 
-## Steam Games
+## Steam
+
+### Fix common bugs
 
 * Move Games to your local linux machine
 * Disable steam overlay, steam inputs, ...
-
-### Link NTFS game folder
+* Link NTFS game folder
 
 ```bash
 sudo mkdir -p /media/gamedisk
@@ -531,6 +533,14 @@ UUID=FA709D69709D2CFF /media/gamedisk ntfs uid=1000,gid=1000,rw,user,exec,umask=
 mkdir -p ~/.steam/steam/steamapps/compatdata
 sudo reboot
 ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
+```
+
+### Scaling Interface
+
+Run Steam like this:
+
+```bash
+STEAM_FORCE_DESKTOPUI_SCALING=1.5 steam-runtime
 ```
 
 ### Run using proxy
