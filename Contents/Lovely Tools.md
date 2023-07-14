@@ -19,6 +19,7 @@ These are some of the **lovely**, **simple**, and **friendly** tools that I use:
 * [qBittorrent](https://www.qbittorrent.org/): A BitTorrent client that is free and open source
 * [Stretchly](https://github.com/hovancik/stretchly): A productivity timer that helps you take breaks
 * [Docusaurus](https://github.com/facebook/docusaurus): A static-site generator for creating documentation websites
+* [QR Code Online](https://qr.io)
 
 ## My ETH Address
 
