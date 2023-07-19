@@ -1,7 +1,7 @@
 # Ethereum
 
 `Ethereum` is a decentralized blockchain. It uses proof-of-stake (PoS) consensus mechanism.  
- One of the key features of `Ethereum` is the ability to create and execute `smart contracts`. `Smart contracts` are simply programs written and can be executed on the blockchain.
+One of the key features of `Ethereum` is the ability to create and execute `smart contracts`. `Smart contracts` are simply programs written and can be executed on the blockchain.
 
 ## Table of content
 
@@ -14,6 +14,7 @@
   * [Accounts vs UTXOs](#accounts-vs-utxos)
 * [Blocks](#blocks)
 * [Merkle Patricia Trees](#merkle-patricia-trees)
+* [Smart Contracts](#smart-contracts)
 * [Ethereum Explorer](#ethereum-explorer)
 * [References](#references)
 * [My ETH Address](#my-eth-address)
@@ -105,7 +106,10 @@ Blocks are batches of transactions with a hash of the previous block in the chai
 
 The Merkle Patricia tree/trie, previously envisioned by Alan Reiner and implemented in the Ripple protocol, is the primary data structure of Ethereum, and is used to store all account state, as well as transactions and receipts in each block.
 
- point. This is because gas is used to pay validators for the resources needed to conduct transactions.
+## Smart Contracts
+
+For this more advance feature, a more sophisticated analogy than a distributed ledger (like bitcoin) introduced.  
+Instead of a **distributed ledger**, **Ethereum** is a **distributed state machine**. Ethereum's state is a large data structure which holds not only all accounts and balances, but a machine state, which can change from block to block according to a pre-defined set of rules, and which can execute arbitrary machine code
 
 ## Ethereum Explorer
 
