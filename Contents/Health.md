@@ -33,6 +33,7 @@ tags:
 * Avoid bumps and cars with weak shock absorbers.
 * Avoid bending your neck backward too much or keeping your neck bent backward for extended periods
 Foods
+* Mattresses: A medium-firm mattress is generally considered to be the best option. This is because it provides enough support to keep the spine in alignment, without being too firm that restrict your movement and may causing pain, or too soft and causing sinking and misalignment
 
 # Juice
 
