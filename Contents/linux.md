@@ -209,7 +209,20 @@ killall plasmashell;
 kstart5 plasmashell;
 ```
 
-### Click on the screen
+### Bash scripts
+
+#### Mouse location
+
+```bash
+while true; do
+
+    sleep 2
+    xdotool getmouselocation
+
+done
+```
+
+#### Click on the screen
 
 ```bash
 # Install xdotool
