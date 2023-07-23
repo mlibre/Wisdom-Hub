@@ -224,30 +224,40 @@ xdotool mousemove <x> <y> click 1
 ```bash
 #!/bin/bash
 
+# Usage: ./click2.bash 3 30
+
 # Check for two arguments
 if [[ $# -ne 2 ]]; then
-    echo "Usage: $0 <minutes> <sleep>"
+    echo "Usage: $0 <seconds> <sleep>"
     exit 1
 fi
 
-# Convert minutes to seconds
-RUN_TIME=$(echo "$1 * 60" | bc)
+# Get the idle time in milliseconds
+IDLE_TIME=$(echo "$1 * 1000" | bc)
 
-while [[ $(echo "$RUN_TIME > 0" | bc) -eq 1 ]]; do
-    # Get screen resolution
-    RES=$(xdpyinfo | grep dimensions | awk '{print $2}')
-    WIDTH=$(echo $RES | awk -Fx '{print $1}')
-    HEIGHT=$(echo $RES | awk -Fx '{print $2}')
+while true; do
+    # Get the current idle time of the mouse pointer in milliseconds
+    IDLE=$(xprintidle)
 
-    # Move mouse to center of screen and click
-    xdotool mousemove $((WIDTH/2)) $((HEIGHT/2))
-    xdotool click 1
+    # Check if the mouse has been idle for at least the specified time
+    if [[ $IDLE -ge $IDLE_TIME ]]; then
+        # Get screen resolution
+        RES=$(xdpyinfo | grep dimensions | awk '{print $2}')
+        WIDTH=$(echo $RES | awk -Fx '{print $1}')
+        HEIGHT=$(echo $RES | awk -Fx '{print $2}')
+
+        # mouse click
+        xdotool click 1
+
+        # Sleep for 1 second
+        sleep 1
+
+        # Press ESC
+        xdotool key Escape
+    fi
 
     # Sleep for specified time
     sleep $2
-
-    # Decrement run time by sleep time
-    RUN_TIME=$(echo "$RUN_TIME - $2" | bc)
 done
 ```
 
