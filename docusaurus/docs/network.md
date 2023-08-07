@@ -608,6 +608,40 @@ net.ipv4.conf.icmp_echo_ignore_all = 1
 
 ```bash
 sudo su
+sudo apt update
+sudo apt dis-upgrade
+sudo apt install git
+
+sudo ufw allow 8443
+sudo ufw allow 8443/udp
+sudo ufw allow 8443/tcp
+sudo ufw allow 2053
+sudo ufw allow 2053/udp
+sudo ufw allow 2053/tcp
+sudo ufw allow 3678
+sudo ufw allow 3678/udp
+sudo ufw allow 3678/tcp
+sudo ufw allow 2289
+sudo ufw allow 2289/udp
+sudo ufw allow 2289/tcp
+sudo ufw allow 9090
+sudo ufw allow 9090/udp
+sudo ufw allow 9090/tcp
+sudo ufw allow 1080
+sudo ufw allow 1080/udp
+sudo ufw allow 1080/tcp
+sudo ufw allow 443
+sudo ufw allow 5353
+sudo ufw allow 5353/tcp
+sudo ufw allow 5353/udp
+sudo ufw allow 443/tcp
+sudo ufw allow OpenSSH
+sudo ufw allow dns
+sudo ufw allow https
+sudo ufw allow ssh
+sudo ufw allow www
+sudo ufw allow bootps
+
 cd
 bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
 # cat /usr/local/x-ui/bin/config.json
@@ -630,10 +664,9 @@ acme.sh --list
 ```
 
 - Open Panel (<https://domain.ga:8443/xui/inbounds>)
-- Create a vmess-2086-ws-no-tls inbound ( image included )
-- Create a vless-2052-grpc-nosniff inbound ( image included )
-  - Add this header => "X-Forwarded-Proto: https"
-- Create a trojan-xtls-443-direct-domain inbound ( image included )
+- vmess-TCP-8443-h2-tls-allow
+- vmess-ws-tls-2053-allow-insecure-aph-all
+- trojan-tls-443-allow-insecure-alp-h2
 - In firefox: Check Proxy DNS when using SOCKS v5
 
 <!-- - Create a free domain from freenom.com
