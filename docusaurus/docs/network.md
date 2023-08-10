@@ -649,11 +649,12 @@ sudo ufw allow 5353
 sudo ufw allow 5353/tcp
 sudo ufw allow 5353/udp
 sudo ufw allow OpenSSH
-sudo ufw allow dns
 sudo ufw allow https
 sudo ufw allow ssh
 sudo ufw allow www
 sudo ufw allow bootps
+sudo ufw allow dns
+
 
 cd
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
