@@ -609,7 +609,7 @@ net.ipv4.conf.icmp_echo_ignore_all = 1
 ```bash
 sudo su
 sudo apt update
-sudo apt dis-upgrade
+sudo apt dist-upgrade
 sudo apt install git
 
 sudo ufw allow 35400
@@ -640,10 +640,14 @@ sudo ufw allow 1080
 sudo ufw allow 1080/udp
 sudo ufw allow 1080/tcp
 sudo ufw allow 443
+sudo ufw allow 443/tcp
+sudo ufw allow 443/udp
+sudo ufw allow 80
+sudo ufw allow 80/tcp
+sudo ufw allow 80/udp
 sudo ufw allow 5353
 sudo ufw allow 5353/tcp
 sudo ufw allow 5353/udp
-sudo ufw allow 443/tcp
 sudo ufw allow OpenSSH
 sudo ufw allow dns
 sudo ufw allow https
@@ -652,7 +656,7 @@ sudo ufw allow www
 sudo ufw allow bootps
 
 cd
-bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 # cat /usr/local/x-ui/bin/config.json
 # tar -czvf x-ui.tgz /usr/local/x-ui/
 # proxychains scp -P 3612 true@199.247.13.13:x-ui.tgz .
