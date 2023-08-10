@@ -608,9 +608,10 @@ net.ipv4.conf.icmp_echo_ignore_all = 1
 
 ```bash
 sudo su
-sudo apt update
-sudo apt dist-upgrade
-sudo apt install git
+apt purge snapd 
+apt update
+apt dist-upgrade
+apt install git
 
 sudo ufw allow 35400
 sudo ufw allow 35400/udp
@@ -680,8 +681,8 @@ acme.sh --list
 ```
 
 - Open Panel (<https://domain.ga:8443/xui/inbounds>)
-- vmess-ws-tls-2053-allow-insecure-aph-all
 - trojan-tls-443-allow-insecure-alp-all
+- vmess-ws-tls-2053-allow-insecure-aph-all
 - vmess-h2-TLS-H2-allow-insecure-8443
 - vless-2096-h2-reality-no-sniff
 - In firefox: Check Proxy DNS when using SOCKS v5
