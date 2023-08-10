@@ -660,8 +660,9 @@ bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/ma
 # proxychains scp -P 3612 root@199.247.13.13:private.key .
 
 
+sudo su
 x-ui
-# Open all ports
+# Open ports, active firewall
 # install BBR
 # revoke certificate the root domain
 # issue certificate
