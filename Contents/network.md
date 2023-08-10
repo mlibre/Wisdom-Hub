@@ -612,6 +612,15 @@ sudo apt update
 sudo apt dis-upgrade
 sudo apt install git
 
+sudo ufw allow 35400
+sudo ufw allow 35400/udp
+sudo ufw allow 35400/tcp
+sudo ufw allow 2087
+sudo ufw allow 2087/udp
+sudo ufw allow 2087/tcp
+sudo ufw allow 2096
+sudo ufw allow 2096/udp
+sudo ufw allow 2096/tcp
 sudo ufw allow 8443
 sudo ufw allow 8443/udp
 sudo ufw allow 8443/tcp
@@ -654,7 +663,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/NidukaAkalanka/x-ui-english/ma
 x-ui
 # Open all ports
 # install BBR
-# Install ACME, certificate the root domain using cloudflare APIs
+# revoke certificate the root domain
+# issue certificate
 # Set Panel port 8443
 # Set the certs address for panel
 ls
@@ -664,9 +674,10 @@ acme.sh --list
 ```
 
 - Open Panel (<https://domain.ga:8443/xui/inbounds>)
-- vmess-TCP-8443-h2-tls-allow
 - vmess-ws-tls-2053-allow-insecure-aph-all
-- trojan-tls-443-allow-insecure-alp-h2
+- trojan-tls-443-allow-insecure-alp-all
+- vmess-h2-TLS-H2-allow-insecure-8443
+- vless-2096-h2-reality-no-sniff
 - In firefox: Check Proxy DNS when using SOCKS v5
 
 <!-- - Create a free domain from freenom.com
