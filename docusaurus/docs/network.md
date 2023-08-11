@@ -614,6 +614,9 @@ apt update
 apt dist-upgrade
 apt install git
 
+sudo ufw allow 2053
+sudo ufw allow 2053/udp
+sudo ufw allow 2053/tcp
 sudo ufw allow 35400
 sudo ufw allow 35400/udp
 sudo ufw allow 35400/tcp
@@ -687,6 +690,7 @@ acme.sh --list
 - Open Panel (<https://domain.ga:8443/xui/inbounds>)
 - trojan-tls-443-allow-insecure-alp-all
 - vmess-ws-tls-2053-allow-insecure-aph-all
+- vmess-h2-TLS-H2-HTTP1-allow-insecure-stackoverflow.com-80
 - vmess-h2-TLS-H2-allow-insecure-8443
 - vless-2096-h2-reality-no-sniff
 - In firefox: Check Proxy DNS when using SOCKS v5
