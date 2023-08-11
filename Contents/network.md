@@ -608,6 +608,7 @@ net.ipv4.conf.icmp_echo_ignore_all = 1
 
 ```bash
 sudo su
+cd
 apt purge snapd 
 apt update
 apt dist-upgrade
@@ -649,6 +650,9 @@ sudo ufw allow 80/udp
 sudo ufw allow 5353
 sudo ufw allow 5353/tcp
 sudo ufw allow 5353/udp
+sudo ufw allow 53
+sudo ufw allow 53/tcp
+sudo ufw allow 53/udp
 sudo ufw allow OpenSSH
 sudo ufw allow https
 sudo ufw allow ssh
