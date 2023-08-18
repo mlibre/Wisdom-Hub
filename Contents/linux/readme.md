@@ -15,6 +15,7 @@ Welcome to my Linux tutorials!
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
 * [Tips and Tricks](./Tips%20and%20Tricks.md)
+* [Performance](./Performance.md)
 
 ## My ETH Address
 
