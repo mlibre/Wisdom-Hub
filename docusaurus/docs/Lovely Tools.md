@@ -1,9 +1,9 @@
 ---
+sidebar_position: 7
 title: Lovely Tools
 tags:
   - Tools
 ---
-<!-- sidebar_position: 2 -->
 
 # Lovely Tools
 

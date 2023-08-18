@@ -23,7 +23,7 @@ One of the key features of `Ethereum` is the ability to create and execute `smar
 
 A mind map of how Ethereum works:
 
-![Ethereum](./overview.png)
+![Ethereum](./eth.png)
 
 You can find the `Pencil` project file here: [pencil-file](./eth.epgz)
 
