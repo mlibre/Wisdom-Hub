@@ -75,6 +75,68 @@ net.ipv6.conf.default.disable_ipv6=1
 sudo sysctl -p 
 ```
 
+## SSH
+
+### Script to fix ssh and restart to default config
+
+```bash
+#!/bin/bash
+new_config="
+Port 22
+AddressFamily any
+ListenAddress 0.0.0.0
+
+SyslogFacility AUTH
+LogLevel INFO
+
+PermitRootLogin yes
+PubkeyAuthentication yes
+
+PasswordAuthentication yes
+
+UsePAM yes
+
+X11Forwarding yes
+
+Subsystem       sftp    /usr/lib/ssh/sftp-server
+"
+
+# Backup the existing SSH server configuration
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup
+
+# Write the new configuration to the SSH server config file
+echo "$new_config" | sudo tee /etc/ssh/sshd_config > /dev/null
+
+echo "SSH server configuration has been replaced."
+sudo ufw disable
+sudo iptables -F
+sudo mv /etc/hosts.deny /etc/hosts.deny_backup
+sudo touch /etc/hosts.deny
+sudo systemctl enable sshd
+sudo systemctl restart sshd
+
+# User creation
+new_username="mlibre"
+new_password="password"
+
+sudo useradd -m -s /bin/bash "$new_username"
+echo "$new_username:$new_password" | sudo chpasswd
+
+# Add your public key to the new user's authorized_keys file
+your_public_key="ssh-rsa key mlibre@mlibre-systemproductname"
+
+sudo mkdir -p /home/"$new_username"/.ssh
+echo "$your_public_key" | sudo tee -a /home/"$new_username"/.ssh/authorized_keys > /dev/null
+sudo chown -R "$new_username":"$new_username" /home/"$new_username"/.ssh
+sudo chmod 700 /home/"$new_username"/.ssh
+sudo chmod 600 /home/"$new_username"/.ssh/authorized_keys
+
+echo "Your public key has been added to the authorized_keys file of user $new_username."
+
+echo "$new_username ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"$new_username" > /dev/null
+```
+
+
 ## Setup DNS
 
 ### Using resolv.conf
