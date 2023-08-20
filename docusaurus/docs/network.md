@@ -123,7 +123,7 @@ sudo useradd -m -s /bin/bash "$new_username"
 echo "$new_username:$new_password" | sudo chpasswd
 
 # Add your public key to the new user's authorized_keys file
-your_public_key="ssh-rsa key mlibre@mlibre-systemproductname"
+your_public_key="your ssh public key"
 
 sudo mkdir -p /home/"$new_username"/.ssh
 echo "$your_public_key" | sudo tee -a /home/"$new_username"/.ssh/authorized_keys > /dev/null
