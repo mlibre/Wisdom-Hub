@@ -24,10 +24,10 @@ vm.compaction_proactiveness=0
 vm.zone_reclaim_mode=0
 vm.page_lock_unfairness=1
 kernel.perf_event_paranoid=-1
-fs.inode-nr = 200000
+fs.inode-nr=200000
 vm.dirty_background_ratio=5
 vm.vfs_cache_pressure=50
-net.ipv4.tcp_max_syn_backlog = 8192
+net.ipv4.tcp_max_syn_backlog=8192
 net.ipv4.tcp_tw_reuse=1
 vm.min_free_kbytes=2500000
 ```

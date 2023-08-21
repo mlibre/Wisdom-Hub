@@ -1,6 +1,5 @@
 ---
 title: Linux
-sidebar_position: 3
 tags:
   - Mlibre
   - Linux
@@ -15,7 +14,14 @@ Welcome to my Linux tutorials!
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
 * [Tips and Tricks](./Tips%20and%20Tricks.md)
-* [Performance](./Performance.md)
+* [performance](./performance.md)
+* [systemd](./systemd.md)
+* [autostart](./autostart.md)
+* [game and graphic](./game%20and%20graphic.md)
+* [backup](./backup.md)
+* [Manjaro](./manjaro.md)
+* [phone](./phone.md)
+* [xdg](./xdg.md)
 
 ## My ETH Address
 
