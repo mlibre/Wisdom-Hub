@@ -99,6 +99,7 @@ UsePAM yes
 X11Forwarding yes
 
 Subsystem       sftp    /usr/lib/ssh/sftp-server
+MaxSessions 1000
 "
 
 # Backup the existing SSH server configuration
@@ -134,6 +135,9 @@ sudo chmod 600 /home/"$new_username"/.ssh/authorized_keys
 echo "Your public key has been added to the authorized_keys file of user $new_username."
 
 echo "$new_username ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"$new_username" > /dev/null
+
+echo "$new_username - maxlogins 1000" | sudo tee -a /etc/security/limits.conf > /dev/nulls
+echo "fs.file-max = 65535" | sudo tee -a /etc/sysctl.conf > /dev/null
 ```
 
 
