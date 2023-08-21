@@ -16,21 +16,24 @@ And a comprehensive guide to various aspects of Linux operating system
 * [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
 * [Resetting sound, audio](#resetting-sound-audio)
 * [Fixing broken grub](#fixing-broken-grub)
-* [EZ method](#ez-method)
-* [Second method](#second-method)
-* [Check boot errors, logs](#check-boot-errors-logs)
-* [Using proxies](#using-proxies)
-* [proxychains config](#proxychains-config)
+  * [EZ method](#ez-method)
+  * [Second method](#second-method)
+  * [Check boot errors, logs](#check-boot-errors-logs)
+* [Proxy](#proxy)
+  * [Using proxies](#using-proxies)
+  * [proxychains config](#proxychains-config)
 * [Resetting KDE](#resetting-kde)
 * [Bash scripts](#bash-scripts)
-* [Mouse location](#mouse-location)
-* [Get screen resolution](#get-screen-resolution)
-* [Click, move and scroll on the screen](#click-move-and-scroll-on-the-screen)
+  * [Mouse location](#mouse-location)
+  * [Get screen resolution](#get-screen-resolution)
+  * [Click, move and scroll on the screen](#click-move-and-scroll-on-the-screen)
 * [Instant cloud file share](#instant-cloud-file-share)
-* [Locations](#locations)
-* [List](#list)
-* [Fira Code](#fira-code)
-* [Cache](#cache)
+* [Font](#font)
+  * [Locations](#locations)
+  * [List](#list)
+  * [Fira Code](#fira-code)
+  * [Cache](#cache)
+* [Install Genymotoin Android emulator](#install-genymotoin-android-emulator)
 * [Windows 11](#windows-11)
   * [Make boatable usb](#make-boatable-usb)
   * [WoeUsb](#woeusb)
@@ -81,7 +84,7 @@ pulseaudio --start
 
 ## Fixing broken grub
 
-## EZ method
+### EZ method
 
 > Boot a live Manjaro image
 
@@ -98,7 +101,7 @@ Then run:
 update-grub
 ```
 
-## Second method
+### Second method
 
 ```bash
 # Mount the file system and efi partition
@@ -118,14 +121,16 @@ nano /etc/fstab
 sudo update-grub
 ```
 
-## Check boot errors, logs
+### Check boot errors, logs
 
 ```bash
 sudo dmesg --level=emerg,alert,crit,err
 # Open KsystemLog
 ```
 
-## Using proxies
+## Proxy
+
+### Using proxies
 
 ```bash
 # Use proxychains to run yay, git, npm and pacman
@@ -139,7 +144,7 @@ export http_proxy=socks5://127.0.0.1:1080
 export https_proxy=socks5://127.0.0.1:1080
 ```
 
-## proxychains config
+### proxychains config
 
 ```bash
 sudo nano /etc/proxychains.conf 
@@ -160,7 +165,7 @@ kstart5 plasmashell;
 
 ## Bash scripts
 
-## Mouse location
+### Mouse location
 
 ```bash
 while true; do
@@ -171,7 +176,7 @@ while true; do
 done
 ```
 
-## Get screen resolution
+### Get screen resolution
 
 ```bash
   RES=$(xdpyinfo | grep dimensions | awk '{print $2}')
@@ -179,7 +184,7 @@ done
   HEIGHT=$(echo $RES | awk -Fx '{print $2}')
 ```
 
-## Click, move and scroll on the screen
+### Click, move and scroll on the screen
 
 ```bash
 #!/bin/bash
@@ -280,15 +285,15 @@ curl https://oshi.at -F f=@/home/true/backup.tar.gz -F expire=5 minutes
 curl -F "file=@/home/mlibre/Downloads/backup.tar.gz" "https://file.io/?expires=1w"
 ```
 
-# Font
+## Font
 
-## Locations
+### Locations
 
 * `~/.local/share/fonts/`
 * `/usr/local/share/fonts/`
 * `/usr/share/fonts/`
 
-## List
+### List
 
 List installed fonts
 
@@ -297,7 +302,7 @@ fc-match -a
 fc-list : file
 ```
 
-## Fira Code
+### Fira Code
 
 A popular code font.
 
@@ -306,14 +311,14 @@ sudo pacman -S ttf-fira-code
 fc-match -a | grep -i fira
 ```
 
-## Cache
+### Cache
 
 ```bash
 sudo rm -v /var/cache/fontconfig/*
 fc-cache -r
 ```
 
-# Install Genymotoin Android emulator
+## Install Genymotoin Android emulator
 
 ```bash
 sudo pamac install genymotion
