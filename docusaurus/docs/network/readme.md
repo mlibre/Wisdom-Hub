@@ -14,7 +14,7 @@ Welcome to my Network tutorials!
 
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
-* [network](./network.md)
+* [network](./network%20tips.md)
 
 ## My ETH Address
 
