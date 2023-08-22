@@ -7,6 +7,15 @@ tags:
 
 # Proxy
 
+## proxychains
+
+```bash
+sudo nano /etc/proxychains.conf 
+socks5  127.0.0.1 1080
+# comment proxy_dns
+# proxy_dns
+```
+
 ## Using proxies
 
 ```bash
@@ -21,11 +30,3 @@ export http_proxy=socks5://127.0.0.1:1080
 export https_proxy=socks5://127.0.0.1:1080
 ```
 
-## proxychains config
-
-```bash
-sudo nano /etc/proxychains.conf 
-socks5  127.0.0.1 1080
-# comment proxy_dns
-# proxy_dns
-```

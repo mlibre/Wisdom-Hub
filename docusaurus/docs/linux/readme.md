@@ -20,9 +20,10 @@ This repository is organized into several sections, each containing tutorials fo
 * [autostart](./autostart.md)
 * [game and graphic](./game%20and%20graphic.md)
 * [backup](./backup.md)
-* [Manjaro](./manjaro.md)
+* [manjaro](./manjaro.md)
 * [phone](./phone.md)
 * [xdg](./xdg.md)
+* [proxy](./proxy.md)
 
 ## My ETH Address
 
