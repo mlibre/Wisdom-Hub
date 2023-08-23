@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[5694],{6020:a=>{a.exports=JSON.parse('{"label":"Game","permalink":"/Tutorials/tags/game","allTagsPath":"/Tutorials/tags","count":1,"items":[{"id":"linux/game and graphic","title":"Game and Graphic","description":"Vulkan","permalink":"/Tutorials/linux/game and graphic"}]}')}}]);

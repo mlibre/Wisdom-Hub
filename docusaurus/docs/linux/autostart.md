@@ -3,6 +3,7 @@ sidebar_position: 8
 tags:
   - Linux
   - Autostarts
+  - Start Up
 ---
 
 # Autostarts and Startup scripts and programs locations

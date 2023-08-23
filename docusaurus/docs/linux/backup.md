@@ -3,6 +3,8 @@ sidebar_position: 3
 tags:
   - Linux
   - Backup
+  - Rsync
+  - Restore
 ---
 
 # Backup
