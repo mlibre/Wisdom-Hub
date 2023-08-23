@@ -24,6 +24,7 @@ This repository is organized into several sections, each containing tutorials fo
 * [phone](./phone.md)
 * [xdg](./xdg.md)
 * [proxy](./proxy.md)
+* [log](./log.md)
 
 ## My ETH Address
 
