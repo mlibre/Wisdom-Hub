@@ -6,7 +6,30 @@ tags:
   - Start Up
 ---
 
-# Autostarts and Startup scripts and programs locations
+# Autostart
+
+## Init
+
+the `init` command refers to the process initialization system. It's the first process that gets started by the kernel during system boot, and it's assigned the process `ID (PID) of 1`
+
+```bash
+which init
+# Output: /usr/bin/init
+
+readlink -f /usr/bin/init
+# Output: /usr/lib/systemd/systemd
+
+ps -p 1
+# Output:
+# PID TTY          TIME CMD
+#   1 ?        00:00:01 systemd
+
+pstree -p 1
+# Output:
+# systemd(1)─┬─...
+```
+
+## Scripts and programs locations
 
 * nano .profile
 * nano /etc/profile

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[4775],{5196:s=>{s.exports=JSON.parse('{"label":"Systemd","permalink":"/Tutorials/tags/systemd","allTagsPath":"/Tutorials/tags","count":1,"items":[{"id":"linux/systemd","title":"Systemd","description":"Unit files\' locations","permalink":"/Tutorials/linux/systemd"}]}')}}]);
