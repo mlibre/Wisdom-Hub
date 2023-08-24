@@ -27,6 +27,11 @@ tags:
 
 Systemd targets are units in the systemd initialization system that represent specific system states or operational modes. They are used to group and manage other units, such as services, that are relevant to a particular mode of operation
 
+```bash
+systemctl cat graphical.target
+```
+
+
 ## Run a script after suspending has finished (resume)
 
 ```bash
