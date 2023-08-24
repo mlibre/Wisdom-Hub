@@ -9,32 +9,16 @@ tags:
 
 `Systemd` is a modern initialization and management system for Linux systems that replaces the traditional SysV init system. It provides more advanced features for managing system services and boot processes.
 
-## Unit files' locations
-
-```bash
-systemctl show --property=UnitPath
-```
-
-## Analyzing
-
-You can use various commands to analyze and manage services using systemd:
-
-```bash
-systemd-analyze
-systemd-analyze blame
-
-systemctl --state=failed
-
-sudo systemctl list-unit-files --type=service --state=enabled --all
-sudo systemctl list-unit-files | grep enabled # List only enabled unit files
-journalctl -u example.service  # View the journal logs of a specific service
-```
-
-## Reloading
-
-```bash
-systemctl daemon-reload
-```
+|                               Commands                                |                 Description                 |
+| :-------------------------------------------------------------------: | :-----------------------------------------: |
+|                 `systemctl show --property=UnitPath`                  |         Display paths of unit files         |
+|                           `systemd-analyze`                           |         Measure system startup time         |
+|                        `systemd-analyze blame`                        |     Identify startup delay contributors     |
+|                      `systemctl --state=failed`                       |              List failed units              |
+| `sudo systemctl list-unit-files --type=service --state=enabled --all` |       List all enabled service units        |
+|           `sudo systemctl list-unit-files \| grep enabled`            |        List enabled units using grep        |
+|                    `journalctl -u example.service`                    |        View logs for a specific unit        |
+|                       `systemctl daemon-reload`                       | Reload systemd configuration and unit files |
 
 ## Run a script after suspending has finished (resume)
 
