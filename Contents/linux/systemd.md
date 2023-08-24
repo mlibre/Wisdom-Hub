@@ -22,6 +22,7 @@ tags:
 |                        `systemctl get-default`                        |     Get the default target or boot unit     |
 |                 `systemctl list-units --type=target`                  |               Systemd Targets               |
 |                   `systemctl cat graphical.target`                    |    Show content of graphical.target unit    |
+|                     `systemctl is-system-running`                     |        Overall status of the system         |
 
 ## Targets
 
@@ -29,6 +30,32 @@ Systemd targets are units in the systemd initialization system that represent sp
 
 ```bash
 systemctl cat graphical.target
+```
+
+## Add service
+
+```bash
+sudo nano /etc/systemd/system/sshtunnel.service
+
+[Unit]
+Description=SSH Tunnel
+After=network.target graphical.target
+Requires=graphical.target
+
+[Service]
+User=mlibre
+Restart=always
+RestartSec=20
+ExecStart=ssh -L 0.0.0.0:1234:localhost:3128 -N pachan@43.204.151.127 -p 8756
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl enable sshtunnel
+sudo systemctl restart sshtunnel
+sudo systemctl status sshtunnel
+sudo systemctl daemon-reload
+sudo journalctl -f -u sshtunnel
 ```
 
 
