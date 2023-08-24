@@ -19,6 +19,13 @@ tags:
 |           `sudo systemctl list-unit-files \| grep enabled`            |        List enabled units using grep        |
 |                    `journalctl -u example.service`                    |        View logs for a specific unit        |
 |                       `systemctl daemon-reload`                       | Reload systemd configuration and unit files |
+|                        `systemctl get-default`                        |     Get the default target or boot unit     |
+|                 `systemctl list-units --type=target`                  |               Systemd Targets               |
+|                   `systemctl cat graphical.target`                    |    Show content of graphical.target unit    |
+
+## Targets
+
+Systemd targets are units in the systemd initialization system that represent specific system states or operational modes. They are used to group and manage other units, such as services, that are relevant to a particular mode of operation
 
 ## Run a script after suspending has finished (resume)
 
