@@ -7,6 +7,8 @@ tags:
 
 # Systemd
 
+`Systemd` is a modern initialization and management system for Linux systems that replaces the traditional SysV init system. It provides more advanced features for managing system services and boot processes.
+
 ## Unit files' locations
 
 ```bash
@@ -15,6 +17,8 @@ systemctl show --property=UnitPath
 
 ## Analyzing
 
+You can use various commands to analyze and manage services using systemd:
+
 ```bash
 systemd-analyze
 systemd-analyze blame
@@ -22,8 +26,8 @@ systemd-analyze blame
 systemctl --state=failed
 
 sudo systemctl list-unit-files --type=service --state=enabled --all
-sudo systemctl list-unit-files | grep enabled
-systemctl journal -u example.service
+sudo systemctl list-unit-files | grep enabled # List only enabled unit files
+journalctl -u example.service  # View the journal logs of a specific service
 ```
 
 ## Reloading
