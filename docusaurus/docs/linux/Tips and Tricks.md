@@ -41,13 +41,15 @@ And a comprehensive guide to various aspects of Linux operating system
 
 ## Automatic Shutdown
 
-```bash
-# Schedule a shutdown for 220 minutes (3 hours and 30 minutes) in the future
-sudo shutdown -P +220
+|      Command      |            Description            |
+| :---------------: | :-------------------------------: |
+|  `shutdown now`   | Shutdown the system immediately.  |
+| `shutdown -h +5`  | Shutdown the system in 5 minutes. |
+| `shutdown -r now` |  Reboot the system immediately.   |
+| `shutdown -r +10` | Reboot the system in 10 minutes.  |
+| `shutdown -H now` |   Halt the system immediately.    |
+|   `shutdown +5`   | Shutdown the system in 5 minutes. |
 
-# Shutdown the system immediately
-sudo shutdown -h now
-```
 
 ## Bash case-insensitive auto completion
 
