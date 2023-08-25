@@ -14,6 +14,7 @@ tags:
 |                 `systemctl show --property=UnitPath`                  |         Display paths of unit files         |
 |                           `systemd-analyze`                           |         Measure system startup time         |
 |                        `systemd-analyze blame`                        |     Identify startup delay contributors     |
+|                   `systemd-analyze verify service`                    |     Verify the syntax of service units      |
 |                      `systemctl --state=failed`                       |              List failed units              |
 | `sudo systemctl list-unit-files --type=service --state=enabled --all` |       List all enabled service units        |
 |           `sudo systemctl list-unit-files \| grep enabled`            |        List enabled units using grep        |
@@ -23,6 +24,7 @@ tags:
 |                 `systemctl list-units --type=target`                  |               Systemd Targets               |
 |                   `systemctl cat graphical.target`                    |    Show content of graphical.target unit    |
 |                     `systemctl is-system-running`                     |        Overall status of the system         |
+
 
 ## Targets
 
@@ -40,7 +42,6 @@ sudo nano /etc/systemd/system/sshtunnel.service
 [Unit]
 Description=SSH Tunnel
 After=network.target graphical.target
-Requires=graphical.target
 
 [Service]
 User=mlibre
@@ -49,7 +50,7 @@ RestartSec=20
 ExecStart=ssh -L 0.0.0.0:1234:localhost:3128 -N pachan@43.204.151.127 -p 8756
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical.target
 
 sudo systemctl enable sshtunnel
 sudo systemctl restart sshtunnel
