@@ -11,19 +11,22 @@ tags:
 
 |                               Commands                                |                 Description                 |
 | :-------------------------------------------------------------------: | :-----------------------------------------: |
-|                 `systemctl show --property=UnitPath`                  |         Display paths of unit files         |
 |                           `systemd-analyze`                           |         Measure system startup time         |
 |                        `systemd-analyze blame`                        |     Identify startup delay contributors     |
-|                   `systemd-analyze verify service`                    |     Verify the syntax of service units      |
-|                      `systemctl --state=failed`                       |              List failed units              |
-| `sudo systemctl list-unit-files --type=service --state=enabled --all` |       List all enabled service units        |
-|           `sudo systemctl list-unit-files \| grep enabled`            |        List enabled units using grep        |
-|                    `journalctl -u example.service`                    |        View logs for a specific unit        |
-|                       `systemctl daemon-reload`                       | Reload systemd configuration and unit files |
-|                        `systemctl get-default`                        |     Get the default target or boot unit     |
 |                 `systemctl list-units --type=target`                  |               Systemd Targets               |
 |                   `systemctl cat graphical.target`                    |    Show content of graphical.target unit    |
 |                     `systemctl is-system-running`                     |        Overall status of the system         |
+|                       `systemctl daemon-reload`                       | Reload systemd configuration and unit files |
+|                        `systemctl get-default`                        |     Get the default target or boot unit     |
+|                 `systemctl show --property=UnitPath`                  |         Display paths of unit files         |
+|                      `systemctl --state=failed`                       |              List failed units              |
+| `sudo systemctl list-unit-files --type=service --state=enabled --all` |       List all enabled service units        |
+|                    `journalctl -u example.service`                    |        View logs for a specific unit        |
+|                 `sudo systemctl edit --full service`                  |    Edit the specified service unit file     |
+|             `sudo systemctl edit --force --full service`              |        Create new unit if not exists        |
+|           `sudo systemctl list-unit-files \| grep enabled`            |        List enabled units using grep        |
+|                   `systemd-analyze verify service`                    |     Verify the syntax of service units      |
+
 
 
 ## Targets
@@ -41,7 +44,7 @@ sudo nano /etc/systemd/system/sshtunnel.service
 
 [Unit]
 Description=SSH Tunnel
-After=network.target graphical.target
+After=network.target
 
 [Service]
 User=mlibre
@@ -53,6 +56,7 @@ ExecStart=ssh -L 0.0.0.0:1234:localhost:3128 -N pachan@43.204.151.127 -p 8756
 WantedBy=graphical.target
 
 sudo systemctl enable sshtunnel
+sudo systemctl reenable sshtunnel.service
 sudo systemctl restart sshtunnel
 sudo systemctl status sshtunnel
 sudo systemctl daemon-reload
