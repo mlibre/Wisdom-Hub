@@ -16,6 +16,7 @@ tags:
 |                        `systemd-analyze blame`                        |     Identify startup delay contributors     |
 |                 `systemctl list-units --type=target`                  |               Systemd Targets               |
 |                      `systemctl --state=failed`                       |              List failed units              |
+|               `systemctl --state=active --type=target`                |             List active targets             |
 | `sudo systemctl list-unit-files --type=service --state=enabled --all` |       List all enabled service units        |
 |           `sudo systemctl list-unit-files \| grep enabled`            |        List enabled units using grep        |
 |                   `systemctl cat graphical.target`                    |    Show content of graphical.target unit    |
@@ -26,6 +27,7 @@ tags:
 |                 `sudo systemctl edit --full service`                  |    Edit the specified service unit file     |
 |             `sudo systemctl edit --force --full service`              |        Create new unit if not exists        |
 |                   `systemd-analyze verify service`                    |     Verify the syntax of service units      |
+|                `sudo systemctl isolate rescue.target`                 |    Change system state to rescue target     |
 
 
 
