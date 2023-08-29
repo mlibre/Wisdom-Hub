@@ -15,6 +15,7 @@ Welcome to my Network tutorials!
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
 * [network](./network%20tips.md)
+* [ssh](./ssh.md)
 
 ## My ETH Address
 
