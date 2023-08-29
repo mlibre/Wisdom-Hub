@@ -24,20 +24,19 @@ And a comprehensive guide to various aspects of Linux operating system
   * [Mouse location](#mouse-location)
   * [Get screen resolution](#get-screen-resolution)
   * [Click, move and scroll on the screen](#click-move-and-scroll-on-the-screen)
-* [Instant cloud file share](#instant-cloud-file-share)
 * [Font](#font)
   * [Locations](#locations)
   * [List](#list)
   * [Fira Code](#fira-code)
   * [Cache](#cache)
-* [Install Genymotoin Android emulator](#install-genymotoin-android-emulator)
+* [Youtube-dl](#youtube-dl)
+  * [Add Alias](#add-alias)
+* [Instant cloud file share](#instant-cloud-file-share)
 * [Windows 11](#windows-11)
   * [Make boatable usb](#make-boatable-usb)
   * [WoeUsb](#woeusb)
   * [Win2USB](#win2usb)
   * [Things to do after installing Windows 11](#things-to-do-after-installing-windows-11)
-* [Youtube-dl](#youtube-dl)
-  * [Add Alias](#add-alias)
 
 ## Automatic Shutdown
 
@@ -251,14 +250,6 @@ chmod +x click.sh
 ./click.sh 10 0.5
 ```
 
-## Instant cloud file share
-
-```bash
-# -F autodestroy=1 autodestroy on download or expire in 5
-curl https://oshi.at -F f=@/home/true/backup.tar.gz -F expire=5 minutes
-curl -F "file=@/home/mlibre/Downloads/backup.tar.gz" "https://file.io/?expires=1w"
-```
-
 ## Font
 
 ### Locations
@@ -292,10 +283,43 @@ sudo rm -v /var/cache/fontconfig/*
 fc-cache -r
 ```
 
+## Youtube-dl
+
+```bash
+# Install
+sudo pacman -S youtube-dl yt-dlp
+
+# Download best quality
+yt-dlp "https://www.youtube.com/link"
+
+yt-dlp -f b --write-description  --write-auto-sub --write-subs --embed-subs --write-info-json --max-filesize 100M --download-sections "*6:02-13:40" --proxy socks5://127.0.0.1:1080/ --verbose "https://www.youtube.com/link"
+
+# List formats and sizes
+yt-dlp -F "https://www.youtube.com/link"
+yt-dlp -f 22 "https://www.youtube.com/link" 
+
+youtube-dl -f best "https://www.youtube.com/link"
+```
+
+### Add Alias
+
+```bash
+nano ~/.bashrc
+alias yd='yt-dlp -f b --write-auto-sub --write-subs --embed-subs --write-info-json --max-filesize 100M'
+yd "link"
+
 ## Install Genymotoin Android emulator
 
 ```bash
 sudo pamac install genymotion
+```
+
+## Instant cloud file share
+
+```bash
+# -F autodestroy=1 autodestroy on download or expire in 5
+curl https://oshi.at -F f=@/home/true/backup.tar.gz -F expire=5 minutes
+curl -F "file=@/home/mlibre/Downloads/backup.tar.gz" "https://file.io/?expires=1w"
 ```
 
 ## Windows 11
@@ -344,29 +368,4 @@ chmod +x windows2usb*
 * wsl --update
 * wsl --install -d Ubuntu
 * Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable
-
-## Youtube-dl
-
-```bash
-# Install
-sudo pacman -S youtube-dl yt-dlp
-
-# Download best quality
-yt-dlp "https://www.youtube.com/link"
-
-yt-dlp -f b --write-description  --write-auto-sub --write-subs --embed-subs --write-info-json --max-filesize 100M --download-sections "*6:02-13:40" --proxy socks5://127.0.0.1:1080/ --verbose "https://www.youtube.com/link"
-
-# List formats and sizes
-yt-dlp -F "https://www.youtube.com/link"
-yt-dlp -f 22 "https://www.youtube.com/link" 
-
-youtube-dl -f best "https://www.youtube.com/link"
-```
-
-### Add Alias
-
-```bash
-nano ~/.bashrc
-alias yd='yt-dlp -f b --write-auto-sub --write-subs --embed-subs --write-info-json --max-filesize 100M'
-yd "link"
 ```
