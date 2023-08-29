@@ -9,27 +9,28 @@ tags:
 
 `Systemd` is a modern initialization and management system for Linux systems that replaces the traditional SysV init system. It provides more advanced features for managing system services and boot processes.
 
-|                               Commands                                |                 Description                 |
-| :-------------------------------------------------------------------: | :-----------------------------------------: |
-|                 `systemctl show --property=UnitPath`                  |         Display paths of unit files         |
-|                           `systemd-analyze`                           |         Measure system startup time         |
-|                        `systemd-analyze blame`                        |     Identify startup delay contributors     |
-|                 `systemctl list-units --type=target`                  |               Systemd Targets               |
-|                      `systemctl --state=failed`                       |              List failed units              |
-|               `systemctl --state=active --type=target`                |             List active targets             |
-| `sudo systemctl list-unit-files --type=service --state=enabled --all` |       List all enabled service units        |
-|           `sudo systemctl list-unit-files \| grep enabled`            |        List enabled units using grep        |
-|                   `systemctl cat graphical.target`                    |    Show content of graphical.target unit    |
-|                     `systemctl is-system-running`                     |        Overall status of the system         |
-|                       `systemctl daemon-reload`                       | Reload systemd configuration and unit files |
-|                        `systemctl get-default`                        |     Get the default target or boot unit     |
-|                    `journalctl -u example.service`                    |        View logs for a specific unit        |
-|                 `sudo systemctl edit --full service`                  |    Edit the specified service unit file     |
-|             `sudo systemctl edit --force --full service`              |        Create new unit if not exists        |
-|                   `systemd-analyze verify service`                    |     Verify the syntax of service units      |
-|                `sudo systemctl isolate rescue.target`                 |    Change system state to rescue target     |
+|                               Commands                                |                  Description                  |
+| :-------------------------------------------------------------------: | :-------------------------------------------: |
+|                 `systemctl show --property=UnitPath`                  |          Display paths of unit files          |
+|                           `systemd-analyze`                           |          Measure system startup time          |
+|                        `systemd-analyze blame`                        |      Identify startup delay contributors      |
+|                 `systemctl list-units --type=target`                  |                Systemd Targets                |
+|                      `systemctl --state=failed`                       |               List failed units               |
+|               `systemctl --state=active --type=target`                |              List active targets              |
+| `sudo systemctl list-unit-files --type=service --state=enabled --all` |        List all enabled service units         |
+|           `sudo systemctl list-unit-files \| grep enabled`            |         List enabled units using grep         |
+|                   `systemctl cat graphical.target`                    |     Show content of graphical.target unit     |
+|                     `systemctl is-system-running`                     |         Overall status of the system          |
+|                       `systemctl daemon-reload`                       |  Reload systemd configuration and unit files  |
+|                        `systemctl get-default`                        |      Get the default target or boot unit      |
+|                    `journalctl -u example.service`                    |         View logs for a specific unit         |
+|                 `sudo systemctl edit --full service`                  |     Edit the specified service unit file      |
+|             `sudo systemctl edit --force --full service`              |         Create new unit if not exists         |
+|                   `systemd-analyze verify service`                    |      Verify the syntax of service units       |
+|                `sudo systemctl isolate rescue.target`                 |     Change system state to rescue target      |
+|                        `systemctl soft-reboot`                        | Reboot the system without touching the kernel |
 
-
+systemctl soft-reboot
 
 ## Targets
 
