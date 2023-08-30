@@ -25,6 +25,8 @@ This repository is organized into several sections, each containing tutorials fo
 * [xdg](./xdg.md)
 * [proxy](./proxy.md)
 * [log](./log.md)
+* [editor](./editor.md)
+* [shell](./shell.md)
 
 ## My ETH Address
 
