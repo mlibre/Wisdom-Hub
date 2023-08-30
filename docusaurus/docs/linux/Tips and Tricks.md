@@ -12,7 +12,6 @@ Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.
 And a comprehensive guide to various aspects of Linux operating system
 
 * [Automatic Shutdown](#automatic-shutdown)
-* [Bash case-insensitive auto completion](#bash-case-insensitive-auto-completion)
 * [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
 * [Resetting sound, audio](#resetting-sound-audio)
 * [Fixing broken grub](#fixing-broken-grub)
@@ -48,20 +47,6 @@ And a comprehensive guide to various aspects of Linux operating system
 | `shutdown -r +10` | Reboot the system in 10 minutes.  |
 | `shutdown -H now` |   Halt the system immediately.    |
 |   `shutdown +5`   | Shutdown the system in 5 minutes. |
-
-
-## Bash case-insensitive auto completion
-
-```bash
-# Add the following line to the /etc/inputrc file to enable case-insensitive auto completion
-echo 'set completion-ignore-case On' | sudo tee -a /etc/inputrc
-
-# or as root
-echo 'set completion-ignore-case On' >> /etc/inputrc 
-
-# or for current user only
-echo "set completion-ignore-case on" >> ~/.inputrc
-```
 
 ## Changing monitor or screen Brightness and Gamma
 
