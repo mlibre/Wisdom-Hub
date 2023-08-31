@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[9168],{3408:e=>{e.exports=JSON.parse('{"label":"Hub","permalink":"/Wisdom-Hub/tags/hub","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"readme","title":"Introduction","description":"Welcome to the My Wisdom Hub Repository!","permalink":"/Wisdom-Hub/"}]}')}}]);
