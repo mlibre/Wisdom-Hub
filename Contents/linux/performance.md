@@ -12,7 +12,8 @@ tags:
 ```bash
 sudo systemctl start systemd-sysctl.service
 sudo systemctl enable systemd-sysctl.service
-# sudo nano /etc/sysctl.conf
+
+sudo nano /etc/sysctl.conf
 # And
 sudo nano /etc/sysctl.d/sys.conf
 
