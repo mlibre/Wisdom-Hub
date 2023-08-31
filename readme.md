@@ -1,11 +1,11 @@
-# Tutorials - Mlibre
+# Wisdom Hub - Mlibre
 
-Welcome to my education Repository!
+Welcome to my Wisdom Hub!
 
 **Tutorials** about various topics, `Linux`, `Blockchain`, `Raspberry Pi`, `Vscode`, `Network`, and more
 
-* [Website](https://mlibre.github.io/Tutorials/)
-* [Contents](./Tutorials/readme.md)
+* [Website](https://mlibre.github.io/Wisdom-Hub/)
+* [Contents](./Contents/readme.md)
 
 Good Luck!
 

@@ -11,10 +11,10 @@ const config = {
   favicon: 'img/gt.png',
 
   url: 'https://mlibre.github.io/',
-  baseUrl: '/Tutorials/',
+  baseUrl: '/Wisdom-Hub/',
 
   organizationName: 'mlibre',
-  projectName: 'Tutorials',
+  projectName: 'Wisdom-Hub',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -54,7 +54,7 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/mlibre/Tutorials/',
+            href: 'https://github.com/mlibre/Wisdom-Hub/',
             label: 'GitHub',
             position: 'right',
           },
