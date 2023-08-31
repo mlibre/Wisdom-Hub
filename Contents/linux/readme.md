@@ -14,22 +14,23 @@ Welcome to my Linux tutorials!
 
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
-* [tips and tricks](./tips%20and%20tricks.md)
-* [performance](./performance.md)
-* [backup](./backup.md)
-* [systemd](./systemd.md)
-* [manjaro](./manjaro.md)
-* [game and graphic](./game%20and%20graphic.md)
-* [xdg](./xdg.md)
-* [autostart](./autostart.md)
-* [phone](./phone.md)
-* [proxy](./proxy.md)
-* [log](./log.md)
-* [editor](./editor.md)
-* [shell](./shell.md)
-* [processes](./processes.md)
-* [grub](./grub.md)
-* [tools](./tools.md)
+* [Tips and Tricks](./tips%20and%20tricks.md)
+* [Performance](./performance.md)
+* [Backup](./backup.md)
+* [Systemd](./systemd.md)
+* [Manjaro](./manjaro.md)
+* [Game and Graphic](./game%20and%20graphic.md)
+* [XDG](./xdg.md)
+* [Autostart](./autostart.md)
+* [Phone](./phone.md)
+* [Proxy](./proxy.md)
+* [Log](./log.md)
+* [Editor](./editor.md)
+* [Shell](./shell.md)
+* [Processes](./processes.md)
+* [GRUB](./grub.md)
+* [Tools](./tools.md)
+
 
 ## My ETH Address
 
