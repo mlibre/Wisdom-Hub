@@ -197,4 +197,5 @@ chmod +x windows2usb*
 * wsl --update
 * wsl --install -d Ubuntu
 * Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable
+
 ```
