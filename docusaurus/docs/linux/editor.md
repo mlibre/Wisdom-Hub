@@ -6,10 +6,3 @@ tags:
 ---
 
 # Editor
-
-## Bat
-
-```bash
-sudo pacman -S bat
-bat .ssh/id_rsa.pub 
-```
