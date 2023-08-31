@@ -65,6 +65,10 @@ xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70
 ## Resetting sound, audio
 
 ```bash
+systemctl --user restart pulseaudio
+
+# OR
+
 pulseaudio --kill
 pulseaudio --start
 ```
