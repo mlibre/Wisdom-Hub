@@ -15,10 +15,6 @@ And a comprehensive guide to various aspects of Linux operating system
 * [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
 * [Resetting sound, audio](#resetting-sound-audio)
 * [Resetting KDE](#resetting-kde)
-* [Bash scripts](#bash-scripts)
-  * [Mouse location](#mouse-location)
-  * [Get screen resolution](#get-screen-resolution)
-  * [Click, move and scroll on the screen](#click-move-and-scroll-on-the-screen)
 * [Font](#font)
   * [Locations](#locations)
   * [List](#list)
@@ -81,120 +77,6 @@ rm ~/.cache/ksycoca5*;
 kquitapp5 plasmashell;
 killall plasmashell;
 kstart5 plasmashell;
-```
-
-## Bash scripts
-
-### Mouse location
-
-```bash
-while true; do
-
-    sleep 2
-    xdotool getmouselocation
-
-done
-```
-
-### Get screen resolution
-
-```bash
-  RES=$(xdpyinfo | grep dimensions | awk '{print $2}')
-  WIDTH=$(echo $RES | awk -Fx '{print $1}')
-  HEIGHT=$(echo $RES | awk -Fx '{print $2}')
-```
-
-### Click, move and scroll on the screen
-
-```bash
-#!/bin/bash
-
-# Usage: ./click2.bash 3 30
-
-# Check for two arguments
-if [[ $# -ne 2 ]]; then
- echo "Usage: $0 <seconds> <sleep>"
- exit 1
-fi
-
-mousemoveAndClick() {
- # Move the mouse to the specified coordinates
- xdotool mousemove $1 $2
- # mouse click
- xdotool click 1
- # Sleep for 1 second
- sleep 2
-}
-
-scroll() {
- local direction=$1
- local count=$2
- if [[ $direction == "up" ]]; then
-  for i in $(seq 1 $count); do
-   xdotool click 4
-   sleep 1
-  done    
- elif [[ $direction == "down" ]]; then
-  for i in $(seq 1 $count); do   
-   xdotool click 5 
-   sleep 1
-  done
- fi
-}
-
-press_esc_and_click() {
- # Press ESC
- xdotool key Escape
-
- # Sleep for 1 second
- sleep 1
-
- # mouse click
- xdotool click 1
-}
-
-# Get the idle time in milliseconds
-IDLE_TIME=$(echo "$1 * 1000" | bc)
-
-while true; do
- # Get the current idle time of the mouse pointer in milliseconds
- IDLE=$(xprintidle)
-
- # Check if the mouse has been idle for at least the specified time
- if [[ $IDLE -ge $IDLE_TIME ]]; then
-  # Get screen resolution
-  # RES=$(xdpyinfo | grep dimensions | awk '{print $2}')
-  # WIDTH=$(echo $RES | awk -Fx '{print $1}')
-  # HEIGHT=$(echo $RES | awk -Fx '{print $2}')
-
-  mousemoveAndClick 2512 1237
-  press_esc_and_click
-
-  mousemoveAndClick 1173 647
-  mousemoveAndClick 1556 1230
-
-  mousemoveAndClick 37 312
-  mousemoveAndClick 1276 1068
-  press_esc_and_click
-
-  
-  mousemoveAndClick 30 217
-  scroll "down" 30
-  mousemoveAndClick 1247 1195
-  press_esc_and_click
-
- fi
-
- # Sleep for specified time
- sleep $2
-done
-```
-
-And run:
-
-```bash
-chmod +x click.sh
-./click.sh 10 0.5
 ```
 
 ## Font
