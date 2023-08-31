@@ -31,7 +31,6 @@ This repository is organized into several sections, each containing tutorials fo
 * [GRUB](./grub.md)
 * [Tools](./tools.md)
 
-
 ## My ETH Address
 
 > 0xc9b64496986E7b6D4A68fDF69eF132A35e91838e
