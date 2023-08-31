@@ -19,6 +19,7 @@ The `dmesg` command is used to display the kernel ring buffer. By default it rea
 
 ```bash
 dmesg
+sudo dmesg --level=emerg,alert,crit,err
 ```
 
 ## journalctl
