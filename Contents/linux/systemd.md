@@ -13,6 +13,10 @@ tags:
 | :-------------------------------------------------------------------: | :-------------------------------------------: |
 |                 `systemctl show --property=UnitPath`                  |          Display paths of unit files          |
 |        `systemctl show --property=UnitPath --user --no-pager`         |   Display user-specific paths of unit files   |
+|                        `systemctl get-default`                        |         Get system the default target         |
+|                    `systemctl get-default --user`                     |            Get user default target            |
+|                   `systemctl cat graphical.target`                    |     Show content of graphical.target unit     |
+|               `systemctl status default.target --user`                |    Show status of user default.target unit    |
 |                           `systemd-analyze`                           |          Measure system startup time          |
 |                        `systemd-analyze blame`                        |      Identify startup delay contributors      |
 |                 `systemctl list-units --type=target`                  |                Systemd Targets                |
@@ -20,10 +24,8 @@ tags:
 |               `systemctl --state=active --type=target`                |              List active targets              |
 | `sudo systemctl list-unit-files --type=service --state=enabled --all` |        List all enabled service units         |
 |           `sudo systemctl list-unit-files \| grep enabled`            |         List enabled units using grep         |
-|                   `systemctl cat graphical.target`                    |     Show content of graphical.target unit     |
 |                     `systemctl is-system-running`                     |         Overall status of the system          |
 |                       `systemctl daemon-reload`                       |  Reload systemd configuration and unit files  |
-|                        `systemctl get-default`                        |      Get the default target or boot unit      |
 |                    `journalctl -u example.service`                    |         View logs for a specific unit         |
 |                 `sudo systemctl edit --full service`                  |     Edit the specified service unit file      |
 |             `sudo systemctl edit --force --full service`              |         Create new unit if not exists         |
