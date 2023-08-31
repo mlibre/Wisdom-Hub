@@ -34,6 +34,41 @@ tags:
 |                        `systemctl soft-reboot`                        | Reboot the system without touching the kernel |
 |                        `systemctl status PID`                         |     Show the status of a specific process     |
 
+# How system boots
+
+1. When the system boots up, the firmware (BIOS or UEFI) initializes the hardware and starts the bootloader (like GRUB 2)
+2. The bootloader then loads both the Linux kernel and an initial RAM-based filesystem (initramfs) into memory
+3. The `initramfs` contains a small executable called `init`
+4. This `init` executable is actually a version of **systemd**, which performs necessary actions such as loading appropriate filesystem drivers, handling device events with udev, ...
+5. Once the real root filesystem is found, checked, and mounted, a second instance of **systemd** takes over as the main system and service manager, and this instance is what gets the **PID 1**
+6. This systemd instance starts other system services like `systemd-journald` a user manager instance for each logged-in user. These user manager instances are started as `user@UID.service`, where UID is the numerical user ID of the logged-in user. These instances use the same executable as the system manager, but start a different set of units specific to each user
+7. Each `systemd --user` instance manages a hierarchy of units specific to that user.
+
+> The process of starting a user manager instance in systemd is handled through the `pam_systemd` module. This module is responsible for registering user sessions with the systemd login manager, `systemd-logind.service`
+
+```bash
+# Firmware initializes hardware and loads bootloader
+firmware -> bootloader (GRUB)
+
+# Bootloader loads kernel and initramfs into memory
+bootloader -> kernel, initramfs
+
+# initramfs runs init (systemd)
+initramfs -> init (systemd)
+
+# init prepares and mounts the real root filesystem
+init -> mount root filesystem
+
+# init executes the main systemd instance on the root filesystem
+init -> systemd
+
+# systemd starts system services and user sessions
+systemd -> services, user sessions
+
+# Each user session may run a systemd --user instance
+user session -> systemd --user
+```
+
 ## Targets
 
 Systemd targets are units in the systemd initialization system that represent specific system states or operational modes. They are used to group and manage other units, such as services, that are relevant to a particular mode of operation
