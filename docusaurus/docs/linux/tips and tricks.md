@@ -15,14 +15,12 @@ And a comprehensive guide to various aspects of Linux operating system
 * [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
 * [Resetting sound, audio](#resetting-sound-audio)
 * [Resetting KDE](#resetting-kde)
+* [Reading symlinks](#reading-symlinks)
 * [Font](#font)
   * [Locations](#locations)
   * [List](#list)
   * [Fira Code](#fira-code)
   * [Cache](#cache)
-* [Youtube-dl](#youtube-dl)
-  * [Add Alias](#add-alias)
-* [Instant cloud file share](#instant-cloud-file-share)
 * [Windows 11](#windows-11)
   * [Make boatable usb](#make-boatable-usb)
   * [WoeUsb](#woeusb)
@@ -79,6 +77,13 @@ killall plasmashell;
 kstart5 plasmashell;
 ```
 
+## Reading symlinks
+
+```bash
+readlink /bin/init
+# ../lib/systemd/systemd
+```
+
 ## Font
 
 ### Locations
@@ -110,45 +115,6 @@ fc-match -a | grep -i fira
 ```bash
 sudo rm -v /var/cache/fontconfig/*
 fc-cache -r
-```
-
-## Youtube-dl
-
-```bash
-# Install
-sudo pacman -S youtube-dl yt-dlp
-
-# Download best quality
-yt-dlp "https://www.youtube.com/link"
-
-yt-dlp -f b --write-description  --write-auto-sub --write-subs --embed-subs --write-info-json --max-filesize 100M --download-sections "*6:02-13:40" --proxy socks5://127.0.0.1:1080/ --verbose "https://www.youtube.com/link"
-
-# List formats and sizes
-yt-dlp -F "https://www.youtube.com/link"
-yt-dlp -f 22 "https://www.youtube.com/link" 
-
-youtube-dl -f best "https://www.youtube.com/link"
-```
-
-### Add Alias
-
-```bash
-nano ~/.bashrc
-alias yd='yt-dlp -f b --write-auto-sub --write-subs --embed-subs --write-info-json --max-filesize 100M'
-yd "link"
-
-## Install Genymotoin Android emulator
-
-```bash
-sudo pamac install genymotion
-```
-
-## Instant cloud file share
-
-```bash
-# -F autodestroy=1 autodestroy on download or expire in 5
-curl https://oshi.at -F f=@/home/true/backup.tar.gz -F expire=5 minutes
-curl -F "file=@/home/mlibre/Downloads/backup.tar.gz" "https://file.io/?expires=1w"
 ```
 
 ## Windows 11
