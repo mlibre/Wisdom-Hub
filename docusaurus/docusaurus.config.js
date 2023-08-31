@@ -86,7 +86,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/mlibre/Tutorials',
+                href: 'https://github.com/mlibre/Wisdom-Hub',
               },
             ],
           },
