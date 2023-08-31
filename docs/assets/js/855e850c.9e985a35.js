@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[3150],{8040:e=>{e.exports=JSON.parse('{"label":"grub","permalink":"/Wisdom-Hub/tags/grub","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/grub","title":"GRUB","description":"File:","permalink":"/Wisdom-Hub/linux/grub"}]}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[4112],{4783:e=>{e.exports=JSON.parse('{"label":"blockchain","permalink":"/Wisdom-Hub/tags/blockchain","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"blockchain/readme","title":"Blockchain","description":"Welcome to my blockchain tutorials!","permalink":"/Wisdom-Hub/blockchain/"}]}')}}]);

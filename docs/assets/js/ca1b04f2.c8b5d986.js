@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[6111],{1059:t=>{t.exports=JSON.parse('{"label":"Start Up","permalink":"/Wisdom-Hub/tags/start-up","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/autostart","title":"Autostart","description":"Init","permalink":"/Wisdom-Hub/linux/autostart"}]}')}}]);

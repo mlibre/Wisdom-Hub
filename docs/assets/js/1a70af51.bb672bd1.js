@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[7337],{5403:s=>{s.exports=JSON.parse('{"label":"Rsync","permalink":"/Tutorials/tags/rsync","allTagsPath":"/Tutorials/tags","count":1,"items":[{"id":"linux/backup","title":"Backup","description":"Rsync","permalink":"/Tutorials/linux/backup"}]}')}}]);

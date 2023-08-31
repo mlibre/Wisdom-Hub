@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[7121],{5877:s=>{s.exports=JSON.parse('{"label":"process","permalink":"/Wisdom-Hub/tags/process","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/processes","title":"process","description":"Find PID, PPID nad exec path","permalink":"/Wisdom-Hub/linux/processes"}]}')}}]);

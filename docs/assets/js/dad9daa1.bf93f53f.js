@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[5127],{9799:e=>{e.exports=JSON.parse('{"label":"editor","permalink":"/Tutorials/tags/editor","allTagsPath":"/Tutorials/tags","count":1,"items":[{"id":"linux/editor","title":"Editor","description":"","permalink":"/Tutorials/linux/editor"}]}')}}]);
