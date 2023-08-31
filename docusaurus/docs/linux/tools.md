@@ -22,6 +22,15 @@ bash-it show aliases
 bash-it show plugins
 bash-it show completions
 
+bash-it enable completion all
+bash-it update
+bash-it reload
+
+ls ~/.bash_it/themes/
+
+
+cd $BASH_IT
+./uninstall.sh
 ```
 
 ## System monitoring
