@@ -10,6 +10,16 @@ tags:
 
 # Shell
 
+## Command types
+
+```bash
+type ls
+# ls is an alias for ls $LS_OPTIONS
+
+type ssh
+# ssh is /usr/bin/ssh
+```
+
 ## Bash
 
 ### Case-insensitive auto completion
