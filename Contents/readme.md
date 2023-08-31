@@ -7,13 +7,13 @@ tags:
   - Cheat
   - Sheet
   - Tutorial
+  - Wisdom
+  - Hub
 ---
 
-# Mlibre Cheat Sheet
+# Wisdom Hub
 
 Welcome to the My Wisdom Hub Repository!
-
-## Tutorials
 
 This repository is organized into several markdown files, each containing tutorials for specific topics. Here's a brief overview of the files:
 
