@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[6274],{74:s=>{s.exports=JSON.parse('{"label":"zsh","permalink":"/Tutorials/tags/zsh","allTagsPath":"/Tutorials/tags","count":1,"items":[{"id":"linux/shell","title":"Shell","description":"Bash","permalink":"/Tutorials/linux/shell"}]}')}}]);

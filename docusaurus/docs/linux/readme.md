@@ -14,7 +14,7 @@ Welcome to my Linux tutorials!
 
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
-* [Tips and Tricks](./Tips%20and%20Tricks.md)
+* [tips and tricks](./tips%20and%20tricks.md)
 * [performance](./performance.md)
 * [systemd](./systemd.md)
 * [autostart](./autostart.md)

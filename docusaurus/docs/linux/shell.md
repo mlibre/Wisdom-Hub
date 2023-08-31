@@ -3,13 +3,15 @@ sidebar_position: 13
 tags:
   - Linux
   - shell
+  - bash
+  - zsh
 ---
 
 # Shell
 
 ## Bash
 
-## Case-insensitive auto completion
+### Case-insensitive auto completion
 
 ```bash
 # Add the following line to the /etc/inputrc file to enable case-insensitive auto completion

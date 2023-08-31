@@ -12,6 +12,7 @@ tags:
 |                               Commands                                |                  Description                  |
 | :-------------------------------------------------------------------: | :-------------------------------------------: |
 |                 `systemctl show --property=UnitPath`                  |          Display paths of unit files          |
+|        `systemctl show --property=UnitPath --user --no-pager`         |   Display user-specific paths of unit files   |
 |                           `systemd-analyze`                           |          Measure system startup time          |
 |                        `systemd-analyze blame`                        |      Identify startup delay contributors      |
 |                 `systemctl list-units --type=target`                  |                Systemd Targets                |
@@ -29,8 +30,7 @@ tags:
 |                   `systemd-analyze verify service`                    |      Verify the syntax of service units       |
 |                `sudo systemctl isolate rescue.target`                 |     Change system state to rescue target      |
 |                        `systemctl soft-reboot`                        | Reboot the system without touching the kernel |
-
-systemctl soft-reboot
+|                        `systemctl status PID`                         |     Show the status of a specific process     |
 
 ## Targets
 
