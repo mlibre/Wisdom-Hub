@@ -22,6 +22,22 @@ type ssh
 
 ## Bash
 
+|     Commands      |                        Description                        |
+| :---------------: | :-------------------------------------------------------: |
+|       `env`       |       View all environment variables currently set        |
+| `VAR_NAME=value`  |  Set an environment variable named `VAR_NAME` to `value`  |
+| `export VAR_NAME` | Make an environment variable available to child processes |
+| `echo $VAR_NAME`  | Display the value of the environment variable `VAR_NAME`  |
+|   `echo $PATH`    |   Display the value of the `PATH` environment variable    |
+|   `echo $HOME`    |   Display the path to the current user's home directory   |
+|  `echo $EDITOR`   |     Display the default text editor for various tasks     |
+| `echo $HISTFILE`  |      Display the file where command history is saved      |
+|   `echo $SHELL`   |         Display the user's default shell program          |
+|   `echo $USER`    |               Display the current username                |
+|     `echo $?`     |   Display the exit status of the last executed command    |
+
+
+
 ### Case-insensitive auto completion
 
 ```bash

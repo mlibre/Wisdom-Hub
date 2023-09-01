@@ -172,6 +172,7 @@ sudo rm /etc/xdg/autostart/print-applet.desktop
 
 ```bash
 sudo pacman -Syuu
+pamac upgrade -a
 
 # Default config file
 ls -laR /etc/skel
