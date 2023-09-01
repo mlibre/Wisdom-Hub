@@ -21,3 +21,16 @@ tags:
 |  `less file.txt`   |   View file with pagination    |
 |  `more file.txt`   |     View file page by page     |
 |  `head file.txt`   |     Display the beginning      |
+
+## split
+
+|              Command              |              Short Description              |
+| :-------------------------------: | :-----------------------------------------: |
+|         `split file.txt`          |            Split file into parts            |
+|          `split -l 100`           |          Split into 100-line files          |
+|           `split -b 1M`           |            Split into 1MB files             |
+|       `split -n 3 file.txt`       |          Split into 3 equal parts           |
+|            `split -d`             |            Use numeric suffixes             |
+|      `split -d test.txt hi`       | Use numeric suffixes and custom prefix "hi" |
+|           `split -a 3`            |           Use 3-character suffix            |
+| `cat hi* > concatenated_file.txt` |    Concatenate files starting with "hi"     |
