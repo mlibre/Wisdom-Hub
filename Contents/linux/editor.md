@@ -45,5 +45,5 @@ tags:
 |           Command           |                                    Short Description                                     |
 | :-------------------------: | :--------------------------------------------------------------------------------------: |
 |    `cut -f 1,3 file.txt`    |         Select and print the first and third fields from each line of "file.txt"         |
-|    `cut -c 1-5 file.txt`    |             Select and print characters 1 to 5 from each line of "file.txt"              |
 | `cut -d' ' -f 2-4 file.txt` | Select and print fields 2 to 4 from each line of "file.txt" using space as the delimiter |
+|    `cut -c 1-5 file.txt`    |             Select and print characters 1 to 5 from each line of "file.txt"              |
