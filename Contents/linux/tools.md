@@ -35,6 +35,29 @@ cd $BASH_IT
 
 ## System monitoring
 
+### Neofetch
+
+```bash
+neofetch 
+██████████████████  ████████   mlibre@mlibre-systemproductname 
+██████████████████  ████████   ------------------------------- 
+██████████████████  ████████   OS: Manjaro Linux x86_64 
+██████████████████  ████████   Kernel: 6.1.49-1-MANJARO 
+████████            ████████   Uptime: 38 mins 
+████████  ████████  ████████   Packages: 1657 (pacman) 
+████████  ████████  ████████   Shell: bash 5.1.16 
+████████  ████████  ████████   Resolution: 2560x1440 
+████████  ████████  ████████   DE: Plasma 5.27.7 
+████████  ████████  ████████   WM: KWin 
+████████  ████████  ████████   Theme: [Plasma], Breeze [GTK2/3] 
+████████  ████████  ████████   Icons: [Plasma], breeze [GTK2/3] 
+████████  ████████  ████████   Terminal: konsole 
+████████  ████████  ████████   CPU: 12th Gen Intel i5-12400F (12) @ 5.600GHz 
+                               GPU: AMD ATI Radeon RX 6400/6500 XT/6500M 
+                               Memory: 5046MiB / 31906MiB 
+                                                       
+```
+
 ### htop
 
 ```bash
@@ -73,7 +96,7 @@ pamac isntall ccat
 ccat file.txt
 ```
 
-## Youtube-dl
+## Youtube Download
 
 ```bash
 # Install
