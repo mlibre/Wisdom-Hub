@@ -22,21 +22,41 @@ type ssh
 
 ## Bash
 
-|     Commands      |                        Description                        |
-| :---------------: | :-------------------------------------------------------: |
-|       `env`       |       View all environment variables currently set        |
-| `VAR_NAME=value`  |  Set an environment variable named `VAR_NAME` to `value`  |
-| `export VAR_NAME` | Make an environment variable available to child processes |
-| `echo $VAR_NAME`  | Display the value of the environment variable `VAR_NAME`  |
-|   `echo $PATH`    |   Display the value of the `PATH` environment variable    |
-|   `echo $HOME`    |   Display the path to the current user's home directory   |
-|  `echo $EDITOR`   |     Display the default text editor for various tasks     |
-| `echo $HISTFILE`  |      Display the file where command history is saved      |
-|   `echo $SHELL`   |         Display the user's default shell program          |
-|   `echo $USER`    |               Display the current username                |
-|     `echo $?`     |   Display the exit status of the last executed command    |
+|     Commands     |            Description            |
+| :--------------: | :-------------------------------: |
+|      `env`       |   View current environment vars   |
+|  `VAR_NAME=val`  |      Set `VAR_NAME` to `val`      |
+|   `export VAR`   | Make var available to child procs |
+|   `echo $VAR`    |      Display value of `VAR`       |
+|   `echo $PATH`   |      Display value of `PATH`      |
+|   `echo $HOME`   |   Display user's home directory   |
+|  `echo $EDITOR`  |    Display default text editor    |
+| `echo $HISTFILE` |   Display command history file    |
+|  `echo $SHELL`   |   Display default shell program   |
+|   `echo $USER`   |     Display current username      |
+|    `echo $?`     | Display last command exit status  |
+|   `echo $PS1`    |     Display the shell prompt      |
 
+### Prompt Shell
 
+Display your current prompt shell:
+
+```bash
+echo $PS1
+```
+
+My simple prompt shell:
+
+```bash
+PS1='$(if [ $? -eq 0 ]; then echo -e "\[\033[42m\] \[\033[0m\]"; else echo -e "\[\033[41m\] \[\033[0m\]"; fi) \[\033[1;32m\]$(if [ $(jobs | wc -l) -gt 0 ]; then echo -n "\j "; fi)\[\033[1;36m\]\u\[\033[0m\] \[\033[1;33m\]\w\[\033[0m\] '
+```
+
+Make it permanent:
+
+```bash
+nano .bashrc
+# put your PS1 in the last line
+```
 
 ### Case-insensitive auto completion
 
