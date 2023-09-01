@@ -10,16 +10,6 @@ tags:
 
 # Shell
 
-## Command types
-
-```bash
-type ls
-# ls is an alias for ls $LS_OPTIONS
-
-type ssh
-# ssh is /usr/bin/ssh
-```
-
 ## Bash
 
 |     Commands     |            Description            |
@@ -37,28 +27,36 @@ type ssh
 |    `echo $?`     | Display last command exit status  |
 |   `echo $PS1`    |     Display the shell prompt      |
 
-### Prompt Shell
+### Command types
 
-Display your current prompt shell:
+```bash
+type ls
+# ls is an alias for ls $LS_OPTIONS
+
+type ssh
+# ssh is /usr/bin/ssh
+```
+
+### Prompt Shell
 
 ```bash
 echo $PS1
+
+PS1='$(if [ $? -eq 0 ]; then echo -e "\[\033[42m\] \[\033[0m\]"; else echo -e "\[\033[41m\] \[\033[0m\]"; fi) \[\033[1;32m\]$(if [ $(jobs | wc -l) -gt 0 ]; then echo -n "\j "; fi)\[\033[1;36m\]\u\[\033[0m\] \[\033[1;33m\]\w\[\033[0m\] \[\033[1;34m\]$(if [ $(date +%H) -ge 6 -a $(date +%H) -lt 18 ]; then echo -n "☀️"; else echo -n "🌙"; fi)\[\033[0m\] '
 ```
-
-My simple prompt shell:
-
-```bash
-PS1='$(if [ $? -eq 0 ]; then echo -e "\[\033[42m\] \[\033[0m\]"; else echo -e "\[\033[41m\] \[\033[0m\]"; fi) \[\033[1;32m\]$(if [ $(jobs | wc -l) -gt 0 ]; then echo -n "\j "; fi)\[\033[1;36m\]\u\[\033[0m\] \[\033[1;33m\]\w\[\033[0m\] '
-```
-
-Make it permanent:
 
 ```bash
 nano .bashrc
 # put your PS1 in the last line
 ```
 
-### Case-insensitive auto completion
+### Font
+
+```bash
+Monospace 12
+```
+
+### Case-insensitive Auto completion
 
 ```bash
 # Add the following line to the /etc/inputrc file to enable case-insensitive auto completion
@@ -71,9 +69,9 @@ echo 'set completion-ignore-case On' >> /etc/inputrc
 echo "set completion-ignore-case on" >> ~/.inputrc
 ```
 
-## Simple Bash Scripts
+### Simple Bash Scripts
 
-### Mouse location
+#### Mouse location
 
 ```bash
 while true; do
@@ -82,7 +80,7 @@ while true; do
 done
 ```
 
-### Get screen resolution
+#### Get screen resolution
 
 ```bash
 RES=$(xdpyinfo | grep dimensions | awk '{print $2}')
@@ -90,7 +88,7 @@ WIDTH=$(echo $RES | awk -Fx '{print $1}')
 HEIGHT=$(echo $RES | awk -Fx '{print $2}')
 ```
 
-### Click, Move and scroll on the screen
+#### Click, Move and scroll on the screen
 
 ```bash
 #!/bin/bash

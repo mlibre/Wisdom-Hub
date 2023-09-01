@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[1934],{2805:e=>{e.exports=JSON.parse('{"label":"shell","permalink":"/Wisdom-Hub/tags/shell","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/shell","title":"Shell","description":"Command types","permalink":"/Wisdom-Hub/linux/shell"}]}')}}]);
