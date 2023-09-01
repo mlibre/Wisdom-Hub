@@ -168,6 +168,25 @@ sudo rm /etc/xdg/autostart/print-applet.desktop
 # sudo systemctl enable --now clamav-freshclam
 ```
 
+## Updating Manjaro
+
+```bash
+sudo pacman -Syuu
+
+# Default config file
+ls -laR /etc/skel
+
+# apply default configs
+# method 1
+cp -rf /etc/skel/.* ~/
+rm -f ~/.config/dconf/user
+
+# method 2
+sudo useradd --create-home newusername
+sudo passwd newusername
+
+```
+
 ## Install Wine
 
 ```bash
