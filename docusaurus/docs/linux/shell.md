@@ -12,20 +12,27 @@ tags:
 
 ## Bash
 
-|     Commands     |            Description            |
-| :--------------: | :-------------------------------: |
-|      `env`       |   View current environment vars   |
-|  `VAR_NAME=val`  |      Set `VAR_NAME` to `val`      |
-|   `export VAR`   | Make var available to child procs |
-|   `echo $VAR`    |      Display value of `VAR`       |
-|   `echo $PATH`   |      Display value of `PATH`      |
-|   `echo $HOME`   |   Display user's home directory   |
-|  `echo $EDITOR`  |    Display default text editor    |
-| `echo $HISTFILE` |   Display command history file    |
-|  `echo $SHELL`   |   Display default shell program   |
-|   `echo $USER`   |     Display current username      |
-|    `echo $?`     | Display last command exit status  |
-|   `echo $PS1`    |     Display the shell prompt      |
+|     Commands      |                           Description                            |
+| :---------------: | :--------------------------------------------------------------: |
+|       `env`       |                  View current environment vars                   |
+|  `VAR_NAME=val`   |                     Set `VAR_NAME` to `val`                      |
+|   `export VAR`    |                Make var available to child procs                 |
+|    `echo $VAR`    |                      Display value of `VAR`                      |
+|   `echo $PATH`    |                     Display value of `PATH`                      |
+|   `echo $HOME`    |                  Display user's home directory                   |
+|  `echo $EDITOR`   |                   Display default text editor                    |
+| `echo $HISTFILE`  |                   Display command history file                   |
+|   `echo $SHELL`   |                  Display default shell program                   |
+|   `echo $USER`    |                     Display current username                     |
+|     `echo $?`     |                 Display last command exit status                 |
+|    `echo $PS1`    |                     Display the shell prompt                     |
+|       `!!`        |                Repeats the last executed command                 |
+|       `!*`        |           Represents all arguments of the last command           |
+|       `!n`        |               Repeats the nth command in `history`               |
+|       `!-n`       |         Repeats the nth command from the current command         |
+|     `!string`     |    Repeats the most recent command that starts with `string`     |
+| `!:1`, `!:2`, ... | Represents the first, second, etc. arguments of the last command |
+|       `!:0`       |                Represents the command + arguments                |
 
 ### Command types
 
