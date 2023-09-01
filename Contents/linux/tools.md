@@ -80,22 +80,6 @@ sudo pacman -S bmon
 bmon
 ```
 
-## Files
-
-### bat
-
-```bash
-sudo pacman -S bat
-bat .ssh/id_rsa.pub 
-```
-
-### ccat
-
-```bash
-pamac isntall ccat
-ccat file.txt
-```
-
 ## Youtube Download
 
 ```bash
