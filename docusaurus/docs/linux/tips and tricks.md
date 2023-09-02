@@ -104,7 +104,7 @@ List installed fonts
 
 ```bash
 fc-match -a
-fc-list : file
+fc-list NotoSansBengali-Light
 ```
 
 ### Fira Code
