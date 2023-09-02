@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[9224],{5383:t=>{t.exports=JSON.parse('{"label":"prompt","permalink":"/Wisdom-Hub/tags/prompt","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"ai/prompt","title":"Prompt","description":"Markdown table of Linux commands","permalink":"/Wisdom-Hub/ai/prompt"}]}')}}]);
