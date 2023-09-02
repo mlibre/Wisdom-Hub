@@ -47,3 +47,19 @@ tags:
 |    `cut -f 1,3 file.txt`    |         Select and print the first and third fields from each line of "file.txt"         |
 | `cut -d' ' -f 2-4 file.txt` | Select and print fields 2 to 4 from each line of "file.txt" using space as the delimiter |
 |    `cut -c 1-5 file.txt`    |             Select and print characters 1 to 5 from each line of "file.txt"              |
+
+## sort, nl, shuf, uniq
+
+|             Command             |              Short Description              |
+| :-----------------------------: | :-----------------------------------------: |
+|         `sort file.txt`         |          Sort lines in a text file          |
+|          `nl file.txt`          |           Number lines in a file            |
+|       `nl -b a file.txt`        |       Number lines, showing all lines       |
+|      `nl -s "," file.txt`       |       Number lines, custom separator        |
+|         `shuf file.txt`         |           Shuffle lines in a file           |
+|       `sort -r file.txt`        |         Sort lines in reverse order         |
+|       `sort -n file.txt`        |           Sort lines numerically            |
+|      `shuf -n 5 file.txt`       |      Shuffle and display only 5 lines       |
+|         `uniq file.txt`         |       Display unique lines in a file        |
+|       `uniq -c file.txt`        |  Count and display unique lines with count  |
+| `cat file.txt \| tr -s ' ' ','` | Translate spaces to commas in a text stream |
