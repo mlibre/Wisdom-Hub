@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[5193],{7248:t=>{t.exports=JSON.parse('{"label":"split","permalink":"/Wisdom-Hub/tags/split","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/editor","title":"Editor","description":"cat, zcat, less, more, head, tail, ccat, bat","permalink":"/Wisdom-Hub/linux/editor"}]}')}}]);
