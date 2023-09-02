@@ -9,7 +9,7 @@ tags:
   - text
 ---
 
-# Editor
+# TextOps
 
 ## cat, zcat, less, more, head, tail, ccat, bat
 
@@ -63,3 +63,24 @@ tags:
 |         `uniq file.txt`         |       Display unique lines in a file        |
 |       `uniq -c file.txt`        |  Count and display unique lines with count  |
 | `cat file.txt \| tr -s ' ' ','` | Translate spaces to commas in a text stream |
+
+## diff, sha256sum, cp, mv, rm
+
+Certainly, here's a table of the commands you requested in markdown format, with centered text alignment as per your preference:
+
+|   Command   |                 Short Description                  |
+| :---------: | :------------------------------------------------: |
+|   `diff`    |      Compares two files and shows differences      |
+| `sha256sum` |  Computes and displays the SHA-256 hash of a file  |
+|    `cp`     |            Copies files or directories             |
+|   `cp -r`   | Copies directories and their contents recursively  |
+|   `cp -v`   |  Copies files or directories with verbose output   |
+|   `mv -i`   |  Moves (renames) files or directories with prompt  |
+|    `mv`     |        Moves (renames) files or directories        |
+|    `rm`     |       Removes (deletes) files or directories       |
+|   `rm -r`   | Removes directories and their contents recursively |
+|   `mkdir`   |              Creates a new directory               |
+|   `rmdir`   |             Removes an empty directory             |
+
+
+Feel free to use this table in your markdown documentation, Masoud. If you have any more questions or need further assistance, please don't hesitate to ask.

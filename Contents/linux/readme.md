@@ -25,7 +25,7 @@ This repository is organized into several sections, each containing tutorials fo
 * [Phone](./phone.md)
 * [Proxy](./proxy.md)
 * [Log](./log.md)
-* [Editor](./editor.md)
+* [TextOps](./textOps.md)
 * [Shell](./shell.md)
 * [Processes](./processes.md)
 * [GRUB](./grub.md)
