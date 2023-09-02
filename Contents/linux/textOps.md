@@ -68,19 +68,20 @@ tags:
 
 Certainly, here's a table of the commands you requested in markdown format, with centered text alignment as per your preference:
 
-|      Command       |                 Short Description                  |
-| :----------------: | :------------------------------------------------: |
-| `diff file1 file2` |      Compares two files and shows differences      |
-|    `sha256sum`     |  Computes and displays the SHA-256 hash of a file  |
-|        `cp`        |            Copies files or directories             |
-|      `cp -r`       | Copies directories and their contents recursively  |
-|      `cp -v`       |  Copies files or directories with verbose output   |
-|      `mv -i`       |  Moves (renames) files or directories with prompt  |
-|        `mv`        |        Moves (renames) files or directories        |
-|        `rm`        |       Removes (deletes) files or directories       |
-|      `rm -r`       | Removes directories and their contents recursively |
-|      `mkdir`       |              Creates a new directory               |
-|      `rmdir`       |             Removes an empty directory             |
+|       Command        |                       Short Description                        |
+| :------------------: | :------------------------------------------------------------: |
+|  `diff file1 file2`  |            Compares two files and shows differences            |
+|     `sha256sum`      |        Computes and displays the SHA-256 hash of a file        |
+| `sha256sum file.txt` | Calculates and prints the SHA-256 hash of the file `file.txt`. |
+|         `cp`         |                  Copies files or directories                   |
+|       `cp -r`        |       Copies directories and their contents recursively        |
+|       `cp -v`        |        Copies files or directories with verbose output         |
+|       `mv -i`        |        Moves (renames) files or directories with prompt        |
+|         `mv`         |              Moves (renames) files or directories              |
+|         `rm`         |                    Removes (deletes) files                     |
+|       `rm -r`        |       Removes directories and their contents recursively       |
+|       `mkdir`        |                    Creates a new directory                     |
+|       `rmdir`        |                   Removes an empty directory                   |
 
 
 Feel free to use this table in your markdown documentation, Masoud. If you have any more questions or need further assistance, please don't hesitate to ask.
