@@ -474,30 +474,6 @@ ssh -N -L 0.0.0.0:64920:46.249.49.193:64920 mlibre@46.249.49.193 -p 56777
 #                 APort BIP           BPort       BIP               BSSHPort
 ```
 
-- Make a startup script
-
-```bash
-sudo nano /etc/systemd/system/sshtunnel.service
-
-[Unit]
-Description=SSH Tunnel
-After=network.target
-
-[Service]
-User=mlibre
-Restart=always
-RestartSec=20
-ExecStart=ssh -N -L 0.0.0.0:64920:46.249.49.193:64920 mlibre@46.249.49.193 -p 56777
-
-[Install]
-WantedBy=multi-user.target
-
-sudo systemctl enable sshtunnel
-sudo systemctl restart sshtunnel
-sudo systemctl status sshtunnel
-sudo journalctl -f -u sshtunnel
-```
-
 #### Using socat
 
 ```bash

@@ -81,7 +81,7 @@ systemctl cat graphical.target
 
 Start the **unit** specified on the command line and its dependencies and stop all others, unless they have `IgnoreOnIsolate=yes`
 
-## Add service
+## Add a system service
 
 ```bash
 sudo nano /etc/systemd/system/sshtunnel.service
@@ -107,6 +107,28 @@ sudo systemctl status sshtunnel
 sudo journalctl -f -u sshtunnel
 ```
 
+## Add a user service
+
+```bash
+nano ~/.config/systemd/user/my-service.service
+
+[Unit]
+Description=My User Service
+
+[Service]
+ExecStart=echo "hi everyone, hope good things happen for all"
+
+[Install]
+WantedBy=default.target
+
+
+systemctl --user daemon-reload
+systemctl --user enable my-service
+systemctl --user reenable my-service.service
+systemctl --user restart my-service
+systemctl --user status my-service
+journalctl --user -f -u my-service
+```
 
 ## Run a script after suspending has finished (resume)
 
