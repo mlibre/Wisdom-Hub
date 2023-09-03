@@ -10,10 +10,10 @@ tags:
 
 ## Markdown table of Linux commands
 
-Please provide a Markdown table with centered text alignment that lists the following Linux commands, their short descriptions and examples: 'diff,' 'sha256sum,' 'cp,' 'mv,' 'rm,' and 'mkdir.'.
+Please provide a Markdown table with centered text alignment that lists the following Linux commands, their short descriptions and examples: 'diff' 'sha256sum' 'cp' 'mv' 'rm' and 'mkdir'.
 Table has two columns only: 'Command' , 'Description'.
 make sure table also has at least two real world example of each commands.
-so the table is going to be in this format:
+The table is going to be in this format:
 
 ```markdown
 |        Command         | Short Description |

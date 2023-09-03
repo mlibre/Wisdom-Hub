@@ -83,5 +83,12 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |       `mkdir`        |                    Creates a new directory                     |
 |       `rmdir`        |                   Removes an empty directory                   |
 
+## dd
 
-Feel free to use this table in your markdown documentation, Masoud. If you have any more questions or need further assistance, please don't hesitate to ask.
+|                     Command                     |                        Short Description                        |
+| :---------------------------------------------: | :-------------------------------------------------------------: |
+|                      `dd`                       |                     Copy and convert files                      |
+|      `dd if=input of=output bs=block_size`      |  Copy data from 'input' to 'output' with specified block size   |
+|  `dd if=/dev/zero of=zerofile bs=1M count=100`  |                 Create a 100MB zero-filled file                 |
+|  `dd if=input of=output bs=512 count=1 skip=2`  | Copy 512 bytes from 'input' to 'output' starting from byte 1024 |
+| `dd if=/dev/random of=randomfile bs=1M count=1` |           Generate a 1MB file filled with random data           |
