@@ -54,9 +54,10 @@ const config = {
         items: [
           {
             href: 'https://github.com/mlibre/Wisdom-Hub/',
-            label: 'GitHub',
             position: 'right',
-          },
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+          }
         ],
       },
       footer: {
