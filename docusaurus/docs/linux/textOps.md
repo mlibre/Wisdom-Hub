@@ -85,11 +85,27 @@ Certainly, here's a table of the commands you requested in markdown format, with
 
 ## dd
 
-|                     Command                     |                        Short Description                        |
-| :---------------------------------------------: | :-------------------------------------------------------------: |
-|                      `dd`                       |                     Copy and convert files                      |
-|      `dd if=input of=output bs=block_size`      |  Copy data from 'input' to 'output' with specified block size   |
-|  `dd if=/dev/zero of=zerofile bs=1M count=100`  |                 Create a 100MB zero-filled file                 |
-|  `dd if=input of=output bs=512 count=1 skip=2`  | Copy 512 bytes from 'input' to 'output' starting from byte 1024 |
-| `dd if=/dev/random of=randomfile bs=1M count=1` |           Generate a 1MB file filled with random data           |
-|     `dd if=input \| gzip > backup.dd.gzip`      | Compress 'input' data using 'gzip' and save as 'backup.dd.gzip' |
+|                       Command                        |                        Short Description                        |
+| :--------------------------------------------------: | :-------------------------------------------------------------: |
+|                         `dd`                         |                     Copy and convert files                      |
+|        `dd if=input of=output bs=block_size`         |  Copy data from 'input' to 'output' with specified block size   |
+|    `dd if=/dev/zero of=zerofile bs=1M count=100`     |                 Create a 100MB zero-filled file                 |
+|    `dd if=input of=output bs=512 count=1 skip=2`     | Copy 512 bytes from 'input' to 'output' starting from byte 1024 |
+|   `dd if=/dev/random of=randomfile bs=1M count=1`    |           Generate a 1MB file filled with random data           |
+|        `dd if=input \| gzip > backup.dd.gzip`        | Compress 'input' data using 'gzip' and save as 'backup.dd.gzip' |
+| `dd if=ubuntu.iso of=/dev/sdX bs=4M status=progress` |         Write 'ubuntu.iso' to a USB drive ('/dev/sdX')          |
+
+## find
+
+|                        Command                         |                   Short Description                    |
+| :----------------------------------------------------: | :----------------------------------------------------: |
+|                         `find`                         |            Search for files and directories            |
+|               `find path -name pattern`                |   Files with a specific name in the 'path' directory   |
+|            `find /home/user -name "*.txt"`             |  All files with the '.txt' extension in '/home/user'   |
+|            `find /etc -type d -name "conf"`            |      Locate directories named 'conf' under '/etc'      |
+|           `find /var/log -type f -mtime +7`            | Find files in '/var/log' modified more than 7 days ago |
+|          `find /usr/bin -executable -type f`           |          Find executable files in '/usr/bin'           |
+|               `find /home -user masoud`                |     Files owned by the user 'masoud' under '/home'     |
+|                `find /mnt -size +100M`                 |         Find files larger than 100MB in '/mnt'         |
+|    `find /var/log -iname "*.log" -exec ls -l {} \;`    | Files in '/var/log' with a case-insensitive name match |
+| `find /backup -type f -exec cp {} /backup_archive/ \;` |    Copy found files to '/backup_archive/' directory    |
