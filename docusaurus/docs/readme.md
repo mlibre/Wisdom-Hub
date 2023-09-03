@@ -18,12 +18,13 @@ This repository is organized into several markdown files, each containing tutori
 
 * [Blockchain](./blockchain/readme.md): Contains various Linux-related tips and tricks
 * [Linux](./linux/readme.md): Contains various Linux-related tips and tricks
-* [Health](./Health.md): Health Related Information
-* [Raspberry pi](./raspberry%20pi.md): Contains guides and tutorials related to Raspberry Pi, such as installing an operating system
 * [Network](./network/readme.md): Contains tutorials and tips related to networking in Linux, such as setting up a VPN or configuring a firewall
+* [AI](./ai/readme.md): AI Related Information
 * [Vscode](./vscode.md): A cheat sheet for Vscode
+* [Raspberry pi](./raspberry%20pi.md): Contains guides and tutorials related to Raspberry Pi, such as installing an operating system
 * [Lovely Tools](./Lovely%20Tools.md): List of **lovely**, **simple**, and **friendly** tools
 * [Docusaurus](./docusaurus.md): Contains documentation related to Docusaurus, a static site generator used to build the Linux Cheat Sheet website
+* [Health](./Health.md): Health Related Information
 
 ## My ETH Address
 
