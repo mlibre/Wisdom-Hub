@@ -47,6 +47,7 @@ const config = {
       image: 'img/rainbow-social-card.jpg',
       navbar: {
         title: 'Home',
+        hideOnScroll: true,
         logo: {
           alt: 'good things',
           src: 'img/gt.png',
