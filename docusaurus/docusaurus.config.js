@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Mlibre ',
+  title: '☀️',
   tagline: 'wisdom hub',
   favicon: 'img/gt.png',
 
@@ -44,12 +44,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/rainbow-social-card.jpg',
       navbar: {
         title: 'Home',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'good things',
           src: 'img/gt.png',
         },
         items: [
@@ -91,7 +90,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Mlibre Cheat Sheet`,
+        copyright: `Copyright © ${new Date().getFullYear()} Mlibre Wisdom Hub`,
       },
       prism: {
         theme: lightCodeTheme,

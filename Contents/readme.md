@@ -4,11 +4,10 @@ slug: /
 sidebar_position: 1
 tags:
   - Mlibre
+  - Wisdom Hub
+  - Tutorial
   - Cheat
   - Sheet
-  - Tutorial
-  - Wisdom
-  - Hub
 ---
 
 # Wisdom Hub
