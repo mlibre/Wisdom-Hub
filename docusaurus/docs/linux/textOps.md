@@ -92,3 +92,4 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |  `dd if=/dev/zero of=zerofile bs=1M count=100`  |                 Create a 100MB zero-filled file                 |
 |  `dd if=input of=output bs=512 count=1 skip=2`  | Copy 512 bytes from 'input' to 'output' starting from byte 1024 |
 | `dd if=/dev/random of=randomfile bs=1M count=1` |           Generate a 1MB file filled with random data           |
+|     `dd if=input \| gzip > backup.dd.gzip`      | Compress 'input' data using 'gzip' and save as 'backup.dd.gzip' |
