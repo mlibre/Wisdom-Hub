@@ -167,3 +167,43 @@ Certainly, here's a Markdown table with centered text alignment that lists the L
 |          `cat <> combined.txt`          |            Reads and writes to `combined.txt`.             |
 |   `command > output.txt 2> error.txt`   | Redirects output to `output.txt` and error to `error.txt`. |
 |  `command 2>&1 > output_and_error.txt`  | Redirects both output and error to `output_and_error.txt`. |
+
+## pipe
+
+|        Command         |                      Description                      |
+| :--------------------: | :---------------------------------------------------: |
+|          `\|`          |     Redirect output from one command to another.      |
+| `command1 \| command2` | Execute `command1` and pass its output to `command2`. |
+|   `ls \| grep .txt`    |    List and filter files with a `.txt` extension.     |
+| `ps aux \| grep nginx` |     List and filter processes related to `nginx`.     |
+| `cat file.txt \| less` |     Display file contents using the `less` pager.     |
+| `dmesg \| tail -n 10`  |       Display the last 10 kernel log messages.        |
+|    `ls \| sort -r`     |       List files in reverse alphabetical order.       |
+| `find /home \| wc -l`  |        Count files and directories in `/home`.        |
+|  `du -h \| sort -rh`   |     List disk usage, human-readable, and sorted.      |
+|  `ls \| tee file.txt`  |       List files and save output to `file.txt`.       |
+|   `ls \| head -n 5`    |   List the first 5 files in the current directory.    |
+
+## xargs
+
+`xargs` is a Linux command-line tool that takes input from standard input and passes it as arguments to another command. It separates input items by spaces, tabs or newlines by default, but you can specify a different delimiter with the `-d` option. The output is the result of executing the specified command with the input items as arguments.  
+
+By default, `xargs` will process as many input items as possible in a single execution of the command.
+
+* `-n 1`: This option in xargs specifies that only one input item should be used for each execution of the command. It ensures that the command is run once for each input item.
+* `-I {}`: The -I option allows you to specify a placeholder (in this case, {}) to represent where the input item should be placed within the command. It's particularly useful when you want to insert the input item at a specific position in the command.
+
+|                               Command                                |                               Short Description                               |
+| :------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
+|                               `xargs`                                |              Build and execute command lines from standard input              |
+|             `find /path -type f -print \| xargs command`             |        Execute **command** on each file found by the **find** command         |
+|                  `echo arg1 arg2 \| xargs command`                   |           Execute **command** with arguments **arg1** and **arg2**            |
+|                  `cat list.txt \| xargs -n 1 echo`                   |                Print each line of **list.txt** using **echo**                 |
+|                        `ls *.txt \| xargs rm`                        |              Remove all **.txt** files in the current directory               |
+|      `find /path -type f -name "*.log" -print0 \| xargs -0 rm`       | Remove all ".log" files in "/path" with proper handling of special characters |
+|                   `ls \| xargs -I {} mv {} {}.bak`                   |          Add ".bak" extension to all files in the current directory           |
+| `grep pattern file1 file2 \| xargs sed -i 's/pattern/replacement/g'` |       Search and replace "pattern" with "replacement" in multiple files       |
+|     `echo file1 file2 file3 \| xargs -I % sh -c 'cp % /backup'`      |                   Copy multiple files to a backup directory                   |
+|        `find /path -type f -print \| xargs -P 4 -I % gzip %`         |          Parallel compression of files in "/path" using 4 processes           |
+|          `ls *.txt \| xargs -n 1 -I {} mv {} /destination/`          |              Move each ".txt" file to "/destination/" directory               |
+|     `echo file1 file2 \| xargs -d ' ' -I % sh -c 'touch %.txt'`      |                   Create ".txt" files with specified names                    |
