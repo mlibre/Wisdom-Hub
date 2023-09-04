@@ -11,21 +11,22 @@ tags:
 
 # TextOps
 
-## cat, zcat, less, more, head, tail, ccat, bat
+## cat, zcat, less, more, head, tail, ccat, bat, tee
 
-|       Command        |           Short Description           |
-| :------------------: | :-----------------------------------: |
-|    `cat file.txt`    |        Concatenate and display        |
-|  `cat -n file.txt`   |       Display with line numbers       |
-|    `zcat file.gz`    |      Display compressed content       |
-|   `ccat file.txt`    |       Colorize and concatenate        |
-|    `bat file.txt`    |         Cat clone with syntax         |
-|   `tail file.txt`    |  Display last N line (10 by default)  |
-|  `tail -f file.txt`  |    Continuously display new lines     |
-|   `head file.txt`    | Display first N lines (10 by default) |
-| `head -n 5 file.txt` |         Display first 5 lines         |
-|   `less file.txt`    |       View file with pagination       |
-|   `more file.txt`    |        View file page by page         |
+|       Command        |                      Short Description                       |
+| :------------------: | :----------------------------------------------------------: |
+|    `cat file.txt`    |                   Concatenate and display                    |
+|  `cat -n file.txt`   |                  Display with line numbers                   |
+|    `zcat file.gz`    |                  Display compressed content                  |
+|   `ccat file.txt`    |                   Colorize and concatenate                   |
+|    `bat file.txt`    |                    Cat clone with syntax                     |
+|   `tail file.txt`    |             Display last N line (10 by default)              |
+|  `tail -f file.txt`  |                Continuously display new lines                |
+|   `head file.txt`    |            Display first N lines (10 by default)             |
+| `head -n 5 file.txt` |                    Display first 5 lines                     |
+|   `less file.txt`    |                  View file with pagination                   |
+|   `more file.txt`    |                    View file page by page                    |
+| `ls \| tee list.txt` | Redirect the **ls** output to both terminal and **list.txt** |
 
 ## split
 
@@ -68,20 +69,20 @@ tags:
 
 Certainly, here's a table of the commands you requested in markdown format, with centered text alignment as per your preference:
 
-|       Command        |                       Short Description                        |
-| :------------------: | :------------------------------------------------------------: |
-|  `diff file1 file2`  |            Compares two files and shows differences            |
-|     `sha256sum`      |        Computes and displays the SHA-256 hash of a file        |
-| `sha256sum file.txt` | Calculates and prints the SHA-256 hash of the file `file.txt`. |
-|         `cp`         |                  Copies files or directories                   |
-|       `cp -r`        |       Copies directories and their contents recursively        |
-|       `cp -v`        |        Copies files or directories with verbose output         |
-|       `mv -i`        |        Moves (renames) files or directories with prompt        |
-|         `mv`         |              Moves (renames) files or directories              |
-|         `rm`         |                    Removes (deletes) files                     |
-|       `rm -r`        |       Removes directories and their contents recursively       |
-|       `mkdir`        |                    Creates a new directory                     |
-|       `rmdir`        |                   Removes an empty directory                   |
+|       Command        |                       Short Description                       |
+| :------------------: | :-----------------------------------------------------------: |
+|  `diff file1 file2`  |           Compares two files and shows differences            |
+|     `sha256sum`      |       Computes and displays the SHA-256 hash of a file        |
+| `sha256sum file.txt` | Calculates and prints the SHA-256 hash of the file `file.txt` |
+|         `cp`         |                  Copies files or directories                  |
+|       `cp -r`        |       Copies directories and their contents recursively       |
+|       `cp -v`        |        Copies files or directories with verbose output        |
+|       `mv -i`        |       Moves (renames) files or directories with prompt        |
+|         `mv`         |             Moves (renames) files or directories              |
+|         `rm`         |                    Removes (deletes) files                    |
+|       `rm -r`        |      Removes directories and their contents recursively       |
+|       `mkdir`        |                    Creates a new directory                    |
+|       `rmdir`        |                  Removes an empty directory                   |
 
 ## dd
 
@@ -149,40 +150,40 @@ Certainly, here's a table of the commands you requested in markdown format, with
 
 Certainly, here's a Markdown table with centered text alignment that lists the Linux commands you mentioned, along with their short descriptions and real-world examples:
 
-|                 Command                 |                     Short Description                      |
-| :-------------------------------------: | :--------------------------------------------------------: |
-|                   `>`                   |            Redirects standard output to a file.            |
-|             `ls > list.txt`             |        Redirects `ls` command output to `list.txt`.        |
-|                  `>>`                   |             Appends standard output to a file.             |
-|     `echo "Hello" >> greeting.txt`      |             Appends "Hello" to `greeting.txt`.             |
-|                  `2>`                   |            Redirects standard error to a file.             |
-|   `ls non_existent_dir 2> error.log`    |            Logs error from `ls` to `error.log`.            |
-|                  `2>>`                  |             Appends standard error to a file.              |
-| `find /non_existent_dir 2>> errors.log` |              Appends errors to `errors.log`.               |
-|                  `&>`                   |    Redirects both standard output and error to a file.     |
-|    `curl example.com &> website.log`    | Logs both output and errors from `curl` to `website.log`.  |
-|                  `&>>`                  |     Appends both standard output and error to a file.      |
-|         `git pull &>> git.log`          |      Appends both git output and errors to `git.log`.      |
-|                  `<>`                   |      Redirects both input and output from/to a file.       |
-|          `cat <> combined.txt`          |            Reads and writes to `combined.txt`.             |
-|   `command > output.txt 2> error.txt`   | Redirects output to `output.txt` and error to `error.txt`. |
-|  `command 2>&1 > output_and_error.txt`  | Redirects both output and error to `output_and_error.txt`. |
+|                 Command                 |                     Short Description                     |
+| :-------------------------------------: | :-------------------------------------------------------: |
+|                   `>`                   |            Redirects standard output to a file            |
+|             `ls > list.txt`             |        Redirects `ls` command output to `list.txt`        |
+|                  `>>`                   |             Appends standard output to a file             |
+|     `echo "Hello" >> greeting.txt`      |             Appends "Hello" to `greeting.txt`             |
+|                  `2>`                   |            Redirects standard error to a file             |
+|   `ls non_existent_dir 2> error.log`    |            Logs error from `ls` to `error.log`            |
+|                  `2>>`                  |             Appends standard error to a file              |
+| `find /non_existent_dir 2>> errors.log` |              Appends errors to `errors.log`               |
+|                  `&>`                   |    Redirects both standard output and error to a file     |
+|    `curl example.com &> website.log`    | Logs both output and errors from `curl` to `website.log`  |
+|                  `&>>`                  |     Appends both standard output and error to a file      |
+|         `git pull &>> git.log`          |      Appends both git output and errors to `git.log`      |
+|                  `<>`                   |      Redirects both input and output from/to a file       |
+|          `cat <> combined.txt`          |            Reads and writes to `combined.txt`             |
+|   `command > output.txt 2> error.txt`   | Redirects output to `output.txt` and error to `error.txt` |
+|  `command 2>&1 > output_and_error.txt`  | Redirects both output and error to `output_and_error.txt` |
 
 ## pipe
 
-|        Command         |                      Description                      |
-| :--------------------: | :---------------------------------------------------: |
-|          `\|`          |     Redirect output from one command to another.      |
-| `command1 \| command2` | Execute `command1` and pass its output to `command2`. |
-|   `ls \| grep .txt`    |    List and filter files with a `.txt` extension.     |
-| `ps aux \| grep nginx` |     List and filter processes related to `nginx`.     |
-| `cat file.txt \| less` |     Display file contents using the `less` pager.     |
-| `dmesg \| tail -n 10`  |       Display the last 10 kernel log messages.        |
-|    `ls \| sort -r`     |       List files in reverse alphabetical order.       |
-| `find /home \| wc -l`  |        Count files and directories in `/home`.        |
-|  `du -h \| sort -rh`   |     List disk usage, human-readable, and sorted.      |
-|  `ls \| tee file.txt`  |       List files and save output to `file.txt`.       |
-|   `ls \| head -n 5`    |   List the first 5 files in the current directory.    |
+|        Command         |                     Description                      |
+| :--------------------: | :--------------------------------------------------: |
+|          `\|`          |     Redirect output from one command to another.     |
+| `command1 \| command2` | Execute `command1` and pass its output to `command2` |
+|   `ls \| grep .txt`    |    List and filter files with a `.txt` extension     |
+| `ps aux \| grep nginx` |     List and filter processes related to `nginx`     |
+| `cat file.txt \| less` |     Display file contents using the `less` pager     |
+| `dmesg \| tail -n 10`  |       Display the last 10 kernel log messages        |
+|    `ls \| sort -r`     |       List files in reverse alphabetical order       |
+| `find /home \| wc -l`  |        Count files and directories in `/home`        |
+|  `du -h \| sort -rh`   |     List disk usage, human-readable, and sorted      |
+|  `ls \| tee file.txt`  |       List files and save output to `file.txt`       |
+|   `ls \| head -n 5`    |   List the first 5 files in the current directory    |
 
 ## xargs
 
