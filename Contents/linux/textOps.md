@@ -144,3 +144,26 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |       `rsync --bwlimit=1000 source/ destination/`        |   Limit bandwidth usage to 1000 KB/s    |
 |         `rsync --progress source/ destination/`          |      Show progress during transfer      |
 |          `rsync --backup source/ destination/`           | Create backup copies at the destination |
+
+## streams
+
+Certainly, here's a Markdown table with centered text alignment that lists the Linux commands you mentioned, along with their short descriptions and real-world examples:
+
+|                 Command                 |                     Short Description                      |
+| :-------------------------------------: | :--------------------------------------------------------: |
+|                   `>`                   |            Redirects standard output to a file.            |
+|             `ls > list.txt`             |        Redirects `ls` command output to `list.txt`.        |
+|                  `>>`                   |             Appends standard output to a file.             |
+|     `echo "Hello" >> greeting.txt`      |             Appends "Hello" to `greeting.txt`.             |
+|                  `2>`                   |            Redirects standard error to a file.             |
+|   `ls non_existent_dir 2> error.log`    |            Logs error from `ls` to `error.log`.            |
+|                  `2>>`                  |             Appends standard error to a file.              |
+| `find /non_existent_dir 2>> errors.log` |              Appends errors to `errors.log`.               |
+|                  `&>`                   |    Redirects both standard output and error to a file.     |
+|    `curl example.com &> website.log`    | Logs both output and errors from `curl` to `website.log`.  |
+|                  `&>>`                  |     Appends both standard output and error to a file.      |
+|         `git pull &>> git.log`          |      Appends both git output and errors to `git.log`.      |
+|                  `<>`                   |      Redirects both input and output from/to a file.       |
+|          `cat <> combined.txt`          |            Reads and writes to `combined.txt`.             |
+|   `command > output.txt 2> error.txt`   | Redirects output to `output.txt` and error to `error.txt`. |
+|  `command 2>&1 > output_and_error.txt`  | Redirects both output and error to `output_and_error.txt`. |
