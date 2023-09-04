@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[3324],{6235:t=>{t.exports=JSON.parse('{"label":"text","permalink":"/Wisdom-Hub/tags/text","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/textOps","title":"TextOps","description":"cat, zcat, less, more, head, tail, ccat, bat, tee","permalink":"/Wisdom-Hub/linux/textOps"}]}')}}]);
