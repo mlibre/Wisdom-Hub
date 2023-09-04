@@ -24,6 +24,9 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: [[ require.resolve('docusaurus-lunr-search'), {
+    disableVersioning: true
+  }]],  
   presets: [
     [
       'classic',
