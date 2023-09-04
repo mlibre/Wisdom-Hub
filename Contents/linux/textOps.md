@@ -109,3 +109,39 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |                `find /mnt -size +100M`                 |         Find files larger than 100MB in '/mnt'         |
 |    `find /var/log -iname "*.log" -exec ls -l {} \;`    | Files in '/var/log' with a case-insensitive name match |
 | `find /backup -type f -exec cp {} /backup_archive/ \;` |    Copy found files to '/backup_archive/' directory    |
+
+## tar, gzip, guzip, xz, unxz, rsync
+
+|             Command              |                Short Description                 |
+| :------------------------------: | :----------------------------------------------: |
+|              `gzip`              |            Compress files using gzip             |
+|         `gzip file.txt`          |         Compress the file.txt using gzip         |
+|        `gzip -d file.gz`         |          Decompress file.gz using gzip           |
+|             `gunzip`             |      Decompress files compressed with gzip       |
+|         `gunzip file.gz`         |         Decompress file.gz using gunzip          |
+|               `xz`               |             Compress files using xz              |
+|          `xz file.txt`           |          Compress the file.txt using xz          |
+|         `xz -d file.xz`          |           Decompress file.xz using xz            |
+|              `unxz`              |       Decompress files compressed with xz        |
+|          `unxz file.xz`          |          Decompress file.xz using unxz           |
+|              `tar`               |         Create and extract tar archives          |
+|  `tar -cvf archive.tar files/`   | Create a tar archive from the 'files/' directory |
+|      `tar -xvf archive.tar`      |         Extract files from 'archive.tar'         |
+|             `rsync`              |        Synchronize files and directories         |
+| `rsync -av source/ destination/` |  Sync the 'source/' directory to 'destination/'  |
+
+## rsync
+
+|                         Command                          |            Short Description            |
+| :------------------------------------------------------: | :-------------------------------------: |
+|                         `rsync`                          |            Remote file sync             |
+|             `rsync -av source/ destination/`             |       Sync files and directories        |
+|             `rsync -r source/ destination/`              |            Sync recursively             |
+|             `rsync -z source/ destination/`              |     Compress files during transfer      |
+| `rsync -e "ssh -p 2222" source/ user@host:/destination/` |        Using SSH and custom port        |
+|          `rsync --delete source/ destination/`           | Delete extraneous files at destination  |
+|             `rsync -n source/ destination/`              |            Perform a dry run            |
+|      `rsync --exclude='*.log' source/ destination/`      |         Exclude specific files          |
+|       `rsync --bwlimit=1000 source/ destination/`        |   Limit bandwidth usage to 1000 KB/s    |
+|         `rsync --progress source/ destination/`          |      Show progress during transfer      |
+|          `rsync --backup source/ destination/`           | Create backup copies at the destination |
