@@ -110,25 +110,24 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |    `find /var/log -iname "*.log" -exec ls -l {} \;`    | Files in '/var/log' with a case-insensitive name match |
 | `find /backup -type f -exec cp {} /backup_archive/ \;` |    Copy found files to '/backup_archive/' directory    |
 
-## tar, gzip, guzip, xz, unxz, rsync
+## tar, gzip, guzip, xz, unxz
 
-|             Command              |                Short Description                 |
-| :------------------------------: | :----------------------------------------------: |
-|              `gzip`              |            Compress files using gzip             |
-|         `gzip file.txt`          |         Compress the file.txt using gzip         |
-|        `gzip -d file.gz`         |          Decompress file.gz using gzip           |
-|             `gunzip`             |      Decompress files compressed with gzip       |
-|         `gunzip file.gz`         |         Decompress file.gz using gunzip          |
-|               `xz`               |             Compress files using xz              |
-|          `xz file.txt`           |          Compress the file.txt using xz          |
-|         `xz -d file.xz`          |           Decompress file.xz using xz            |
-|              `unxz`              |       Decompress files compressed with xz        |
-|          `unxz file.xz`          |          Decompress file.xz using unxz           |
-|              `tar`               |         Create and extract tar archives          |
-|  `tar -cvf archive.tar files/`   | Create a tar archive from the 'files/' directory |
-|      `tar -xvf archive.tar`      |         Extract files from 'archive.tar'         |
-|             `rsync`              |        Synchronize files and directories         |
-| `rsync -av source/ destination/` |  Sync the 'source/' directory to 'destination/'  |
+|            Command            |                Short Description                 |
+| :---------------------------: | :----------------------------------------------: |
+|            `gzip`             |            Compress files using gzip             |
+|        `gzip file.txt`        |         Compress the file.txt using gzip         |
+|       `gzip -d file.gz`       |          Decompress file.gz using gzip           |
+|           `gunzip`            |      Decompress files compressed with gzip       |
+|       `gunzip file.gz`        |         Decompress file.gz using gunzip          |
+|             `xz`              |             Compress files using xz              |
+|         `xz file.txt`         |          Compress the file.txt using xz          |
+|        `xz -d file.xz`        |           Decompress file.xz using xz            |
+|            `unxz`             |       Decompress files compressed with xz        |
+|        `unxz file.xz`         |          Decompress file.xz using unxz           |
+|             `tar`             |         Create and extract tar archives          |
+| `tar -cvf archive.tar files/` | Create a tar archive from the 'files/' directory |
+|    `tar -xvf archive.tar`     |         Extract files from 'archive.tar'         |
+|            `rsync`            |        Synchronize files and directories         |
 
 ## rsync
 
