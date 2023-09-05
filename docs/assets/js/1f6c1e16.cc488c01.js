@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[24],{217:s=>{s.exports=JSON.parse('{"label":"monitor","permalink":"/Wisdom-Hub/tags/monitor","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/processes","title":"process","description":"ps, bg, fg, jobs, &, ctrl+comb","permalink":"/Wisdom-Hub/linux/processes"}]}')}}]);
