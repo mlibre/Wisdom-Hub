@@ -7,6 +7,58 @@ tags:
   - Shutdown
 ---
 
+# Autostart
+
+## Init
+
+the `init` command refers to the process initialization system. It's the first process that gets started by the kernel during system boot, and it's assigned the process `ID (PID) of 1`
+
+```bash
+which init
+# Output: /usr/bin/init
+
+readlink -f /usr/bin/init
+# Output: /usr/lib/systemd/systemd
+
+ps -p 1
+# Output:
+# PID TTY          TIME CMD
+#   1 ?        00:00:01 systemd
+
+pstree -p 1
+# Output:
+# systemd(1)─┬─...
+```
+
+## Scripts and programs locations
+
+* nano .profile
+* nano /etc/profile
+* nano ~/.bash_profile
+* nano .bashrc
+* nano /etc/bash.bashrc
+* ls /etc/profile.d/
+* ls ~/.config/autostart
+* ls /etc/xdg/autostart
+* ls /usr/share/xsessions
+* ls -1 /lib/systemd/system/*.service /etc/systemd/system/*.service
+* ls usr/share/dbus-1/system-services/
+* sudo systemctl list-unit-files --type=service --state=enabled --all
+* ls /etc/init.d/
+* nano ~/.xinitrc
+* nano /etc/X11/xinit/xinitrc
+* ls /etc/X11/xinit/xinitrc.d/
+* cat ~/.xserverrc
+* ls /etc/pam.d/
+* ls /etc/rc*
+* cat /etc/xdg/lxsession/LXDE/autostart
+* ls ~/.config/lxsession/LXDE/autostart
+* crontab -e
+* sudo crontab -e
+* ls -rla /etc/cron.*
+* cat /usr/lib/sddm/sddm.conf.d/default.conf
+* cat /etc/sddm.conf.d/00_manjaro_settings.conf
+
 # Automatic Shutdown
 
 |      Command      |            Description            |
@@ -17,43 +69,6 @@ tags:
 | `shutdown -r +10` | Reboot the system in 10 minutes.  |
 | `shutdown -H now` |   Halt the system immediately.    |
 |   `shutdown +5`   | Shutdown the system in 5 minutes. |
-
-# XDG
-
-## Make a startup script using XDG startup
-
-```bash
-mkdir -p ~/.config/autostart
-nano ~/.config/autostart/gamma_on_startup.desktop
-```
-
-```bash
-[Desktop Entry]
-Name=gamma-on-startup
-Type=Application
-Exec=bash -c  "/usr/local/bin/gamma_on_startup &> /dev/null" 
-Terminal=true
-```
-
-```bash
-desktop-file-validate ~/.config/autostart/gamma_on_startup.desktop
-chmod +x ~/.config/autostart/gamma_on_startup.desktop
-```
-
-Example program:
-
-```bash
-sudo chmod a+rwx /usr/local/bin/
-nano /usr/local/bin/gamma_on_startup
-
-sleep 5
-export DISPLAY=:0
-xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
-```
-
-```bash
-sudo chmod a+rwx /usr/local/bin/gamma_on_startup
-```
 
 ## Reading symlinks
 
@@ -67,6 +82,61 @@ readlink /bin/init
 ```bash
 uname -a
 ```
+
+# Install a new os on the phone
+
+## Backup data
+
+```bash
+sudo pacman -S android-tools
+sudo adb devices
+adb backup -apk -shared -all -f backup-file.ab
+```
+
+## Restore
+
+```bash
+adb restore file.ab
+```
+
+## Enable Developer options
+
+* Several times clicks on the kernel tab
+* Allow OEM unlocking
+* Enter Download mod:
+  1. Turn off the phone.  
+  2. Hold vol key up + down.
+  3. Now in the warning message page. choose "unlocking bootloader" that will perform a factory reset
+
+## Install odin tools for Samsung >= 3.14
+
+<https://samsungodin.com/>
+
+## Install samsung driver
+
+<https://developer.samsung.com/android-usb-driver>
+
+## Install adb
+
+<https://developer.android.com/studio/releases/platform-tools>
+
+```bash
+adb reboot download
+```
+
+## Download TWRP
+
+<https://www.droidthunder.com/install-twrp-recovery-on-galaxy-A10/>
+<https://twrp.me/samsung/samsunggalaxya10.html>
+
+## convert it to .md5
+
+<https://www.droidthunder.com/convert-img-to-tar-md5/>
+
+## Run Odin as administrator
+
+follow the instructions
+<https://www.droidthunder.com/install-twrp-recovery-on-galaxy-A10/>
 
 ## Windows 11
 
