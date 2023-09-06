@@ -13,7 +13,7 @@ File:
 - /etc/grub.d/
 - /boot/grub/grub.cfg
 - /boot/efi/EFI/
-- /boot/grub/x86_64-efi/ 
+- /boot/grub/x86_64-efi/
 
 ## Regenerate grub.cfg
 
