@@ -1,33 +1,13 @@
 ---
-sidebar_position: 1
+sidebar_position: 16
 tags:
   - Linux
-  - Tips
-  - Tricks
+  - XDG
+  - Automatic
+  - Shutdown
 ---
 
-# Tips and Tricks
-
-Linux Cheat Sheet is a collection of useful commands and shortcuts for Linux.  
-And a comprehensive guide to various aspects of Linux operating system
-
-* [Automatic Shutdown](#automatic-shutdown)
-* [Changing monitor or screen Brightness and Gamma](#changing-monitor-or-screen-brightness-and-gamma)
-* [Resetting sound, audio](#resetting-sound-audio)
-* [Resetting KDE](#resetting-kde)
-* [Reading symlinks](#reading-symlinks)
-* [Font](#font)
-  * [Locations](#locations)
-  * [List](#list)
-  * [Fira Code](#fira-code)
-  * [Cache](#cache)
-* [Windows 11](#windows-11)
-  * [Make boatable usb](#make-boatable-usb)
-  * [WoeUsb](#woeusb)
-  * [Win2USB](#win2usb)
-  * [Things to do after installing Windows 11](#things-to-do-after-installing-windows-11)
-
-## Automatic Shutdown
+# Automatic Shutdown
 
 |      Command      |            Description            |
 | :---------------: | :-------------------------------: |
@@ -38,43 +18,41 @@ And a comprehensive guide to various aspects of Linux operating system
 | `shutdown -H now` |   Halt the system immediately.    |
 |   `shutdown +5`   | Shutdown the system in 5 minutes. |
 
-## Changing monitor or screen Brightness and Gamma
+# XDG
+
+## Make a startup script using XDG startup
 
 ```bash
-# List available outputs
-xrandr
+mkdir -p ~/.config/autostart
+nano ~/.config/autostart/gamma_on_startup.desktop
+```
 
-# Screen 0: minimum 320 x 200, current 2560 x 1440, maximum 16384 x 16384
-# DisplayPort-0 disconnected (normal left inverted right x axis y axis)
-# HDMI-A-0 connected primary 2560x1440+0+0 (normal left inverted right x axis y axis) 621mm x 341mm
-#    3840x2160     60.00 +  50.00    59.94    30.00    30.00    25.00    24.00    29.97    23.98  
-#    2560x1600     59.97  
-#    2560x1440     59.95* 
+```bash
+[Desktop Entry]
+Name=gamma-on-startup
+Type=Application
+Exec=bash -c  "/usr/local/bin/gamma_on_startup &> /dev/null" 
+Terminal=true
+```
 
+```bash
+desktop-file-validate ~/.config/autostart/gamma_on_startup.desktop
+chmod +x ~/.config/autostart/gamma_on_startup.desktop
+```
 
-# Change the brightness and gamma of the HDMI-A-0 output
+Example program:
+
+```bash
+sudo chmod a+rwx /usr/local/bin/
+nano /usr/local/bin/gamma_on_startup
+
+sleep 5
+export DISPLAY=:0
 xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
 ```
 
-## Resetting sound, audio
-
 ```bash
-systemctl --user restart pulseaudio
-
-# OR
-
-pulseaudio --kill
-pulseaudio --start
-```
-
-## Resetting KDE
-
-```bash
-qdbus org.kde.KWin /Compositor suspend;
-rm ~/.cache/ksycoca5*;
-kquitapp5 plasmashell;
-killall plasmashell;
-kstart5 plasmashell;
+sudo chmod a+rwx /usr/local/bin/gamma_on_startup
 ```
 
 ## Reading symlinks
@@ -88,39 +66,6 @@ readlink /bin/init
 
 ```bash
 uname -a
-```
-
-## Font
-
-### Locations
-
-* `~/.local/share/fonts/`
-* `/usr/local/share/fonts/`
-* `/usr/share/fonts/`
-
-### List
-
-List installed fonts
-
-```bash
-fc-match -a
-fc-list NotoSansBengali-Light
-```
-
-### Fira Code
-
-A popular code font.
-
-```bash
-sudo pacman -S ttf-fira-code
-fc-match -a | grep -i fira
-```
-
-### Cache
-
-```bash
-sudo rm -v /var/cache/fontconfig/*
-fc-cache -r
 ```
 
 ## Windows 11
