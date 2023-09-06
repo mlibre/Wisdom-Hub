@@ -84,3 +84,14 @@ tags:
 |                   `Ctrl-b o`                   |   Cycle through open windows in the current session (shortcut)   |
 |                  `Ctrl-b Up`                   |   Choose the previous window using the Up arrow key (shortcut)   |
 |                 `Ctrl-b Down`                  |    Choose the next window using the Down arrow key (shortcut)    |
+
+## nice, renice
+
+|         Command         |                        Short Description                        |
+| :---------------------: | :-------------------------------------------------------------: |
+|  `nice -n 10 command`   |            Start a command with a low priority (10)             |
+|  `nice -n -10 command`  |           Start a command with a high priority (-10)            |
+|  `renice -n 5 -p 1234`  |       Change the priority of a process with PID 1234 to 5       |
+| `renice -n -2 -g users` | Change the priority of all processes in the 'users' group to -2 |
+
+
