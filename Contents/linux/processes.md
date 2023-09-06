@@ -8,29 +8,23 @@ tags:
 
 # process
 
-
 ## ps, bg, fg, jobs, &, ctrl+comb
 
 |             Command             |                    Short Description                    |
 | :-----------------------------: | :-----------------------------------------------------: |
 |            `ps -ef`             |       List all processes with ppid and exec path        |
 | `ps aux \| grep <process_name>` |                Filter processes by name                 |
-|            `ctrl+c`             |                   Interrupt a process                   |
-|            `ctrl+z`             |                    Suspend a process                    |
-|            `ctrl+l`             |                Clear the terminal screen                |
-|              `bg`               |        Resume a suspended job in the background         |
 |          `bg <job_id>`          |    Resume a specific suspended job in the background    |
-|              `fg`               | Bring the most recent background job to the foreground  |
 |          `fg <job_id>`          |    Bring a specific background job to the foreground    |
-|             `jobs`              |                List all background jobs                 |
 |            `jobs -l`            |          List background jobs with process IDs          |
 |        `jobs %<job_id>`         |        Display information about a specific job         |
 |     `systemctl status 1234`     |  Show the status of a specific systemd unit by its PID  |
-|               `&`               |             Run a command in the background             |
 |          `command1 &`           |            Run `command1` in the background             |
 |             `nohup`             | Run a command that keeps running even after you log out |
 |        `nohup command1`         |  Run `command1` and keep it running after logging out   |
-
+|            `ctrl+c`             |                   Interrupt a process                   |
+|            `ctrl+z`             |                    Suspend a process                    |
+|            `ctrl+l`             |                Clear the terminal screen                |
 
 ## kill, pkill, killall
 
@@ -46,3 +40,26 @@ tags:
 | `pkill -f pattern`  |                        Kill by Pattern                        |
 | `pkill -x process`  |                      Kill Exact Process                       |
 | `pkill -n process`  |                      Kill Newest Process                      |
+
+# pgrep
+
+|                   Command                   |                      Short Description                       |
+| :-----------------------------------------: | :----------------------------------------------------------: |
+|                   `pgrep`                   |          List processes by name or other attributes          |
+|                `pgrep sshd`                 |             List processes with the name 'sshd'              |
+|         `pgrep nginx \| xargs kill`         | processes with 'nginx' in their name, send a SIGTERM to them |
+| `pgrep -u masoud \| xargs -I {} kill -9 {}` |        and forcefully terminate prccess with "masoud"        |
+
+## free, uptime, df
+
+|         Command         |                           Short Description                            |
+| :---------------------: | :--------------------------------------------------------------------: |
+|        `free -m`        |                   Display memory usage in megabytes                    |
+|        `free -h`        |            Display memory usage with human-readable format             |
+|       `uptime -p`       |             Display uptime in a more human-readable format             |
+|       `uptime -s`       |             Display the date and time since system started             |
+|         `df -h`         |          Display disk space usage with human-readable format           |
+|         `df -T`         |             Display disk space usage with filesystem type              |
+|    `watch -n 1 date`    |           Watch and display the date and time every 1 second           |
+|   `watch -n 5 df -h`    |           Watch and update disk space usage every 5 seconds            |
+| `watch -cd -n 1 uptime` | Watch system uptime every 1 second with color highlighting for changes |
