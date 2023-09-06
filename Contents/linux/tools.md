@@ -2,7 +2,7 @@
 sidebar_position: 16
 tags:
   - Linux
-  - toold
+  - tools
 ---
 
 # Awesome Tools
@@ -28,6 +28,7 @@ bash-it reload
 
 ls ~/.bash_it/themes/
 
+bash-it enable plugin man
 
 cd $BASH_IT
 ./uninstall.sh
