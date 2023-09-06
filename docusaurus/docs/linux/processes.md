@@ -63,3 +63,24 @@ tags:
 |    `watch -n 1 date`    |           Watch and display the date and time every 1 second           |
 |   `watch -n 5 df -h`    |           Watch and update disk space usage every 5 seconds            |
 | `watch -cd -n 1 uptime` | Watch system uptime every 1 second with color highlighting for changes |
+
+## tmux
+
+|                    Command                     |                        Short Description                         |
+| :--------------------------------------------: | :--------------------------------------------------------------: |
+|                     `tmux`                     |                       Terminal multiplexer                       |
+|            `tmux new -s mysession`             |           Create a new tmux session named "mysession"            |
+|           `tmux attach -t mysession`           |         Attach to an existing session named "mysession"          |
+|        `tmux kill-session -t mysession`        |            Remove the tmux session named "mysession"             |
+|                   `tmux ls`                    |                 List all available tmux sessions                 |
+|              `tmux split-window`               |              Split the current window horizontally               |
+|                 `tmux detach`                  |               Detach from the current tmux session               |
+| `tmux rename-session -t oldsession newsession` |     Rename a tmux session from "oldsession" to "newsession"      |
+|                   `Ctrl-b %`                   |          Split the current window vertically (shortcut)          |
+|                   `Ctrl-b "`                   |         Split the current window horizontally (shortcut)         |
+|                   `Ctrl-b d`                   |         Detach from the current tmux session (shortcut)          |
+|                   `Ctrl-b $`                   |              Rename the current session (shortcut)               |
+|                   `Ctrl-b [`                   | Enter copy mode to scroll through the terminal output (shortcut) |
+|                   `Ctrl-b o`                   |   Cycle through open windows in the current session (shortcut)   |
+|                  `Ctrl-b Up`                   |   Choose the previous window using the Up arrow key (shortcut)   |
+|                 `Ctrl-b Down`                  |    Choose the next window using the Down arrow key (shortcut)    |
