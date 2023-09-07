@@ -42,6 +42,18 @@ tags:
 | `sudo fsck.ext4 -yvfBcD /dev/sda4` |                           Check and repair `/dev/sda4`                           |
 |       `tune2fs -l /dev/sda1`       |              Display detailed filesystem information for /dev/sda1.              |
 
+## mount, umount
+
+|              Command               |                           Short Description                            |
+| :--------------------------------: | :--------------------------------------------------------------------: |
+|              `mount`               |                 list of currently mounted file systems                 |
+|       `mount /dev/sda1 /mnt`       |          Mounts the partition /dev/sda1 to the /mnt directory          |
+|         `mount /dev/sda1`          |                Mounts a device defined in `/etc/fstab`                 |
+| `mount -o loop image.iso /mnt/iso` |  Mounts an ISO image file as a loop device to the /mnt/iso directory   |
+|           `umount /mnt`            |                Unmounts the file system mounted at /mnt                |
+|          `umount -l /mnt`          | Lazy unmount, detaches the file system only when it's no longer in use |
+|   `mount UUID=1...AB /mnt/uuid`    |           Mounts file system using its UUID to the /mnt/uuid           |
+
 ## Rsync
 
 ```bash
