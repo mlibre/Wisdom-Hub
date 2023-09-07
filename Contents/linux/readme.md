@@ -22,7 +22,7 @@ This repository is organized into several sections, each containing tutorials fo
 * [Multimedia](./game%20and%20graphic.md)
 * [Logging and Monitoring](./logging-monitoring.md)
 * [TextOps](./textOps.md)
-* [Shell](./shell.md)
+* [Shell-scripting](./shell-scripting.md)
 * [Processes](./processes.md)
 * [GRUB](./grub.md)
 * [Other](./other.md)

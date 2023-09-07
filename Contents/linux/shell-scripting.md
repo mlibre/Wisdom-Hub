@@ -8,7 +8,7 @@ tags:
   - script
 ---
 
-# Shell
+# Shell and Scripting
 
 ## Bash
 
@@ -55,12 +55,6 @@ PS1='$(if [ $? -eq 0 ]; then echo -e "\[\033[42m\] \[\033[0m\]"; else echo -e "\
 ```bash
 nano .bashrc
 # put your PS1 in the last line
-```
-
-### Font
-
-```bash
-Monospace 12
 ```
 
 ### Case-insensitive Auto completion
@@ -206,4 +200,10 @@ chmod +x click.sh
 
 ```bash
 sudo pacman -S zsh
+```
+
+## Font
+
+```bash
+Monospace 12
 ```
