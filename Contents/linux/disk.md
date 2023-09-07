@@ -28,14 +28,19 @@ tags:
 | `mkfs -t ntfs /dev/sdd1` |  Create a VFAT File System on /dev/sdd1   |
 | `sudo mkswap /dev/sdc1`  |         Create swap on /dev/sdc1          |
 
-## df, du
+## df, du, fsck, tune2fs
 
-|         Command         |                                Short Description                                 |
-| :---------------------: | :------------------------------------------------------------------------------: |
-|  `du -sh /path/to/dir`  |                   Display disk usage summary for a directory.                    |
-| `du -hd 1 /path/to/dir` |       Display disk usage for each subdirectory in the specified directory.       |
-|         `df -h`         | Display disk space usage for all mounted filesystems in a human-readable format. |
-|        `df -hiT`        |       Display disk space usage with inodes and file system type included.        |
+|              Command               |                                Short Description                                 |
+| :--------------------------------: | :------------------------------------------------------------------------------: |
+|       `du -sh /path/to/dir`        |                   Display disk usage summary for a directory.                    |
+|      `du -hd 1 /path/to/dir`       |       Display disk usage for each subdirectory in the specified directory.       |
+|              `df -h`               | Display disk space usage for all mounted filesystems in a human-readable format. |
+|             `df -hiT`              |       Display disk space usage with inodes and file system type included.        |
+|       `sudo fsck /dev/sda1`        |                 Check and repair the file system on `/dev/sda1`                  |
+|      `sudo fsck -y /dev/sdb2`      |               Automatically repair the file system on `/dev/sdb2`                |
+|      `sudo fsck -C /dev/sdc1`      |            Display progress while checking and repairing `/dev/sdc1`             |
+| `sudo fsck.ext4 -yvfBcD /dev/sda4` |                           Check and repair `/dev/sda4`                           |
+|       `tune2fs -l /dev/sda1`       |              Display detailed filesystem information for /dev/sda1.              |
 
 ## Rsync
 
