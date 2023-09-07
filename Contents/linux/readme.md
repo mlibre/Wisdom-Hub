@@ -24,7 +24,6 @@ This repository is organized into several sections, each containing tutorials fo
 * [TextOps](./textOps.md)
 * [Shell-scripting](./shell-scripting.md)
 * [Processes](./processes.md)
-* [GRUB](./grub.md)
 * [Other](./other.md)
 
 ## My ETH Address

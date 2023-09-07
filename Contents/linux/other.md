@@ -7,6 +7,61 @@ tags:
   - Shutdown
 ---
 
+# GRUB
+
+File:
+
+- /etc/default/grub
+- /etc/grub.d/
+- /boot/grub/grub.cfg
+- /boot/efi/EFI/
+- /boot/grub/x86_64-efi/
+
+## Regenerate grub.cfg
+
+```bash
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+## Fixing broken grub
+
+### Easy method using Manjaro Live
+
+> Boot a live Manjaro image
+
+```bash
+sudo manjaro-chroot -a
+grub-install
+update-grub
+```
+
+> It will detect your current installed linux.  Restart the computer and it will boot the installed linux.  
+Then run:
+
+```bash
+update-grub
+```
+
+### General method
+
+```bash
+# Mount the file system and efi partition
+sudo mount /dev/nvme0n1p4 /mnt
+sudo mount --bind /dev /mnt/dev
+sudo mount --bind /dev/pts /mnt/dev/pts
+sudo mount --bind /proc /mnt/proc
+sudo mount --bind /sys /mnt/sys
+sudo mkdir /efi
+sudo mount /dev/nvme0n1p1 /efi
+
+# Install grub and update grub configuration
+sudo grub-install --root-directory=/mnt/ /dev/nvme0 --efi-directory=/efi --target=x86_64-efi --recheck
+sudo chroot /mnt
+sudo blkid -s UUID -o value /dev/nvme0n1p1
+nano /etc/fstab
+sudo update-grub
+```
+
 # Autostart
 
 ## Init
@@ -138,11 +193,11 @@ adb reboot download
 follow the instructions
 <https://www.droidthunder.com/install-twrp-recovery-on-galaxy-A10/>
 
-## Windows 11
+# Windows 11
 
-### Make boatable usb
+## Make boatable usb
 
-### WoeUsb
+## WoeUsb
 
 ```bash
 sudo pacman -Suy p7zip python-pip python-wxpython
@@ -151,7 +206,7 @@ sudo pip3 install .
 sudo woeusb --workaround-skip-grub --target-filesystem NTFS --device ~/Win11_22H2_English_x64v1.iso  /dev/sdb
 ```
 
-### Win2USB
+## Win2USB
 
 ```bash
 https://github.com/ValdikSS/windows2usb
@@ -159,7 +214,7 @@ chmod +x windows2usb*
 ./windows2usb-0.2.4-x86_64.AppImage /dev/sdb ~/Win11_22H2_English_x64v1.iso gpt+uefintfs
 ```
 
-### Things to do after installing Windows 11
+## Things to do after installing Windows 11
 
 * Download and install all the updates
 * Enable Ransomware protection

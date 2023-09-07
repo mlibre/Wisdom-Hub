@@ -81,6 +81,38 @@ sudo pacman -S bmon
 bmon
 ```
 
+## Wine
+
+```bash
+# pamac install wine-stable
+sudo pacman -S wine winetricks
+winetricks corefonts vcrun2013 vcrun2015 winhttp allcodecs d3dcompiler_42 d3dcompiler_43 d3dcompiler_47 d3dx9 dotnet dxvk quartz
+sudo setcap cap_net_raw+epi /usr/bin/wine
+```
+
+## proxy
+
+### proxychains
+
+```bash
+sudo nano /etc/proxychains.conf 
+socks5  127.0.0.1 1080
+# comment proxy_dns
+# proxy_dns
+```
+
+```bash
+# Use proxychains to run yay, git, npm and pacman
+proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
+proxychains git clone https://github.com/boypt/vmess2json.git
+sudo proxychains npm -g install v2ray-tools
+sudo proxychains pacman -Syyuu
+
+# Set the http and https proxy environment variables
+export http_proxy=socks5://127.0.0.1:1080
+export https_proxy=socks5://127.0.0.1:1080
+```
+
 ## Youtube Download
 
 ```bash

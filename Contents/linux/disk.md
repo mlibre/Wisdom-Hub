@@ -28,6 +28,15 @@ tags:
 | `mkfs -t ntfs /dev/sdd1` |  Create a VFAT File System on /dev/sdd1   |
 | `sudo mkswap /dev/sdc1`  |         Create swap on /dev/sdc1          |
 
+## df, du
+
+|         Command         |                                Short Description                                 |
+| :---------------------: | :------------------------------------------------------------------------------: |
+|  `du -sh /path/to/dir`  |                   Display disk usage summary for a directory.                    |
+| `du -hd 1 /path/to/dir` |       Display disk usage for each subdirectory in the specified directory.       |
+|         `df -h`         | Display disk space usage for all mounted filesystems in a human-readable format. |
+|        `df -hiT`        |       Display disk space usage with inodes and file system type included.        |
+
 ## Rsync
 
 ```bash
