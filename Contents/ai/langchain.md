@@ -24,4 +24,7 @@ pip install langchain[all]
 pip install huggingface_hub
 ```
 
-> https://github.com/langchain-ai/langchain
+## References
+
+> <https://python.langchain.com/docs/get_started/introduction.html>
+> <https://github.com/langchain-ai/langchain>
