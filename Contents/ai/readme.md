@@ -2,7 +2,6 @@
 sidebar_position: 5
 title: AI
 tags:
-  - Mlibre
   - AI
 ---
 
@@ -15,6 +14,7 @@ Welcome to my AI tutorials!
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
 * [Prompt](./prompt.md)
+* [Langchain](./langchain.md)
 
 ## My ETH Address
 
