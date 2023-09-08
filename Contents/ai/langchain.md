@@ -16,8 +16,12 @@ LangChain is a framework for developing applications powered by language models
 ```bash
 python -m venv langchainenv
 source langchainenv/bin/activate
+
+pip install --upgrade pip
 pip install langchain
+pip install langchain[llms]
 pip install langchain[all]
+pip install huggingface_hub
 ```
 
 > https://github.com/langchain-ai/langchain
