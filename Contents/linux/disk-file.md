@@ -79,3 +79,5 @@ sudo tar -czvf backup.tar.gz $(locate x-ui) /root/cert /root/cert.crt /root/priv
 
 sudo tar xvf backup.tar.gz -C / # Extract in root directory
 ```
+
+# File

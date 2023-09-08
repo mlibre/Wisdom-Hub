@@ -6,5 +6,11 @@
 	"editor.cursorSmoothCaretAnimation": "on",
 	"workbench.list.smoothScrolling": true,
 	"editor.smoothScrolling": true,
-	"terminal.integrated.smoothScrolling": true
+	"terminal.integrated.smoothScrolling": true,
+	"search.exclude": {
+		"**/docs/**": true,
+		"**/docs/*/**": true,
+		"**/docusaurus/.docusaurus/**": true,
+		"**/docusaurus/build/**": true
+	}
 }

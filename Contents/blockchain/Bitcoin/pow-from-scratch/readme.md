@@ -2,17 +2,19 @@
 title: Simple implementation
 tags:
   - Bitcoin
+  - POW
+  - implementation
 ---
 
 # Simple implementation of POW
 
 :::info
 
-You can find the **codes** and **files** [`in the Github repo`](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/POW-Example).
+You can find the **codes** and **files** [`in the Github repo`](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/pow-from-scratch).
 
 :::
 
-[This code](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/POW-Example) implements a simple `blockchain` in JavaScript using the `Node.js` platform. It uses the `crypto` and `fs` libraries provided by `Node.js`.
+[This code](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/pow-from-scratch) implements a simple `blockchain` in JavaScript using the `Node.js` platform. It uses the `crypto` and `fs` libraries provided by `Node.js`.
 
 When the blockchain application is run, it initializes a `Blockchain` object and creates a genesis block if the blockchain file is empty. `Miners` can then mine blocks by adding transactions to the transaction pool and calling the `mine` method on a block. Transactions are verified by checking the balance of the sending address and the transaction number of the wallet. The transaction pool is also regularly updated to remove confirmed transactions and prevent it from becoming too large. Lets explain each class separately.
 
