@@ -12,27 +12,91 @@ tags:
 
 ## Bash
 
-|     Commands      |                           Description                            |
-| :---------------: | :--------------------------------------------------------------: |
-|       `env`       |                  View current environment vars                   |
-|  `VAR_NAME=val`   |                     Set `VAR_NAME` to `val`                      |
-|   `export VAR`    |                Make var available to child procs                 |
-|    `echo $VAR`    |                      Display value of `VAR`                      |
-|   `echo $PATH`    |                     Display value of `PATH`                      |
-|   `echo $HOME`    |                  Display user's home directory                   |
-|  `echo $EDITOR`   |                   Display default text editor                    |
-| `echo $HISTFILE`  |                   Display command history file                   |
-|   `echo $SHELL`   |                  Display default shell program                   |
-|   `echo $USER`    |                     Display current username                     |
-|     `echo $?`     |                 Display last command exit status                 |
-|    `echo $PS1`    |                     Display the shell prompt                     |
-|       `!!`        |                Repeats the last executed command                 |
-|       `!*`        |           Represents all arguments of the last command           |
-|       `!n`        |               Repeats the nth command in `history`               |
-|       `!-n`       |         Repeats the nth command from the current command         |
-|     `!string`     |    Repeats the most recent command that starts with `string`     |
-| `!:1`, `!:2`, ... | Represents the first, second, etc. arguments of the last command |
-|       `!:0`       |                Represents the command + arguments                |
+### echo, env, variables
+
+|     Commands     |            Description            |
+| :--------------: | :-------------------------------: |
+|      `env`       |   View current environment vars   |
+|  `VAR_NAME=val`  |      Set `VAR_NAME` to `val`      |
+|   `export VAR`   | Make var available to child procs |
+|   `echo $VAR`    |      Display value of `VAR`       |
+|   `echo $PATH`   |      Display value of `PATH`      |
+|   `echo $HOME`   |   Display user's home directory   |
+|  `echo $EDITOR`  |    Display default text editor    |
+| `echo $HISTFILE` |   Display command history file    |
+|  `echo $SHELL`   |   Display default shell program   |
+|   `echo $USER`   |     Display current username      |
+|    `echo $?`     | Display last command exit status  |
+|   `echo $PS1`    |     Display the shell prompt      |
+
+### history
+
+|     Commands      |                                   Description                                    |
+| :---------------: | :------------------------------------------------------------------------------: |
+|    `history 5`    |                   Displays the last 5 commands in the history                    |
+|       `!!`        |                        Repeats the last executed command                         |
+|       `!*`        |                   Represents all arguments of the last command                   |
+|       `!n`        |                       Repeats the nth command in `history`                       |
+|       `!-n`       |                 Repeats the nth command from the current command                 |
+|     `!string`     |            Repeats the most recent command that starts with `string`             |
+| `!:1`, `!:2`, ... |         Represents the first, second, etc. arguments of the last command         |
+|       `!:0`       |                        Represents the command + arguments                        |
+|  `command !:0-2`  |    Executes the **command** with the first two arguments of the last command     |
+|  `command !:1-2`  | Executes the **command** with the second and third arguments of the last command |
+|  `command !:2*`   |        Executes **command** from the second arguments of the last command        |
+| `command !571:2*` |     Executes **command** from the secondof the 571st command in the history      |
+
+#### Example
+
+```bash
+# List all files in current directory
+ls -l
+# output
+# -rw-r--r--  1 mlibre mlibre    7 Sep  8 11:52 test
+# -rw-r--r--  1 mlibre mlibre    7 Sep  8 11:51 test2
+# -rw-r--r--  1 mlibre mlibre    7 Sep  8 11:52 test3
+
+# Concatenate the first two files
+cat test test2 test3
+# output
+# salam1
+# salam2
+# salam3
+
+# Concatenate the previous two files again using the history shortcut
+cat !:1-2
+# output
+# cat test test2
+# salam1
+# salam2
+
+# Concatenate the first two files mentioned in the previous command
+cat test test2 test3
+cat !:0-2
+# output
+# cat cat test test2
+# cat: cat: No such file or directory
+# salam1
+# salam2
+
+# Concatenate the second file mentioned in the previous command (file2.txt)
+cat test test2 test3
+cat !:2*
+# output
+# cat test2 test3
+# salam2
+# salam3
+
+history 5
+# 598  ls -l file3.txt'
+# 599  ls -l test3 
+# 600  cat test test2 test3
+# Concatenate the second argument of the 599st command in your bash history, which is 'file3.txt'
+cat !599:2*
+# output
+# cat test3
+# salam3
+```
 
 ### Command types
 
