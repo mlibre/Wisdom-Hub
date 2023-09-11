@@ -31,7 +31,8 @@ tags:
 |         `chmod 644 file`         |            Set read and write for owner, read for group and others             |
 |        `chmod -R 755 dir`        |                           Recursively set permission                           |
 |   `chmod u=rwx,g=rx,o=rx file`   |              Set specific permissions for user, group, and others              |
-|      `chmod +s executable`       |        Set the setuid/setgid bit on an executable (advanced permission)        |
+|      `chmod u+s executable`      |                      Set the setuid bit on an executable                       |
+|      `chmod g+s executable`      |                      Set the setgid bit on an executable                       |
 |        `chmod a=-r file`         |           Remove read permission for all (owner, group, and others)            |
 | `chmod -x $(find /path -type f)` | Remove execute permission from all files in a directory and its subdirectories |
 
