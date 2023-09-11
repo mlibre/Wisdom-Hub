@@ -10,15 +10,16 @@ tags:
 
 ## whoami, id, groups, users
 
-|      Command      |         Short Description          |
-| :---------------: | :--------------------------------: |
-|     `whoami`      |     Print current user's name      |
-|       `id`        |  Print user and group information  |
-|     `groups`      |      Print group memberships       |
-| `groups username` |  Show groups for a specific user   |
-|      `users`      | Show a list of all logged-in users |
-| `cat /etc/passwd` |   information about system users   |
-| `cat /etc/group`  |      information about groups      |
+|      Command      |              Short Description              |
+| :---------------: | :-----------------------------------------: |
+|     `whoami`      |          Print current user's name          |
+|       `id`        |      Print user and group information       |
+|     `groups`      |           Print group memberships           |
+| `groups username` |       Show groups for a specific user       |
+|      `users`      |     Show a list of all logged-in users      |
+| `cat /etc/passwd` |       information about system users        |
+| `cat /etc/group`  |          information about groups           |
+| `cat /etc/shadow` | encrypted password hashes for user accounts |
 
 ## chmod
 
@@ -37,7 +38,7 @@ tags:
 > a+x will set all the x bits of the file
 > +x will set all the x bits of the file that are not present in the umask
 
-## chown
+## chown, chgrp, newgrp
 
 |                 Command                 |                           Short Description                            |
 | :-------------------------------------: | :--------------------------------------------------------------------: |
@@ -49,3 +50,34 @@ tags:
 |       `chgrp groupname file.txt`        |        Change the group ownership of `file.txt` to `groupname`.        |
 | `chgrp -R groupname /path/to/directory` |           Recursively change group ownership to `groupname`.           |
 |  `chgrp --reference=file.txt test.txt`  |   Change group ownership of `test.txt` to match that of `file.txt`.    |
+|                `newgrp`                 |                     Change your effective group ID                     |
+|             `newgrp staff`              |                      Switch to the 'staff' group                       |
+
+## SUID, GUID
+
+When the `SUID` permission is set on an executable file, it means that when a regular user runs that executable, it will run with the permissions of the file's owner instead of the user who is executing it.  
+
+when any user executes the `/usr/bin/passwd` command, it runs with the elevated permissions of the **root** user. This is necessary because changing a user's password requires write access to the **/etc/shadow** file, which is typically only accessible by the **root** user for security reasons.
+
+The **/etc/shadow** file is owned by the root user and has restrictive permissions (e.g., **readable** and **writable** **only** by the **root** user). This means `regular` users do not have the necessary `permissions` to modify the file.
+
+```bash
+ls -l /usr/bin/passwd 
+-rwsr-xr-x 1 root root 51552 Jan 25  2023 /usr/bin/passwd
+```
+
+## Sticky bit
+
+The `sticky bit` on a directory ensures that only the owner of a file within that directory (or the superuser) can **delete** or **rename** that file, even if **others** have **write** permissions on the directory.
+
+Imagine you have a `/tmp` directory on a Linux system with the `sticky bit set`:
+
+```bash
+chmod +t /tmp
+```
+
+In this setup:
+
+- Alice can delete files she creates in `/tmp`
+- Bob can delete files he creates in `/tmp`
+- Other users cannot delete files created by Alice or Bob in `/tmp`, enhancing file security in shared directories like `/tmp`
