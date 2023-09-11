@@ -66,7 +66,7 @@ ls -l /usr/bin/passwd
 -rwsr-xr-x 1 root root 51552 Jan 25  2023 /usr/bin/passwd
 ```
 
-# Sticky bit
+## Sticky bit
 
 The `sticky bit` on a directory ensures that only the owner of a file within that directory (or the superuser) can **delete** or **rename** that file, even if **others** have **write** permissions on the directory.
 
