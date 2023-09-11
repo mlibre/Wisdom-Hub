@@ -82,3 +82,23 @@ In this setup:
 - Alice can delete files she creates in `/tmp`
 - Bob can delete files he creates in `/tmp`
 - Other users cannot delete files created by Alice or Bob in `/tmp`, enhancing file security in shared directories like `/tmp`
+
+## umask
+
+`umask` is a Linux command that controls the `default` permissions for `newly` created files and directories
+
+```bash
+umask
+# 0022
+```
+
+- For files: 666 - 0022 = `0644`
+- For directories: 777 - 0022 = `0755`
+
+```bash
+# read and write permissions to the owner and remove all permissions for others on newly created files, you can use:
+umask u=rw,go=
+
+# remove write permissions for the group and others on newly created directories, you can use:
+umask ugo-w
+```
