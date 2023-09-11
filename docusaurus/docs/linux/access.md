@@ -69,7 +69,7 @@ ls -l /usr/bin/passwd
 
 ## Sticky bit
 
-The `sticky bit` on a directory ensures that only the owner of a file within that directory (or the superuser) can **delete** or **rename** that file, even if **others** have **write** permissions on the directory.
+The `sticky bit` on a directory ensures that only the owner of a file within that directory (or the superuser) can **modify**, **delete** or **rename** that file, even if **others** have **write** permissions on the directory.
 
 Imagine you have a `/tmp` directory on a Linux system with the `sticky bit set`:
 
