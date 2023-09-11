@@ -4,7 +4,7 @@ A `blockchain` is a list of records, called blocks, which are linked and secured
 Each block contains a cryptographic hash of the previous block, a timestamp, and a list of transactions.  
 A blockchain is simply a public distributed ledger, and `bitcoin` is a `blockchain`.  
 
-I have also implemented a simple Proof-of-Work (POW) blockchain like bitcoin, you can find it [here](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/POW-Example)
+I have also implemented a simple Proof-of-Work (POW) blockchain like bitcoin, you can find it [here](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/pow-from-scratch)
 
 ## Table of content
 
@@ -22,7 +22,30 @@ I have also implemented a simple Proof-of-Work (POW) blockchain like bitcoin, yo
 
 ## Architecture
 
-`Bitcoin` consists of a network of nodes that all run Bitcoin's code and store its blockchain. The nodes connect to each other via the Internet, and they all validate transactions and add them to the blockchain via a process called `mining`.  
+The `Bitcoin` network is a `decentralized peer-to-peer` network, meaning that it operates without a central authority or server. Nodes, connect to each other directly, allowing data to be shared and stored.  
+
+Bitcoin combines its **network**, **cryptocurrency**, and **blockchain** to record transactions transparently, prevent double spending, and ensure consensus via a process called "proof-of-work"
+
+### Network Discovery
+
+**Network Discovery** or **Peer Discovery** in Bitcoin refers to the process by which nodes in the Bitcoin network find and connect with each other. When a new node joins the network, it starts to discover other nodes to connect with in order to participate in the network. This is typically done through a process called `bootstrapping`.
+
+1. When started for the first time, programs don’t know the **IP addresses** of any active full **nodes**. In order to **discover** some IP addresses, they **query** one or more `DNS seeds` hardcoded into `Bitcoin Core` and `BitcoinJ`. The response to the lookup should include one or more DNS A records with the IP addresses of full nodes that may accept new incoming connections. For example, using the `dig` command:
+
+   ```bash
+   dig seed.bitcoin.sipa.be
+
+   ;; ANSWER SECTION:
+   seed.bitcoin.sipa.be.   3600    IN      A       185.14.30.25
+   seed.bitcoin.sipa.be.   3600    IN      A       18.213.155.196
+   seed.bitcoin.sipa.be.   3600    IN      A       176.9.150.253
+   seed.bitcoin.sipa.be.   3600    IN      A       79.137.224.63
+   seed.bitcoin.sipa.be.   3600    IN      A       76.138.214.41
+   ```
+
+   > DNS seed: A DNS server which returns IP addresses of full nodes on the Bitcoin network to assist in peer discovery.
+
+2. Once a program has connected to the network, its `peers` can begin to send it `addr` (address) messages with the `IP addresses` and `port numbers of other peers` on the network, providing a fully decentralized method of peer discovery. `Bitcoin Core` keeps a record of known peers in a **persistent on-disk database** which usually allows it to connect directly to those peers on subsequent startups without having to use DNS seeds
 
 ## Consensus
 
@@ -78,7 +101,7 @@ As an incentive to use processing power to try and add new blocks of transaction
 
 ## Simple POW Blockchain in nodejs
 
-[Here you can find a simple complete POW blockchain written in nodejs](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/POW-Example)
+[Here you can find a simple complete POW blockchain written in nodejs](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/pow-from-scratch)
 
 ## References
 

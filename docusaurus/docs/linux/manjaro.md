@@ -187,12 +187,3 @@ sudo useradd --create-home newusername
 sudo passwd newusername
 
 ```
-
-## Install Wine
-
-```bash
-# pamac install wine-stable
-sudo pacman -S wine winetricks
-winetricks corefonts vcrun2013 vcrun2015 winhttp allcodecs d3dcompiler_42 d3dcompiler_43 d3dcompiler_47 d3dx9 dotnet dxvk quartz
-sudo setcap cap_net_raw+epi /usr/bin/wine
-```

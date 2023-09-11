@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[5634],{754:s=>{s.exports=JSON.parse('{"label":"permissions","permalink":"/Wisdom-Hub/tags/permissions","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/access","title":"Access","description":"whoami, id, groups, users","permalink":"/Wisdom-Hub/linux/access"}]}')}}]);
