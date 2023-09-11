@@ -14,7 +14,7 @@ Welcome to my Linux tutorials!
 
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
-* [Optimization](./optimization.md)
+* [Access](./access.md)
 * [Disk](./disk.md)
 * [Systemd](./systemd.md)
 * [Manjaro](./manjaro.md)
