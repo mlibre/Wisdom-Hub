@@ -54,6 +54,13 @@ tags:
 |          `umount -l /mnt`          | Lazy unmount, detaches the file system only when it's no longer in use |
 |   `mount UUID=1...AB /mnt/uuid`    |           Mounts file system using its UUID to the /mnt/uuid           |
 
+## ln
+
+|             Command             |               Short Description               |
+| :-----------------------------: | :-------------------------------------------: |
+|  `ln -s source_file link_name`  | Create a symbolic link to a file or directory |
+| `ln source_file hard_link_name` |         Create a hard link to a file          |
+
 ## Rsync
 
 ```bash
