@@ -83,6 +83,17 @@ echo "Hello, $name!"
 > Use `export` when you want to make a variable available to child processes
 > Use `set` primarily for managing shell options and attributes, but it can also be used to set local variables
 
+### source, alias
+
+|        Command        |                 Short Description                 |
+| :-------------------: | :-----------------------------------------------: |
+|       `source`        |  Load functions into the current shell session.   |
+|  `source ~/.bashrc`   |         Reloads the user's Bash profile.          |
+| `source my_script.sh` | Executes a shell script within the current shell. |
+|        `alias`        |        Create or display command aliases.         |
+|  `alias ll='ls -l'`   |  Creates an alias 'll' for the 'ls -l' command.   |
+|    `alias c=clear`    |   Creates an alias 'c' for the 'clear' command.   |
+
 ### history
 
 |     Commands      |                                   Description                                    |
