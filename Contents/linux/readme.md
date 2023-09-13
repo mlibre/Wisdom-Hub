@@ -15,11 +15,11 @@ Welcome to my Linux tutorials!
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
 * [Access](./access.md)
-* [Disk](./disk.md)
+* [Disk](./disk-file.md)
 * [Systemd](./systemd.md)
 * [Manjaro](./manjaro.md)
 * [Tools](./tools.md)
-* [Multimedia](./game%20and%20graphic.md)
+* [Multimedia](./multimedia.md)
 * [Logging and Monitoring](./logging-monitoring.md)
 * [TextOps](./textOps.md)
 * [Shell-scripting](./shell-scripting.md)
