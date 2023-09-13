@@ -59,7 +59,7 @@ read -p "Enter your name: " name
 echo "Hello, $name!"
 ```
 
-### echo, env, export, variables
+### echo, env, export, set, unset, variables
 
 |     Commands     |                              Description                               |
 | :--------------: | :--------------------------------------------------------------------: |
@@ -67,6 +67,7 @@ echo "Hello, $name!"
 |      `set`       |                 displays shell variables and functions                 |
 |     `set -o`     |                     Display current shell options                      |
 |     `set -e`     | Exit immediately if a command in a script exits with a non-zero status |
+|  `unset MYVAR`   |            Unset the environment variable named `VAR_NAME`             |
 |   `export VAR`   |                 Make var available to child processes                  |
 |      `env`       |                     View current environment vars                      |
 |   `echo $VAR`    |                         Display value of `VAR`                         |
