@@ -73,7 +73,7 @@ ls -l /usr/bin/passwd
 
 ## Sticky bit
 
-The `sticky bit` on a directory ensures that only the owner of a file within that directory (or the superuser) can **modify**, **delete** or **rename** that file, even if **others** have **write** permissions on the directory.
+The `sticky bit` on a directory ensures that only the owner of a file within that directory (or the superuser) can **modify**, **delete** or **rename** that file, even if **others** have **write** permissions on the directory or the files.
 
 Imagine you have a `/tmp` directory on a Linux system with the `sticky bit set`:
 
@@ -100,9 +100,9 @@ umask
 - For directories: 777 - 0022 = `0755`
 
 ```bash
-# read and write permissions to the owner and remove all permissions for others on newly created files, you can use:
+# read and write permissions to the owner and remove all permissions for others and groups on newly created files:
 umask u=rw,go=
 
-# remove write permissions for the group and others on newly created directories, you can use:
+# remove write permissions for the users, group and others on newly created directories:
 umask ugo-w
 ```
