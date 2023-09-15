@@ -23,21 +23,25 @@ tags:
 
 ## chmod
 
-|             Command              |                               Short Description                                |
-| :------------------------------: | :----------------------------------------------------------------------------: |
-|             `chmod`              |                            Change file permissions                             |
-|         `chmod +x file`          |                        Add execute permission to a file                        |
-|         `chmod -w file`          |                      Remove write permission from a file                       |
-|         `chmod 644 file`         |            Set read and write for owner, read for group and others             |
-|        `chmod -R 755 dir`        |                           Recursively set permission                           |
-|   `chmod u=rwx,g=rx,o=rx file`   |              Set specific permissions for user, group, and others              |
-|      `chmod u+s executable`      |                      Set the setuid bit on an executable                       |
-|      `chmod g+s executable`      |                      Set the setgid bit on an executable                       |
-|        `chmod a=-r file`         |           Remove read permission for all (owner, group, and others)            |
-| `chmod -x $(find /path -type f)` | Remove execute permission from all files in a directory and its subdirectories |
+|                      Command                      |                        Short Description                        |
+| :-----------------------------------------------: | :-------------------------------------------------------------: |
+|                      `chmod`                      |                     Change file permissions                     |
+|                  `chmod +x file`                  |                Add execute permission to a file                 |
+|                  `chmod -w file`                  |               Remove write permission from a file               |
+|                 `chmod 644 file`                  |     Set read and write for owner, read for group and others     |
+|                `chmod -R 755 dir`                 |                   Recursively set permission                    |
+|           `chmod u=rwx,g=rx,o=rx file`            |      Set specific permissions for user, group, and others       |
+|              `chmod u+s executable`               |               Set the setuid bit on an executable               |
+|              `chmod g+s executable`               |               Set the setgid bit on an executable               |
+|                 `chmod a=-r file`                 |    Remove read permission for all (owner, group, and others)    |
+|         `chmod -x $(find /path -type f)`          | Remove execute permission of all files in directory and its sub |
+|     `find /path -type f -exec chmod -x {} \;`     |                  Alternative to above command                   |
+| `find /path -type f -print0 \| xargs -0 chmod -x` |                  Alternative to above command                   |
 
-> a+x will set all the x bits of the file
-> +x will set all the x bits of the file that are not present in the umask
+> a+x will set all the x bits of the file  
+> +x will set all the x bits of the file that are not present in the umask  
+> -print0 tells find to print the results separated by null characters, instead of spaces or newlines. This is useful for safely handling filenames that might contain spaces or special characters  
+> -0 tells xargs to expect input separated by null characters, and not by spaces or newlines. It ensures that xargs correctly processes the list of files provided by find
 
 ## chown, chgrp, newgrp
 

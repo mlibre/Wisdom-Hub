@@ -98,18 +98,19 @@ Certainly, here's a table of the commands you requested in markdown format, with
 
 ## find
 
-|                        Command                         |                   Short Description                    |
-| :----------------------------------------------------: | :----------------------------------------------------: |
-|                         `find`                         |            Search for files and directories            |
-|               `find path -name pattern`                |   Files with a specific name in the 'path' directory   |
-|            `find /home/user -name "*.txt"`             |  All files with the '.txt' extension in '/home/user'   |
-|            `find /etc -type d -name "conf"`            |      Locate directories named 'conf' under '/etc'      |
-|           `find /var/log -type f -mtime +7`            | Find files in '/var/log' modified more than 7 days ago |
-|          `find /usr/bin -executable -type f`           |          Find executable files in '/usr/bin'           |
-|               `find /home -user masoud`                |     Files owned by the user 'masoud' under '/home'     |
-|                `find /mnt -size +100M`                 |         Find files larger than 100MB in '/mnt'         |
-|    `find /var/log -iname "*.log" -exec ls -l {} \;`    | Files in '/var/log' with a case-insensitive name match |
-| `find /backup -type f -exec cp {} /backup_archive/ \;` |    Copy found files to '/backup_archive/' directory    |
+|                          Command                          |                   Short Description                    |
+| :-------------------------------------------------------: | :----------------------------------------------------: |
+|                          `find`                           |            Search for files and directories            |
+|                 `find path -name pattern`                 |   Files with a specific name in the 'path' directory   |
+|              `find /home/user -name "*.txt"`              |  All files with the '.txt' extension in '/home/user'   |
+|             `find /etc -type d -name "conf"`              |      Locate directories named 'conf' under '/etc'      |
+|             `find /var/log -type f -mtime +7`             | Find files in '/var/log' modified more than 7 days ago |
+|            `find /usr/bin -executable -type f`            |          Find executable files in '/usr/bin'           |
+|                 `find /home -user masoud`                 |     Files owned by the user 'masoud' under '/home'     |
+|                  `find /mnt -size +100M`                  |         Find files larger than 100MB in '/mnt'         |
+|     `find /var/log -iname "*.log" -exec ls -l {} \;`      | Files in '/var/log' with a case-insensitive name match |
+|  `find /backup -type f -exec cp {} /backup_archive/ \;`   |    Copy found files to '/backup_archive/' directory    |
+| `find ./ -type f -exec ls {} \; -exec echo "file: {}" \;` |                  Having two commands                   |
 
 ## tar, gzip, guzip, xz, unxz
 
@@ -191,23 +192,23 @@ Certainly, here's a Markdown table with centered text alignment that lists the L
 
 By default, `xargs` will process as many input items as possible in a single execution of the command.
 
-* `-n 1`: This option in xargs specifies that only one input item should be used for each execution of the command. It ensures that the command is run once for each input item.
-* `-I {}`: The -I option allows you to specify a placeholder (in this case, {}) to represent where the input item should be placed within the command. It's particularly useful when you want to insert the input item at a specific position in the command.
+* `-n 1`: This option in xargs specifies that only one input item should be used for each execution of the command. It ensures that the command is run once for each input item
+* `-I {}`: The -I option allows you to specify a placeholder (in this case, {}) to represent where the input item should be placed within the command. It also process one input item at a time
 
-|                               Command                                |                         Short Description                          |
-| :------------------------------------------------------------------: | :----------------------------------------------------------------: |
-|                               `xargs`                                |        Build and execute command lines from standard input         |
-|             `find /path -type f -print \| xargs command`             |   Execute **command** on each file found by the **find** command   |
-|                  `echo arg1 arg2 \| xargs command`                   |      Execute **command** with arguments **arg1** and **arg2**      |
-|                  `cat list.txt \| xargs -n 1 echo`                   |           Print each line of **list.txt** using **echo**           |
-|                        `ls *.txt \| xargs rm`                        |         Remove all **.txt** files in the current directory         |
-|      `find /path -type f -name "*.log" -print0 \| xargs -0 rm`       | Remove ".log" files in "/path" with handling of special characters |
-|                   `ls \| xargs -I {} mv {} {}.bak`                   |     Add ".bak" extension to all files in the current directory     |
-| `grep pattern file1 file2 \| xargs sed -i 's/pattern/replacement/g'` | Search and replace "pattern" with "replacement" in multiple files  |
-|     `echo file1 file2 file3 \| xargs -I % sh -c 'cp % /backup'`      |             Copy multiple files to a backup directory              |
-|        `find /path -type f -print \| xargs -P 4 -I % gzip %`         |     Parallel compression of files in "/path" using 4 processes     |
-|          `ls *.txt \| xargs -n 1 -I {} mv {} /destination/`          |         Move each ".txt" file to "/destination/" directory         |
-|     `echo file1 file2 \| xargs -d ' ' -I % sh -c 'touch %.txt'`      |              Create ".txt" files with specified names              |
+|                            Command                             |                         Short Description                          |
+| :------------------------------------------------------------: | :----------------------------------------------------------------: |
+|                            `xargs`                             |        Build and execute command lines from standard input         |
+|          `find /path -type f -print \| xargs command`          |   Execute **command** on each file found by the **find** command   |
+|               `echo arg1 arg2 \| xargs command`                |      Execute **command** with arguments **arg1** and **arg2**      |
+|                     `ls *.txt \| xargs rm`                     |         Remove all **.txt** files in the current directory         |
+|               `cat list.txt \| xargs -n 1 echo`                |    Print each line of **list.txt** using **echo** (one by one)     |
+|                `ls \| xargs -I {} mv {} {}.bak`                |  Add ".bak" extension to all files in this directory (one by one)  |
+|   `find /path -type f -name "*.log" -print0 \| xargs -0 rm`    | Remove ".log" files in "/path" with handling of special characters |
+| `grep pattern f1 f2 \| xargs sed -i 's/pattern/replacement/g'` | Search and replace "pattern" with "replacement" in multiple files  |
+|  `echo file1 file2 file3 \| xargs -I % sh -c 'cp % /backup'`   |             Copy multiple files to a backup directory              |
+|     `find /path -type f -print \| xargs -P 4 -I % gzip %`      |     Parallel compression of files in "/path" using 4 processes     |
+|       `ls *.txt \| xargs -n 1 -I {} mv {} /destination/`       |         Move each ".txt" file to "/destination/" directory         |
+|  `echo file1 file2 \| xargs -d ' ' -I % sh -c 'touch %.txt'`   |              Create ".txt" files with specified names              |
 
 ## grep
 
