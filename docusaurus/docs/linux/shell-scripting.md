@@ -16,7 +16,7 @@ A shell session can be either a `login shell` or a `non-login shell`.
 
 A `login shell` is the **first shell** that runs under **your user ID** when you start an interactive session, such as logging in via `tmux`, `SSH`, or `su -`. This shell reads and executes the environment configuration files `/etc/profile` and `~/.bash_profile` for `bash`. You can verify if a shell is a login shell by running `shopt login_shell`.
 
-A `non-login shell` is any shell started in an **existing session**, like a terminal in a graphical environment, a shell **inside tmux**, or a shell within another shell. These shells **do not read** the environment configuration files (`/etc/profile` or `~/.bash_profile`), but they do read the shell configuration file (`~/.bashrc`).
+A `non-login shell` is any shell started in an **existing session**, like a terminal in a graphical environment, a shell **inside tmux**, or a shell within another shell. These shells **do not read** the environment configuration files (`/etc/profile` or `~/.bash_profile`), but they do read the shell configuration file (`~/.bashrc`, `/etc/bash.bashrc`).
 
 ## Bash
 
