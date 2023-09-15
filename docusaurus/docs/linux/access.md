@@ -47,7 +47,7 @@ tags:
 
 |                 Command                 |                           Short Description                            |
 | :-------------------------------------: | :--------------------------------------------------------------------: |
-|                 `chown`                 |                      Change file owner and group                       |
+|            `chown user file`            |                       Change the owner of a file                       |
 |         `chown user:group file`         |                  Change the owner and group of a file                  |
 |     `chown -R user:group directory`     | Recursively change the owner and group of a directory and its contents |
 |       `chown -c user:group file`        |     Change the ownership, show a message if the ownership changes      |
@@ -55,7 +55,7 @@ tags:
 |       `chgrp groupname file.txt`        |        Change the group ownership of `file.txt` to `groupname`.        |
 | `chgrp -R groupname /path/to/directory` |           Recursively change group ownership to `groupname`.           |
 |  `chgrp --reference=file.txt test.txt`  |   Change group ownership of `test.txt` to match that of `file.txt`.    |
-|                `newgrp`                 |                     Change your effective group ID                     |
+|                `newgrp`                 |                Change the user primary group (default)                 |
 |             `newgrp staff`              |                      Switch to the 'staff' group                       |
 
 ## SUID, GUID
