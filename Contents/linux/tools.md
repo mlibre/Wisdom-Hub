@@ -9,6 +9,20 @@ tags:
 
 ## Shell
 
+### ble.sh
+
+Syntax highlighting and auto suggestions for bash
+
+```bash
+# https://github.com/akinomyoga/ble.sh
+git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
+make -C ble.sh install PREFIX=~/.local
+echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
+
+# Install in Manjaro
+pamac install blesh-git
+```
+
 ### Bash It
 
 ```bash
