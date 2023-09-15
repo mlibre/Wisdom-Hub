@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[863],{1344:s=>{s.exports=JSON.parse('{"label":"bash","permalink":"/Wisdom-Hub/tags/bash","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/shell-scripting","title":"Shell and Scripting","description":"Login shell vs non-login-shell","permalink":"/Wisdom-Hub/linux/shell-scripting"}]}')}}]);
