@@ -1,6 +1,5 @@
 ---
 sidebar_position: 10
-title: Other
 tags:
   - Linux
   - XDG
@@ -10,7 +9,9 @@ tags:
   - Windows 11
 ---
 
-# GRUB
+# Other
+
+## GRUB
 
 File:
 
@@ -20,15 +21,15 @@ File:
 - /boot/efi/EFI/
 - /boot/grub/x86_64-efi/
 
-## Regenerate grub.cfg
+### Regenerate grub.cfg
 
 ```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-## Fixing broken grub
+### Fixing broken grub
 
-### Easy method using Manjaro Live
+#### Easy method using Manjaro Live
 
 > Boot a live Manjaro image
 
@@ -45,7 +46,7 @@ Then run:
 update-grub
 ```
 
-### General method
+#### General method
 
 ```bash
 # Mount the file system and efi partition
@@ -65,9 +66,9 @@ nano /etc/fstab
 sudo update-grub
 ```
 
-# Autostart
+## Autostart
 
-## Init
+### Init
 
 the `init` command refers to the process initialization system. It's the first process that gets started by the kernel during system boot, and it's assigned the process `ID (PID) of 1`
 
@@ -88,7 +89,7 @@ pstree -p 1
 # systemd(1)─┬─...
 ```
 
-## Scripts and programs locations
+### Scripts and programs locations
 
 - nano .profile
 - nano /etc/profile
@@ -117,7 +118,7 @@ pstree -p 1
 - cat /usr/lib/sddm/sddm.conf.d/default.conf
 - cat /etc/sddm.conf.d/00_manjaro_settings.conf
 
-# Automatic Shutdown
+## Automatic Shutdown
 
 |      Command      |            Description            |
 | :---------------: | :-------------------------------: |
@@ -128,22 +129,22 @@ pstree -p 1
 | `shutdown -H now` |   Halt the system immediately.    |
 |   `shutdown +5`   | Shutdown the system in 5 minutes. |
 
-## Reading symlinks
+### Reading symlinks
 
 ```bash
 readlink /bin/init
 # ../lib/systemd/systemd
 ```
 
-## System Info
+### System Info
 
 ```bash
 uname -a
 ```
 
-# Performance
+## Performance
 
-## Disable Linux Watchdogs, compaction and more
+### Disable Linux Watchdogs, compaction and more
 
 ```bash
 sudo systemctl start systemd-sysctl.service
@@ -169,7 +170,7 @@ net.ipv4.tcp_tw_reuse=1
 vm.min_free_kbytes=2500000
 ```
 
-## Improve fstab, ssd, nvme performance
+### Improve fstab, ssd, nvme performance
 
 ```bash
 sudo nano /etc/fstab 
@@ -182,13 +183,13 @@ sudo nano /etc/udev/rules.d/60-ioschedulers.rules
 ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/scheduler}="none"
 ```
 
-## Disabling journaling
+### Disabling journaling
 
 ```bash
 sudo tune2fs -f -O "^has_journal" /dev/sda2
 ```
 
-## Journal Size
+### Journal Size
 
 ```bash
 sudo nano /etc/systemd/journald.conf
@@ -196,9 +197,9 @@ SystemMaxUse=100M
 sudo systemctl restart systemd-journald
 ```
 
-# Manjaro
+## Manjaro
 
-## Things to do before installing
+### Things to do before installing
 
 - Backup important data. Recovery-keys, Passwords, Postman and ...  
 
@@ -213,7 +214,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 
 - Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
 
-## Things to do after installing
+### Things to do after installing
 
 - Remove and disable unnecessary packages
 
@@ -224,7 +225,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
   sudo systemctl disable pamac-mirrorlist.service
   sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma kdeconnect vde2  qemu-common qemu-system-arm qemu-user-static-binfmt qemu-system-arm-firmware scrcpy
 
-  # or
+  ## or
 
   echo "manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma kdeconnect vde2  qemu-common qemu-system-arm qemu-user-static-binfmt qemu-system-arm-firmware scrcpy" | xargs -d " " -I {} sudo pacman --noconfirm -R {}
   ```
@@ -296,22 +297,22 @@ cat /etc/fstab
 sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 
 sudo nano /etc/sysctl.conf
-# vm.swappiness=10
+## vm.swappiness=10
 ```
 
 - Fix time difference between linux and windows
 
   ```bash
   sudo timedatectl set-local-rtc 1 --adjust-system-clock
-  # sudo timedatectl set-local-rtc 1
-  sudo ntpdate time.nist.gov # update time
+  ## sudo timedatectl set-local-rtc 1
+  sudo ntpdate time.nist.gov ## update time
   ```
 
 - Softwares
 
 ```bash
 sudo pacman -S qbittorrent firefox libreoffice-fresh meld vlc ntfs-3g  aria2 ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime
-# sudo pacman -S electrum gimp gparted firewalld clamav deluge
+## sudo pacman -S electrum gimp gparted firewalld clamav deluge
 ```
 
 - Firefox: Enable DNS over HTTPS
@@ -355,7 +356,7 @@ sudo rm /etc/xdg/autostart/print-applet.desktop
 # sudo systemctl enable --now clamav-freshclam
 ```
 
-## Apply New Configs
+### Apply New Configs
 
 ```bash
 # Default config file
@@ -371,11 +372,11 @@ sudo useradd --create-home newusername
 sudo passwd newusername
 ```
 
-# Windows 11
+## Windows 11
 
-## Make boatable usb
+### Make boatable usb
 
-## WoeUsb
+### WoeUsb
 
 ```bash
 sudo pacman -Suy p7zip python-pip python-wxpython
@@ -384,7 +385,7 @@ sudo pip3 install .
 sudo woeusb --workaround-skip-grub --target-filesystem NTFS --device ~/Win11_22H2_English_x64v1.iso  /dev/sdb
 ```
 
-## Win2USB
+### Win2USB
 
 ```bash
 https://github.com/ValdikSS/windows2usb
@@ -392,7 +393,7 @@ chmod +x windows2usb*
 ./windows2usb-0.2.4-x86_64.AppImage /dev/sdb ~/Win11_22H2_English_x64v1.iso gpt+uefintfs
 ```
 
-## Things to do after installing Windows 11
+### Things to do after installing Windows 11
 
 - Download and install all the updates
 - Enable Ransomware protection
@@ -418,9 +419,9 @@ chmod +x windows2usb*
 - wsl --install -d Ubuntu
 - Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable
 
-# Install a new os on the phone
+## Install a new os on the phone
 
-## Backup data
+### Backup data
 
 ```bash
 sudo pacman -S android-tools
@@ -428,13 +429,13 @@ sudo adb devices
 adb backup -apk -shared -all -f backup-file.ab
 ```
 
-## Restore
+### Restore
 
 ```bash
 adb restore file.ab
 ```
 
-## Enable Developer options
+### Enable Developer options
 
 - Several times clicks on the kernel tab
 - Allow OEM unlocking
@@ -443,15 +444,15 @@ adb restore file.ab
   2. Hold vol key up + down.
   3. Now in the warning message page. choose "unlocking bootloader" that will perform a factory reset
 
-## Install odin tools for Samsung >= 3.14
+### Install odin tools for Samsung >= 3.14
 
 <https://samsungodin.com/>
 
-## Install samsung driver
+### Install samsung driver
 
 <https://developer.samsung.com/android-usb-driver>
 
-## Install adb
+### Install adb
 
 <https://developer.android.com/studio/releases/platform-tools>
 
@@ -459,16 +460,16 @@ adb restore file.ab
 adb reboot download
 ```
 
-## Download TWRP
+### Download TWRP
 
 <https://www.droidthunder.com/install-twrp-recovery-on-galaxy-A10/>
 <https://twrp.me/samsung/samsunggalaxya10.html>
 
-## convert it to .md5
+### convert it to .md5
 
 <https://www.droidthunder.com/convert-img-to-tar-md5/>
 
-## Run Odin as administrator
+### Run Odin as administrator
 
 follow the instructions
 <https://www.droidthunder.com/install-twrp-recovery-on-galaxy-A10/>
