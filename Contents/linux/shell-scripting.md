@@ -97,14 +97,14 @@ echo "Hello, $name!"
 
 ### source, alias
 
-|        Command        |                 Short Description                 |
-| :-------------------: | :-----------------------------------------------: |
-|       `source`        |  Load functions into the current shell session.   |
-|  `source ~/.bashrc`   |         Reloads the user's Bash profile.          |
-| `source my_script.sh` | Executes a shell script within the current shell. |
-|        `alias`        |        Create or display command aliases.         |
-|  `alias ll='ls -l'`   |  Creates an alias 'll' for the 'ls -l' command.   |
-|    `alias c=clear`    |   Creates an alias 'c' for the 'clear' command.   |
+|        Command        |                Short Description                 |
+| :-------------------: | :----------------------------------------------: |
+|       `source`        |  Load functions into the current shell session   |
+|  `source ~/.bashrc`   |         Reloads the user's Bash profile          |
+| `source my_script.sh` | Executes a shell script within the current shell |
+|        `alias`        |        Create or display command aliases         |
+|  `alias ll='ls -l'`   |  Creates an alias 'll' for the 'ls -l' command   |
+|    `alias c=clear`    |   Creates an alias 'c' for the 'clear' command   |
 
 ### history
 
@@ -121,59 +121,7 @@ echo "Hello, $name!"
 |  `command !:0-2`  |    Executes the **command** with the first two arguments of the last command     |
 |  `command !:1-2`  | Executes the **command** with the second and third arguments of the last command |
 |  `command !:2*`   |        Executes **command** from the second arguments of the last command        |
-| `command !571:2*` |     Executes **command** from the secondof the 571st command in the history      |
-
-#### Example
-
-```bash
-# List all files in current directory
-ls -l
-# output
-# -rw-r--r--  1 mlibre mlibre    7 Sep  8 11:52 test
-# -rw-r--r--  1 mlibre mlibre    7 Sep  8 11:51 test2
-# -rw-r--r--  1 mlibre mlibre    7 Sep  8 11:52 test3
-
-# Concatenate the first two files
-cat test test2 test3
-# output
-# salam1
-# salam2
-# salam3
-
-# Concatenate the previous two files again using the history shortcut
-cat !:1-2
-# output
-# cat test test2
-# salam1
-# salam2
-
-# Concatenate the first two files mentioned in the previous command
-cat test test2 test3
-cat !:0-2
-# output
-# cat cat test test2
-# cat: cat: No such file or directory
-# salam1
-# salam2
-
-# Concatenate the second file mentioned in the previous command (file2.txt)
-cat test test2 test3
-cat !:2*
-# output
-# cat test2 test3
-# salam2
-# salam3
-
-history 5
-# 598  ls -l file3.txt'
-# 599  ls -l test3 
-# 600  cat test test2 test3
-# Concatenate the second argument of the 599st command in your bash history, which is 'file3.txt'
-cat !599:2*
-# output
-# cat test3
-# salam3
-```
+|  `some !571:2*`   |   Executes **some** from the second arguments of 571st command in the history    |
 
 ### Command types
 
@@ -191,11 +139,9 @@ type ssh
 echo $PS1
 
 PS1='$(if [ $? -eq 0 ]; then echo -e "\[\033[42m\] \[\033[0m\]"; else echo -e "\[\033[41m\] \[\033[0m\]"; fi) \[\033[1;32m\]$(if [ $(jobs | wc -l) -gt 0 ]; then echo -n "\j "; fi)\[\033[1;36m\]\u\[\033[0m\] \[\033[1;33m\]\w\[\033[0m\] \[\033[1;34m\]$(if [ $(date +%H) -ge 6 -a $(date +%H) -lt 18 ]; then echo -n "☀️"; else echo -n "🌙"; fi)\[\033[0m\] '
-```
 
-```bash
+# you may put your PS1 in .bashrc
 nano .bashrc
-# put your PS1 in the last line
 ```
 
 ### Case-insensitive Auto completion
