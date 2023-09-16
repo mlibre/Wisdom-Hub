@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[5596],{9592:e=>{e.exports=JSON.parse('{"label":"Manjaro","permalink":"/Wisdom-Hub/tags/manjaro","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/other","title":"Other","description":"GRUB","permalink":"/Wisdom-Hub/linux/other"}]}')}}]);
