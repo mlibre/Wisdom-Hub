@@ -165,3 +165,12 @@ sudo pamac install genymotion
 curl https://oshi.at -F f=@/home/true/backup.tar.gz -F expire=5 minutes
 curl -F "file=@/home/mlibre/Downloads/backup.tar.gz" "https://file.io/?expires=1w"
 ```
+
+## Open Interpreter
+
+```bash
+python -m venv myvirtenv
+source myvirtenv/bin/activate
+pip install open-interpreter
+interpreter --model tiiuae/falcon-180B
+```
