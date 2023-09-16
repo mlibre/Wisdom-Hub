@@ -17,8 +17,8 @@ tags:
 |       `lsblk -af`        | all devices + empty ones with infomration |
 |   `sudo blkid -o list`   | List devices in a machine-readable format |
 |    `blkid /dev/sda1`     |   Retrieve information about /dev/sda1    |
-|        `fdisk -l`        |       List partitions on all disks        |
-|   `fdisk -l /dev/sdb`    |        List partitions on /dev/sdb        |
+|     `sudo fdisk -l`      |       List partitions on all disks        |
+| `sudo fdisk -l /dev/sdb` |        List partitions on /dev/sdb        |
 |  `sudo fdisk /dev/sda`   |         Launch fdisk for /dev/sda         |
 |         `gdisk`          |       GPT disk partitioning utility       |
 |  `sudo gdisk /dev/sda`   |         Launch gdisk for /dev/sda         |
