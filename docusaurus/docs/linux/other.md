@@ -1,5 +1,6 @@
 ---
 sidebar_position: 10
+title: Other
 tags:
   - Linux
   - XDG
