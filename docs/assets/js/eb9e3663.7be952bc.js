@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[9990],{2128:e=>{e.exports=JSON.parse('{"label":"Windows 11","permalink":"/Wisdom-Hub/tags/windows-11","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/other","title":"GRUB","description":"File:","permalink":"/Wisdom-Hub/linux/other"}]}')}}]);

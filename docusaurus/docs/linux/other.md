@@ -1,10 +1,12 @@
 ---
-sidebar_position: 16
+sidebar_position: 10
 tags:
   - Linux
   - XDG
   - Automatic
   - Shutdown
+  - Manjaro
+  - Windows 11
 ---
 
 # GRUB
@@ -193,6 +195,228 @@ SystemMaxUse=100M
 sudo systemctl restart systemd-journald
 ```
 
+# Manjaro
+
+## Things to do before installing
+
+- Backup important data. Recovery-keys, Passwords, Postman and ...  
+
+```bash
+cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/linux/caches
+cp $HISTFILE /run/media/mlibre/D/linux/caches/
+sudo cp -r /etc /run/media/mlibre/D/caches/
+
+# Or full backup
+sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/D/Linux/backup/
+```
+
+- Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
+
+## Things to do after installing
+
+- Remove and disable unnecessary packages
+
+  ```bash
+  echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
+  sudo systemctl disable pamac-daemon
+  sudo systemctl disable pamac-mirrorlist.timer
+  sudo systemctl disable pamac-mirrorlist.service
+  sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma kdeconnect vde2  qemu-common qemu-system-arm qemu-user-static-binfmt qemu-system-arm-firmware scrcpy
+
+  # or
+
+  echo "manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma kdeconnect vde2  qemu-common qemu-system-arm qemu-user-static-binfmt qemu-system-arm-firmware scrcpy" | xargs -d " " -I {} sudo pacman --noconfirm -R {}
+  ```
+
+- Pacman downloads parallel
+
+  ```bash
+  sudo nano /etc/pacman.conf
+  ParallelDownloads = 5
+  ```
+  
+- Upgrade
+
+  ```bash
+  pamac update --force-refresh
+  pamac update -a
+  sudo pacman-mirrors --fasttrack
+  sudo pacman -Syyuu
+  sudo pacman -S telegram-desktop unzip thermald ntfs-3g
+  sudo systemctl enable --now thermald.service
+  pamac install visual-studio-code-bin onlyoffice-bin
+  ```
+
+- Import Data
+
+  ```bash
+  cp -r /run/media/mlibre/H/OS/caches/TelegramDesktop /home/mlibre/.local/share/
+  ```
+
+- Make an XDG autostart script for gamma adjustment
+- Put the gamma script in the `.bashrc` and `.zshrc` as well
+
+- Install ProtonVPN, mailspring, shadowsocks, Nekoray
+  
+  ```bash
+  sudo pamac install shadowsocks-rust-bin
+  pamac build protonvpn
+  pamac build mailspring
+  ```
+
+- Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disabsetle mail signature.
+
+- Install mlocate
+
+  ```bash
+  sudo pacman -S mlocate
+  sudo updatedb
+  ```
+  
+- KDE Settings -> Disable Mouse acceleration
+- KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver, Review background services and Autostarts.
+- KDE Settings -> Appearance -> Theme -> Breeze Dark, Breath Dark
+- KDE Settings -> Appearance -> Font -> Enabled Anti-Aliasing, RGB, Slight. all +1 PT
+- KDE Settings -> Workspace -> Search -> Disable Web Search Keywords
+- KDE Settings -> Workspace Behavior -> Activities -> Privacy -> Dont remember soft
+- KDE Settings -> Search for kRunner -> settings -> uncheck all
+
+- Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
+- Software Center: Disable automatic updates, Add AUR support
+- Remove Virtual Desktops
+- Make a Swapfile
+
+```bash
+sudo dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+cat /etc/fstab
+sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
+
+sudo nano /etc/sysctl.conf
+# vm.swappiness=10
+```
+
+- Fix time difference between linux and windows
+
+  ```bash
+  sudo timedatectl set-local-rtc 1 --adjust-system-clock
+  # sudo timedatectl set-local-rtc 1
+  sudo ntpdate time.nist.gov # update time
+  ```
+
+- Softwares
+
+```bash
+sudo pacman -S qbittorrent firefox libreoffice-fresh meld vlc ntfs-3g  aria2 ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime
+# sudo pacman -S electrum gimp gparted firewalld clamav deluge
+```
+
+- Firefox: Enable DNS over HTTPS
+- Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
+- Konsole config:
+  - Font: Monospace 13pt
+  - Theme: Breath (customized, a bit darker)
+  - Shell: Manjaro zsh
+
+- Steam: Allow auto-update only between 1AM - 11AM
+
+- Performance
+
+```bash
+sudo systemctl disable bluetooth.service
+sudo systemctl disable tor.service
+sudo systemctl disable samba
+sudo systemctl disable cups
+balooctl disable && balooctl purge
+sudo rm /etc/cron.d/0hourly
+sudo rm /etc/xdg/autostart/baloo_file.desktop
+sudo rm /etc/xdg/autostart/pamac-tray-budgie.desktop
+sudo rm /etc/xdg/autostart/pamac-tray.desktop
+sudo rm /etc/xdg/autostart/msm_kde_notifier.desktop
+sudo rm /etc/xdg/autostart/org.gnome.SettingsDaemon*
+sudo rm /etc/xdg/autostart/print-applet.desktop
+
+# sudo systemctl enable firewalld
+# sudo systemctl restart firewalld
+
+# sudo firewall-cmd --permanent --add-service=https
+# sudo firewall-cmd --permanent --add-port=30303/tcp
+# sudo firewall-cmd --permanent --add-port=30303/udp
+
+# sudo systemctl restart --now clamav-daemon
+# sudo freshclam
+# clamscan --recursive --infected /home
+# sudo systemctl disable --now clamav-freshclam
+# sudo systemctl disable --now clamav-daemon
+# sudo systemctl enable --now clamav-daemon
+# sudo systemctl enable --now clamav-freshclam
+```
+
+## Apply New Configs
+
+```bash
+# Default config file
+ls -laR /etc/skel
+
+# apply default configs
+# method 1
+cp -rf /etc/skel/.* ~/
+rm -f ~/.config/dconf/user
+
+# method 2
+sudo useradd --create-home newusername
+sudo passwd newusername
+```
+
+# Windows 11
+
+## Make boatable usb
+
+## WoeUsb
+
+```bash
+sudo pacman -Suy p7zip python-pip python-wxpython
+git clone https://github.com/WoeUSB/WoeUSB-ng.git
+sudo pip3 install .
+sudo woeusb --workaround-skip-grub --target-filesystem NTFS --device ~/Win11_22H2_English_x64v1.iso  /dev/sdb
+```
+
+## Win2USB
+
+```bash
+https://github.com/ValdikSS/windows2usb
+chmod +x windows2usb*
+./windows2usb-0.2.4-x86_64.AppImage /dev/sdb ~/Win11_22H2_English_x64v1.iso gpt+uefintfs
+```
+
+## Things to do after installing Windows 11
+
+- Download and install all the updates
+- Enable Ransomware protection
+- Download DimScreen, Copy it to the download folder. Open. click on the settings. set brightness to 20%. Make a shortcut to the desktop
+- search for gamma calibration in windows settings. set it to minimum
+- Adjust date and time: auto. Timezone tehran +3:30
+- Downloading updates active hours: 24 hours format. 1->11
+- Disable all data usages settings in privacy and security
+- uninstall mail, teams, one drive. xbox, facebook, microsoft todo, sticky notes, tips, weather
+- Install firefox and login
+- Install protonVPN
+- personalize: sunrise
+- network connection: metered connection
+- Display: 3840x2160, 200%
+- Steam: add your games' location to the Games' folder library. make it as default
+- Steam: If your games are in a `NTFS` file system, follow [this](https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows) to make game compatible with Linux.
+- Pause windows updates for 5 weeks
+- Check windows startups apps
+- App store: disable automatic update
+- Leave from "AMD user experience program". AMD settings -> last tab -> last option
+- windows features: WSL, virtual machine, hyper-v (for android and linux apps)
+- wsl --update
+- wsl --install -d Ubuntu
+- Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable
+
 # Install a new os on the phone
 
 ## Backup data
@@ -247,50 +471,3 @@ adb reboot download
 
 follow the instructions
 <https://www.droidthunder.com/install-twrp-recovery-on-galaxy-A10/>
-
-# Windows 11
-
-## Make boatable usb
-
-## WoeUsb
-
-```bash
-sudo pacman -Suy p7zip python-pip python-wxpython
-git clone https://github.com/WoeUSB/WoeUSB-ng.git
-sudo pip3 install .
-sudo woeusb --workaround-skip-grub --target-filesystem NTFS --device ~/Win11_22H2_English_x64v1.iso  /dev/sdb
-```
-
-## Win2USB
-
-```bash
-https://github.com/ValdikSS/windows2usb
-chmod +x windows2usb*
-./windows2usb-0.2.4-x86_64.AppImage /dev/sdb ~/Win11_22H2_English_x64v1.iso gpt+uefintfs
-```
-
-## Things to do after installing Windows 11
-
-- Download and install all the updates
-- Enable Ransomware protection
-- Download DimScreen, Copy it to the download folder. Open. click on the settings. set brightness to 20%. Make a shortcut to the desktop
-- search for gamma calibration in windows settings. set it to minimum
-- Adjust date and time: auto. Timezone tehran +3:30
-- Downloading updates active hours: 24 hours format. 1->11
-- Disable all data usages settings in privacy and security
-- uninstall mail, teams, one drive. xbox, facebook, microsoft todo, sticky notes, tips, weather
-- Install firefox and login
-- Install protonVPN
-- personalize: sunrise
-- network connection: metered connection
-- Display: 3840x2160, 200%
-- Steam: add your games' location to the Games' folder library. make it as default
-- Steam: If your games are in a `NTFS` file system, follow [this](https://github.com/ValveSoftware/Proton/wiki/Using-a-NTFS-disk-with-Linux-and-Windows) to make game compatible with Linux.
-- Pause windows updates for 5 weeks
-- Check windows startups apps
-- App store: disable automatic update
-- Leave from "AMD user experience program". AMD settings -> last tab -> last option
-- windows features: WSL, virtual machine, hyper-v (for android and linux apps)
-- wsl --update
-- wsl --install -d Ubuntu
-- Disable Error Reporting: WIN+R -> services.msc -> Windows Error Reporting Service -> Properties -> disable

@@ -17,13 +17,12 @@ This repository is organized into several sections, each containing tutorials fo
 * [Access](./access.md)
 * [Disk](./disk-file.md)
 * [Systemd](./systemd.md)
-* [Manjaro](./manjaro.md)
-* [Tools](./tools.md)
-* [Multimedia](./multimedia.md)
 * [Logging and Monitoring](./logging-monitoring.md)
 * [TextOps](./textOps.md)
 * [Shell-scripting](./shell-scripting.md)
 * [Processes](./processes.md)
+* [Multimedia](./multimedia.md)
+* [Tools](./tools.md)
 * [Other](./other.md)
 
 ## My ETH Address
