@@ -20,6 +20,7 @@ tags:
 |                           `systemd-analyze`                           |          Measure system startup time          |
 |                        `systemd-analyze blame`                        |      Identify startup delay contributors      |
 |                 `systemctl list-units --type=target`                  |                Systemd Targets                |
+|            `systemctl list-unit-files --type target --all`            |  all target unit files, regardless of state   |
 |                      `systemctl --state=failed`                       |               List failed units               |
 |               `systemctl --state=active --type=target`                |              List active targets              |
 | `sudo systemctl list-unit-files --type=service --state=enabled --all` |        List all enabled service units         |
@@ -34,14 +35,16 @@ tags:
 |                        `systemctl soft-reboot`                        | Reboot the system without touching the kernel |
 |                        `systemctl status PID`                         |     Show the status of a specific process     |
 
+> `list-units` shows only loaded units by systemd, while `list-unit-files` displays all available unit files, loaded or not
+
 # How system boots
 
 1. When the system boots up, the firmware (BIOS or UEFI) initializes the hardware and starts the bootloader (like GRUB 2)
-2. The bootloader then loads both the Linux kernel and an initial RAM-based filesystem (initramfs) into memory
+2. The bootloader then loads both the Linux kernel and an initial RAM-based filesystem (`initramfs`) into memory
 3. The `initramfs` contains a small executable called `init`
 4. This `init` executable is actually a version of **systemd**, which performs necessary actions such as loading appropriate filesystem drivers, handling device events with udev, ...
 5. Once the real root filesystem is found, checked, and mounted, a second instance of **systemd** takes over as the main system and service manager, and this instance is what gets the **PID 1**
-6. This systemd instance starts other system services like `systemd-journald` a user manager instance for each logged-in user. These user manager instances are started as `user@UID.service`, where UID is the numerical user ID of the logged-in user. These instances use the same executable as the system manager, but start a different set of units specific to each user
+6. This systemd instance starts other system services like `systemd-journald` and a user manager instance for each logged-in user. These user manager instances are started as `user@UID.service`, where UID is the numerical user ID of the logged-in user. These instances use the same executable as the system manager, but start a different set of units specific to each user
 7. Each `systemd --user` instance manages a hierarchy of units specific to that user.
 
 > The process of starting a user manager instance in systemd is handled through the `pam_systemd` module. This module is responsible for registering user sessions with the systemd login manager, `systemd-logind.service`
