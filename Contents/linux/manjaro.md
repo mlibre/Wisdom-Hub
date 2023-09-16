@@ -14,10 +14,10 @@ tags:
 ```bash
 cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/caches
 cp $HISTFILE /run/media/mlibre/D/caches/
-rsync -aAXHv ~/my_data/ /run/media/mlibre/H/OS/my_data/
 sudo cp -r /etc /run/media/mlibre/D/caches/
-# ./data_rsync.bash
-# Copy systemctl units
+
+# Or full backup
+sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/D/Linux/backup/
 ```
 
 * Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
@@ -32,6 +32,10 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
   sudo systemctl disable pamac-mirrorlist.timer
   sudo systemctl disable pamac-mirrorlist.service
   sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma kdeconnect vde2  qemu-common qemu-system-arm qemu-user-static-binfmt qemu-system-arm-firmware scrcpy
+
+  # or
+
+  echo "manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma kdeconnect vde2  qemu-common qemu-system-arm qemu-user-static-binfmt qemu-system-arm-firmware scrcpy" | xargs -d " " -I {} sudo pacman --noconfirm -R {}
   ```
 
 * Pacman downloads parallel
@@ -49,7 +53,7 @@ sudo cp -r /etc /run/media/mlibre/D/caches/
   sudo pacman -Syyuu
   sudo pacman -S telegram-desktop unzip thermald ntfs-3g
   sudo systemctl enable --now thermald.service
-  pamac install visual-studio-code-bin onlyoffice-bin microsoft-edge-stable-bin
+  pamac install visual-studio-code-bin onlyoffice-bin
   ```
 
 * Import Data
