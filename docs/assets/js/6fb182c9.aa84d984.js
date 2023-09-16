@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[5596],{9592:a=>{a.exports=JSON.parse('{"label":"Manjaro","permalink":"/Wisdom-Hub/tags/manjaro","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/manjaro","title":"Manjaro","description":"Things to do before installing","permalink":"/Wisdom-Hub/linux/manjaro"}]}')}}]);

@@ -5,7 +5,7 @@ tags:
   - Manjaro
 ---
 
-# Manjaro/Arch Linux
+# Manjaro
 
 ## Things to do before installing
 

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[2570],{3346:s=>{s.exports=JSON.parse('{"label":"ln","permalink":"/Wisdom-Hub/tags/ln","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/disk-file","title":"Disk","description":"fdisk, gdisk, parted, mkfs, mkswap, lsblk","permalink":"/Wisdom-Hub/linux/disk-file"}]}')}}]);
