@@ -12,8 +12,8 @@ tags:
 * Backup important data. Recovery-keys, Passwords, Postman and ...  
 
 ```bash
-cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/caches
-cp $HISTFILE /run/media/mlibre/D/caches/
+cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/linux/caches
+cp $HISTFILE /run/media/mlibre/D/linux/caches/
 sudo cp -r /etc /run/media/mlibre/D/caches/
 
 # Or full backup
@@ -49,6 +49,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 
   ```bash
   pamac update --force-refresh
+  pamac update -a
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
   sudo pacman -S telegram-desktop unzip thermald ntfs-3g
@@ -60,8 +61,6 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 
   ```bash
   cp -r /run/media/mlibre/H/OS/caches/TelegramDesktop /home/mlibre/.local/share/
-  cp -r /run/media/mlibre/H/OS/my_data/ ~/my_data
-  # ./import_data.bash
   ```
 
 * Make an XDG autostart script for gamma adjustment
@@ -95,13 +94,6 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 * Pin Firefox, Terminal, ProtonVPN, Kate and VSCode to the panel
 * Software Center: Disable automatic updates, Add AUR support
 * Remove Virtual Desktops
-* Remembers sudo password
-
-  ```bash
-  sudo nano /etc/sudoers
-  Defaults        timestamp_timeout=300 # 5 hours
-  ```
-
 * Make a Swapfile
 
 ```bash
@@ -147,7 +139,7 @@ sudo systemctl disable bluetooth.service
 sudo systemctl disable tor.service
 sudo systemctl disable samba
 sudo systemctl disable cups
-balooctl disable && balooctl purge &&
+balooctl disable && balooctl purge
 sudo rm /etc/cron.d/0hourly
 sudo rm /etc/xdg/autostart/baloo_file.desktop
 sudo rm /etc/xdg/autostart/pamac-tray-budgie.desktop
@@ -172,12 +164,9 @@ sudo rm /etc/xdg/autostart/print-applet.desktop
 # sudo systemctl enable --now clamav-freshclam
 ```
 
-## Updating Manjaro
+## Apply New Configs
 
 ```bash
-sudo pacman -Syuu
-pamac upgrade -a
-
 # Default config file
 ls -laR /etc/skel
 
