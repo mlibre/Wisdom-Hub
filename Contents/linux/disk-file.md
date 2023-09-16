@@ -6,6 +6,8 @@ tags:
   - Disk
   - Rsync
   - Restore
+  - ln
+  - mount
 ---
 
 # Disk
@@ -62,6 +64,16 @@ tags:
 | `ln source_file hard_link_name` |         Create a hard link to a file          |
 
 ## Rsync
+
+|   Option   |                  Description                  |
+| :--------: | :-------------------------------------------: |
+|    `-a`    |  Archive mode (recursive, permissions, etc.)  |
+|    `-v`    |                Verbose output                 |
+|    `-z`    |         Compress data during transfer         |
+| `--delete` | Delete extraneous files on the receiving side |
+|    `-A`    |     Preserve ACLs (Access Control Lists)      |
+|    `-X`    |         Preserve extended attributes          |
+|    `-H`    |              Preserve hard links              |
 
 ```bash
 # Backup local directory to another location
