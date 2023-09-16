@@ -6,6 +6,7 @@ tags:
   - syslog
   - ring buffer
   - journalctl
+  - monitoring
 ---
 
 # Log

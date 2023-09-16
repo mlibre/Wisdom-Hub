@@ -17,7 +17,7 @@ This repository is organized into several sections, each containing tutorials fo
 * [Access and Permission](./access.md)
 * [Disk and File](./disk-file.md)
 * [Systemd](./systemd.md)
-* [Logging and Monitoring](./logging-monitoring.md)
+* [Log and Monitoring](./log-monitoring.md)
 * [TextOps](./textOps.md)
 * [Shell-scripting](./shell-scripting.md)
 * [Processes](./processes.md)
