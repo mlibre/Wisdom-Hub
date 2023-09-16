@@ -26,7 +26,7 @@ tags:
 | `head -n 5 file.txt` |                    Display first 5 lines                     |
 |   `less file.txt`    |                  View file with pagination                   |
 |   `more file.txt`    |                    View file page by page                    |
-| `ls \| tee list.txt` | Redirect the **ls** output to both terminal and **list.txt** |
+|  ls \| tee list.txt  | Redirect the **ls** output to both terminal and **list.txt** |
 
 ## split
 
@@ -51,19 +51,19 @@ tags:
 
 ## sort, nl, shuf, uniq
 
-|             Command             |              Short Description              |
-| :-----------------------------: | :-----------------------------------------: |
-|         `sort file.txt`         |          Sort lines in a text file          |
-|          `nl file.txt`          |           Number lines in a file            |
-|       `nl -b a file.txt`        |       Number lines, showing all lines       |
-|      `nl -s "," file.txt`       |       Number lines, custom separator        |
-|         `shuf file.txt`         |           Shuffle lines in a file           |
-|       `sort -r file.txt`        |         Sort lines in reverse order         |
-|       `sort -n file.txt`        |           Sort lines numerically            |
-|      `shuf -n 5 file.txt`       |      Shuffle and display only 5 lines       |
-|         `uniq file.txt`         |       Display unique lines in a file        |
-|       `uniq -c file.txt`        |  Count and display unique lines with count  |
-| `cat file.txt \| tr -s ' ' ','` | Translate spaces to commas in a text stream |
+|            Command            |              Short Description              |
+| :---------------------------: | :-----------------------------------------: |
+|        `sort file.txt`        |          Sort lines in a text file          |
+|         `nl file.txt`         |           Number lines in a file            |
+|      `nl -b a file.txt`       |       Number lines, showing all lines       |
+|     `nl -s "," file.txt`      |       Number lines, custom separator        |
+|        `shuf file.txt`        |           Shuffle lines in a file           |
+|      `sort -r file.txt`       |         Sort lines in reverse order         |
+|      `sort -n file.txt`       |           Sort lines numerically            |
+|     `shuf -n 5 file.txt`      |      Shuffle and display only 5 lines       |
+|        `uniq file.txt`        |       Display unique lines in a file        |
+|      `uniq -c file.txt`       |  Count and display unique lines with count  |
+| cat file.txt \| tr -s ' ' ',' | Translate spaces to commas in a text stream |
 
 ## diff, sha256sum, cp, mv, rm
 
@@ -93,7 +93,7 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |    `dd if=/dev/zero of=zerofile bs=1M count=100`     |                 Create a 100MB zero-filled file                 |
 |    `dd if=input of=output bs=512 count=1 skip=2`     | Copy 512 bytes from 'input' to 'output' starting from byte 1024 |
 |   `dd if=/dev/random of=randomfile bs=1M count=1`    |           Generate a 1MB file filled with random data           |
-|        `dd if=input \| gzip > backup.dd.gzip`        | Compress 'input' data using 'gzip' and save as 'backup.dd.gzip' |
+|         dd if=input \| gzip > backup.dd.gzip         | Compress 'input' data using 'gzip' and save as 'backup.dd.gzip' |
 | `dd if=ubuntu.iso of=/dev/sdX bs=4M status=progress` |         Write 'ubuntu.iso' to a USB drive ('/dev/sdX')          |
 
 ## find
@@ -172,19 +172,19 @@ Certainly, here's a Markdown table with centered text alignment that lists the L
 
 ## pipe
 
-|        Command         |                     Description                      |
-| :--------------------: | :--------------------------------------------------: |
-|          `\|`          |     Redirect output from one command to another.     |
-| `command1 \| command2` | Execute `command1` and pass its output to `command2` |
-|   `ls \| grep .txt`    |    List and filter files with a `.txt` extension     |
-| `ps aux \| grep nginx` |     List and filter processes related to `nginx`     |
-| `cat file.txt \| less` |     Display file contents using the `less` pager     |
-| `dmesg \| tail -n 10`  |       Display the last 10 kernel log messages        |
-|    `ls \| sort -r`     |       List files in reverse alphabetical order       |
-| `find /home \| wc -l`  |        Count files and directories in `/home`        |
-|  `du -h \| sort -rh`   |     List disk usage, human-readable, and sorted      |
-|  `ls \| tee file.txt`  |       List files and save output to `file.txt`       |
-|   `ls \| head -n 5`    |   List the first 5 files in the current directory    |
+|       Command        |                     Description                      |
+| :------------------: | :--------------------------------------------------: |
+|          \|          |     Redirect output from one command to another.     |
+| command1 \| command2 | Execute `command1` and pass its output to `command2` |
+|   ls \| grep .txt    |    List and filter files with a `.txt` extension     |
+| ps aux \| grep nginx |     List and filter processes related to `nginx`     |
+| cat file.txt \| less |     Display file contents using the `less` pager     |
+| dmesg \| tail -n 10  |       Display the last 10 kernel log messages        |
+|    ls \| sort -r     |       List files in reverse alphabetical order       |
+| find /home \| wc -l  |        Count files and directories in `/home`        |
+|  du -h \| sort -rh   |     List disk usage, human-readable, and sorted      |
+|  ls \| tee file.txt  |       List files and save output to `file.txt`       |
+|   ls \| head -n 5    |   List the first 5 files in the current directory    |
 
 ## xargs
 
@@ -195,20 +195,20 @@ By default, `xargs` will process as many input items as possible in a single exe
 * `-n 1`: This option in xargs specifies that only one input item should be used for each execution of the command. It ensures that the command is run once for each input item
 * `-I {}`: The -I option allows you to specify a placeholder (in this case, {}) to represent where the input item should be placed within the command. It also process one input item at a time
 
-|                            Command                             |                         Short Description                          |
-| :------------------------------------------------------------: | :----------------------------------------------------------------: |
-|                            `xargs`                             |        Build and execute command lines from standard input         |
-|          `find /path -type f -print \| xargs command`          |   Execute **command** on each file found by the **find** command   |
-|               `echo arg1 arg2 \| xargs command`                |      Execute **command** with arguments **arg1** and **arg2**      |
-|                     `ls *.txt \| xargs rm`                     |         Remove all **.txt** files in the current directory         |
-|               `cat list.txt \| xargs -n 1 echo`                |    Print each line of **list.txt** using **echo** (one by one)     |
-|                `ls \| xargs -I {} mv {} {}.bak`                |  Add ".bak" extension to all files in this directory (one by one)  |
-|   `find /path -type f -name "*.log" -print0 \| xargs -0 rm`    | Remove ".log" files in "/path" with handling of special characters |
-| `grep pattern f1 f2 \| xargs sed -i 's/pattern/replacement/g'` | Search and replace "pattern" with "replacement" in multiple files  |
-|  `echo file1 file2 file3 \| xargs -I % sh -c 'cp % /backup'`   |             Copy multiple files to a backup directory              |
-|     `find /path -type f -print \| xargs -P 4 -I % gzip %`      |     Parallel compression of files in "/path" using 4 processes     |
-|       `ls *.txt \| xargs -n 1 -I {} mv {} /destination/`       |         Move each ".txt" file to "/destination/" directory         |
-|  `echo file1 file2 \| xargs -d ' ' -I % sh -c 'touch %.txt'`   |              Create ".txt" files with specified names              |
+|                           Command                            |                         Short Description                          |
+| :----------------------------------------------------------: | :----------------------------------------------------------------: |
+|                           `xargs`                            |        Build and execute command lines from standard input         |
+|          find /path -type f -print \| xargs command          |   Execute **command** on each file found by the **find** command   |
+|               echo arg1 arg2 \| xargs command                |      Execute **command** with arguments **arg1** and **arg2**      |
+|                     ls *.txt \| xargs rm                     |         Remove all **.txt** files in the current directory         |
+|               cat list.txt \| xargs -n 1 echo                |    Print each line of **list.txt** using **echo** (one by one)     |
+|                ls \| xargs -I {} mv {} {}.bak                |  Add ".bak" extension to all files in this directory (one by one)  |
+|   find /path -type f -name "*.log" -print0 \| xargs -0 rm    | Remove ".log" files in "/path" with handling of special characters |
+| grep pattern f1 f2 \| xargs sed -i 's/pattern/replacement/g' | Search and replace "pattern" with "replacement" in multiple files  |
+|  echo file1 file2 file3 \| xargs -I % sh -c 'cp % /backup'   |             Copy multiple files to a backup directory              |
+|     find /path -type f -print \| xargs -P 4 -I % gzip %      |     Parallel compression of files in "/path" using 4 processes     |
+|       ls *.txt \| xargs -n 1 -I {} mv {} /destination/       |         Move each ".txt" file to "/destination/" directory         |
+|  echo file1 file2 \| xargs -d ' ' -I % sh -c 'touch %.txt'   |              Create ".txt" files with specified names              |
 
 ## grep
 

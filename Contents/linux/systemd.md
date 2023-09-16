@@ -23,7 +23,7 @@ tags:
 |                      `systemctl --state=failed`                       |               List failed units               |
 |               `systemctl --state=active --type=target`                |              List active targets              |
 | `sudo systemctl list-unit-files --type=service --state=enabled --all` |        List all enabled service units         |
-|           `sudo systemctl list-unit-files \| grep enabled`            |         List enabled units using grep         |
+|            sudo systemctl list-unit-files \| grep enabled             |         List enabled units using grep         |
 |                     `systemctl is-system-running`                     |         Overall status of the system          |
 |                       `systemctl daemon-reload`                       |  Reload systemd configuration and unit files  |
 |                    `journalctl -u example.service`                    |         View logs for a specific unit         |

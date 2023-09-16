@@ -10,21 +10,21 @@ tags:
 
 ## ps, bg, fg, jobs, &, ctrl+comb
 
-|             Command             |                    Short Description                    |
-| :-----------------------------: | :-----------------------------------------------------: |
-|            `ps -ef`             |       List all processes with ppid and exec path        |
-| `ps aux \| grep <process_name>` |                Filter processes by name                 |
-|          `bg <job_id>`          |    Resume a specific suspended job in the background    |
-|          `fg <job_id>`          |    Bring a specific background job to the foreground    |
-|            `jobs -l`            |          List background jobs with process IDs          |
-|        `jobs %<job_id>`         |        Display information about a specific job         |
-|     `systemctl status 1234`     |  Show the status of a specific systemd unit by its PID  |
-|          `command1 &`           |            Run `command1` in the background             |
-|             `nohup`             | Run a command that keeps running even after you log out |
-|        `nohup command1`         |  Run `command1` and keep it running after logging out   |
-|            `ctrl+c`             |                   Interrupt a process                   |
-|            `ctrl+z`             |                    Suspend a process                    |
-|            `ctrl+l`             |                Clear the terminal screen                |
+|            Command            |                    Short Description                    |
+| :---------------------------: | :-----------------------------------------------------: |
+|           `ps -ef`            |       List all processes with ppid and exec path        |
+| ps aux \| grep <process_name> |                Filter processes by name                 |
+|         `bg <job_id>`         |    Resume a specific suspended job in the background    |
+|         `fg <job_id>`         |    Bring a specific background job to the foreground    |
+|           `jobs -l`           |          List background jobs with process IDs          |
+|       `jobs %<job_id>`        |        Display information about a specific job         |
+|    `systemctl status 1234`    |  Show the status of a specific systemd unit by its PID  |
+|         `command1 &`          |            Run `command1` in the background             |
+|            `nohup`            | Run a command that keeps running even after you log out |
+|       `nohup command1`        |  Run `command1` and keep it running after logging out   |
+|           `ctrl+c`            |                   Interrupt a process                   |
+|           `ctrl+z`            |                    Suspend a process                    |
+|           `ctrl+l`            |                Clear the terminal screen                |
 
 ## kill, pkill, killall
 
@@ -43,12 +43,12 @@ tags:
 
 # pgrep
 
-|                   Command                   |                      Short Description                       |
-| :-----------------------------------------: | :----------------------------------------------------------: |
-|                   `pgrep`                   |          List processes by name or other attributes          |
-|                `pgrep sshd`                 |             List processes with the name 'sshd'              |
-|         `pgrep nginx \| xargs kill`         | processes with 'nginx' in their name, send a SIGTERM to them |
-| `pgrep -u masoud \| xargs -I {} kill -9 {}` |        and forcefully terminate prccess with "masoud"        |
+|                  Command                  |                      Short Description                       |
+| :---------------------------------------: | :----------------------------------------------------------: |
+|                  `pgrep`                  |          List processes by name or other attributes          |
+|               `pgrep sshd`                |             List processes with the name 'sshd'              |
+|         pgrep nginx \| xargs kill         | processes with 'nginx' in their name, send a SIGTERM to them |
+| pgrep -u masoud \| xargs -I {} kill -9 {} |        and forcefully terminate prccess with "masoud"        |
 
 ## free, uptime, df
 
