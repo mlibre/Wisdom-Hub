@@ -14,8 +14,8 @@ Welcome to my Linux tutorials!
 
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
-* [Access](./access.md)
-* [Disk](./disk-file.md)
+* [Access and Permission](./access.md)
+* [Disk and File](./disk-file.md)
 * [Systemd](./systemd.md)
 * [Logging and Monitoring](./logging-monitoring.md)
 * [TextOps](./textOps.md)
