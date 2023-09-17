@@ -11,55 +11,67 @@ tags:
 
 # TextOps
 
-## cat, zcat, less, more, head, tail, ccat, bat, tee
+## cat, zcat, less, more, head, tail, ccat, bat
 
-|       Command        |                      Short Description                       |
-| :------------------: | :----------------------------------------------------------: |
-|    `cat file.txt`    |                   Concatenate and display                    |
-|  `cat -n file.txt`   |                  Display with line numbers                   |
-|    `zcat file.gz`    |                  Display compressed content                  |
-|   `ccat file.txt`    |                   Colorize and concatenate                   |
-|    `bat file.txt`    |                    Cat clone with syntax                     |
-|   `tail file.txt`    |             Display last N line (10 by default)              |
-|  `tail -f file.txt`  |                Continuously display new lines                |
-|   `head file.txt`    |            Display first N lines (10 by default)             |
-| `head -n 5 file.txt` |                    Display first 5 lines                     |
-|   `less file.txt`    |                  View file with pagination                   |
-|   `more file.txt`    |                    View file page by page                    |
-|  ls \| tee list.txt  | Redirect the **ls** output to both terminal and **list.txt** |
+|       Command        |           Short Description           |
+| :------------------: | :-----------------------------------: |
+|    `cat file.txt`    |        Concatenate and display        |
+|  `cat -n file.txt`   |       Display with line numbers       |
+|    `zcat file.gz`    |      Display compressed content       |
+|   `ccat file.txt`    |       Colorize and concatenate        |
+|    `bat file.txt`    |         Cat clone with syntax         |
+|   `tail file.txt`    |  Display last N line (10 by default)  |
+|  `tail -f file.txt`  |    Continuously display new lines     |
+|   `head file.txt`    | Display first N lines (10 by default) |
+| `head -n 5 file.txt` |         Display first 5 lines         |
+|   `less file.txt`    |       View file with pagination       |
+|   `more file.txt`    |        View file page by page         |
+
+## tee
+
+`tee` allows you to read from **standard input** and write to **both** standard **output** and **files** simultaneously.
+
+|                  Command                   |                         Short Description                         |
+| :----------------------------------------: | :---------------------------------------------------------------: |
+|               `tee file.txt`               | Read from stdin and write to file.txt, creating or overwriting it |
+|             ls \| tee list.txt             |   Redirect the **ls** output to both terminal and **list.txt**    |
+|             `tee -a file.txt`              |           Append to file.txt instead of overwriting it            |
+| ps aux \| grep "node" \| tee processes.txt |        list and save running processes containing **node**        |
 
 ## split
 
-|              Command              |              Short Description              |
-| :-------------------------------: | :-----------------------------------------: |
-|         `split file.txt`          |            Split file into parts            |
-|          `split -l 100`           |          Split into 100-line files          |
-|           `split -b 1M`           |            Split into 1MB files             |
-|       `split -n 3 file.txt`       |          Split into 3 equal parts           |
-|            `split -d`             |            Use numeric suffixes             |
-|      `split -d test.txt hi`       | Use numeric suffixes and custom prefix "hi" |
-|           `split -a 3`            |           Use 3-character suffix            |
-| `cat hi* > concatenated_file.txt` |    Concatenate files starting with "hi"     |
+|              Command              |                   Short Description                   |
+| :-------------------------------: | :---------------------------------------------------: |
+|         `split file.txt`          | Split file into parts, by default 1000 lines per file |
+|          `split -l 100`           |               Split into 100-line files               |
+|           `split -b 1M`           |                 Split into 1MB files                  |
+|       `split -n 3 file.txt`       |               Split into 3 equal parts                |
+|            `split -d`             |                 Use numeric suffixes                  |
+|      `split test.txt -d hi`       |      Use numeric suffixes and custom prefix "hi"      |
+|           `split -a 3`            |                Use 3-character suffix                 |
+| `cat hi* > concatenated_file.txt` |         Concatenate files starting with "hi"          |
 
 ## cut
 
-|           Command           |                                    Short Description                                     |
-| :-------------------------: | :--------------------------------------------------------------------------------------: |
-|    `cut -f 1,3 file.txt`    |         Select and print the first and third fields from each line of "file.txt"         |
-| `cut -d' ' -f 2-4 file.txt` | Select and print fields 2 to 4 from each line of "file.txt" using space as the delimiter |
-|    `cut -c 1-5 file.txt`    |             Select and print characters 1 to 5 from each line of "file.txt"              |
+|           Command           |                               Short Description                               |
+| :-------------------------: | :---------------------------------------------------------------------------: |
+|    `cut -f 1,3 file.txt`    |        Print the first and third fields from each line of **file.txt**        |
+| `cut -d' ' -f 2-4 file.txt` | Print fields 2 to 4 from each line of "file.txt" using space as the delimiter |
+|    `cut -c 1-5 file.txt`    |        Select and print characters 1 to 5 from each line of "file.txt"        |
 
-## sort, nl, shuf, uniq
+> **Tab** is the defualt delimiter
+
+## sort, nl, shuf, uniq, tr
 
 |            Command            |              Short Description              |
 | :---------------------------: | :-----------------------------------------: |
 |        `sort file.txt`        |          Sort lines in a text file          |
+|      `sort -r file.txt`       |         Sort lines in reverse order         |
+|      `sort -n file.txt`       |           Sort lines numerically            |
 |         `nl file.txt`         |           Number lines in a file            |
 |      `nl -b a file.txt`       |       Number lines, showing all lines       |
 |     `nl -s "," file.txt`      |       Number lines, custom separator        |
 |        `shuf file.txt`        |           Shuffle lines in a file           |
-|      `sort -r file.txt`       |         Sort lines in reverse order         |
-|      `sort -n file.txt`       |           Sort lines numerically            |
 |     `shuf -n 5 file.txt`      |      Shuffle and display only 5 lines       |
 |        `uniq file.txt`        |       Display unique lines in a file        |
 |      `uniq -c file.txt`       |  Count and display unique lines with count  |
@@ -72,14 +84,10 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |       Command        |                       Short Description                       |
 | :------------------: | :-----------------------------------------------------------: |
 |  `diff file1 file2`  |           Compares two files and shows differences            |
-|     `sha256sum`      |       Computes and displays the SHA-256 hash of a file        |
 | `sha256sum file.txt` | Calculates and prints the SHA-256 hash of the file `file.txt` |
-|         `cp`         |                  Copies files or directories                  |
 |       `cp -r`        |       Copies directories and their contents recursively       |
 |       `cp -v`        |        Copies files or directories with verbose output        |
 |       `mv -i`        |       Moves (renames) files or directories with prompt        |
-|         `mv`         |             Moves (renames) files or directories              |
-|         `rm`         |                    Removes (deletes) files                    |
 |       `rm -r`        |      Removes directories and their contents recursively       |
 |       `mkdir`        |                    Creates a new directory                    |
 |       `rmdir`        |                  Removes an empty directory                   |
