@@ -64,8 +64,6 @@ tags:
 |  `ln -s source_file link_name`  | Create a symbolic link to a file or directory |
 | `ln source_file hard_link_name` |         Create a hard link to a file          |
 
-## Rsync
-
 ## rsync
 
 |    Option    |                  Description                  |
