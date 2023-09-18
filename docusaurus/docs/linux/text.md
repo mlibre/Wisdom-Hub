@@ -9,7 +9,7 @@ tags:
   - text
 ---
 
-# TextOps
+# Text
 
 ## cat, zcat, less, more, head, tail, ccat, bat
 
@@ -92,18 +92,6 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |       `mkdir`        |                    Creates a new directory                    |
 |       `rmdir`        |                  Removes an empty directory                   |
 
-## dd
-
-|                       Command                        |                        Short Description                        |
-| :--------------------------------------------------: | :-------------------------------------------------------------: |
-|                         `dd`                         |                     Copy and convert files                      |
-|        `dd if=input of=output bs=block_size`         |  Copy data from 'input' to 'output' with specified block size   |
-|    `dd if=/dev/zero of=zerofile bs=1M count=100`     |                 Create a 100MB zero-filled file                 |
-|    `dd if=input of=output bs=512 count=1 skip=2`     | Copy 512 bytes from 'input' to 'output' starting from byte 1024 |
-|   `dd if=/dev/random of=randomfile bs=1M count=1`    |           Generate a 1MB file filled with random data           |
-|         dd if=input \| gzip > backup.dd.gzip         | Compress 'input' data using 'gzip' and save as 'backup.dd.gzip' |
-| `dd if=ubuntu.iso of=/dev/sdX bs=4M status=progress` |         Write 'ubuntu.iso' to a USB drive ('/dev/sdX')          |
-
 ## find
 
 |                          Command                          |                   Short Description                    |
@@ -127,33 +115,14 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |            `gzip`             |            Compress files using gzip             |
 |        `gzip file.txt`        |         Compress the file.txt using gzip         |
 |       `gzip -d file.gz`       |          Decompress file.gz using gzip           |
-|           `gunzip`            |      Decompress files compressed with gzip       |
 |       `gunzip file.gz`        |         Decompress file.gz using gunzip          |
 |             `xz`              |             Compress files using xz              |
 |         `xz file.txt`         |          Compress the file.txt using xz          |
 |        `xz -d file.xz`        |           Decompress file.xz using xz            |
-|            `unxz`             |       Decompress files compressed with xz        |
 |        `unxz file.xz`         |          Decompress file.xz using unxz           |
 |             `tar`             |         Create and extract tar archives          |
 | `tar -cvf archive.tar files/` | Create a tar archive from the 'files/' directory |
 |    `tar -xvf archive.tar`     |         Extract files from 'archive.tar'         |
-|            `rsync`            |        Synchronize files and directories         |
-
-## rsync
-
-|                         Command                          |            Short Description            |
-| :------------------------------------------------------: | :-------------------------------------: |
-|                         `rsync`                          |            Remote file sync             |
-|             `rsync -av source/ destination/`             |       Sync files and directories        |
-|             `rsync -r source/ destination/`              |            Sync recursively             |
-|             `rsync -z source/ destination/`              |     Compress files during transfer      |
-| `rsync -e "ssh -p 2222" source/ user@host:/destination/` |        Using SSH and custom port        |
-|          `rsync --delete source/ destination/`           | Delete extraneous files at destination  |
-|             `rsync -n source/ destination/`              |            Perform a dry run            |
-|      `rsync --exclude='*.log' source/ destination/`      |         Exclude specific files          |
-|       `rsync --bwlimit=1000 source/ destination/`        |   Limit bandwidth usage to 1000 KB/s    |
-|         `rsync --progress source/ destination/`          |      Show progress during transfer      |
-|          `rsync --backup source/ destination/`           | Create backup copies at the destination |
 
 ## streams
 

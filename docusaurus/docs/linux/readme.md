@@ -19,7 +19,7 @@ This repository is organized into several sections, each containing tutorials fo
 * [Systemd](./systemd.md)
 * [Log and Monitoring](./log-monitoring.md)
 * [Shell-scripting](./shell-scripting.md)
-* [TextOps](./textOps.md)
+* [Text](./text.md)
 * [Processes](./processes.md)
 * [Multimedia](./multimedia.md)
 * [Tools](./tools.md)
