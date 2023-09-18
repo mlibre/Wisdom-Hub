@@ -8,6 +8,7 @@ tags:
   - Restore
   - ln
   - mount
+  - dd
 ---
 
 # Disk
@@ -65,15 +66,21 @@ tags:
 
 ## Rsync
 
-|   Option   |                  Description                  |
-| :--------: | :-------------------------------------------: |
-|    `-a`    |  Archive mode (recursive, permissions, etc.)  |
-|    `-v`    |                Verbose output                 |
-|    `-z`    |         Compress data during transfer         |
-| `--delete` | Delete extraneous files on the receiving side |
-|    `-A`    |     Preserve ACLs (Access Control Lists)      |
-|    `-X`    |         Preserve extended attributes          |
-|    `-H`    |              Preserve hard links              |
+## rsync
+
+|    Option    |                  Description                  |
+| :----------: | :-------------------------------------------: |
+|     `-a`     |  Archive mode (recursive, permissions, etc.)  |
+|     `-r`     |               Sync recursively                |
+|     `-e`     |        Specify the remote shell to use        |
+|     `-v`     |                Verbose output                 |
+| `--progress` |         Show progress during transfer         |
+|     `-z`     |         Compress data during transfer         |
+|  `--delete`  | Delete extraneous files on the receiving side |
+|     `-A`     |     Preserve ACLs (Access Control Lists)      |
+|     `-X`     |         Preserve extended attributes          |
+|     `-H`     |              Preserve hard links              |
+|     `-n`     |               Perform a dry run               |
 
 ```bash
 # Backup local directory to another location
@@ -87,7 +94,23 @@ rsync -avz --delete /path/to/local/directory user@remote.server:/path/to/remote/
 
 # Create a full backup of the system to an external drive
 sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
+
+# Backup to a server
+rsync -e "ssh -p 2222" source/ user@host:/destination/
 ```
+
+## dd
+
+|                       Command                        |                        Short Description                        |
+| :--------------------------------------------------: | :-------------------------------------------------------------: |
+|                         `dd`                         |                     Copy and convert files                      |
+|        `dd if=input of=output bs=block_size`         |  Copy data from 'input' to 'output' with specified block size   |
+|    `dd if=/dev/zero of=zerofile bs=1M count=100`     |                 Create a 100MB zero-filled file                 |
+|    `dd if=input of=output bs=512 count=1 skip=2`     | Copy 512 bytes from 'input' to 'output' starting from byte 1024 |
+|   `dd if=/dev/random of=randomfile bs=1M count=1`    |           Generate a 1MB file filled with random data           |
+|         dd if=input \| gzip > backup.dd.gzip         | Compress 'input' data using 'gzip' and save as 'backup.dd.gzip' |
+| `dd if=ubuntu.iso of=/dev/sdX bs=4M status=progress` |         Write 'ubuntu.iso' to a USB drive ('/dev/sdX')          |
+
 
 ## Backup using locate
 
@@ -98,5 +121,3 @@ sudo tar -czvf backup.tar.gz $(locate x-ui) /root/cert /root/cert.crt /root/priv
 
 sudo tar xvf backup.tar.gz -C / # Extract in root directory
 ```
-
-# File
