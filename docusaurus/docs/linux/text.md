@@ -7,6 +7,7 @@ tags:
   - less
   - split
   - text
+  - grep
 ---
 
 # Text
