@@ -30,10 +30,10 @@ tags:
 
 |       Command       |                       Short Description                       |
 | :-----------------: | :-----------------------------------------------------------: |
-|     `kill PID`      |   Terminate the process with the specified Process ID (PID)   |
+|     `kill PID`      |    Terminate the process with PID, default is **SIGTERM**     |
+|   `kill -15 PID`    | Send the SIGTERM signal to the process with the specified PID |
 |    `kill -9 PID`    |    Forcefully terminate the process with the specified PID    |
 |    `kill -1 PID`    | Send the SIGHUP signal to the process with the specified PID  |
-|   `kill -15 PID`    | Send the SIGTERM signal to the process with the specified PID |
 |  `killall process`  |        Terminate all processes with the specified name        |
 | `pkill -u username` |                       Kill by Username                        |
 |   `pkill -t tty`    |                       Kill by Terminal                        |
