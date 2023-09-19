@@ -50,16 +50,14 @@ tags:
 |         pgrep nginx \| xargs kill         | processes with 'nginx' in their name, send a SIGTERM to them |
 | pgrep -u masoud \| xargs -I {} kill -9 {} |        and forcefully terminate prccess with "masoud"        |
 
-## free, uptime, df
+## free, uptime, watch
 
 |         Command         |                           Short Description                            |
 | :---------------------: | :--------------------------------------------------------------------: |
-|        `free -m`        |                   Display memory usage in megabytes                    |
 |        `free -h`        |            Display memory usage with human-readable format             |
+|        `free -m`        |                   Display memory usage in megabytes                    |
 |       `uptime -p`       |             Display uptime in a more human-readable format             |
 |       `uptime -s`       |             Display the date and time since system started             |
-|         `df -h`         |          Display disk space usage with human-readable format           |
-|         `df -T`         |             Display disk space usage with filesystem type              |
 |    `watch -n 1 date`    |           Watch and display the date and time every 1 second           |
 |   `watch -n 5 df -h`    |           Watch and update disk space usage every 5 seconds            |
 | `watch -cd -n 1 uptime` | Watch system uptime every 1 second with color highlighting for changes |
