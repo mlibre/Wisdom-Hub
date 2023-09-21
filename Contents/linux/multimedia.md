@@ -64,15 +64,6 @@ fc-match -a
 fc-list NotoSansBengali-Light
 ```
 
-### Fira Code
-
-A popular code font.
-
-```bash
-sudo pacman -S ttf-fira-code
-fc-match -a | grep -i fira
-```
-
 ### Cache
 
 ```bash
@@ -88,6 +79,15 @@ rm ~/.cache/ksycoca5*;
 kquitapp5 plasmashell;
 killall plasmashell;
 kstart5 plasmashell;
+```
+
+### Disable KDE desktop effects
+
+```bash
+qdbus org.kde.KWin /Compositor suspend
+## qdbus org.kde.KWin /Compositor resume
+xset -dpms
+xset s off
 ```
 
 ## Resetting sound, audio
@@ -163,15 +163,6 @@ STEAM_FORCE_DESKTOPUI_SCALING=1.5 steam-runtime
 
 ```bash
 proxychains steam steam://rungameid/100
-```
-
-### Disable desktop effects
-
-```bash
-qdbus org.kde.KWin /Compositor suspend
-## qdbus org.kde.KWin /Compositor resume
-xset -dpms
-xset s off
 ```
 
 ## lutris
