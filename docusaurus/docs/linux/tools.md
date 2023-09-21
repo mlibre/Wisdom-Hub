@@ -192,6 +192,7 @@ sudo pacman -S timew
 |          `timew stop`           | Stop tracking time for last task  |
 |        `timew continue`         |      Continue the last task       |
 | `timew track 9:00 - 11:00 tag1` |     Historical track for tag1     |
+|   `timew modify end @1 12:45`   |      Modify end @1 to 12:45       |
 
 ### Advanced Usage
 
@@ -228,4 +229,5 @@ alias twd='timew delete'
 alias two='timew summary :ids'
 alias twm='timew move'
 alias tml='timew lengthen'
+alias tmm='timew modify'
 ```
