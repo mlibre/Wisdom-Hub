@@ -174,3 +174,11 @@ source myvirtenv/bin/activate
 pip install open-interpreter
 interpreter --model tiiuae/falcon-180B
 ```
+
+## Timewarrior
+
+A simple time tracking tool for command line.
+
+```bash
+sudo pacman -S timew
+```
