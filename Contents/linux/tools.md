@@ -199,6 +199,7 @@ sudo pacman -S timew
 | :----------------------------------: | :-----------------------: |
 | `timew track 12:00:00 to 13:00 tag1` | Historical track for tag1 |
 |    `timew track 7pm for 2h tag1`     | Historical track for tag1 |
+|     `timew modify end @1 12:45`      |  Modify end @1 to 12:45   |
 |       `timew move @1 11:00:00`       |   Moving @1 to 11:00:00   |
 |      `timew lengthen @1 30min`       |   lengthing @1 by 30min   |
 
@@ -228,4 +229,5 @@ alias twd='timew delete'
 alias two='timew summary :ids'
 alias twm='timew move'
 alias tml='timew lengthen'
+alias tmm='timew modify'
 ```
