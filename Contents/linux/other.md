@@ -244,8 +244,11 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
   pamac update -a
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
-  sudo pacman -S telegram-desktop unzip thermald ntfs-3g
+  sudo pacman -S mlocate telegram-desktop unzip thermald ntfs-3g firefox vlc aria2
+  sudo pacman -S qbittorrent libreoffice-fresh meld ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime gparted
+  sudo pacman -S clamav
   sudo systemctl enable --now thermald.service
+  sudo updatedb
   pamac install visual-studio-code-bin onlyoffice-bin
   ```
 
@@ -257,24 +260,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 
 - Make an XDG autostart script for gamma adjustment
 - Put the gamma script in the `.bashrc` and `.zshrc` as well
-
-- Install ProtonVPN, mailspring, shadowsocks, Nekoray
-  
-  ```bash
-  sudo pamac install shadowsocks-rust-bin
-  pamac build protonvpn
-  pamac build mailspring
-  ```
-
-- Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disabsetle mail signature.
-
-- Install mlocate
-
-  ```bash
-  sudo pacman -S mlocate
-  sudo updatedb
-  ```
-  
+- Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disabsetle mail signature
 - KDE Settings -> Disable Mouse acceleration
 - KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver, Review background services and Autostarts.
 - KDE Settings -> Appearance -> Theme -> Breeze Dark, Breath Dark
@@ -307,13 +293,6 @@ sudo nano /etc/sysctl.conf
   ## sudo timedatectl set-local-rtc 1
   sudo ntpdate time.nist.gov ## update time
   ```
-
-- Softwares
-
-```bash
-sudo pacman -S qbittorrent firefox libreoffice-fresh meld vlc ntfs-3g  aria2 ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime
-## sudo pacman -S electrum gimp gparted firewalld clamav deluge
-```
 
 - Firefox: Enable DNS over HTTPS
 - Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
