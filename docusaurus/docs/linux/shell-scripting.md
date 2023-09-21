@@ -97,7 +97,7 @@ echo "Hello, $name!"
 
 ### source, alias
 
-|        Command        |                Short Description                 |
+|        Command        |                   Description                    |
 | :-------------------: | :----------------------------------------------: |
 |       `source`        |  Load functions into the current shell session   |
 |  `source ~/.bashrc`   |         Reloads the user's Bash profile          |
