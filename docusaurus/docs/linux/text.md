@@ -124,6 +124,7 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |             `tar`             |         Create and extract tar archives          |
 | `tar -cvf archive.tar files/` | Create a tar archive from the 'files/' directory |
 |    `tar -xvf archive.tar`     |         Extract files from 'archive.tar'         |
+|  `tar -xvf archive.tar -C /`  |      Change to / directory and then extract      |
 
 ## streams
 
