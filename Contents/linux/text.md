@@ -14,7 +14,7 @@ tags:
 
 ## cat, zcat, less, more, head, tail, ccat, bat
 
-|       Command        |           Short Description           |
+|       Command        |              Description              |
 | :------------------: | :-----------------------------------: |
 |    `cat file.txt`    |        Concatenate and display        |
 |  `cat -n file.txt`   |       Display with line numbers       |
@@ -32,7 +32,7 @@ tags:
 
 `tee` allows you to read from **standard input** and write to **both** standard **output** and **files** simultaneously.
 
-|                  Command                   |                         Short Description                         |
+|                  Command                   |                            Description                            |
 | :----------------------------------------: | :---------------------------------------------------------------: |
 |               `tee file.txt`               | Read from stdin and write to file.txt, creating or overwriting it |
 |             ls \| tee list.txt             |   Redirect the **ls** output to both terminal and **list.txt**    |
@@ -41,7 +41,7 @@ tags:
 
 ## split
 
-|              Command              |                   Short Description                   |
+|              Command              |                      Description                      |
 | :-------------------------------: | :---------------------------------------------------: |
 |         `split file.txt`          | Split file into parts, by default 1000 lines per file |
 |          `split -l 100`           |               Split into 100-line files               |
@@ -54,7 +54,7 @@ tags:
 
 ## cut
 
-|           Command           |                               Short Description                               |
+|           Command           |                                  Description                                  |
 | :-------------------------: | :---------------------------------------------------------------------------: |
 |    `cut -f 1,3 file.txt`    |        Print the first and third fields from each line of **file.txt**        |
 | `cut -d' ' -f 2-4 file.txt` | Print fields 2 to 4 from each line of "file.txt" using space as the delimiter |
@@ -64,7 +64,7 @@ tags:
 
 ## sort, nl, shuf, uniq, tr
 
-|            Command            |              Short Description              |
+|            Command            |                 Description                 |
 | :---------------------------: | :-----------------------------------------: |
 |        `sort file.txt`        |          Sort lines in a text file          |
 |      `sort -r file.txt`       |         Sort lines in reverse order         |
@@ -82,7 +82,7 @@ tags:
 
 Certainly, here's a table of the commands you requested in markdown format, with centered text alignment as per your preference:
 
-|       Command        |                       Short Description                       |
+|       Command        |                          Description                          |
 | :------------------: | :-----------------------------------------------------------: |
 |  `diff file1 file2`  |           Compares two files and shows differences            |
 | `sha256sum file.txt` | Calculates and prints the SHA-256 hash of the file `file.txt` |
@@ -95,7 +95,7 @@ Certainly, here's a table of the commands you requested in markdown format, with
 
 ## find
 
-|                          Command                          |                   Short Description                    |
+|                          Command                          |                      Description                       |
 | :-------------------------------------------------------: | :----------------------------------------------------: |
 |                          `find`                           |            Search for files and directories            |
 |                 `find path -name pattern`                 |   Files with a specific name in the 'path' directory   |
@@ -111,7 +111,7 @@ Certainly, here's a table of the commands you requested in markdown format, with
 
 ## tar, gzip, guzip, xz, unxz
 
-|            Command            |                Short Description                 |
+|            Command            |                   Description                    |
 | :---------------------------: | :----------------------------------------------: |
 |            `gzip`             |            Compress files using gzip             |
 |        `gzip file.txt`        |         Compress the file.txt using gzip         |
@@ -129,7 +129,7 @@ Certainly, here's a table of the commands you requested in markdown format, with
 
 Certainly, here's a Markdown table with centered text alignment that lists the Linux commands you mentioned, along with their short descriptions and real-world examples:
 
-|                 Command                 |                     Short Description                     |
+|                 Command                 |                        Description                        |
 | :-------------------------------------: | :-------------------------------------------------------: |
 |                   `>`                   |            Redirects standard output to a file            |
 |             `ls > list.txt`             |        Redirects `ls` command output to `list.txt`        |
@@ -173,7 +173,7 @@ By default, `xargs` will process as many input items as possible in a single exe
 * `-n 1`: This option in xargs specifies that only one input item should be used for each execution of the command. It ensures that the command is run once for each input item
 * `-I {}`: The -I option allows you to specify a placeholder (in this case, {}) to represent where the input item should be placed within the command. It also process one input item at a time
 
-|                           Command                            |                         Short Description                          |
+|                           Command                            |                            Description                             |
 | :----------------------------------------------------------: | :----------------------------------------------------------------: |
 |                           `xargs`                            |        Build and execute command lines from standard input         |
 |          find /path -type f -print \| xargs command          |   Execute **command** on each file found by the **find** command   |
@@ -190,7 +190,7 @@ By default, `xargs` will process as many input items as possible in a single exe
 
 ## grep
 
-|                 Command                  |                               Short Description                                |
+|                 Command                  |                                  Description                                   |
 | :--------------------------------------: | :----------------------------------------------------------------------------: |
 |          `grep 'error' log.txt`          |                   Search for 'error' messages in a log file                    |
 |   `grep -r 'function foo()' /project`    | Recursively find files containing 'function foo()' in the '/project' directory |

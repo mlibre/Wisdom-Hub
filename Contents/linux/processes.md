@@ -10,7 +10,7 @@ tags:
 
 ## ps, bg, fg, jobs, &, ctrl+comb
 
-|            Command            |                    Short Description                    |
+|            Command            |                       Description                       |
 | :---------------------------: | :-----------------------------------------------------: |
 |           `ps -ef`            |       List all processes with ppid and exec path        |
 | ps aux \| grep <process_name> |                Filter processes by name                 |
@@ -28,7 +28,7 @@ tags:
 
 ## kill, pkill, killall
 
-|       Command       |                       Short Description                       |
+|       Command       |                          Description                          |
 | :-----------------: | :-----------------------------------------------------------: |
 |     `kill PID`      |    Terminate the process with PID, default is **SIGTERM**     |
 |   `kill -15 PID`    | Send the SIGTERM signal to the process with the specified PID |
@@ -43,7 +43,7 @@ tags:
 
 # pgrep
 
-|                  Command                  |                      Short Description                       |
+|                  Command                  |                         Description                          |
 | :---------------------------------------: | :----------------------------------------------------------: |
 |                  `pgrep`                  |          List processes by name or other attributes          |
 |               `pgrep sshd`                |             List processes with the name 'sshd'              |
@@ -52,7 +52,7 @@ tags:
 
 ## free, uptime, watch
 
-|         Command         |                           Short Description                            |
+|         Command         |                              Description                               |
 | :---------------------: | :--------------------------------------------------------------------: |
 |        `free -h`        |            Display memory usage with human-readable format             |
 |        `free -m`        |                   Display memory usage in megabytes                    |
@@ -64,7 +64,7 @@ tags:
 
 ## tmux
 
-|                    Command                     |                        Short Description                         |
+|                    Command                     |                           Description                            |
 | :--------------------------------------------: | :--------------------------------------------------------------: |
 |                     `tmux`                     |                       Terminal multiplexer                       |
 |            `tmux new -s mysession`             |           Create a new tmux session named "mysession"            |
