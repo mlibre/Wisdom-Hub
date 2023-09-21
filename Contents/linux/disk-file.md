@@ -109,7 +109,6 @@ rsync -e "ssh -p 2222" source/ user@host:/destination/
 |         dd if=input \| gzip > backup.dd.gzip         | Compress 'input' data using 'gzip' and save as 'backup.dd.gzip' |
 | `dd if=ubuntu.iso of=/dev/sdX bs=4M status=progress` |         Write 'ubuntu.iso' to a USB drive ('/dev/sdX')          |
 
-
 ## Backup using locate
 
 ```bash

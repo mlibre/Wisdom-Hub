@@ -215,19 +215,31 @@ sudo pacman -S timew
 |          `timew tags`           |     List all available tags      |
 |       `timew help delete`       |            Using help            |
 |        `timew delete @1`        |        Delete ID@1 entry         |
-|    `timew export today.json`    |  Export data for today to JSON   |
-|    `timew import data.json`     |    Import data from JSON file    |
+|         `timew export`          |  Export data for today to JSON   |
+
+### backup
+
+```bash
+tar -czvf  tm.tar.gz /home/mlibre/.local/share/timewarrior
+```
+
+### Restpre
+
+```bash
+tar -xzvf tm.tar.gz /home/mlibre/.local/share/timewarrior
+tar -xvzf tm.tar.gz -C /
+```
 
 ### Alies
 
 ```bash
 nano .bashrc
-alias tw='timew'
-alias tws='timew start'
-alias twt='timew track'
-alias twd='timew delete'
-alias two='timew summary :ids'
-alias twm='timew move'
+alias tm='timew'
+alias tms='timew start'
+alias tmt='timew track'
+alias tmd='timew delete'
+alias tmo='timew summary :ids'
+alias tmm='timew move'
 alias tml='timew lengthen'
 alias tmm='timew modify'
 ```
