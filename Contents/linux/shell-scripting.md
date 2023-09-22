@@ -112,7 +112,7 @@ echo "Hello, $name!"
 > Use `export` when you want to make a variable available to child processes
 > Use `set` primarily for managing shell options and attributes, but it can also be used to set local variables
 
-### source, alias
+### source, alias, type
 
 |        Command        |                   Description                    |
 | :-------------------: | :----------------------------------------------: |
@@ -123,6 +123,10 @@ echo "Hello, $name!"
 |  `alias ll='ls -l'`   |  Creates an alias 'll' for the 'ls -l' command   |
 |    `alias c=clear`    |   Creates an alias 'c' for the 'clear' command   |
 |      `unalias c`      |   Remove the alias 'c' for the 'clear' command   |
+|        `type`         |           information about a command            |
+|       `type ls`       |    output: ls is an alias for ls $LS_OPTIONS     |
+|      `type ssh`       |           output: ssh is /usr/bin/ssh            |
+|     `type source`     |        output: source is a shell builtin         |
 
 ### history
 
@@ -140,16 +144,6 @@ echo "Hello, $name!"
 |  `command !:1-2`  | Executes the **command** with the second and third arguments of the last command |
 |  `command !:2*`   |        Executes **command** from the second arguments of the last command        |
 |  `some !571:2*`   |   Executes **some** from the second arguments of 571st command in the history    |
-
-### Command types
-
-```bash
-type ls
-# ls is an alias for ls $LS_OPTIONS
-
-type ssh
-# ssh is /usr/bin/ssh
-```
 
 ### Prompt Shell
 
