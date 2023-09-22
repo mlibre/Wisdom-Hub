@@ -71,19 +71,22 @@ read -p "Enter your name: " name
 echo "Hello, $name!"
 ```
 
-### wait, ;, &&, ||
+### wait, ;, &&, ||, `, $()
 
-|                     Command                     |                                     Short Description                                     |
-| :---------------------------------------------: | :---------------------------------------------------------------------------------------: |
-|              `command1; command2`               |                           Run 'command1' followed by 'command2'                           |
-|                    `ls; pwd`                    |                      List files and then print the current directory                      |
-|          `mkdir myfolder; cd myfolder`          |                         Create a folder and then navigate into it                         |
-|             command1 \|\| command2              |                        Run 'command1', if it fails, run 'command2'                        |
-| ls /nonexistent \|\| echo "Directory not found" |            List a directory, and if it doesn't exist, display an error message            |
-|             `command1 && command2`              |                      Run 'command1', if it succeeds, run 'command2'                       |
-|            `git pull && npm install`            | Pull changes from a Git repository and install Node.js packages if the pull is successful |
-|                     `wait`                      |                    Pause execution until all background jobs are done                     |
-|          `sleep 10 & wait; echo "hi""`          |               Wait for background jobs to finish and then display a message               |
+|                     Command                     |                           Short Description                            |
+| :---------------------------------------------: | :--------------------------------------------------------------------: |
+|              `command1; command2`               |                 Run 'command1' followed by 'command2'                  |
+|                    `ls; pwd`                    |            List files and then print the current directory             |
+|          `mkdir myfolder; cd myfolder`          |               Create a folder and then navigate into it                |
+|             command1 \|\| command2              |              Run 'command1', if it fails, run 'command2'               |
+| ls /nonexistent \|\| echo "Directory not found" |  List a directory, and if it doesn't exist, display an error message   |
+|             `command1 && command2`              |             Run 'command1', if it succeeds, run 'command2'             |
+|            `git pull && npm install`            | Pull from a Git and install Node.js packages if the pull is successful |
+|                     `wait`                      |           Pause execution until all background jobs are done           |
+|          `sleep 10 & wait; echo "hi""`          |     Wait for background jobs to finish and then display a message      |
+|                 `` `command` ``                 |           Executes `command` and returns its output as text.           |
+|                      `$()`                      |     Executes a command within parentheses and returns its output.      |
+|               `output=$(command)`               |         Executes `command` and stores its output in `output`.          |
 
 ### echo, env, export, set, unset, variables
 
