@@ -24,6 +24,16 @@ The `/etc/skel/` directory in Linux is used as a **template** for creating a **n
 
 ## Bash
 
+### Execution methods
+
+|      Command      |                       Description                       |  Execution Method  |
+| :---------------: | :-----------------------------------------------------: | :----------------: |
+|    `./script`     |  Execute script in current directory as a new process   |  Shebang (`#!/`)   |
+|   `sh ./script`   |   Run script with the default system shell (/bin/sh)    | No Shebang (`#!/`) |
+|  `bash ./script`  |        Run script explicitly with the Bash shell        | No Shebang (`#!/`) |
+| `source ./script` | Execute script in the current shell, preserving changes | No Shebang (`#!/`) |
+|  `exec ./script`  |  Replace the current shell with the script (keeps PID)  |  Shebang (`#!/`)   |
+
 ### Basics
 
 * `Variables`
