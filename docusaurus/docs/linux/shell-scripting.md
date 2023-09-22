@@ -24,16 +24,6 @@ The `/etc/skel/` directory in Linux is used as a **template** for creating a **n
 
 ## Bash
 
-### Execution methods
-
-|      Command      |                       Description                       |  Execution Method  |
-| :---------------: | :-----------------------------------------------------: | :----------------: |
-|    `./script`     |  Execute script in current directory as a new process   |  Shebang (`#!/`)   |
-|   `sh ./script`   |   Run script with the default system shell (/bin/sh)    | No Shebang (`#!/`) |
-|  `bash ./script`  |        Run script explicitly with the Bash shell        | No Shebang (`#!/`) |
-| `source ./script` | Execute script in the current shell, preserving changes | No Shebang (`#!/`) |
-|  `exec ./script`  |  Replace the current shell with the script (keeps PID)  |  Shebang (`#!/`)   |
-
 ### Basics
 
 * `Variables`
@@ -46,7 +36,7 @@ echo $my_var
 * `if`
 
 ```bash
-if [ condition ]; then
+if [[ condition ]]; then
   # Code to execute if condition is true
 fi
 ```
@@ -81,7 +71,32 @@ read -p "Enter your name: " name
 echo "Hello, $name!"
 ```
 
-### wait, ;, &&, ||, `, $()
+### Execution methods
+
+|      Command      |                       Description                       |  Execution Method  |
+| :---------------: | :-----------------------------------------------------: | :----------------: |
+|    `./script`     |  Execute script in current directory as a new process   |  Shebang (`#!/`)   |
+|   `sh ./script`   |   Run script with the default system shell (/bin/sh)    | No Shebang (`#!/`) |
+|  `bash ./script`  |        Run script explicitly with the Bash shell        | No Shebang (`#!/`) |
+| `source ./script` | Execute script in the current shell, preserving changes | No Shebang (`#!/`) |
+|  `exec ./script`  |  Replace the current shell with the script (keeps PID)  |  Shebang (`#!/`)   |
+
+### Conditionals
+
+| Operator |           Meaning            |       Example        |                    Description                    |
+| :------: | :--------------------------: | :------------------: | :-----------------------------------------------: |
+|  `-ne`   |          Not Equal           |     `$a -ne $b`      |        True if `$a` is not equal to `$b`.         |
+|  `-ge`   |   Greater than or Equal To   |     `$x -ge $y`      |  True if `$x` is greater than or equal to `$y`.   |
+|   `!=`   |   Not Equal (for strings)    | `"$str1" != "$str2"` |     True if `$str1` is not equal to `$str2`.      |
+|   `=`    |     Equal (for strings)      | `"$str1" = "$str2"`  |       True if `$str1` is equal to `$str2`.        |
+|  `-lt`   |          Less Than           |     `$p -lt $q`      |          True if `$p` is less than `$q`.          |
+|  `-gt`   |         Greater Than         |     `$m -gt $n`      |        True if `$m` is greater than `$n`.         |
+|  `-le`   |    Less Than or Equal To     |     `$i -le $j`      |    True if `$i` is less than or equal to `$j`.    |
+|   `-f`   |         File Exists          |     `-f "$file"`     |         True if the file `$file` exists.          |
+|   `-s`   | File is Not Empty (Size > 0) |     `-s "$file"`     | True if the file `$file` exists and is not empty. |
+|   `-x`   |      File is Executable      |    `-x "$script"`    |    True if the script `$script` is executable.    |
+
+### wait, ;, &&, ||, `, $#, $()
 
 |                     Command                     |                           Short Description                            |
 | :---------------------------------------------: | :--------------------------------------------------------------------: |
@@ -94,9 +109,10 @@ echo "Hello, $name!"
 |            `git pull && npm install`            | Pull from a Git and install Node.js packages if the pull is successful |
 |                     `wait`                      |           Pause execution until all background jobs are done           |
 |          `sleep 10 & wait; echo "hi""`          |     Wait for background jobs to finish and then display a message      |
-|                 `` `command` ``                 |           Executes `command` and returns its output as text.           |
-|                      `$()`                      |     Executes a command within parentheses and returns its output.      |
-|               `output=$(command)`               |         Executes `command` and stores its output in `output`.          |
+|                 `` `command` ``                 |           Executes `command` and returns its output as text            |
+|                      `$()`                      |      Executes a command within parentheses and returns its output      |
+|               `output=$(command)`               |          Executes `command` and stores its output in `output`          |
+|                      `$#`                       |                  Number of arguments passed to script                  |
 
 ### echo, env, export, set, unset, variables
 
