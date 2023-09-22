@@ -26,14 +26,14 @@ The `/etc/skel/` directory in Linux is used as a **template** for creating a **n
 
 ### Basics
 
-* You can declare and use `variables`:
+* `Variables`
 
 ```bash
 my_var="Hello, World!"
 echo $my_var
 ```
 
-* `if`:
+* `if`
 
 ```bash
 if [ condition ]; then
@@ -41,7 +41,7 @@ if [ condition ]; then
 fi
 ```
 
-* `loops`:
+* `loops`
 
 ```bash
 for i in {1..5}; do
@@ -49,7 +49,7 @@ for i in {1..5}; do
 done
 ```
 
-* `Functions`:
+* `Functions`
 
 ```bash
 my_function() {
@@ -58,18 +58,32 @@ my_function() {
 my_function
 ```
 
-* `Command Line Arguments`:
+* `Command Line Arguments`
 
 ```bash
 echo "First argument: $1"
 ```
 
-* `Input and Output`:
+* `Input and Output`
 
 ```bash
 read -p "Enter your name: " name
 echo "Hello, $name!"
 ```
+
+### wait, ;, &&, ||
+
+|                     Command                     |                                     Short Description                                     |
+| :---------------------------------------------: | :---------------------------------------------------------------------------------------: |
+|              `command1; command2`               |                           Run 'command1' followed by 'command2'                           |
+|                    `ls; pwd`                    |                      List files and then print the current directory                      |
+|          `mkdir myfolder; cd myfolder`          |                         Create a folder and then navigate into it                         |
+|             command1 \|\| command2              |                        Run 'command1', if it fails, run 'command2'                        |
+| ls /nonexistent \|\| echo "Directory not found" |            List a directory, and if it doesn't exist, display an error message            |
+|             `command1 && command2`              |                      Run 'command1', if it succeeds, run 'command2'                       |
+|            `git pull && npm install`            | Pull changes from a Git repository and install Node.js packages if the pull is successful |
+|                     `wait`                      |                    Pause execution until all background jobs are done                     |
+|          `sleep 10 & wait; echo "hi""`          |               Wait for background jobs to finish and then display a message               |
 
 ### echo, env, export, set, unset, variables
 
@@ -105,6 +119,7 @@ echo "Hello, $name!"
 |        `alias`        |        Create or display command aliases         |
 |  `alias ll='ls -l'`   |  Creates an alias 'll' for the 'ls -l' command   |
 |    `alias c=clear`    |   Creates an alias 'c' for the 'clear' command   |
+|      `unalias c`      |   Remove the alias 'c' for the 'clear' command   |
 
 ### history
 
