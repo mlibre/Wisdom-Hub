@@ -96,7 +96,7 @@ echo "Hello, $name!"
 |   `-s`   | File is Not Empty (Size > 0) |     `-s "$file"`     | True if the file `$file` exists and is not empty. |
 |   `-x`   |      File is Executable      |    `-x "$script"`    |    True if the script `$script` is executable.    |
 
-### wait, ;, &&, ||, `, $#, $()
+### wait, ;, &&, ||, `, $#, $?, $()
 
 |                     Command                     |                           Short Description                            |
 | :---------------------------------------------: | :--------------------------------------------------------------------: |
@@ -113,6 +113,7 @@ echo "Hello, $name!"
 |                      `$()`                      |      Executes a command within parentheses and returns its output      |
 |               `output=$(command)`               |          Executes `command` and stores its output in `output`          |
 |                      `$#`                       |                  Number of arguments passed to script                  |
+|                      `$?`                       |   Exit or return value of the last executed command (0 for success)    |
 
 ### echo, env, export, set, unset, variables
 
