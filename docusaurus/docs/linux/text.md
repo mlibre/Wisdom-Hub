@@ -108,6 +108,7 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |     `find /var/log -iname "*.log" -exec ls -l {} \;`      | Files in '/var/log' with a case-insensitive name match |
 |  `find /backup -type f -exec cp {} /backup_archive/ \;`   |    Copy found files to '/backup_archive/' directory    |
 | `find ./ -type f -exec ls {} \; -exec echo "file: {}" \;` |                  Having two commands                   |
+|         `find / -name 'pycache' -exec rm -r {} +`         |   Remove all **pycache**, pass items as a list to rm   |
 
 ## tar, gzip, guzip, xz, unxz
 
