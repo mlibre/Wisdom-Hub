@@ -8,7 +8,9 @@ tags:
 
 # Access
 
-## whoami, id, groups, users
+## User and Groups
+
+### whoami, id, groups, users
 
 |      Command      |              Short Description              |
 | :---------------: | :-----------------------------------------: |
@@ -21,7 +23,29 @@ tags:
 | `cat /etc/group`  |          information about groups           |
 | `cat /etc/shadow` | encrypted password hashes for user accounts |
 
-## chmod
+### passwd, useradd, adduser, usermod
+
+|                Command                 |                          Short Description                           |
+| :------------------------------------: | :------------------------------------------------------------------: |
+|           `passwd username`            |               Change password for the user 'username'                |
+|          `passwd -l username`          | Lock user's password, she cannot use  password to login or change it |
+|          `passwd -u username`          |                   Unlock the password of the user                    |
+|               `useradd`                |                           Create new user                            |
+|         `useradd -m username`          |               Create a new user with a home directory                |
+|   `useradd -m -G groupname username`   |       Create user with home directory and add them to a group        |
+|   `useradd -m -s /bin/bash username`   |   Create user with home directory and `/bin/bash` for login shell    |
+|           `adduser username`           |              Interactively create a new user 'username'              |
+|   `usermod -a -G groupname username`   |           Add the user 'username' to the group 'groupname'           |
+|     `usermod -l newname username`      |      Change the login name of the user 'username' to 'newname'       |
+| `usermod -m -d /new/home/dir username` |                  Move (create) user home directory                   |
+
+## /etc/skel
+
+The `/etc/skel/` directory in Linux is used as a **template** for creating a **new user's** home directory. When a new user is created with the **adduser or useradd -m command**, the system copies the files and directories contained in the `/etc/skel/` directory to the new user's home directory.
+
+## Files and Folders
+
+### chmod
 
 |                     Command                     |                        Short Description                        |
 | :---------------------------------------------: | :-------------------------------------------------------------: |
@@ -43,7 +67,7 @@ tags:
 > -print0 tells find to print the results separated by null characters, instead of spaces or newlines. This is useful for safely handling filenames that might contain spaces or special characters  
 > -0 tells xargs to expect input separated by null characters, and not by spaces or newlines. It ensures that xargs correctly processes the list of files provided by find
 
-## chown, chgrp, newgrp
+### chown, chgrp, newgrp
 
 |                 Command                 |                           Short Description                            |
 | :-------------------------------------: | :--------------------------------------------------------------------: |
@@ -58,7 +82,7 @@ tags:
 |                `newgrp`                 |                Change the user primary group (default)                 |
 |             `newgrp staff`              |                      Switch to the 'staff' group                       |
 
-## SUID, GUID
+### SUID, GUID
 
 When the `SUID` permission is set on an executable file, it means that when a regular user runs that executable, it will run with the permissions of the file's owner instead of the user who is executing it.  
 
@@ -71,7 +95,7 @@ ls -l /usr/bin/passwd
 -rwsr-xr-x 1 root root 51552 Jan 25  2023 /usr/bin/passwd
 ```
 
-## Sticky bit
+### Sticky bit
 
 The `sticky bit` on a directory ensures that only the owner of a file within that directory (or the superuser) can **modify**, **delete** or **rename** that file, even if **others** have **write** permissions on the directory or the files.
 
@@ -87,7 +111,7 @@ In this setup:
 - Bob can delete files he creates in `/tmp`
 - Other users cannot delete files created by Alice or Bob in `/tmp`, enhancing file security in shared directories like `/tmp`
 
-## umask
+### umask
 
 `umask` is a Linux command that controls the `default` permissions for `newly` created files and directories
 
