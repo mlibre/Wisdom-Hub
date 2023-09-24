@@ -38,6 +38,17 @@ tags:
 |   `usermod -a -G groupname username`   |           Add the user 'username' to the group 'groupname'           |
 |     `usermod -l newname username`      |      Change the login name of the user 'username' to 'newname'       |
 | `usermod -m -d /new/home/dir username` |                  Move (create) user home directory                   |
+| `sudo usermod --expiredate 1 username` |                  Set the user to expire immediately                  |
+
+### groupadd, userdel
+
+|          Command           |                        Short Description                        |
+| :------------------------: | :-------------------------------------------------------------: |
+|         `groupadd`         |                 Add a new group to the system.                  |
+| `sudo groupadd developers` |               Create a group named "developers".                |
+|    `sudo userdel john`     |                 Delete the user account "john".                 |
+|   `sudo userdel -r jane`   | Delete the user account "jane" along with their home directory. |
+
 
 ## /etc/skel
 
