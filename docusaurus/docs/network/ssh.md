@@ -8,16 +8,27 @@ tags:
 
 # SSH
 
-| Option |                                                                            Description                                                                             |                     Example                     |
-| :----: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------: |
-|  `-L`  | Local Port Forwarding - Allows accessing a remote port locally by binding a local port to a remote port. Useful for accessing services only available on loopback. |     `ssh -L 8080:localhost:80 user@remote`      |
-|  `-R`  |          Remote Port Forwarding - Opens a port on a remote server that forwards to a local port on another server. Useful for pivoting through networks.           |     `ssh -R 80:localhost:8080 user@remote`      |
-|  `-D`  |                 Dynamic Port Forwarding - Creates a SOCKS proxy that can route traffic through an SSH connection. Useful for proxying web traffic.                 |            `ssh -D 8080 user@remote`            |
-|  `-A`  |                           Agent Forwarding - Forwards SSH keys/identities to remote servers. Can be risky if keys have high privileges.                            |              `ssh -A user@remote`               |
-|  `-J`  |                                                 Jump Hosts - Proxy through multiple hosts to reach a destination.                                                  | `ssh -J user@host1,user@host2 user@destination` |
-|  `-N`  |                                                 Do not execute a remote command. Useful for just forwarding ports.                                                 |    `ssh -N -L 8080:localhost:80 user@remote`    |
-|  `-f`  |                                                  Requests ssh to go to background just before command execution.                                                   |          `ssh -f user@remote command`           |
-|  `-v`  |                        Verbose mode. Causes ssh to print debugging messages about its progress. Multiple -v options increase the verbosity.                        |              `ssh -v user@remote`               |
+|                     Command                     |                                            Description                                            |
+| :---------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
+|                      `-L`                       |  Local Port Forwarding - accessing a remote port locally by binding local port to a remote port   |
+|     `ssh -L 8080:localhost:80 user@remote`      |                                                                                                   |
+|                      `-R`                       | Remote Port Forwarding - Open port on remote server that forwards to local port on another server |
+|     `ssh -R 80:localhost:8080 user@remote`      |                                                                                                   |
+|                      `-D`                       | Dynamic Port Forwarding - Creates a SOCKS proxy that can route traffic through an SSH connection  |
+|            `ssh -D 8080 user@remote`            |                                                                                                   |
+|                      `-A`                       |                 Agent Forwarding - Forwards SSH keys/identities to remote servers                 |
+|              `ssh -A user@remote`               |                                                                                                   |
+|                      `-J`                       |                 Jump Hosts - Proxy through multiple hosts to reach a destination.                 |
+| `ssh -J user@host1,user@host2 user@destination` |                                                                                                   |
+|                      `-N`                       |                Do not execute a remote command. Useful for just forwarding ports.                 |
+|    `ssh -N -L 8080:localhost:80 user@remote`    |                                                                                                   |
+|                      `-f`                       |                  Requests ssh to go to background just before command execution                   |
+|          `ssh -f user@remote command`           |                                                                                                   |
+|                      `-v`                       |                     Verbose mode. Multiple -v options increase the verbosity                      |
+|              `ssh -v user@remote`               |                                                                                                   |
+|                      `-X`                       |            Enables X11 forwarding, allowing graphical applications to be run remotely             |
+|              `ssh -X user@remote`               |                                                                                                   |
+
 
 # Local Port Forwarding (-L)
 
