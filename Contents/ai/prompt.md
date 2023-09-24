@@ -11,7 +11,7 @@ tags:
 ## Markdown table of Linux commands
 
 Please provide a Markdown table with centered text alignment that lists the following Linux commands, their short descriptions and examples: "free", "uptime"
-Table has two columns only: 'Command' , 'Description'.
+The table has two columns only: 'Command', 'Description'.
 Make sure examples are real-world examples and are very useful.
 The table format is:
 
