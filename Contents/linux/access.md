@@ -40,15 +40,25 @@ tags:
 | `usermod -m -d /new/home/dir username` |                  Move (create) user home directory                   |
 | `sudo usermod --expiredate 1 username` |                  Set the user to expire immediately                  |
 
-### groupadd, userdel
+### groupadd, userdel, chage
 
-|          Command           |                        Short Description                        |
-| :------------------------: | :-------------------------------------------------------------: |
-|         `groupadd`         |                 Add a new group to the system.                  |
-| `sudo groupadd developers` |               Create a group named "developers".                |
-|    `sudo userdel john`     |                 Delete the user account "john".                 |
-|   `sudo userdel -r jane`   | Delete the user account "jane" along with their home directory. |
+|          Command           |                     Short Description                     |
+| :------------------------: | :-------------------------------------------------------: |
+|         `groupadd`         |              Add a new group to the system.               |
+| `sudo groupadd developers` |            Create a group named "developers".             |
+|    `sudo userdel john`     |              Delete the user account "john".              |
+|   `sudo userdel -r jane`   | Delete the user account "jane" along with home directory. |
+|    `chage -l username`     |        List password aging information for a user.        |
+|   `chage -M 90 username`   |      Set maximum password age to 90 days for a user.      |
 
+### getent
+
+|        Command         |                           Short Description                           |
+| :--------------------: | :-------------------------------------------------------------------: |
+|        `getent`        |            Retrieve entries from administrative databases             |
+|    `getent passwd`     | Retrieve user account information (e.g., usernames, home directories) |
+|     `getent hosts`     |       Retrieve host information (e.g., IP addresses, hostnames)       |
+| `getent passwd mlibre` |              Retrieve information for the user "mlibre"               |
 
 ## /etc/skel
 
