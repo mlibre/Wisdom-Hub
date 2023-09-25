@@ -347,7 +347,7 @@ cp -rf /etc/skel/.* ~/
 rm -f ~/.config/dconf/user
 
 # method 2
-sudo useradd --create-home newusername
+sudo useradd -m newusername
 sudo passwd newusername
 ```
 
