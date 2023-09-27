@@ -41,7 +41,7 @@ sudo systemctl restart systemd-journald.service
 | Current Boot Logs (Inlcuding kernel logs) |         `journalctl -b`         |
 |             Monitor Boot Logs             |       `journalctl -b -f`        |
 |  Boot Logs with priority level of "err"   |     `journalctl -b -p err`      |
-|              Unit Files Logs              |  `journalctl -u sshd.service`   |
+|                Unit's Logs                |  `journalctl -u sshd.service`   |
 |                  Verbose                  | `journalctl -u sshd.service -x` |
 |            Flush Journal Logs             |      `journalctl --flush`       |
 
