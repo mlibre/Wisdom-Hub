@@ -21,6 +21,7 @@ This repository is organized into several sections, each containing tutorials fo
 * [Shell-scripting](./shell-scripting.md)
 * [Text](./text.md)
 * [Processes](./processes.md)
+* [Automation](./automation.md)
 * [Multimedia](./multimedia.md)
 * [Tools](./tools.md)
 * [Other](./other.md)
