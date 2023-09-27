@@ -104,6 +104,8 @@ pstree -p 1
 - ls usr/share/dbus-1/system-services/
 - sudo systemctl list-unit-files --type=service --state=enabled --all
 - sudo systemctl list-unit-files --type=timer --all
+- sudo systemctl list-timers --all
+- systemctl --user list-timers --all
 - ls /etc/init.d/
 - nano ~/.xinitrc
 - nano /etc/X11/xinit/xinitrc
