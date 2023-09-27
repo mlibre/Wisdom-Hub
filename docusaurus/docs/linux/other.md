@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 11
 tags:
   - Linux
   - XDG
@@ -103,6 +103,7 @@ pstree -p 1
 - ls -1 /lib/systemd/system/*.service /etc/systemd/system/*.service
 - ls usr/share/dbus-1/system-services/
 - sudo systemctl list-unit-files --type=service --state=enabled --all
+- sudo systemctl list-unit-files --type=timer --all
 - ls /etc/init.d/
 - nano ~/.xinitrc
 - nano /etc/X11/xinit/xinitrc
@@ -115,6 +116,7 @@ pstree -p 1
 - crontab -e
 - sudo crontab -e
 - ls -rla /etc/cron.*
+- cat /etc/anacrontab
 - cat /usr/lib/sddm/sddm.conf.d/default.conf
 - cat /etc/sddm.conf.d/00_manjaro_settings.conf
 
