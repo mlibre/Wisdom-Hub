@@ -132,24 +132,25 @@ echo "Hello, $name!"
 
 ### echo, env, export, set, unset, variables
 
-|     Commands     |                              Description                               |
-| :--------------: | :--------------------------------------------------------------------: |
-|  `VAR_NAME=val`  |                        Set `VAR_NAME` to `val`                         |
-|      `set`       |                 displays shell variables and functions                 |
-|     `set -o`     |                     Display current shell options                      |
-|     `set -e`     | Exit immediately if a command in a script exits with a non-zero status |
-|  `unset MYVAR`   |            Unset the environment variable named `VAR_NAME`             |
-|   `export VAR`   |                 Make var available to child processes                  |
-|      `env`       |                     View current environment vars                      |
-|   `echo $VAR`    |                         Display value of `VAR`                         |
-|   `echo $PATH`   |                        Display value of `PATH`                         |
-|   `echo $HOME`   |                     Display user's home directory                      |
-|  `echo $EDITOR`  |                      Display default text editor                       |
-| `echo $HISTFILE` |                      Display command history file                      |
-|  `echo $SHELL`   |                     Display default shell program                      |
-|   `echo $USER`   |                        Display current username                        |
-|    `echo $?`     |                    Display last command exit status                    |
-|   `echo $PS1`    |                        Display the shell prompt                        |
+|     Commands      |                            Description                             |
+| :---------------: | :----------------------------------------------------------------: |
+|  `VAR_NAME=val`   |                      Set `VAR_NAME` to `val`                       |
+|       `set`       |               displays shell variables and functions               |
+|     `set -o`      |                   Display current shell options                    |
+|     `set -e`      | Exit immediately if a command in script exits with non-zero status |
+|   `unset MYVAR`   |          Unset the environment variable named `VAR_NAME`           |
+|   `export VAR`    |               Make var available to child processes                |
+|       `env`       |                   View current environment vars                    |
+|    `echo $VAR`    |                       Display value of `VAR`                       |
+|   `echo $PATH`    |                      Display value of `PATH`                       |
+|   `echo $HOME`    |                   Display user's home directory                    |
+|  `echo $EDITOR`   |                    Display default text editor                     |
+| `echo $HISTFILE`  |                    Display command history file                    |
+|   `echo $USER`    |                      Display current username                      |
+|     `echo $?`     |                  Display last command exit status                  |
+|    `echo $PS1`    |                      Display the shell prompt                      |
+|     `echo -e`     |      Enable interpretation of backslash escapes in the string      |
+| `echo -e "hi \n"` |               Display "hi" with a newline character                |
 
 > Use `export` when you want to make a variable available to child processes
 > Use `set` primarily for managing shell options and attributes, but it can also be used to set local variables
