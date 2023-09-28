@@ -14,10 +14,10 @@ Welcome to my Network tutorials!
 
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
-* [Network](./network%20tips.md)
 * [SSH](./ssh.md)
 * [VPN](./vpn.md)
 * [DNS](./dns.md)
+* [Other](./other.md)
 
 ## My ETH Address
 
