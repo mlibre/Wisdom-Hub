@@ -98,18 +98,18 @@ echo "Hello, $name!"
 
 ### Conditionals
 
-| Operator |           Meaning            |       Example        |                    Description                    |
-| :------: | :--------------------------: | :------------------: | :-----------------------------------------------: |
-|  `-ne`   |          Not Equal           |     `$a -ne $b`      |        True if `$a` is not equal to `$b`.         |
-|  `-ge`   |   Greater than or Equal To   |     `$x -ge $y`      |  True if `$x` is greater than or equal to `$y`.   |
-|   `!=`   |   Not Equal (for strings)    | `"$str1" != "$str2"` |     True if `$str1` is not equal to `$str2`.      |
-|   `=`    |     Equal (for strings)      | `"$str1" = "$str2"`  |       True if `$str1` is equal to `$str2`.        |
-|  `-lt`   |          Less Than           |     `$p -lt $q`      |          True if `$p` is less than `$q`.          |
-|  `-gt`   |         Greater Than         |     `$m -gt $n`      |        True if `$m` is greater than `$n`.         |
-|  `-le`   |    Less Than or Equal To     |     `$i -le $j`      |    True if `$i` is less than or equal to `$j`.    |
-|   `-f`   |         File Exists          |     `-f "$file"`     |         True if the file `$file` exists.          |
-|   `-s`   | File is Not Empty (Size > 0) |     `-s "$file"`     | True if the file `$file` exists and is not empty. |
-|   `-x`   |      File is Executable      |    `-x "$script"`    |    True if the script `$script` is executable.    |
+| Operator |           Meaning            |       Example        |                   Description                    |
+| :------: | :--------------------------: | :------------------: | :----------------------------------------------: |
+|  `-ne`   |          Not Equal           |     `$a -ne $b`      |        True if `$a` is not equal to `$b`         |
+|  `-ge`   |   Greater than or Equal To   |     `$x -ge $y`      |  True if `$x` is greater than or equal to `$y`   |
+|   `!=`   |   Not Equal (for strings)    | `"$str1" != "$str2"` |     True if `$str1` is not equal to `$str2`      |
+|   `=`    |     Equal (for strings)      | `"$str1" = "$str2"`  |       True if `$str1` is equal to `$str2`        |
+|  `-lt`   |          Less Than           |     `$p -lt $q`      |          True if `$p` is less than `$q`          |
+|  `-gt`   |         Greater Than         |     `$m -gt $n`      |        True if `$m` is greater than `$n`         |
+|  `-le`   |    Less Than or Equal To     |     `$i -le $j`      |    True if `$i` is less than or equal to `$j`    |
+|   `-f`   |         File Exists          |     `-f "$file"`     |         True if the file `$file` exists          |
+|   `-s`   | File is Not Empty (Size > 0) |     `-s "$file"`     | True if the file `$file` exists and is not empty |
+|   `-x`   |      File is Executable      |    `-x "$script"`    |    True if the script `$script` is executable    |
 
 ### wait, ;, &&, ||, `, $#, $?, $()
 
