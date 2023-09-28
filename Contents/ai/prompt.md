@@ -30,14 +30,11 @@ The table format is:
 
 ## rewriting artiicle
 
-I have written an article. I think it is kinda dirty.
-It may have problems or mistakes in:
+I've written an article that needs improvement. I'm looking for help with:
 
-* naming
-* sectioning
-* typo
-* English grammar
-* content
-* facts
+* Revising article structure and headings
+* Correcting typos and English grammar
+* Refining content and facts
+* Reviewing naming issues
 
-please rewrite this markdown article.
+Please assist in enhancing my markdown article.
