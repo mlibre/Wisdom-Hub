@@ -78,6 +78,8 @@ tags:
 |      `uniq -c file.txt`       |  Count and display unique lines with count  |
 | cat file.txt \| tr -s ' ' ',' | Translate spaces to commas in a text stream |
 
+> `uniq` only removes duplicate consecutive lines from the input. To remove all duplicate lines, you can pipe the output to `sort` and then to `uniq` again. like `sort file.txt | uniq`
+
 ## diff, sha256sum, cp, mv, rm
 
 Certainly, here's a table of the commands you requested in markdown format, with centered text alignment as per your preference:
