@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[1725],{8039:s=>{s.exports=JSON.parse('{"label":"dns","permalink":"/Wisdom-Hub/tags/dns","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"network/dns","title":"DNS","description":"Configuring DNS on Linux","permalink":"/Wisdom-Hub/network/dns"}]}')}}]);

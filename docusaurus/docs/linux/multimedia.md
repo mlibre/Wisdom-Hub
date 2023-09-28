@@ -128,6 +128,20 @@ sudo nano /etc/environment
 VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
 ```
 
+### Resseting Steam, lutris and Wine
+
+```bash
+sudo killall winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:;
+sudo killall steamwebhelper gitstatusd steam;
+sudo killall -9 winedevice.exe wineserver services.exe EpicGamesLaunch EpicWebHelper.e explorer.exe lutris-wrapper:;
+sudo killall -9 steamwebhelper gitstatusd steam;
+pkill -f -e -c lutris-wrapper;
+pkill -f -e -c lutris;
+pkill -f -e -c wine;
+pkill -f -e -c steam;
+rm -r ~/.wine
+```
+
 ## Steam
 
 ### Fix common bugs
@@ -194,12 +208,6 @@ proxychains lutris
 # Check show advanced options
 # Put /usr/bin/tsocks in
 # Game -> configuration -> System options -> command prefix
-```
-
-### Fix Unexpected wine errors
-
-```bash
-rm -r ~/.wine
 ```
 
 ## AMDGPU
