@@ -16,6 +16,7 @@ This repository is organized into several sections, each containing tutorials fo
 
 * [network](./network%20tips.md)
 * [ssh](./ssh.md)
+* [vpn](./vpn.md)
 
 ## My ETH Address
 
