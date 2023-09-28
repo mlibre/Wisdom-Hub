@@ -25,7 +25,7 @@ xrandr
 
 
 # Change the brightness and gamma of the HDMI-A-0 output
-xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
+xrandr --output HDMI-A-0 --brightness 0.65 --gamma 0.65:0.65:0.65 
 ```
 
 ## Make a startup script using XDG startup
@@ -56,7 +56,7 @@ nano /usr/local/bin/gamma_on_startup
 
 sleep 5
 export DISPLAY=:0
-xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
+xrandr --output HDMI-A-0 --brightness 0.65 --gamma 0.65:0.65:0.65 
 ```
 
 ```bash
