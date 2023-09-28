@@ -153,6 +153,8 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |    `tar -xvf archive.tar`     |         Extract files from 'archive.tar'         |
 |  `tar -xvf archive.tar -C /`  |      Change to / directory and then extract      |
 
+> By default `tar` reads input from stdin.
+
 ## streams
 
 Certainly, here's a Markdown table with centered text alignment that lists the Linux commands you mentioned, along with their short descriptions and real-world examples:
