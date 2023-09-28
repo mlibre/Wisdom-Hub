@@ -8,9 +8,25 @@ tags:
   - GUI
 ---
 
-# multimedia
+# Multimedia
 
-# XDG
+## Changing monitor or screen Brightness and Gamma
+
+```bash
+# List available outputs
+xrandr
+
+# Screen 0: minimum 320 x 200, current 2560 x 1440, maximum 16384 x 16384
+# DisplayPort-0 disconnected (normal left inverted right x axis y axis)
+# HDMI-A-0 connected primary 2560x1440+0+0 (normal left inverted right x axis y axis) 621mm x 341mm
+#    3840x2160     60.00 +  50.00    59.94    30.00    30.00    25.00    24.00    29.97    23.98  
+#    2560x1600     59.97  
+#    2560x1440     59.95* 
+
+
+# Change the brightness and gamma of the HDMI-A-0 output
+xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
+```
 
 ## Make a startup script using XDG startup
 
@@ -99,24 +115,6 @@ systemctl --user restart pulseaudio
 
 pulseaudio --kill
 pulseaudio --start
-```
-
-## Changing monitor or screen Brightness and Gamma
-
-```bash
-# List available outputs
-xrandr
-
-# Screen 0: minimum 320 x 200, current 2560 x 1440, maximum 16384 x 16384
-# DisplayPort-0 disconnected (normal left inverted right x axis y axis)
-# HDMI-A-0 connected primary 2560x1440+0+0 (normal left inverted right x axis y axis) 621mm x 341mm
-#    3840x2160     60.00 +  50.00    59.94    30.00    30.00    25.00    24.00    29.97    23.98  
-#    2560x1600     59.97  
-#    2560x1440     59.95* 
-
-
-# Change the brightness and gamma of the HDMI-A-0 output
-xrandr --output HDMI-A-0 --brightness 0.70 --gamma 0.70:0.70:0.70 
 ```
 
 ## Vulkan
