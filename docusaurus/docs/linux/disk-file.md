@@ -99,15 +99,15 @@ rsync -e "ssh -p 2222" source/ user@host:/destination/
 
 ## dd
 
-|                       Command                        |                        Short Description                        |
-| :--------------------------------------------------: | :-------------------------------------------------------------: |
-|                         `dd`                         |                     Copy and convert files                      |
-|        `dd if=input of=output bs=block_size`         |  Copy data from 'input' to 'output' with specified block size   |
-|    `dd if=/dev/zero of=zerofile bs=1M count=100`     |                 Create a 100MB zero-filled file                 |
-|    `dd if=input of=output bs=512 count=1 skip=2`     | Copy 512 bytes from 'input' to 'output' starting from byte 1024 |
-|   `dd if=/dev/random of=randomfile bs=1M count=1`    |           Generate a 1MB file filled with random data           |
-|         dd if=input \| gzip > backup.dd.gzip         | Compress 'input' data using 'gzip' and save as 'backup.dd.gzip' |
-| `dd if=ubuntu.iso of=/dev/sdX bs=4M status=progress` |         Write 'ubuntu.iso' to a USB drive ('/dev/sdX')          |
+|                       Command                        |                     Short Description                     |
+| :--------------------------------------------------: | :-------------------------------------------------------: |
+|                         `dd`                         |                  Copy and convert files                   |
+|           `dd if=in of=out bs=block_size`            |  Copy data from 'in' to 'out' with specified block size   |
+|    `dd if=/dev/zero of=zerofile bs=1M count=100`     |              Create a 100MB zero-filled file              |
+|       `dd if=in of=out bs=512 count=1 skip=2`        |   Copy 512 bytes from 'in' to 'out' starting byte 1024    |
+|   `dd if=/dev/random of=randomfile bs=1M count=1`    |        Generate a 1MB file filled with random data        |
+|          dd if=in \| gzip > backup.dd.gzip           | Compress 'in' data using 'gzip', save as 'backup.dd.gzip' |
+| `dd if=ubuntu.iso of=/dev/sdX bs=4M status=progress` |      Write 'ubuntu.iso' to a USB drive ('/dev/sdX')       |
 
 ## Backup using locate
 
