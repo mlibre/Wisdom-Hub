@@ -18,6 +18,15 @@ A `login shell` is the **first shell** that runs under **your user ID** when you
 
 A `non-login shell` is any shell started in an **existing session**, like a terminal in a graphical environment, a shell **inside tmux**, or a shell within another shell. These shells **do not read** the environment configuration files (`/etc/profile` or `~/.bash_profile`), but they do read the shell configuration file (`~/.bashrc`, `/etc/bash.bashrc`).
 
+## Default Shell
+
+The default login shell for a user is configured in `/etc/passwd`. To check or change a user's default shell:
+
+```bash
+getent passwd mlibre
+pritenv SHELL
+```
+
 ## Bash
 
 ### Basics
