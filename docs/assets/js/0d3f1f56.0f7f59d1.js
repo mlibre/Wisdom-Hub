@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[7437],{9806:i=>{i.exports=JSON.parse('{"label":"Vulkan","permalink":"/Wisdom-Hub/tags/vulkan","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/multimedia","title":"multimedia","description":"Make a startup script using XDG startup","permalink":"/Wisdom-Hub/linux/multimedia"}]}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[6940],{6202:e=>{e.exports=JSON.parse('{"label":"Game","permalink":"/Wisdom-Hub/tags/game","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/multimedia","title":"Multimedia","description":"Changing monitor or screen Brightness and Gamma","permalink":"/Wisdom-Hub/linux/multimedia"}]}')}}]);
