@@ -62,6 +62,15 @@ tags:
 
 > **Tab** is the defualt delimiter
 
+## paste
+
+|         Command         |                  Short Description                  |
+| :---------------------: | :-------------------------------------------------: |
+|         `paste`         |         Merge lines of files horizontally.          |
+|   `paste file1 file2`   |       Merges lines from 'file1' and 'file2'.        |
+| `paste -s file1 file2`  | Merges lines from 'file1' and 'file2' sequentially. |
+| `paste -d, file1 file2` |        Merges lines with a comma delimiter.         |
+
 ## sort, nl, shuf, uniq, tr
 
 |            Command            |                 Description                 |
