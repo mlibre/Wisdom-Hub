@@ -7,6 +7,29 @@ tags:
 
 # Awesome Tools
 
+## Utilities
+
+### tldr
+
+```bash
+sudo pacman -S tldr
+
+tldr apt
+
+# ssh
+
+#   Secure Shell is a protocol used to securely log onto remote systems.
+#   It can be used for logging or executing commands on a remote server.
+#   More information: https://man.openbsd.org/ssh.
+
+#   - Connect to a remote server:
+#     ssh username@remote_host
+
+#   - Connect to a remote server with a specific identity (private key):
+#     ssh -i path/to/key_file username@remote_host
+# ...
+```
+
 ## Shell
 
 ### ble.sh
