@@ -27,16 +27,6 @@ getent passwd mlibre
 pritenv SHELL
 ```
 
-## man, apropos
-
-|       Command       |        Short Description         |
-| :-----------------: | :------------------------------: |
-|  `apropos network`  |      Find network commands       |
-|   `apropos file`    | Search for file-related commands |
-| `apropos -s 1 ".*"` |  all user commands (section 1)   |
-|        `man`        |       Display manual pages       |
-|      `man ls`       |   View manual for 'ls' command   |
-
 ## Bash
 
 ### Basics
@@ -85,6 +75,17 @@ echo "First argument: $1"
 read -p "Enter your name: " name
 echo "Hello, $name!"
 ```
+
+## Meta Character and Quoting
+
+|        Command         |                       Short Description                        |
+| :--------------------: | :------------------------------------------------------------: |
+|          `*`           |        Matches zero or more characters. `ls /bin/zip*`         |
+|          `?`           |            Matches single character. `ls file?.txt`            |
+| `[]` (square brackets) | Matches any one character within the range. `ls file[1-2].txt` |
+|  `{}` (curly braces)   |     expands values. `{a,b}.txt` expands to a.txt and b.txt     |
+|   `'single quotes'`    |            Escape all metacharacters within string             |
+|   `"double quotes"`    |             Interpret metacharacters within string             |
 
 ### Execution methods
 
