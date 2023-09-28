@@ -11,15 +11,8 @@ tags:
 This section is a comprehensive guide to various topics related to Networking, including disabling IPv6, setting up DNS servers, VPN servers, and proxy servers. There are also topics on how to use different VPN services and redirect network traffic. This section provides in-depth information on how to configure different VPN protocols like OpenVPN, V2Ray, ShadowSocks, and WireGuard.
 
 * [Disable IPV6](#disable-ipv6)
-* [Setup DNS](#setup-dns)
-  * [Using resolv.conf](#using-resolvconf)
-  * [Using systemd](#using-systemd)
-  * [DNS Server - dhclient](#dns-server---dhclient)
 * [Flush System Settings](#flush-system-settings)
 * [Open an application over socks](#open-an-application-over-socks)
-* [Setup DNS Server](#setup-dns-server)
-  * [Using Systemd](#using-systemd-1)
-  * [Using dnsmasq](#using-dnsmasq)
 * [Outline Proxy Server + Jump Server](#outline-proxy-server--jump-server)
   * [Initialization](#initialization)
   * [Outline Server](#outline-server)
@@ -34,13 +27,6 @@ This section is a comprehensive guide to various topics related to Networking, i
     * [ShadowSocks SS URL Format](#shadowsocks-ss-url-format)
 * [Redirecting the whole network traffic](#redirecting-the-whole-network-traffic)
 * [Proxy udp traffic from ssh](#proxy-udp-traffic-from-ssh)
-* [Set System-wide DNS](#set-system-wide-dns)
-  * [Shekan DNS](#shekan-dns)
-  * [403 DNS](#403-dns)
-  * [electrotm DNS](#electrotm-dns)
-  * [OpenDns](#opendns)
-  * [Global DNS](#global-dns)
-  * [Setting domains directly in /etc/hosts](#setting-domains-directly-in-etchosts)
 * [Simple python http.server](#simple-python-httpserver)
 
 ## Disable IPV6
@@ -52,69 +38,6 @@ net.ipv6.conf.all.disable_ipv6=1
 net.ipv6.conf.default.disable_ipv6=1
 
 sudo sysctl -p 
-```
-
-## Setup DNS
-
-### Using resolv.conf
-
-```bash
-sudo nano /etc/resolv.conf
-nameserver 1.1.1.1
-nameserver 1.0.0.1
-nameserver 208.67.222.222
-nameserver 208.67.220.220
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-
-# echo "nameserver 8.8.8.8" > /etc/resolv.conf
-```
-
-```bash
-sudo systemctl enable resolvconf
-sudo nano /etc/resolvconf/resolv.conf.d/head
-sudo nano /etc/resolvconf/resolv.conf.d/base
-nameserver 1.1.1.1
-nameserver 208.67.222.222
-nameserver 208.67.220.220
-nameserver 8.8.8.8
-```
-
-### Using systemd
-
-```bash
-sudo nano /etc/systemd/resolved.conf
-[Resolve]
-DNS=1.1.1.1 208.67.222.222 208.67.220.220 8.8.8.8
-
-sudo nano /run/systemd/resolve/stub-resolv.conf
-nameserver 1.1.1.1
-nameserver 208.67.222.222
-nameserver 208.67.220.220
-nameserver 8.8.8.8
-
-sudo systemctl enable systemd-resolved
-sudo systemctl restart systemd-resolved
-
-# resolvectl dns enp3s0 1.1.1.1 
-# resolvectl dns enp1s0f0u6 1.1.1.1
-resolvectl dns
-```
-
-### DNS Server - dhclient
-
-```bash
-sudo nano /etc/dhcp/dhclient.conf
-prepend domain-name-servers 208.67.222.222, 208.67.220.220, 8.8.8.8
-
-sudo nano /etc/network/interfaces
-iface eth0 inet static
-  dns-nameservers 208.67.222.222 208.67.220.220 8.8.8.8
-```
-
-```bash
-resolvectl dns eth0 # make sure dns is set
-# permanent? 
 ```
 
 ## Flush System Settings
@@ -151,35 +74,6 @@ sync; echo 3 > /proc/sys/vm/drop_caches;
 ```bash
 torsocks deluge
 tsokcs deluge
-```
-
-## Setup DNS Server
-
-### Using Systemd
-
-```bash
-sudo nano /etc/systemd/resolved.conf
-[Resolve]
-DNS=1.1.1.1 9.9.9.9#dns.quad9.net 8.8.8.8
-FallbackDNS=208.67.222.222 208.67.220.220
-#Domains=
-#LLMNR=no
-#MulticastDNS=no
-DNSSEC=yes
-DNSOverTLS=no
-Cache=yes        
-DNSStubListener=yes
-ReadEtcHosts=yes
-
-sudo systemctl enable systemd-resolved.service
-sudo systemctl restart systemd-resolved.service
-sudo systemctl restart NetworkManager
-```
-
-### Using dnsmasq
-
-```bash
-sudo apt install dnsmasq
 ```
 
 ## Outline Proxy Server + Jump Server
@@ -279,32 +173,31 @@ sudo ufw status
 3. Run and follow instructions
 4. Save the credentials
 
-  ```bash
-  ...
-  {"apiUrl":"https://41.249.49.191:13108/112-XA1EFIGPw","certSha256":"121"}
-  ```
+   ```bash
+   {"apiUrl":"https://41.249.49.191:13108/112-XA1EFIGPw","certSha256":"121"}
+   ```
 
-4. In server: open ssh, https and other ports + ports mentioned in outline manager settings:
+5. In server: open ssh, https and other ports + ports mentioned in outline manager settings:
 
-  ```bash
-    sudo ufw allow 51449
-    sudo ufw allow 51449/tcp
-    sudo ufw allow 51449/udp
-    sudo ufw allow 64920
-    sudo ufw allow 64920/udp
-    sudo ufw allow 64920/tcp
-  ```
+   ```bash
+      sudo ufw allow 51449
+      sudo ufw allow 51449/tcp
+      sudo ufw allow 51449/udp
+      sudo ufw allow 64920
+      sudo ufw allow 64920/udp
+      sudo ufw allow 64920/tcp
+   ```
 
-5. Open Manager
-6. Create keys
-7. Share keys
+6. Open Manager
+7. Create keys
+8. Share keys
 
-  ```bash
-  # Keys are like this
-  ss://BASE64 STRING@IP:PORT/?outline=1
-  ```
+   ```bash
+   # Keys are like this
+   ss://BASE64 STRING@IP:PORT/?outline=1
+   ```
 
-8. You can also open keys with ShadowSocks
+9. You can also open keys with ShadowSocks
 10. Run [BBR script](https://github.com/teddysun/across/blob/master/bbr.sh)
 
 ### Jump server
@@ -462,121 +355,6 @@ sudo ip route add 192.168.1.0/24 dev ppp0
 ## Proxy udp traffic from ssh
 
 <https://superuser.com/questions/53103/udp-traffic-through-ssh-tunnel>
-
-## Set System-wide DNS
-
-### Shekan DNS
-
-```bash
-# resolvectl query identitytoolkit.googleapis.com
-DNS_SERVER="178.22.122.100"
-sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
-sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
-sudo systemctl daemon-reload; wait;
-sudo systemctl restart systemd-networkd; wait;
-sudo systemctl restart systemd-resolved; wait;
-sudo systemd-resolve --flush-caches
-sudo resolvectl flush-caches
-sudo resolvectl dns eth0 "$DNS_SERVER"
-sudo resolvectl dns tun0 "$DNS_SERVER"
-sudo resolvectl dns enp3s0 "$DNS_SERVER"
-sudo resolvectl dns enp5s0 "$DNS_SERVER"
-sudo resolvectl dns docker0 "$DNS_SERVER"
-sudo resolvectl dns
-```
-
-### 403 DNS
-
-```bash
-DNS_SERVER="10.202.10.102"
-sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
-sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
-sudo systemctl daemon-reload; wait;
-sudo systemctl restart systemd-networkd; wait;
-sudo systemctl restart systemd-resolved; wait;
-sudo systemd-resolve --flush-caches
-sudo resolvectl flush-caches
-sudo resolvectl dns eth0 "$DNS_SERVER"
-sudo resolvectl dns tun0 "$DNS_SERVER"
-sudo resolvectl dns enp3s0 "$DNS_SERVER"
-sudo resolvectl dns enp5s0 "$DNS_SERVER"
-sudo resolvectl dns docker0 "$DNS_SERVER"
-sudo resolvectl dns
-```
-
-### electrotm DNS
-
-```bash
-DNS_SERVER="78.157.42.101"
-sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
-sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
-sudo systemctl daemon-reload; wait;
-sudo systemctl restart systemd-networkd; wait;
-sudo systemctl restart systemd-resolved; wait;
-sudo systemd-resolve --flush-caches
-sudo resolvectl flush-caches
-sudo resolvectl dns eth0 "$DNS_SERVER"
-sudo resolvectl dns tun0 "$DNS_SERVER"
-sudo resolvectl dns enp3s0 "$DNS_SERVER"
-sudo resolvectl dns enp5s0 "$DNS_SERVER"
-sudo resolvectl dns docker0 "$DNS_SERVER"
-sudo resolvectl dns
-```
-
-### OpenDns
-
-```bash
-DNS_SERVER="208.67.222.222"
-sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
-sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
-sudo systemctl daemon-reload; wait;
-sudo systemctl restart systemd-networkd; wait;
-sudo systemctl restart systemd-resolved; wait;
-sudo systemd-resolve --flush-caches
-sudo resolvectl flush-caches
-sudo resolvectl dns eth0 "$DNS_SERVER"
-sudo resolvectl dns tun0 "$DNS_SERVER"
-sudo resolvectl dns enp3s0 "$DNS_SERVER"
-sudo resolvectl dns enp5s0 "$DNS_SERVER"
-sudo resolvectl dns docker0 "$DNS_SERVER"
-sudo resolvectl dns
-```
-
-### Global DNS
-
-```bash
-DNS_SERVER="1.1.1.1"
-sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
-sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
-sudo systemctl daemon-reload; wait;
-sudo systemctl restart systemd-networkd; wait;
-sudo systemctl restart systemd-resolved; wait;
-sudo systemd-resolve --flush-caches
-sudo resolvectl flush-caches
-sudo resolvectl dns eth0 "$DNS_SERVER"
-sudo resolvectl dns tun0 "$DNS_SERVER"
-sudo resolvectl dns enp3s0 "$DNS_SERVER"
-sudo resolvectl dns enp5s0 "$DNS_SERVER"
-sudo resolvectl dns docker0 "$DNS_SERVER"
-sudo resolvectl dns
-```
-
-### Setting domains directly in /etc/hosts
-
-```bash
-sudo nano /etc/hosts
-
-10.202.10.4 securetoken.googleapis.com
-50.7.87.84  identitytoolkit.googleapis.com
-50.7.87.84  bard.google.com
-50.7.85.222 openai.com
-50.7.85.220 chat.openai.com
-50.7.87.85  cdn.openai.com
-188.68.52.244 www.bing.com
-50.7.87.85  marketplace.visualstudio.com
-50.7.85.222 auth0.openai.com
-50.7.85.218 api.codium.ai
-```
 
 ## Simple python http.server
 
