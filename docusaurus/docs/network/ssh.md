@@ -4,6 +4,7 @@ tags:
   - Linux
   - VPN
   - SSH
+  - openVPN
 ---
 
 # SSH
@@ -29,8 +30,7 @@ tags:
 |                      `-X`                       |            Enables X11 forwarding, allowing graphical applications to be run remotely             |
 |              `ssh -X user@remote`               |                                                                                                   |
 
-
-# Local Port Forwarding (-L)
+## Local Port Forwarding (-L)
 
 Allows accessing a remote port locally by binding a local port to a remote port. Useful for accessing services only available on loopback.
 
@@ -40,7 +40,7 @@ Example:
 ssh -N -f -L 1337:127.0.0.1:80 root@internal-web.int
 ```
 
-# Remote Port Forwarding (-R)
+## Remote Port Forwarding (-R)
 
 Opens a port on a remote server that forwards to a local port on another server. Useful for pivoting through networks.
 
@@ -50,7 +50,7 @@ Example:
 ssh -N -f -R 3000:127.0.0.1:80 root@vuln-server.int
 ```
 
-# Dynamic Port Forwarding (-D)
+## Dynamic Port Forwarding (-D)
 
 Creates a SOCKS proxy that can route traffic through an SSH connection. Useful for proxying web traffic.
 
@@ -61,7 +61,7 @@ ssh -N -f -D 8080 root@vuln-server.int
 ssh -D 0.0.0.0:8080 -N mlibre@51.89.88.80
 ```
 
-# Agent Forwarding (-A)
+## Agent Forwarding (-A)
 
 Forwards SSH keys/identities to remote servers. Can be risky if keys have high privileges.
 
@@ -71,7 +71,7 @@ Example:
 ssh -A -J root@vuln-server.int root@internal-web.int
 ```
 
-# Jump Hosts (-J)
+## Jump Hosts (-J)
 
 Proxy through multiple hosts to reach a destination.
 
@@ -83,7 +83,7 @@ ssh -J root@host1,root@host2 root@destination
 
 The guide covers many other useful SSH concepts like port forwarding, SSH config, and key generation.
 
-# ssh-keygen
+## ssh-keygen
 
 SSH key pairs are essential for secure authentication. To generate an SSH key pair, you can use the `ssh-keygen` command. This command generates both a private key (usually stored in `~/.ssh/id_rsa`) and a public key (stored in `~/.ssh/id_rsa.pub`).
 
@@ -93,13 +93,13 @@ To generate a new key pair, you can use the following command:
 ssh-keygen
 ```
 
-# ssh-copy-id
+## ssh-copy-id
 
 ```bash
 sudo ssh-copy-id -i .ssh/id_rsa.pub -p 22 mlibre@192.168.1.136
 ```
 
-# SSH Config File
+## SSH Config File
 
 ```bash
 nano ~/.ssh/config
@@ -114,7 +114,7 @@ host funserver
 ssh funserver
 ```
 
-# VPN over SSH
+## VPN over SSH
 
 ```bash
 sudo pacman -S sshuttle

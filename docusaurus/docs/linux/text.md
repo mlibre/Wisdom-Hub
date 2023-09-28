@@ -25,6 +25,7 @@ tags:
 |  `tail -f file.txt`  |    Continuously display new lines     |
 |   `head file.txt`    | Display first N lines (10 by default) |
 | `head -n 5 file.txt` |         Display first 5 lines         |
+|  `head -5 file.txt`  |         Display first 5 lines         |
 |   `less file.txt`    |       View file with pagination       |
 |   `more file.txt`    |        View file page by page         |
 
@@ -62,14 +63,16 @@ tags:
 
 > **Tab** is the defualt delimiter
 
-## paste
+## paste, wc
 
-|         Command         |                  Short Description                  |
-| :---------------------: | :-------------------------------------------------: |
-|         `paste`         |         Merge lines of files horizontally.          |
-|   `paste file1 file2`   |       Merges lines from 'file1' and 'file2'.        |
-| `paste -s file1 file2`  | Merges lines from 'file1' and 'file2' sequentially. |
-| `paste -d, file1 file2` |        Merges lines with a comma delimiter.         |
+|         Command         |                 Short Description                  |
+| :---------------------: | :------------------------------------------------: |
+|         `paste`         |         Merge lines of files horizontally          |
+|   `paste file1 file2`   |       Merges lines from 'file1' and 'file2'        |
+| `paste -s file1 file2`  | Merges lines from 'file1' and 'file2' sequentially |
+| `paste -d, file1 file2` |        Merges lines with a comma delimiter         |
+|    `wc -l file.txt`     |               Count lines in a file                |
+|    `wc -w file.txt`     |               Count words in a file                |
 
 ## sort, nl, shuf, uniq, tr
 
@@ -103,6 +106,18 @@ Certainly, here's a table of the commands you requested in markdown format, with
 |       `rm -r`        |      Removes directories and their contents recursively       |
 |       `mkdir`        |                    Creates a new directory                    |
 |       `rmdir`        |                  Removes an empty directory                   |
+
+## grep
+
+|                 Command                  |                               Description                               |
+| :--------------------------------------: | :---------------------------------------------------------------------: |
+|          `grep 'error' log.txt`          |                Search for 'error' messages in a log file                |
+|     `grep -r 'function()' /project`      | Recursively find files contain 'function()' in the '/project' directory |
+|          `grep -i 'todo' *.js`           |        Search case-insensitively for 'todo' in JavaScript files         |
+| `grep -E '^\d{3}-\d{2}-\d{4}$' data.txt` |    Use extended regex to find social security numbers in 'data.txt'     |
+|        `grep -l 'pattern' *.txt`         |        List files containing 'pattern' in the current directory         |
+|       `grep -v 'warning' log.txt`        |   Invert the match to display lines without 'warning' in the log file   |
+
 
 ## find
 
@@ -165,7 +180,7 @@ Certainly, here's a Markdown table with centered text alignment that lists the L
 
 |       Command        |                     Description                      |
 | :------------------: | :--------------------------------------------------: |
-|          \|          |     Redirect output from one command to another.     |
+|          \|          |     Redirect output from one command to another      |
 | command1 \| command2 | Execute `command1` and pass its output to `command2` |
 |   ls \| grep .txt    |    List and filter files with a `.txt` extension     |
 | ps aux \| grep nginx |     List and filter processes related to `nginx`     |
@@ -186,28 +201,17 @@ By default, `xargs` will process as many input items as possible in a single exe
 * `-n 1`: This option in xargs specifies that only one input item should be used for each execution of the command. It ensures that the command is run once for each input item
 * `-I {}`: The -I option allows you to specify a placeholder (in this case, {}) to represent where the input item should be placed within the command. It also process one input item at a time
 
-|                           Command                            |                            Description                             |
-| :----------------------------------------------------------: | :----------------------------------------------------------------: |
-|                           `xargs`                            |        Build and execute command lines from standard input         |
-|          find /path -type f -print \| xargs command          |   Execute **command** on each file found by the **find** command   |
-|               echo arg1 arg2 \| xargs command                |      Execute **command** with arguments **arg1** and **arg2**      |
-|                     ls *.txt \| xargs rm                     |         Remove all **.txt** files in the current directory         |
-|               cat list.txt \| xargs -n 1 echo                |    Print each line of **list.txt** using **echo** (one by one)     |
-|                ls \| xargs -I {} mv {} {}.bak                |  Add ".bak" extension to all files in this directory (one by one)  |
-|   find /path -type f -name "*.log" -print0 \| xargs -0 rm    | Remove ".log" files in "/path" with handling of special characters |
-| grep pattern f1 f2 \| xargs sed -i 's/pattern/replacement/g' | Search and replace "pattern" with "replacement" in multiple files  |
-|  echo file1 file2 file3 \| xargs -I % sh -c 'cp % /backup'   |             Copy multiple files to a backup directory              |
-|     find /path -type f -print \| xargs -P 4 -I % gzip %      |     Parallel compression of files in "/path" using 4 processes     |
-|       ls *.txt \| xargs -n 1 -I {} mv {} /destination/       |         Move each ".txt" file to "/destination/" directory         |
-|  echo file1 file2 \| xargs -d ' ' -I % sh -c 'touch %.txt'   |              Create ".txt" files with specified names              |
-
-## grep
-
-|                 Command                  |                                  Description                                   |
-| :--------------------------------------: | :----------------------------------------------------------------------------: |
-|          `grep 'error' log.txt`          |                   Search for 'error' messages in a log file                    |
-|   `grep -r 'function foo()' /project`    | Recursively find files containing 'function foo()' in the '/project' directory |
-|          `grep -i 'todo' *.js`           |            Search case-insensitively for 'todo' in JavaScript files            |
-| `grep -E '^\d{3}-\d{2}-\d{4}$' data.txt` |        Use extended regex to find social security numbers in 'data.txt'        |
-|        `grep -l 'pattern' *.txt`         |            List files containing 'pattern' in the current directory            |
-|       `grep -v 'warning' log.txt`        |      Invert the match to display lines without 'warning' in the log file       |
+|                           Command                            |                           Description                            |
+| :----------------------------------------------------------: | :--------------------------------------------------------------: |
+|                           `xargs`                            |       Build and execute command lines from standard input        |
+|          find /path -type f -print \| xargs command          |  Execute **command** on each file found by the **find** command  |
+|               echo arg1 arg2 \| xargs command                |     Execute **command** with arguments **arg1** and **arg2**     |
+|                     ls *.txt \| xargs rm                     |        Remove all **.txt** files in the current directory        |
+|               cat list.txt \| xargs -n 1 echo                |   Print each line of **list.txt** using **echo** (one by one)    |
+|                ls \| xargs -I {} mv {} {}.bak                | Add ".bak" extension to all files in this directory (one by one) |
+|   find /path -type f -name "*.log" -print0 \| xargs -0 rm    | Remove ".log" files in "/path" with handling special characters  |
+| grep pattern f1 f2 \| xargs sed -i 's/pattern/replacement/g' |  Search, replace "pattern" with "replacement" in multiple files  |
+|  echo file1 file2 file3 \| xargs -I % sh -c 'cp % /backup'   |            Copy multiple files to a backup directory             |
+|     find /path -type f -print \| xargs -P 4 -I % gzip %      |    Parallel compression of files in "/path" using 4 processes    |
+|       ls *.txt \| xargs -n 1 -I {} mv {} /destination/       |        Move each ".txt" file to "/destination/" directory        |
+|  echo file1 file2 \| xargs -d ' ' -I % sh -c 'touch %.txt'   |             Create ".txt" files with specified names             |
