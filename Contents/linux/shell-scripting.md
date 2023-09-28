@@ -27,6 +27,16 @@ getent passwd mlibre
 pritenv SHELL
 ```
 
+## man, apropos
+
+|       Command       |        Short Description         |
+| :-----------------: | :------------------------------: |
+|  `apropos network`  |      Find network commands       |
+|   `apropos file`    | Search for file-related commands |
+| `apropos -s 1 ".*"` |  all user commands (section 1)   |
+|        `man`        |       Display manual pages       |
+|      `man ls`       |   View manual for 'ls' command   |
+
 ## Bash
 
 ### Basics
