@@ -384,3 +384,108 @@ sudo wg
 # sudo wg-quick down wg0
 # sudo systemctl daemon-reload 
 ```
+
+## Free VPNs
+
+### VPNBook
+
+- Download OpenVpn file: <https://www.vpnbook.com/freevpn>
+- Import in NetworkManger
+- Enter username and password from here: <https://www.vpnbook.com/freevpn>
+
+### Protonvpn
+
+#### Install
+
+```bash
+sudo systemctl stop firewalld.service
+yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
+# proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
+protonvpn
+# proxychain protonvpn
+```
+
+#### OpenVpn
+
+- Download openVpn config file form here: <https://account.protonvpn.com/downloads>
+- Copy openVPn credentials: <https://account.protonvpn.com/account>
+- Network Manager: New -> Import OpenVpn Saved Configuration. Paste credentials
+
+#### WireGuard
+
+```bash
+sudo pacman -R firewalld
+sudo ufw disable
+sudo nano /etc/sysctl.conf
+# add: net.ipv4.ip_forward=1
+# net.ipv6.conf.all.forwarding=1
+sudo sysctl -p
+sudo pacman -S extra/wireguard-tools
+# yay -S  qomui
+# https://account.protonvpn.com/downloads#wireguard-configuration
+sudo nano /etc/wireguard/wg0.conf
+# past
+
+resolvectl dns
+sudo resolvectl dns enp3s0 10.2.0.1 # ip addr:(enp3s0). resolvectl dnsglobal:(10.2.0.1). can be added in POSTup wirgurd conf
+sudo wg-quick up wg0
+sudo wg-quick down wg0
+sudo wg
+```
+
+### Hide.me
+
+```bash
+sudo systemctl stop firewalld.service
+curl -L https://hide.me/download/linux-amd64 | tar -xJ && sudo ./install.sh
+# Extend free trail 
+# https://member.hide.me/en/
+proxychains sudo ./hide.me token free-unlimited.hideservers.net
+proxychains sudo ./hide.me connect free-unlimited.hideservers.net
+```
+
+### Windscribe
+
+```bash
+sudo systemctl stop firewalld.service
+yay -S aur/windscribe-bin
+# proxychains yay -S aur/windscribe-bin
+```
+
+### Warp
+
+```bash
+pamac insatll cloudflare-warp-bin
+
+sudo nano /etc/systemd/resolved.conf
+ResolveUnicastSingleLabel=yes
+sudo systemctl restart systemd-resolved.service
+
+sudo systemctl restart warp-svc.service 
+sudo systemctl enable warp-svc.service 
+warp-cli set-families-mode off
+warp-cli delete
+warp-cli register
+warp-cli disconnect
+
+warp-cli connect
+warp-cli status
+warp-cli settings
+
+warp-cli set-mode --help
+warp-cli set-mode warp
+warp-cli set-mode doh
+warp-cli set-mode warp+doh
+warp-cli set-mode proxy
+warp-cli set-proxy-port 4040 # Set the listening port for WARP proxy (127.0.0.1:{port})
+
+warp-cli -vvv -l connect
+warp-cli -l status
+warp-cli enable-dns-log
+warp-cli -l enable-dns-log
+journalctl -xeu warp-svc.service
+journalctl -u systemd-resolved -f
+warp-diag
+
+proxychains midori
+```
