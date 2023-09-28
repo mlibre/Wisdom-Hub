@@ -6,7 +6,7 @@ tags:
 
 # DNS
 
-## Setup System DNS
+## Configuring DNS on Linux
 
 ### resolv.conf
 
@@ -19,8 +19,10 @@ nameserver 208.67.220.220
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 
-# echo "nameserver 8.8.8.8" > /etc/resolv.conf
+# echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
 ```
+
+### resolvconf
 
 ```bash
 sudo systemctl enable resolvconf
@@ -32,7 +34,7 @@ nameserver 208.67.220.220
 nameserver 8.8.8.8
 ```
 
-### systemd
+### systemd-resolved
 
 ```bash
 sudo nano /etc/systemd/resolved.conf
@@ -64,43 +66,9 @@ iface eth0 inet static
   dns-nameservers 208.67.222.222 208.67.220.220 8.8.8.8
 ```
 
-```bash
-resolvectl dns eth0 # make sure dns is set
-# permanent? 
-```
+## Fast System-wide DNS Setup
 
-## Setup DNS Server
-
-### Using Systemd
-
-```bash
-sudo nano /etc/systemd/resolved.conf
-[Resolve]
-DNS=1.1.1.1 9.9.9.9#dns.quad9.net 8.8.8.8
-FallbackDNS=208.67.222.222 208.67.220.220
-#Domains=
-#LLMNR=no
-#MulticastDNS=no
-DNSSEC=yes
-DNSOverTLS=no
-Cache=yes        
-DNSStubListener=yes
-ReadEtcHosts=yes
-
-sudo systemctl enable systemd-resolved.service
-sudo systemctl restart systemd-resolved.service
-sudo systemctl restart NetworkManager
-```
-
-### Using dnsmasq
-
-```bash
-sudo apt install dnsmasq
-```
-
-## Set System-wide DNS
-
-### Shekan DNS
+### Shekan
 
 ```bash
 # resolvectl query identitytoolkit.googleapis.com
@@ -120,7 +88,7 @@ sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
-### 403 DNS
+### 403
 
 ```bash
 DNS_SERVER="10.202.10.102"
@@ -139,7 +107,7 @@ sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
-### electrotm DNS
+### electrotm
 
 ```bash
 DNS_SERVER="78.157.42.101"
@@ -177,7 +145,7 @@ sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
-### Global DNS
+### Cloudflare
 
 ```bash
 DNS_SERVER="1.1.1.1"
@@ -196,7 +164,7 @@ sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
-### Setting domains directly in /etc/hosts
+## Setting domains directly in /etc/hosts
 
 ```bash
 sudo nano /etc/hosts
@@ -211,4 +179,33 @@ sudo nano /etc/hosts
 50.7.87.85  marketplace.visualstudio.com
 50.7.85.222 auth0.openai.com
 50.7.85.218 api.codium.ai
+```
+
+## Setting Up DNS Server
+
+### Using Systemd
+
+```bash
+sudo nano /etc/systemd/resolved.conf
+[Resolve]
+DNS=1.1.1.1 9.9.9.9#dns.quad9.net 8.8.8.8
+FallbackDNS=208.67.222.222 208.67.220.220
+DNSSEC=yes
+DNSOverTLS=no
+Cache=yes        
+DNSStubListener=yes
+ReadEtcHosts=yes
+#Domains=
+#LLMNR=no
+#MulticastDNS=no
+
+sudo systemctl enable systemd-resolved.service
+sudo systemctl restart systemd-resolved.service
+sudo systemctl restart NetworkManager
+```
+
+### Using dnsmasq
+
+```bash
+sudo apt install dnsmasq
 ```

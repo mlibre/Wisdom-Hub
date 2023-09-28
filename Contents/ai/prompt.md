@@ -27,3 +27,17 @@ The table format is:
 |   `advance example of command 2`    | Description |
 | `very advance example of command 2` | Description |
 ```
+
+## rewriting artiicle
+
+I have written an article. I think it is kinda dirty.
+It may have problems or mistakes in:
+
+* naming
+* sectioning
+* typo
+* English grammar
+* content
+* facts
+
+please rewrite this markdown article.
