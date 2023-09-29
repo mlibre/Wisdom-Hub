@@ -11,6 +11,27 @@ tags:
 
 # Other
 
+## Time and Date
+
+|                      Command                      |                     Short Description                      |
+| :-----------------------------------------------: | :--------------------------------------------------------: |
+|                       `cal`                       |                     Display a calendar                     |
+|                     `cal -3`                      | Display calendar for the previous, current, and next month |
+|                   `timedatectl`                   |           Control system time and date settings            |
+| `sudo timedatectl set-time '2023-09-06 14:30:00'` |                Set the system time and date                |
+|                      `date`                       |          Display or set the system date and time           |
+|            `date "+%Y-%m-%d %H:%M:%S"`            |   Display the current date and time in a specific format   |
+|       `sudo date -s '2023-09-06 14:30:00'`        |                Set the system date and time                |
+|                    `tzselect`                     |          Set the system's time zone interactively          |
+
+### Fix time difference between linux and windows
+
+```bash
+sudo timedatectl set-local-rtc 1 --adjust-system-clock
+## sudo timedatectl set-local-rtc 1
+sudo ntpdate time.nist.gov ## update time
+```
+
 ## man, apropos
 
 |       Command       |        Short Description         |
@@ -266,14 +287,6 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 sudo nano /etc/sysctl.conf
 ## vm.swappiness=10
 ```
-
-- Fix time difference between linux and windows
-
-  ```bash
-  sudo timedatectl set-local-rtc 1 --adjust-system-clock
-  ## sudo timedatectl set-local-rtc 1
-  sudo ntpdate time.nist.gov ## update time
-  ```
 
 - Firefox: Enable DNS over HTTPS
 - Enable automatic mounting of external drives: Settings -> Hardware -> Removable Storage -> Automount
