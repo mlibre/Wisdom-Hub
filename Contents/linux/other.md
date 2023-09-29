@@ -24,6 +24,29 @@ tags:
 |       `sudo date -s '2023-09-06 14:30:00'`        |                Set the system date and time                |
 |                    `tzselect`                     |          Set the system's time zone interactively          |
 
+## Timezone
+
+### Get timezone
+
+```bash
+date +%Z
+date +%z
+timedatectl show --property=Timezone --value
+readlink /etc/localtime
+cat /etc/timezone # depricated
+echo $TZ # depricated
+```
+
+### Set timezone
+
+```bash
+timedatectl list-timezones
+sudo timedatectl set-timezone Arctic/Longyearbyen
+# Will change the output of "date, timedatectl and /etc/localtime"
+```
+
+> `/etc/localtime` is a file or symbolic link in Linux that represents the current system's time zone configuration, used by many applications. You can change this time zone by modifying the file or link to point to a time zone definition file under `/usr/share/zoneinfo/`.
+
 ### Fix time difference between linux and windows
 
 ```bash
