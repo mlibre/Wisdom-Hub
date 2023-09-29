@@ -76,7 +76,7 @@ read -p "Enter your name: " name
 echo "Hello, $name!"
 ```
 
-## Meta Character and Quoting
+### Metacharacters and Quoting
 
 |        Command         |                       Short Description                        |
 | :--------------------: | :------------------------------------------------------------: |
