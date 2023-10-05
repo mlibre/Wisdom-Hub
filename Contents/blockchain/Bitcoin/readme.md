@@ -107,11 +107,18 @@ When A broadcast the two transactions, they will go in unconfirmed transactions'
 
 As an incentive to use processing power to try and add new blocks of transactions on to the blockchain, each new block makes available a fixed amount of bitcoins that did not previously exist. Therefore, if you are able to successfully mine a block, you are able to “send” yourself these new bitcoins as a reward for your effort.
 
+## Bitcoin Storage
+
+`Bitcoin` does not enforce a specific structure for storing the transaction journal, but most implementations utilize a database like `LevelDB` for efficient storage of transactions and related metadata
+
 ## Merkle Root
 
-The `Merkle root` is an important part of how blocks in the Bitcoin blockchain are linked together securely. Each new block contains a hash of the **previous block's header**. This connects the blocks in a chain, because if anything changes in a previous block, the hash will change too.
+The `Merkle root` is an important part of blocks in the Bitcoin blockchain. The `Bitcoin` blockchain is **not a single Merkle tree**, but rather a chain of blocks. Each block contains a `Merkle root`, This `Merkle root` is built using a **Merkle tree** structure and is used to verify the integrity of the transactions in the block. To get the **leaves** for our tree, we use the transaction hash (the `TXID`) of every transaction included in the block.  
+You get a `TXID` by hashing transaction data through `SHA256` twice.
 
-Specifically, each block header contains a `Merkle root` hash representing all the transactions in that block. If even a single transaction in the block were **modified**, it would cause the **Merkle root to change**. This would make the block's overall **header hash** change too.
+Each new block contains a hash of the **previous block's header**. This connects the blocks in a chain, because if anything changes in a previous block, the hash will change too.
+
+Specifically, each block header includes a `Merkle root` hash representing all the transactions in that block. If even a single transaction in the block were **modified**, it would cause the `TXID` of that trasnaction to change. and so the **Merkle root to change**. This would make the block's overall **header hash** change too.
 
 So the `Merkle root` allows any changes to previous transactions to be detected. If a transaction were deleted from a previous block, the Merkle root in the header of all following blocks would change. This would break the chain of hashes connecting the blocks.
 
@@ -138,6 +145,7 @@ When you broadcast a transaction to the Bitcoin network, your wallet can downloa
 - <https://learnmeabitcoin.com/technical/longest-chain>
 - <https://www.geeksforgeeks.org/blockchain-merkle-trees/>
 - <https://www.geeksforgeeks.org/blockchain-merkle-trees/>
+- <https://academy.binance.com/en/articles/merkle-trees-and-merkle-roots-explained>
 
 ## My Bitcoin Address
 
