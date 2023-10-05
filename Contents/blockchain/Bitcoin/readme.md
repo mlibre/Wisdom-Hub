@@ -90,6 +90,14 @@ A transaction components are:
 
 The **longest chain** refers to the chain of blocks that the majority of nodes on the network agree to and adopt as the authoritative blockchain. The longest chain is not determined by the number of blocks but by the amount of computational power or energy used to mine the blocks in the chain.
 
+### Chain Reorganisation
+
+A **chain reorganisation** takes place when your node receives blocks that are part of a new **longest chain**. Your node will **deactivate** blocks in its **old longest chain** in favour of the blocks that build the new longest chain.  
+
+A chain reorganisation most commonly takes place after **two blocks have been mined** at the same time.
+
+The `next block` to be mined will build upon one of these two blocks, creating a new longest chain that all nodes on the network will be happy to adopt
+
 ## Double Spending
 
 Double spending is when someone (A) tries spending the same bitcoin twice. Bitcoin network prevents this.  
