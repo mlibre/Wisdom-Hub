@@ -24,7 +24,7 @@ I have also implemented a simple Proof-of-Work (POW) blockchain like bitcoin, yo
 
 The `Bitcoin` network is a `decentralized peer-to-peer` network, meaning that it operates without a central authority or server. Nodes, connect to each other directly, allowing data to be shared and stored.  
 
-Bitcoin combines its **network**, **cryptocurrency**, and **blockchain** to record transactions transparently, prevent double spending, and ensure consensus via a process called "proof-of-work"
+Bitcoin combines its **network**, **cryptocurrency**, and **blockchain** to record transactions transparently, prevent double spending, and ensure consensus via a process called **proof-of-work**
 
 ### Network Discovery
 
