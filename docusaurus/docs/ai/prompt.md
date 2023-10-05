@@ -28,7 +28,7 @@ The table format is:
 | `very advance example of command 2` | Description |
 ```
 
-## rewriting artiicle
+## Rewriting artiicle
 
 I've written an article that needs improvement. I'm looking for help with:
 
