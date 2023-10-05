@@ -90,7 +90,7 @@ A transaction components are:
 
 The **longest chain** refers to the chain of blocks that the majority of nodes on the network agree to and adopt as the authoritative blockchain. The longest chain is not determined by the number of blocks but by the amount of computational power or energy used to mine the blocks in the chain.
 
-### Chain Reorganisation
+## Chain Reorganisation
 
 A **chain reorganisation** takes place when your node receives blocks that are part of a new **longest chain**. Your node will **deactivate** blocks in its **old longest chain** in favour of the blocks that build the new longest chain.  
 
@@ -101,7 +101,7 @@ The `next block` to be mined will build upon one of these two blocks, creating a
 ## Double Spending
 
 Double spending is when someone (A) tries spending the same bitcoin twice. Bitcoin network prevents this.  
-When A broadcast the two transactions, they will go in unconfirmed transactions' pools. From there when a miner (X) validates the first transaction, the bitcoin will be sent to the new owner. so X will invalidate the second transaction because A is not the owner of the bitcoin anymore. But if the two transactions gets validated and mined by two different miners and gets added to the next block. it means there are two different blockchains now. (one with the first transaction and one with the second transaction). Now longest chain algorithm comes into play. miners will always accept the longest chain.  
+When A broadcast the two transactions, they will go in unconfirmed transactions' pools. From there when a miner (X) validates the first transaction, the bitcoin will be sent to the new owner. so X will invalidate the second transaction because A is not the owner of the bitcoin anymore. But if the two transactions gets validated and mined by two different miners and gets added to the next block. it means there are two different blockchains now. (one with the first transaction and one with the second transaction). Now Chain Reorganisation comes into play. miners will always accept the longest chain.  
 
 ## Where do bitcoins come from?
 
