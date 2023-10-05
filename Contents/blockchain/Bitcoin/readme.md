@@ -107,6 +107,25 @@ When A broadcast the two transactions, they will go in unconfirmed transactions'
 
 As an incentive to use processing power to try and add new blocks of transactions on to the blockchain, each new block makes available a fixed amount of bitcoins that did not previously exist. Therefore, if you are able to successfully mine a block, you are able to “send” yourself these new bitcoins as a reward for your effort.
 
+## Merkle Root
+
+The `Merkle root` is an important part of how blocks in the Bitcoin blockchain are linked together securely. Each new block contains a hash of the **previous block's header**. This connects the blocks in a chain, because if anything changes in a previous block, the hash will change too.
+
+Specifically, each block header contains a `Merkle root` hash representing all the transactions in that block. If even a single transaction in the block were **modified**, it would cause the **Merkle root to change**. This would make the block's overall **header hash** change too.
+
+So the `Merkle root` allows any changes to previous transactions to be detected. If a transaction were deleted from a previous block, the Merkle root in the header of all following blocks would change. This would break the chain of hashes connecting the blocks.
+
+You might wonder why we don't simply **hash all transactions** together to create a `transactions hash` field in the block header, instead of hashing them in **pairs** to create a `Merkle root`.  
+While hashing all transactions together would ensure data **integrity**, it would **not be efficient** for **verification**. For instance, if a node wants to verify that a transaction is contained in a block (which has, let's say, 100 transactions), it would need to download and hash all 99 other transactions hashes. If the resulting hash matches the expected hash, then the transaction is confirmed to be in the block.
+
+However, with a Merkle tree, the process is much more efficient. The node only needs to obtain a few `Merkle proofs`. With a simple mathematical algorithm, it can confirm that the transaction is indeed included in the block. This is because Merkle trees allow for the proof of data belonging to a set without needing to store the entire set.
+
+For instance, to prove that a specific transaction 'a' is part of a Merkle tree, everyone in the network will be aware of the hash function used by all Merkle trees. The hash of 'a' and its corresponding hash are hashed together, moving up the tree until the **root hash**, which is **publicly known**, is obtained. By comparing the obtained **Merkle root** and the **Merkle root** already available within the block header, the presence of transaction 'a' in this block can be verified. From this example, it is clear that in order to verify the presence of 'a', 'a' does not have to be revealed, nor do the other transactions have to be revealed; only some of their hashes are sufficient. This makes **Merkle proof** an efficient and simple method of verifying inclusivity.
+
+The **mathematical** process of verifying a Merkle proof involves hashing the value in question with the hashes provided in the proof, iteratively, until you arrive at a computed Merkle root. If this computed root matches the known Merkle root of the block, the proof is valid, and the transaction is confirmed to be part of the block
+
+When you broadcast a transaction to the Bitcoin network, your wallet can download the new block headers and check if the transaction it created for you is included in the new block or not. This is made possible by the Merkle Tree structure.
+
 ## Simple POW Blockchain in nodejs
 
 [Here you can find a simple complete POW blockchain written in nodejs](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/pow-from-scratch)
@@ -117,6 +136,8 @@ As an incentive to use processing power to try and add new blocks of transaction
 - <https://academy.binance.com/en/articles/double-spending-explained>
 - <https://www.youtube.com/watch?v=phLSjZdDc5A>
 - <https://learnmeabitcoin.com/technical/longest-chain>
+- <https://www.geeksforgeeks.org/blockchain-merkle-trees/>
+- <https://www.geeksforgeeks.org/blockchain-merkle-trees/>
 
 ## My Bitcoin Address
 
