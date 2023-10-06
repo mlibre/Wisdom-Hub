@@ -17,6 +17,21 @@ The kernel log buffer is important for keeping the system working well and findi
 
 Also, applications and services made by users can create their own messages. These are usually handled by different logging systems like `rsyslog` or `systemd-journald`.
 
+## /dev/log
+
+`/dev/log` is a Unix **domain socket** that applications use to send logs to a logging daemon such as `rsyslog` or `systemd-journald`.  
+
+In a Linux system, `/dev/log` is often a symbolic link to `/run/systemd/journal/dev-log`
+
+```bash
+readlink /dev/log
+# /run/systemd/journal/dev-log
+
+ls -l /run/systemd/journal/dev-log
+# srw-rw-rw- 1 root root 0 Oct  6 18:09 /run/systemd/journal/dev-log
+# s stands for socket
+```
+
 ## dmesg
 
 The `dmesg` command is used to display the kernel ring buffer. By default it read the messaged from `/dev/kmsg`, that provides access to the kernel ring buffer.
