@@ -8,17 +8,27 @@ I have also implemented a simple Proof-of-Work (POW) blockchain like bitcoin, yo
 
 ## Table of content
 
-- [Architecture](#architecture)
-- [Consensus](#consensus)
-- [Incentives](#incentives)
-- [Addresses And Wallets](#addresses-and-wallets)
-- [Transaction](#transaction)
-- [Longest chain](#longest-chain)
-- [Double Spending](#double-spending)
-- [Where do bitcoins come from?](#where-do-bitcoins-come-from)
-- [Simple POW Blockchain in nodejs](#simple-pow-blockchain-in-nodejs)
-- [References](#references)
-- [My Bitcoin Address](#my-bitcoin-address)
+* [Table of content](#table-of-content)
+* [Visualization of how Bitcoin is Workings](#visualization-of-how-bitcoin-is-workings)
+* [Architecture](#architecture)
+  * [Network Discovery](#network-discovery)
+* [Consensus](#consensus)
+* [Incentives](#incentives)
+* [Addresses And Wallets](#addresses-and-wallets)
+* [Transaction](#transaction)
+* [Longest chain](#longest-chain)
+* [Chain Reorganisation](#chain-reorganisation)
+* [Double Spending](#double-spending)
+* [Where do bitcoins come from?](#where-do-bitcoins-come-from)
+* [Bitcoin Storage](#bitcoin-storage)
+* [Merkle Root](#merkle-root)
+* [Simple POW Blockchain in nodejs](#simple-pow-blockchain-in-nodejs)
+* [References](#references)
+* [My Bitcoin Address](#my-bitcoin-address)
+
+## Visualization of how Bitcoin is Workings
+
+![A visualization of how bitcoin works under the hood](btc.jpg)
 
 ## Architecture
 
