@@ -189,7 +189,7 @@ acme.sh --list
 ```
 
 - Open Panel (<https://domain.ga:8443/xui/inbounds>)
-- trojan-tls-443-allow-insecure-alp-all
+- trojan-tls-TCP-443-allow-insecure-alp-all-sni-stackoverflow.com
 - vmess-ws-tls-2053-allow-insecure-aph-all
 - vmess-h2-TLS-H2-HTTP1-allow-insecure-stackoverflow.com-80
 - vmess-h2-TLS-H2-allow-insecure-8443
