@@ -181,7 +181,7 @@ x-ui
 # revoke certificate the root domain
 # issue certificate
 # Set Panel port 8443
-# Set the certs address for panel
+# Set the certs for panel
 ls
 acme.sh --info
 acme.sh --list
