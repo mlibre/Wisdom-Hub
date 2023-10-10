@@ -7,6 +7,7 @@ tags:
   - Shutdown
   - Manjaro
   - Windows 11
+  - swap
 ---
 
 # Other
@@ -300,7 +301,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 - Make a Swapfile
 
 ```bash
-sudo dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
+sudo dd if=/dev/zero of=/swapfile bs=1M count=5120 status=progress
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
