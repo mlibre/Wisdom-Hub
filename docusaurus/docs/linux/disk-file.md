@@ -31,7 +31,7 @@ tags:
 | `mkfs -t ntfs /dev/sdd1` |  Create a VFAT File System on /dev/sdd1   |
 | `sudo mkswap /dev/sdc1`  |         Create swap on /dev/sdc1          |
 
-## df, du, fsck, tune2fs
+## df, du, fsck, tune2fs, ntfsfix
 
 |              Command               |                          Short Description                          |
 | :--------------------------------: | :-----------------------------------------------------------------: |
@@ -44,6 +44,7 @@ tags:
 |      `sudo fsck -C /dev/sdc1`      |      Display progress while checking and repairing `/dev/sdc1`      |
 | `sudo fsck.ext4 -yvfBcD /dev/sda4` |                    Check and repair `/dev/sda4`                     |
 |       `tune2fs -l /dev/sda1`       |        Display detailed filesystem information for /dev/sda1        |
+|     `ntfsfix -b -d /dev/sda1`      |             Diagnose and fix NTFS issues on a partition             |
 
 ## mount, umount
 
