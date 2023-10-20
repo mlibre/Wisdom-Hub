@@ -60,6 +60,7 @@ sudo systemctl restart systemd-journald.service
 |              `journalctl -b -p err`               |    Boot Logs with priority "err" level    |
 |           `journalctl -u sshd.service`            |                Unit's Logs                |
 |          `journalctl -u sshd.service -x`          |                  Verbose                  |
+|           `sudo journalctl _PID=20220`            |    View logs associated with PID 20220    |
 |               `journalctl --flush`                |            Flush Journal Logs             |
 |    `sudo journalctl --flush --vacuum-time=1s`     |  Flush system Logs, Retain Last 1 Second  |
 | `sudo journalctl --user --flush --vacuum-time=1s` |   Flush user Logs, Retain Last 1 Second   |
