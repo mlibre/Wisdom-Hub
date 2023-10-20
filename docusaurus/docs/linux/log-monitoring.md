@@ -53,8 +53,9 @@ sudo systemctl restart systemd-journald.service
 | :-----------------------------------------------: | :---------------------------------------: |
 |                   `journalctl`                    |            all Collected Logs             |
 |                  `journalctl -k`                  |                Kernel Logs                |
-|                  `journalctl -f`                  |             Live Systemd Logs             |
 |                  `journalctl -b`                  | Current Boot Logs (Including kernel logs) |
+|                  `journalctl -r`                  |        Show Logs in Reverse Order         |
+|                  `journalctl -f`                  |             Live Systemd Logs             |
 |                `journalctl -b -f`                 |             Monitor Boot Logs             |
 |              `journalctl -b -p err`               |    Boot Logs with priority "err" level    |
 |           `journalctl -u sshd.service`            |                Unit's Logs                |
@@ -62,6 +63,18 @@ sudo systemctl restart systemd-journald.service
 |               `journalctl --flush`                |            Flush Journal Logs             |
 |    `sudo journalctl --flush --vacuum-time=1s`     |  Flush system Logs, Retain Last 1 Second  |
 | `sudo journalctl --user --flush --vacuum-time=1s` |   Flush user Logs, Retain Last 1 Second   |
+
+### journalctl Configuration
+
+`Journald` is configured in `/etc/systemd/journald.conf`. You can change storage location, log size, log rotation, etc.
+
+```bash
+nano
+[Journal]
+Storage=persistent
+Compress=yes
+SystemMaxUse=100M
+```
 
 ### Log Level
 
