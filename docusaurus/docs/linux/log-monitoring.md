@@ -49,16 +49,19 @@ sudo dmesg --level=emerg,alert,crit,err
 sudo systemctl restart systemd-journald.service
 ```
 
-|                Description                |             Command             |
-| :---------------------------------------: | :-----------------------------: |
-|                Kernel Logs                |         `journalctl -k`         |
-|            Systemd Logs (Live)            |         `journalctl -f`         |
-| Current Boot Logs (Inlcuding kernel logs) |         `journalctl -b`         |
-|             Monitor Boot Logs             |       `journalctl -b -f`        |
-|  Boot Logs with priority level of "err"   |     `journalctl -b -p err`      |
-|                Unit's Logs                |  `journalctl -u sshd.service`   |
-|                  Verbose                  | `journalctl -u sshd.service -x` |
-|            Flush Journal Logs             |      `journalctl --flush`       |
+|                      Command                      |                Description                |
+| :-----------------------------------------------: | :---------------------------------------: |
+|                   `journalctl`                    |            all Collected Logs             |
+|                  `journalctl -k`                  |                Kernel Logs                |
+|                  `journalctl -f`                  |             Live Systemd Logs             |
+|                  `journalctl -b`                  | Current Boot Logs (Including kernel logs) |
+|                `journalctl -b -f`                 |             Monitor Boot Logs             |
+|              `journalctl -b -p err`               |    Boot Logs with priority "err" level    |
+|           `journalctl -u sshd.service`            |                Unit's Logs                |
+|          `journalctl -u sshd.service -x`          |                  Verbose                  |
+|               `journalctl --flush`                |            Flush Journal Logs             |
+|    `sudo journalctl --flush --vacuum-time=1s`     |  Flush system Logs, Retain Last 1 Second  |
+| `sudo journalctl --user --flush --vacuum-time=1s` |   Flush user Logs, Retain Last 1 Second   |
 
 ### Log Level
 
