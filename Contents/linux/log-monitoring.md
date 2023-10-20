@@ -103,7 +103,6 @@ journalctl -t Hello
 
 echo "Hello World" | systemd-cat
 journalctl -f
-
 ```
 
 ## Syslog
