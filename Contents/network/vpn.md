@@ -8,6 +8,57 @@ tags:
 
 # VPN
 
+## SSH
+
+### HTTP/S proxy over SSH
+
+* Install squid on the server
+
+  ```bash
+    sudo pacman -S squid
+    sudo systemctl enable squid
+    sudo systemctl start squid
+    sudo nano /etc/squid/squid.conf
+    http_port 3128
+  ```
+
+* Configure the client
+
+```bash
+sudo nano /etc/systemd/system/sshtunnel.service
+
+[Unit]
+Description=SSH Tunnels
+After=network.target
+
+[Service]
+User=mlibre
+Restart=always
+RestartSec=20
+ExecStart=ssh -L 0.0.0.0:1234:localhost:3128 -N amita@95.216.208.60 -p 8756
+
+[Install]
+WantedBy=graphical.target
+```
+
+### Socks proxy over SSH
+
+```bash
+sudo nano /etc/systemd/system/sshtunnelsocks.service
+[Unit]
+Description=SSH Tunnels
+After=network.target
+
+[Service]
+User=mlibre
+Restart=always
+RestartSec=20
+ExecStart=ssh -D 3080 -C -N amita@95.216.208.60 -p 8756
+
+[Install]
+WantedBy=graphical.target
+```
+
 ## VPN over SSH
 
 ```bash
