@@ -194,8 +194,9 @@ curl -F "file=@/home/mlibre/Downloads/backup.tar.gz" "https://file.io/?expires=1
 ```bash
 python -m venv myvirtenv
 source myvirtenv/bin/activate
-pip install open-interpreter
-interpreter --model tiiuae/falcon-180B
+pip install --upgrade open-interpreter
+export COHERE_API_KEY=APY_KEY
+interpreter --model command-nightly
 ```
 
 ## Timewarrior
