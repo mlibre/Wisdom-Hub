@@ -144,6 +144,35 @@ rm -r ~/.wine
 
 ## Steam
 
+### Install Proton GE
+
+```bash
+nano custonpge.bash
+```
+
+```bash
+#!/bin/bash
+set -euo pipefail
+
+# make temp working directory
+mkdir /tmp/proton-ge-custom
+cd /tmp/proton-ge-custom
+
+# download  tarball
+curl -sLOJ "$(curl -s https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest | grep browser_download_url | cut -d\" -f4 | grep .tar.gz>
+
+# make steam directory if it does not exist
+mkdir -p ~/.steam/root/compatibilitytools.d
+
+# extract proton tarball to steam directory
+tar -xf GE-Proton*.tar.gz -C ~/.steam/root/compatibilitytools.d/
+echo "All done :)"
+```
+
+```bash
+chmod +x custonpge.bash
+```
+
 ### Fix common bugs
 
 * Move Games to your local linux machine
