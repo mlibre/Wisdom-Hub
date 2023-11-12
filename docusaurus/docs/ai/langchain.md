@@ -31,7 +31,7 @@ from langchain.llms import HuggingFaceHub
 from langchain import PromptTemplate, LLMChain
 import os
 
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = "hf_n"
 
 template = """Question: {question}
 
