@@ -307,6 +307,7 @@ sudo pacman -S nodejs-lts-fermium npm
  // "editor.fontLigatures": true,
  "editor.mouseWheelZoom": true,
  "editor.inlineSuggest.enabled": true,
+ "editor.inlineSuggest.suppressSuggestions": true,
  "editor.formatOnSave": true,
  "editor.accessibilitySupport": "off",
  "editor.copyWithSyntaxHighlighting": false,
