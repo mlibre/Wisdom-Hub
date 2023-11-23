@@ -230,9 +230,9 @@ sudo systemctl restart systemd-journald
 - Backup important data. Recovery-keys, Passwords, Postman and ...  
 
 ```bash
-cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/linux/caches
-cp $HISTFILE /run/media/mlibre/D/linux/caches/
-sudo cp -r /etc /run/media/mlibre/D/caches/
+cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/Linux/caches/
+cp $HISTFILE /run/media/mlibre/D/Linux/caches/
+sudo cp -r /etc /run/media/mlibre/D/Linux/caches/
 
 # Or full backup
 sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/D/Linux/backup/
