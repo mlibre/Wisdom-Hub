@@ -277,13 +277,13 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
   sudo pacman -S clamav
   sudo systemctl enable --now thermald.service
   sudo updatedb
-  pamac install visual-studio-code-bin onlyoffice-bin
+  pamac install nekoray-bin onlyoffice-bin
   ```
 
 - Import Data
 
   ```bash
-  cp -r /run/media/mlibre/H/OS/caches/TelegramDesktop /home/mlibre/.local/share/
+  cp -r /run/media/mlibre/D/Linux/caches/TelegramDesktop /home/mlibre/.local/share/
   ```
 
 - Make an XDG autostart script for gamma adjustment
