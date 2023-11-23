@@ -232,6 +232,8 @@ sudo systemctl restart systemd-journald
 ```bash
 cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/Linux/caches/
 cp $HISTFILE /run/media/mlibre/D/Linux/caches/
+cp .bashrc /run/media/mlibre/D/Linux/caches/
+cp .bash_profile /run/media/mlibre/D/Linux/caches/
 sudo cp -r /etc /run/media/mlibre/D/Linux/caches/
 
 # Or full backup
