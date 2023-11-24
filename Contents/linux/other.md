@@ -251,6 +251,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
   sudo systemctl disable pamac-daemon
   sudo systemctl disable pamac-mirrorlist.timer
   sudo systemctl disable pamac-mirrorlist.service
+  sudo systemctl disable pacman-filesdb-refresh.timer
   sudo pacman -R manjaro-hello web-installer-url-handler matray print-manager samba kdenetwork-filesharing thunderbird hplip cups yakuake manjaro-printer gutenprint cups-pdf snapd libpamac-snap-plugin flatpak libpamac-flatpak-plugin bluedevil timeshift timeshift-autosnap-manjaro pamac-tray-icon-plasma kdeconnect vde2  qemu-common qemu-system-arm qemu-user-static-binfmt qemu-system-arm-firmware scrcpy
 
   ## or
