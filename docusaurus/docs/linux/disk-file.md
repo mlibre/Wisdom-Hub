@@ -75,11 +75,13 @@ tags:
 |     `-v`     |                Verbose output                 |
 | `--progress` |         Show progress during transfer         |
 |     `-z`     |         Compress data during transfer         |
+|     `-P`     |         Keep partially transferred files |
 |  `--delete`  | Delete extraneous files on the receiving side |
 |     `-A`     |     Preserve ACLs (Access Control Lists)      |
 |     `-X`     |         Preserve extended attributes          |
 |     `-H`     |              Preserve hard links              |
 |     `-n`     |               Perform a dry run               |
+
 
 ```bash
 # Backup local directory to another location
@@ -96,6 +98,9 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 
 # Backup to a server
 rsync -e "ssh -p 2222" source/ user@host:/destination/
+
+# Download a large file from a remote server using rsync with resume capability
+rsync -LvzP -e "ssh -p 8756" pro@65.21.54.29:/home/pro/largeFile.zip file.zip
 ```
 
 ## dd
