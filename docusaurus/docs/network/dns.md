@@ -126,6 +126,45 @@ sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
+### DNS watch
+
+```bash
+DNS_SERVER="84.200.69.80"
+sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
+sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
+sudo systemctl daemon-reload; wait;
+sudo systemctl restart systemd-networkd; wait;
+sudo systemctl restart systemd-resolved; wait;
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+sudo resolvectl dns eth0 "$DNS_SERVER"
+sudo resolvectl dns tun0 "$DNS_SERVER"
+sudo resolvectl dns enp3s0 "$DNS_SERVER"
+sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns docker0 "$DNS_SERVER"
+sudo resolvectl dns
+```
+
+
+### Safe DNS
+
+```bash
+DNS_SERVER="195.46.39.40"
+sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
+sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
+sudo systemctl daemon-reload; wait;
+sudo systemctl restart systemd-networkd; wait;
+sudo systemctl restart systemd-resolved; wait;
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+sudo resolvectl dns eth0 "$DNS_SERVER"
+sudo resolvectl dns tun0 "$DNS_SERVER"
+sudo resolvectl dns enp3s0 "$DNS_SERVER"
+sudo resolvectl dns enp5s0 "$DNS_SERVER"
+sudo resolvectl dns docker0 "$DNS_SERVER"
+sudo resolvectl dns
+```
+
 ### OpenDns
 
 ```bash
