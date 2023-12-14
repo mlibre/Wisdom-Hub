@@ -78,7 +78,7 @@ echo "Hello, $name!"
 
 ### Metacharacters and Quoting
 
-|        Command         |                       Short Description                        |
+|        Command         |                          Description                           |
 | :--------------------: | :------------------------------------------------------------: |
 |          `*`           |        Matches zero or more characters. `ls /bin/zip*`         |
 |          `?`           |            Matches single character. `ls file?.txt`            |
@@ -114,22 +114,23 @@ echo "Hello, $name!"
 
 ### wait, ;, &&, ||, `, $#, $?, $()
 
-|                     Command                     |                           Short Description                            |
-| :---------------------------------------------: | :--------------------------------------------------------------------: |
-|              `command1; command2`               |                 Run 'command1' followed by 'command2'                  |
-|                    `ls; pwd`                    |            List files and then print the current directory             |
-|          `mkdir myfolder; cd myfolder`          |               Create a folder and then navigate into it                |
-|             command1 \|\| command2              |              Run 'command1', if it fails, run 'command2'               |
-| ls /nonexistent \|\| echo "Directory not found" |  List a directory, and if it doesn't exist, display an error message   |
-|             `command1 && command2`              |             Run 'command1', if it succeeds, run 'command2'             |
-|            `git pull && npm install`            | Pull from a Git and install Node.js packages if the pull is successful |
-|                     `wait`                      |           Pause execution until all background jobs are done           |
-|          `sleep 10 & wait; echo "hi""`          |     Wait for background jobs to finish and then display a message      |
-|                 `` `command` ``                 |           Executes `command` and returns its output as text            |
-|                      `$()`                      |      Executes a command within parentheses and returns its output      |
-|               `output=$(command)`               |          Executes `command` and stores its output in `output`          |
-|                      `$#`                       |                  Number of arguments passed to script                  |
-|                      `$?`                       |   Exit or return value of the last executed command (0 for success)    |
+|              Command               |                              Description                               |
+| :--------------------------------: | :--------------------------------------------------------------------: |
+|        `command1; command2`        |                 Run 'command1' followed by 'command2'                  |
+|             `ls; pwd`              |            List files and then print the current directory             |
+|   `mkdir myfolder; cd myfolder`    |               Create a folder and then navigate into it                |
+|       command1 \|\| command2       |              Run 'command1', if it fails, run 'command2'               |
+| ls /nonexist \|\| echo "not found" |  List a directory, and if it doesn't exist, display an error message   |
+|       `command1 && command2`       |             Run 'command1', if it succeeds, run 'command2'             |
+|     `git pull && npm install`      | Pull from a Git and install Node.js packages if the pull is successful |
+|               `wait`               |           Pause execution until all background jobs are done           |
+|   `sleep 10 & wait; echo "hi""`    |     Wait for background jobs to finish and then display a message      |
+|          `` `command` ``           |           Executes `command` and returns its output as text            |
+|               `$()`                |      Executes a command within parentheses and returns its output      |
+|        `output=$(command)`         |          Executes `command` and stores its output in `output`          |
+|                `$#`                |                  Number of arguments passed to script                  |
+|                `$?`                |   Exit or return value of the last executed command (0 for success)    |
+|     `` sleep `expr 5 \* 5` ``      |                Pause for 25 seconds (5 multiplied by 5)                |
 
 ### echo, env, export, set, unset, variables
 
@@ -282,7 +283,6 @@ remove_esc() {
 press_esc_and_click() {
  # Press ESC
  xdotool key Escape
- # Sleep for 1 second
  sleep 1
  # mouse click
  xdotool click 1
