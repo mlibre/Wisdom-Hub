@@ -17,6 +17,8 @@ tags:
 |                    `ifconfig`                    |             Display network interface information             |
 |                 `ifconfig eth0`                  | Display details for a specific network interface (e.g., eth0) |
 |                  `ifconfig -s`                   |   Display a short list of interfaces with basic information   |
+|                  `netstat -nr`                   |               Display routing table information               |
+|                  `netstat -na`                   |            Display all active network connections             |
 |                `ping google.com`                 |      Ping Google's servers to check network connectivity      |
 |               `ping -c 4 8.8.8.8`                |     Send 4 ping requests to Google's DNS server (8.8.8.8)     |
 |               `ping -i 2 1.1.1.1`                |    Ping 1.1.1.1 with a 2-second interval between requests     |
@@ -28,3 +30,4 @@ tags:
 |          `curl -I https://example.com`           |             Fetch only the headers of a web page              |
 |       `wget https://example.com/file.txt`        |          Download a file (e.g., file.txt) from a URL          |
 |   `wget -c https://example.com/largefile.zip`    |              Resume a partially downloaded file               |
+
