@@ -66,7 +66,7 @@ iface eth0 inet static
   dns-nameservers 208.67.222.222 208.67.220.220 8.8.8.8
 ```
 
-## Fast System-wide DNS Setup
+## Fast System-Wide DNS Setup
 
 ### Shekan
 
@@ -126,7 +126,7 @@ sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
-### DNS watch
+### DNS Watch
 
 ```bash
 DNS_SERVER="84.200.69.80"

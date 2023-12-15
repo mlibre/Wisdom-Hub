@@ -30,4 +30,4 @@ tags:
 |          `curl -I https://example.com`           |             Fetch only the headers of a web page              |
 |       `wget https://example.com/file.txt`        |          Download a file (e.g., file.txt) from a URL          |
 |   `wget -c https://example.com/largefile.zip`    |              Resume a partially downloaded file               |
-
+|                  `host domain`                   |             Display the IP addresses of a domain              |
