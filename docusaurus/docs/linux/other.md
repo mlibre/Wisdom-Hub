@@ -273,7 +273,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
   pamac update -a
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
-  sudo pacman -S mlocate telegram-desktop unzip thermald ntfs-3g firefox vlc aria2 base-devel xorg-xrandr code
+  sudo pacman -S mlocate telegram-desktop unzip thermald ntfs-3g firefox vlc aria2 base-devel xorg-xrandr code dnsutils
   sudo pacman -S qbittorrent libreoffice-fresh meld ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo tor torsocks steam-native-runtime gparted
   sudo pacman -S clamav
   sudo systemctl enable --now thermald.service
