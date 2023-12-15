@@ -53,6 +53,8 @@ tags:
 
 ### getent
 
+`getent` retrieves entries from databases configured in `/etc/nsswitch.conf`
+
 |        Command         |                           Short Description                           |
 | :--------------------: | :-------------------------------------------------------------------: |
 |        `getent`        |            Retrieve entries from administrative databases             |
