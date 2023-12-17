@@ -9,8 +9,11 @@ A `blockchain` is an immutable transaction ledger, maintained within a distribut
 In a `permissioned network`, participants are `identified` and `known` to each other, unlike with a `public permissionless` network where the participants remain anonymous.
 
 * [Why Hyperledger Fabric?](#why-hyperledger-fabric)
-* [Technology](#technology)
 * [Consensus](#consensus)
+* [Shared Ledger](#shared-ledger)
+* [Chaincode](#chaincode)
+* [Privacy and Confidentiality](#privacy-and-confidentiality)
+* [Technology](#technology)
 * [Reference](#reference)
 
 ## Why Hyperledger Fabric?
@@ -31,10 +34,24 @@ One of the most important of the `platform’s differentiators` is its support f
 
 ## Consensus
 
+The process of keeping the ledger transactions synchronized across the network — to ensure that ledgers update only when transactions are approved by the appropriate participants, and that when ledgers do update, they update with the same transactions in the same order — is called consensus.
+
+Transactions must be written to the ledger in the order in which they occur, even though they might be between different sets of participants within the network
+
 Hyperledger Fabric offers `Raft crash fault tolerant (CFT)`, a `BFT` consensus and as of Version 3 `SmartBFT` consensus.
 You can also write your own consensus algorithm. Consider using the `BFT` or `SmartBFT` if true decentralization is required.
 
+## Shared Ledger
+
+`Hyperledger Fabric` has a ledger subsystem comprising two components: the `world state` and the `transaction log`. Each participant has a copy of the ledger to every Hyperledger Fabric network they belong to.
+
+The `world state` component describes the `state of the ledger` at a given point in time. It’s the database of the ledger. The `transaction log` component records all transactions which have `resulted in the current value of the world state`; it’s the update history for the world state. `The ledger`, then, is a `combination` of the `world state database` and the `transaction log` history.
+
+The ledger has a `replaceable data store` for the world state. By default, this is a `LevelDB key-value` store database. The transaction log does not need to be pluggable. It simply records the before and after values of the ledger database being used by the blockchain network.
+
 ## Chaincode
+
+`Hyperledger Fabric` `smart contracts` are written in `chaincode` and are invoked by an application external to the blockchain when that application needs to interact with the ledger
 
 `chaincode` (Smart contracts) run within a container environment (e.g. Docker) for isolation. They can be written in standard programming languages.
 
@@ -47,7 +64,6 @@ Hyperledger Fabric, enables confidentiality through its `channel` architecture a
 ## Technology
 
 Hyperledger Fabric is written in `Go`. It uses `CouchDB` as its state database. and `etcd` as its key-value store.
-
 
 ## Reference
 
