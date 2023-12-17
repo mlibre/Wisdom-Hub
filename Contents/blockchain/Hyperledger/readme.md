@@ -71,4 +71,6 @@ Hyperledger Fabric, enables confidentiality through its `channel` architecture a
 * <https://wiki.hyperledger.org/>
 * <https://wiki.hyperledger.org/display/fabric/Ecosystem>
 * <https://www.youtube.com/channel/UC7_X0WkMtkWzaVUKF-PRBNQ>
+* <https://www.youtube.com/@Hyperledger>
 * <https://hyperledger-fabric.readthedocs.io/en/latest/index.html>
+* <https://www.hyperledger.org/learn/training>
