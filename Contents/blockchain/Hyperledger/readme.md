@@ -61,13 +61,14 @@ In `Fabric`, an application-specific endorsement policy specifies which peer nod
 
 Hyperledger Fabric, enables confidentiality through its `channel` architecture and private data feature. In channels, participants on a Fabric network establish a `sub-network` where every member has visibility to a `particular set` of transactions. Thus, only those nodes that participate in a channel have access to the chaincode and data transacted, preserving the privacy and confidentiality of both. Private data allows collections between members on a channel, allowing much of the same protection as channels without the maintenance overhead of creating and maintaining a separate channel.
 
-## Technology
+## Ecosystem
 
-Hyperledger Fabric is written in `Go`. It uses `CouchDB` as its state database. and `etcd` as its key-value store.
+![Docker-based deployment environments](./assets/ecosystem.png)
 
 ## Reference
 
 * <https://github.com/hyperledger/fabric>
 * <https://wiki.hyperledger.org/>
+* <https://wiki.hyperledger.org/display/fabric/Ecosystem>
 * <https://www.youtube.com/channel/UC7_X0WkMtkWzaVUKF-PRBNQ>
 * <https://hyperledger-fabric.readthedocs.io/en/latest/index.html>
