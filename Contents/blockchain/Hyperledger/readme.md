@@ -38,6 +38,18 @@ One of the most important of the `platform’s differentiators` is its support f
 
 ![Docker-based deployment environments](./assets/ecosystem.png)
 
+## Peers
+
+`Each node` and `user` that interacts with a Fabric network needs to belong to an `organization` in order to participate in the network.
+
+`Peers` are the fundamental components of any Fabric network. `Peers` store the blockchain ledger and `validate` transactions before they are committed to the ledger. Peers run the `smart contracts` that contain the business logic that is used to manage the assets on the blockchain ledger.
+
+Every peer in the network needs to belong to an `organization`.
+
+Every Fabric network also includes an `ordering service`. While peers `validate` transactions and add blocks of transactions to the blockchain ledger, they `do not decide on the order of transactions` or `include them into new blocks`. On a distributed network, peers may be running far away from each other and not have a common view of when a transaction was created. Coming to consensus on the order of transactions is a costly process that would create overhead for the peers.
+
+An `ordering service` allows peers to focus on validating transactions and committing them to the ledger. After ordering nodes receive endorsed transactions from clients, they come to consensus on the `order of transactions` and then add them to blocks. `The blocks` are then `distributed` to peer nodes, `which add the blocks` to the blockchain ledger.
+
 ## Consensus
 
 The process of keeping the ledger transactions synchronized across the network — to ensure that ledgers update only when transactions are approved by the appropriate participants, and that when ledgers do update, they update with the same transactions in the same order — is called consensus.
