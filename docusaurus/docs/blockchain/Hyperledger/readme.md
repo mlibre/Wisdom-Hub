@@ -72,6 +72,10 @@ Hyperledger Fabric, enables confidentiality through its `channel` architecture a
 The different actors in a blockchain network include `peers`, `orderers`, `client applications`, `administrators` and more. Each of these actors has a `digital identity` encapsulated in an `X.509 digital certificate`. These identities matter because they determine the exact `permissions` over `resources` and `access` to `information` that actors have in a blockchain network.  
 For an identity to be `verifiable`, it must come from a `trusted authority`. A membership service provider (MSP) is that trusted authority in Fabric.
 
+`Certificate Authorities` issue identities by generating a public and private key which forms a key-pair that can be used to prove identity. This identity needs a way to be recognized by the network, which is where the `MSP` comes in. For example, a peer uses its private key to digitally sign, or endorse, a transaction. The `MSP` is used to check that the peer is allowed to endorse the transaction. The public key from the peer’s certificate is then used to verify that the signature attached to the transaction is valid. Thus, the `MSP` is the mechanism that allows that identity to be trusted and recognized by the rest of the network.
+
+But the power of an `MSP` goes beyond simply listing who is a network participant or member of a channel. It is the `MSP` that `turns` an `identity` into a `role` by identifying specific `privileges` an actor has on a node or channel. Note that when a user is registered with a `Fabric CA`, a role of `admin`, `peer`, `client`, `orderer`, or `member` must be associated with the user. For example, identities registered with the **peer** role should, naturally, be given to a **peer**. Similarly, identities registered with the **admin** role should be given to `organization admins`.
+
 A `Certificate Revocation List (CRL)` is easy to understand — it’s just a list of references to certificates that a CA knows to be revoked for one reason or another.  
 When a third party wants to verify another party’s identity, it first checks the issuing CA’s CRL to make sure that the certificate has not been revoked
 
