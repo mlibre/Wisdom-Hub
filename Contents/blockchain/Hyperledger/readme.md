@@ -79,6 +79,10 @@ But the power of an `MSP` goes beyond simply listing who is a network participan
 A `Certificate Revocation List (CRL)` is easy to understand — it’s just a list of references to certificates that a CA knows to be revoked for one reason or another.  
 When a third party wants to verify another party’s identity, it first checks the issuing CA’s CRL to make sure that the certificate has not been revoked
 
+`MSP` has two domainsL `Local` and `Channel`.  
+`Local MSP` Defines permissions for nodes and clients.  
+`Channel MSP` Defines permissions for channels.
+
 ## Getting Started
 
 Start with the [Getting Start](./Getting%20Start.md)
