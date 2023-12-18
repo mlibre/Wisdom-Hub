@@ -25,6 +25,15 @@ curl -sSLO https://raw.githubusercontent.com/hyperledger/fabric/main/scripts/ins
 ./install-fabric.sh
 ```
 
+## Run the test network
+
+```bash
+cd fabric-samples/test-network
+./network.sh down
+./network.sh up
+docker ps -a
+```
+
 ## Reference
 
 * <https://github.com/hyperledger/fabric-samples>
