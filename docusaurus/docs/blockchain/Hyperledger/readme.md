@@ -9,11 +9,13 @@ A `blockchain` is an immutable transaction ledger, maintained within a distribut
 In a `permissioned network`, participants are `identified` and `known` to each other, unlike with a `public permissionless` network where the participants remain anonymous.
 
 * [Why Hyperledger Fabric?](#why-hyperledger-fabric)
+* [Ecosystem](#ecosystem)
 * [Consensus](#consensus)
 * [Shared Ledger](#shared-ledger)
 * [Chaincode](#chaincode)
 * [Privacy and Confidentiality](#privacy-and-confidentiality)
-* [Technology](#technology)
+* [Permissions and Access Control](#permissions-and-access-control)
+* [Getting Started](#getting-started)
 * [Reference](#reference)
 
 ## Why Hyperledger Fabric?
@@ -31,6 +33,10 @@ One of the most important of the `platform’s differentiators` is its support f
 `Fabric` can use consensus protocols that do not require a `native cryptocurrency` to motivate expensive mining or smart contract execution.
 
 **Hyperledger Fabric** has been specifically architected to have a `modular` architecture. Whether it is `consensus`, `identity` management protocols, `key` management protocols or `cryptographic` libraries, the platform has been designed at its core to be configured to meet the diversity of enterprise use case requirements
+
+## Ecosystem
+
+![Docker-based deployment environments](./assets/ecosystem.png)
 
 ## Consensus
 
@@ -61,9 +67,17 @@ In `Fabric`, an application-specific endorsement policy specifies which peer nod
 
 Hyperledger Fabric, enables confidentiality through its `channel` architecture and private data feature. In channels, participants on a Fabric network establish a `sub-network` where every member has visibility to a `particular set` of transactions. Thus, only those nodes that participate in a channel have access to the chaincode and data transacted, preserving the privacy and confidentiality of both. Private data allows collections between members on a channel, allowing much of the same protection as channels without the maintenance overhead of creating and maintaining a separate channel.
 
-## Ecosystem
+## Permissions and Access Control
 
-![Docker-based deployment environments](./assets/ecosystem.png)
+The different actors in a blockchain network include `peers`, `orderers`, `client applications`, `administrators` and more. Each of these actors has a `digital identity` encapsulated in an `X.509 digital certificate`. These identities matter because they determine the exact `permissions` over `resources` and `access` to `information` that actors have in a blockchain network.  
+For an identity to be `verifiable`, it must come from a `trusted authority`. A membership service provider (MSP) is that trusted authority in Fabric.
+
+A `Certificate Revocation List (CRL)` is easy to understand — it’s just a list of references to certificates that a CA knows to be revoked for one reason or another.  
+When a third party wants to verify another party’s identity, it first checks the issuing CA’s CRL to make sure that the certificate has not been revoked
+
+## Getting Started
+
+Start with the [Getting Start](./Getting%20Start.md)
 
 ## Reference
 
