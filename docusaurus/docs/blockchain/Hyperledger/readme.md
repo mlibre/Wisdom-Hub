@@ -108,3 +108,4 @@ Start with the [Getting Start](./Getting%20Start.md)
 * <https://www.youtube.com/@Hyperledger>
 * <https://hyperledger-fabric.readthedocs.io/en/latest/index.html>
 * <https://www.hyperledger.org/learn/training>
+* <https://training.linuxfoundation.org/training/hyperledger-fabric-for-developers-lfd272/>
