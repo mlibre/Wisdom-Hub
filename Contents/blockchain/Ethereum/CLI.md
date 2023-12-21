@@ -9,10 +9,10 @@ it is not possible to run an execution client on its own anymore. After The Merg
 ## Table of content
 
 * [Table of content](#table-of-content)
-* [Online APIs](#online-apis)
+* [Online Providers](#online-providers)
   * [getblock.io](#getblockio)
   * [Infura](#infura)
-* [Self Host Node](#self-host-node)
+* [Testnet Node](#testnet-node)
   * [Geth, Clef, Consensus client](#geth-clef-consensus-client)
   * [Sync modes](#sync-modes)
   * [Installation \& Requirements](#installation--requirements)
@@ -22,14 +22,14 @@ it is not possible to run an execution client on its own anymore. After The Merg
   * [Test the netork](#test-the-netork)
     * [Importing accounts](#importing-accounts)
     * [Interacting With Geth](#interacting-with-geth)
+* [Private Network](#private-network)
 * [Transaction Info](#transaction-info)
 * [Block info](#block-info)
-* [MetaMask](#metamask)
 * [References](#references)
 
 You can either run your `own` ethereum `layers` (node) or use `free providers`.
 
-## Online APIs
+## Online Providers
 
 ### getblock.io
 
@@ -46,7 +46,7 @@ curl -X POST \
 "https://sepolia.infura.io/v3/api-key"
 ```
 
-## Self Host Node
+## Testnet Node
 
 ### Geth, Clef, Consensus client
 
@@ -234,6 +234,9 @@ voter
 voter.addOption("mlibre" , {from: "0xD8f24D419153E5D03d614C5155f900f4B5C8A65C"})
 ```
 
+## Private Network
+
+
 ## Transaction Info
 
 ```bash
@@ -352,22 +355,6 @@ A block in eth2 looks like this:
   withdrawalsRoot: "0x4915e375cb0b2df0dfb9115fab5c0acef3abebd037cdc693edc065f3a8da44b0"
 }
 ```
-
-## MetaMask
-
-There are several ways to interact with the Ethereum blockchain.
-
-* Running a local node with `Geth` for example
-* Calling web APIs. for example [blockcypher](https://www.blockcypher.com/)
-* ...
-
-> **Metamask** is a client-side browser extension that provides a high-level javascript library to interact with the Ethereum network. [metamask.io](https://metamask.io/)
-
-It is also a crypto wallet.  
-On the backend side, it uses **infura** or other API providers to comminute with Ethereum blockchain.  
-So basically you as a **developer** don't have to worry about making/signing/sending transactions, ...  
-And as a **user**, it makes things much easier. for example, you don't have to sign a proof message to prove you are the owner of an address  
-`MetaMask` is also offering other features custom network, ...
 
 ## References
 
