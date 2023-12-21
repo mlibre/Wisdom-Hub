@@ -13,11 +13,13 @@ it is not possible to run an execution client on its own anymore. After The Merg
   * [getblock.io](#getblockio)
   * [Infura](#infura)
 * [Self Host Node](#self-host-node)
-  * [Geth, Clef, consensus client](#geth-clef-consensus-client)
+  * [Geth, Clef, Consensus client](#geth-clef-consensus-client)
   * [Sync modes](#sync-modes)
-  * [Installation](#installation)
-  * [Features](#features)
-  * [Starting](#starting)
+  * [Installation \& Requirements](#installation--requirements)
+  * [Clef](#clef)
+  * [Geth](#geth)
+  * [Consensus clients](#consensus-clients)
+  * [Test the netork](#test-the-netork)
     * [Importing accounts](#importing-accounts)
     * [Interacting With Geth](#interacting-with-geth)
 * [Transaction Info](#transaction-info)
@@ -77,6 +79,7 @@ sudo apt-get install ethereum
 
 # Arch
 sudo pacman -Syyuu geth nodejs
+pamac install lighthouse-ethereum-bin
 ```
 
 An accurate clock is required to participate in the Ethereum network
@@ -104,6 +107,12 @@ sudo iptables -I INPUT -p tcp --dport 8545 -j ACCEPT
 sudo iptables -I INPUT -p udp --dport 8545 -j ACCEPT
 sudo iptables -I INPUT -p tcp --dport 3334 -j ACCEPT
 sudo iptables -I INPUT -p udp --dport 3334 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 9000 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 9000 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 9001 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 9001 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 5052 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 5052 -j ACCEPT
 sudo iptables -I INPUT 1 -i lo -j ACCEPT
 sudo iptables -A INPUT -i ens3 -p udp -m multiport --dports 1900,5351,5353 -j ACCEPT
 sudo iptables -A INPUT -i ens3 -p tcp -m multiport --dports 49152 -j ACCEPT
@@ -168,9 +177,28 @@ The console will hang, because `Clef` is waiting for approval. approve it.
 
 ### Consensus clients
 
-`Consensus client` is responsible for `Block Proposals`, `Agreement Process` and `Final Decision`.
+`Consensus client` is responsible for `Block Proposals`, `Agreement Process` and `Final Decision`.  
+A `Consensus client` alongside `geth` is required to function as an Ethereum node and start syncing the blockchain.  
+One of the famous `Consensus clients` is `Lighthouse`. To use `checkpoint syncing` you need to have a `Beacon Node` running. There is list [here](https://eth-clients.github.io/checkpoint-sync-endpoints/).  
+`Lighthouse` needs to be publicly accessible to the network, otherwise it will not be able to sync the blockchain.  
+You can check it you are connected to the network by running `curl http://localhost:5052/lighthouse/nat`
 
-A `consensus client` alongside `geth` is required to function as an Ethereum node and start syncing the blockchain.
+```bash
+rm -r enode/lighthouse
+mkdir -p enode/lighthouse
+
+lighthouse bn \
+    --network sepolia \
+    --datadir enode/lighthouse \
+    --http \
+    --execution-endpoint http://127.0.0.1:8551 \
+    --metrics \
+    --validator-monitor-auto \
+    --checkpoint-sync-url https://sepolia.beaconstate.info \
+    --execution-jwt enode/jwtsecret --disable-deposit-contract-sync
+```
+
+### Test the netork
 
 Check the account balance
 
@@ -344,3 +372,4 @@ And as a **user**, it makes things much easier. for example, you don't have to s
 ## References
 
 * https://geth.ethereum.org/docs/
+* https://github.com/eth-educators/ethstaker-guides/blob/main/merge-goerli-prater.md
