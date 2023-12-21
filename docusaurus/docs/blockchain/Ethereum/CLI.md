@@ -8,19 +8,22 @@ it is not possible to run an execution client on its own anymore. After The Merg
 
 ## Table of content
 
+* [Table of content](#table-of-content)
 * [Online APIs](#online-apis)
   * [getblock.io](#getblockio)
-* [Run your own node](#run-your-own-node)
-  * [Geth](#geth)
-    * [Installation](#installation)
-    * [Features](#features)
-    * [Starting](#starting)
+  * [Infura](#infura)
+* [Self Host Node](#self-host-node)
+  * [Geth, Clef, consensus client](#geth-clef-consensus-client)
+  * [Sync modes](#sync-modes)
+  * [Installation](#installation)
+  * [Features](#features)
+  * [Starting](#starting)
     * [Importing accounts](#importing-accounts)
     * [Interacting With Geth](#interacting-with-geth)
 * [Transaction Info](#transaction-info)
 * [Block info](#block-info)
 * [MetaMask](#metamask)
-* [Infura](#infura)
+* [References](#references)
 
 You can either run your `own` ethereum `layers` (node) or use `free providers`.
 
@@ -30,6 +33,15 @@ You can either run your `own` ethereum `layers` (node) or use `free providers`.
 
 ```bash
 geth attach https://eth.getblock.io/token/mainnet/
+```
+
+### Infura
+
+```bash
+curl -X POST \
+-H "Content-Type: application/json" \
+--data '{"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}' \
+"https://sepolia.infura.io/v3/api-key"
 ```
 
 ## Self Host Node
@@ -42,13 +54,26 @@ geth attach https://eth.getblock.io/token/mainnet/
 `Clef` is an account management tool external to `Geth` itself that allows users to sign transactions.  
 `Geth` also needs to be connected to a `consensus client` in order to function as an Ethereum node.  
 
+![Clef](./assets/clef.png)
+
+### Sync modes
+
+* Snap (default): Snap sync starts from a relatively recent block and syncs from there to the head of the chain,.
+* Full: An archive node is a node that retains all historical data right back to genesis
+* Light: A light node syncs very quickly and stores the bare minimum of blockchain data
+
+> `Light` nodes are not currently working on `proof-of-stake` Ethereum
+
 ### Installation
 
 These commands will intall `geth`, `clef`, `devp2p`, `abigen`, `bootnode`, `evm`, `rlpdump` and `puppeth`
 
 ```bash
 # Ubuntu
+sudo apt-get install -y software-properties-common
 sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
 
 # Arch
 sudo pacman -Syyuu geth nodejs
@@ -66,6 +91,36 @@ sudo pacman -Syyuu geth nodejs
 
 ### Starting
 
+An accurate clock is required to participate in the Ethereum network
+
+```bash
+sudo ntpdate -s time.nist.gov
+```
+
+Make sure you have the following ports open
+
+```bash
+sudo iptables -I INPUT -p tcp --dport 30311 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 30311 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 30303 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 30303 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 30304 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 30304 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 37608 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 37608 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 8546 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 8546 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 8551 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 8551 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 8545 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 8545 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 3334 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 3334 -j ACCEPT
+sudo iptables -I INPUT 1 -i lo -j ACCEPT
+sudo iptables -A INPUT -i ens3 -p udp -m multiport --dports 1900,5351,5353 -j ACCEPT
+sudo iptables -A INPUT -i ens3 -p tcp -m multiport --dports 49152 -j ACCEPT
+```
+
 Creat a new account with `Clef`:
 
 ```bash
@@ -80,25 +135,13 @@ clef --keystore enode/keystore --configdir enode/clef --chainid 11155111
 ```
 
 By default, `Geth` uses `snap-sync` which download blocks sequentially from a `relatively recent block`, not the genesis block.  
-Your `ISP` must also allow `UDP` and `TCP` traffic.
+Your `ISP` must also allow `UDP` and `TCP` traffics to pass through.
 
 ```bash
-geth --sepolia --datadir enode --authrpc.addr 0.0.0.0 --authrpc.port 8551 --authrpc.vhosts "*" --authrpc.jwtsecret enode/jwtsecret --http --http.api eth,net,admin --signer enode/clef/clef.ipc --verbosity 5 --maxpeers 100 --maxpendpeers 100 --allow-insecure-unlock --discv5
-# geth --sepolia --datadir enode --authrpc.addr localhost --authrpc.port 8551 --authrpc.vhosts localhost --authrpc.jwtsecret enode/jwtsecret --ws --ws.api="eth,net,web3,personal,txpool,,admin" --ws.origins '*' --http --http.corsdomain "*" --http.api eth,net,web3,personal,txpool,admin --signer enode/clef/clef.ipc --allow-insecure-unlock
+geth --sepolia --datadir enode --authrpc.addr 0.0.0.0 --authrpc.port 8551 --authrpc.vhosts "*" --authrpc.jwtsecret enode/jwtsecret --http --http.api eth,net,admin --signer enode/clef/clef.ipc --verbosity 5 --maxpeers 100 --allow-insecure-unlock --discv5 --bootnodes "enode://ec66ddcf1a974950bd4c782789a7e04f8aa7110a72569b6e65fcd51e937e74eed303b1ea734e4d19cfaec9fbff9b6ee65bf31dcb50ba79acce9dd63a6aca61c7@52.14.151.177:30303","enode://9246d00bc8fd1742e5ad2428b80fc4dc45d786283e05ef6edbd9002cbc335d40998444732fbe921cb88e1d2c73d1b1de53bae6a2237996e9bfe14f871baf7066@18.168.182.86:30303"
+# --nat=none --maxpendpeers 10 --nodiscover
 
-# Make sure 8545, 8551, 3334, 30311, 30303 and 37608 ports are open
-sudo iptables -I INPUT -p tcp --dport 30311 -j ACCEPT
-sudo iptables -I INPUT -p udp --dport 30311 -j ACCEPT
-sudo iptables -I INPUT -p tcp --dport 30303 -j ACCEPT
-sudo iptables -I INPUT -p udp --dport 30303 -j ACCEPT
-sudo iptables -I INPUT -p tcp --dport 37608 -j ACCEPT
-sudo  iptables -I INPUT -p udp --dport 37608 -j ACCEPT
-sudo iptables -I INPUT -p tcp --dport 8546 -j ACCEPT
-sudo  iptables -I INPUT -p udp --dport 8546 -j ACCEPT
-sudo iptables -I INPUT -p tcp --dport 8551 -j ACCEPT
-sudo  iptables -I INPUT -p udp --dport 8551 -j ACCEPT
-sudo iptables -I INPUT -p tcp --dport 3334 -j ACCEPT
-sudo  iptables -I INPUT -p udp --dport 3334 -j ACCEPT
+
 ```
 
 Get some Sepolia ETH from `https://www.infura.io/faucet/sepolia`.  
@@ -114,7 +157,7 @@ Check if `geth` has connected to the network
 admin.peers
 ```
 
-To manullay add static peers to the netwrok, first find the `enode` address of the peer you want to connect to. for example, for `sepolia` you can find some [here](https://github.com/eth-clients/sepolia)
+To manullay add static peers to the netwrok, first find the `enode` address of the peer you want to connect to. for example, for `sepolia` you can find some [here](https://github.com/eth-clients/sepolia), and for mainnet you can find [here](https://etherscan.io/nodetracker/nodes)
 
 ```bash
 admin.addPeer("enode://ec66ddcf1a974950bd4c782789a7e04f8aa7110a72569b6e65fcd51e937e74eed303b1ea734e4d19cfaec9fbff9b6ee65bf31dcb50ba79acce9dd63a6aca61c7@52.14.151.177:30303")
@@ -138,31 +181,6 @@ Get latest block number:
 
 ```bash
 eth.blockNumber
-```
-
-Make sure `8545`, `3334`, `30311` and `37608` ports are open
-
-```bash
-sudo iptables -I INPUT -p tcp --dport 30311 -j ACCEPT
-sudo iptables -I INPUT -p udp --dport 30311 -j ACCEPT
-sudo iptables -I INPUT -p tcp --dport 37608 -j ACCEPT
-sudo  iptables -I INPUT -p udp --dport 37608 -j ACCEPT
-sudo iptables -I INPUT -p tcp --dport 8546 -j ACCEPT
-sudo  iptables -I INPUT -p udp --dport 8546 -j ACCEPT
-sudo iptables -I INPUT -p tcp --dport 8551 -j ACCEPT
-sudo  iptables -I INPUT -p udp --dport 8551 -j ACCEPT
-sudo iptables -I INPUT -p tcp --dport 3334 -j ACCEPT
-sudo  iptables -I INPUT -p udp --dport 3334 -j ACCEPT
-```
-
-* Data folder: `~/.ethereum/`.  
-* IPC file is: `~/.ethereum/geth.ipc`.
-* Accounts and Private Keys are stored: `~/.ethereum/keystore/`.  
-* For Testnet it: `~/.ethereum/testnet/`.
-
-```bash
-cd ~/.ethereum/rinkeby/
-rm PRIVATE_KEYS, Account
 ```
 
 #### Importing accounts
@@ -322,16 +340,6 @@ So basically you as a **developer** don't have to worry about making/signing/sen
 And as a **user**, it makes things much easier. for example, you don't have to sign a proof message to prove you are the owner of an address  
 `MetaMask` is also offering other features custom network, ...
 
-## Infura
+## References
 
-> Ethereum & IPFS APIs [infura.io](https://infura.io/)
-
-As it says they are providing APIs, so we can easily communicate with the Ethereum network. in the background, they probably have `geth` nodes or other kinds of nodes running.
-
-
-
-
-    --nodiscover                        (default: false)                   ($GETH_NODISCOVER)
-          Disables the peer discovery mechanism (manual peer addition)
-
---bootnodes
+* https://geth.ethereum.org/docs/
