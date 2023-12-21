@@ -134,6 +134,12 @@ Check the account balance
 web3.fromWei(eth.getBalance('0x7e932ab056a3dce4bcdd73092430c3f967e1bea3'), 'ether');
 ```
 
+Get latest block number:
+
+```bash
+eth.blockNumber
+```
+
 Make sure `8545`, `3334`, `30311` and `37608` ports are open
 
 ```bash
