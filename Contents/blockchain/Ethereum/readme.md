@@ -23,9 +23,9 @@ One of the key features of `Ethereum` is the ability to create and execute `smar
 
 A mind map of how Ethereum works:
 
-![Ethereum](./eth.png)
+![Ethereum](./assets/eth.png)
 
-You can find the `Pencil` project file here: [pencil-file](./eth.epgz)
+You can find the `Pencil` project file here: [pencil-file](./assets/eth.epgz)
 
 ## Proof-of-stake protocol
 
