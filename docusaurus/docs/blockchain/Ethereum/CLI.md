@@ -46,13 +46,13 @@ curl -X POST \
 
 ## Self Host Node
 
-### Geth, Clef, consensus client
+### Geth, Clef, Consensus client
 
 > `Geth` is Official implementation of the Ethereum execution layer in [Go](https://geth.ethereum.org/)
 
 `Geth` is a command-line interface for the Ethereum blockchain. `Geth` is an Ethereum client written in Go. This means running `Geth` turns a computer into an `Ethereum node`. Ethereum is a `peer-to-peer` network where information is shared directly between nodes rather than being managed by a central server. Every 12 seconds one node is randomly selected to generate a new block containing a list of transactions that nodes receiving the block should execute. This `block proposer` node sends the new block to its peers. On receiving a new block, each node checks that it is `valid` and adds it to their database. The sequence of discrete blocks is called a `blockchain`. The information provided in each block is used by Geth to `update` its `state`.  
 `Clef` is an account management tool external to `Geth` itself that allows users to sign transactions.  
-`Geth` also needs to be connected to a `consensus client` in order to function as an Ethereum node.  
+`Geth` also needs to be connected to a `Consensus client` in order to function as an Ethereum node.  
 
 ![Clef](./assets/clef.png)
 
@@ -64,7 +64,7 @@ curl -X POST \
 
 > `Light` nodes are not currently working on `proof-of-stake` Ethereum
 
-### Installation
+### Installation & Requirements
 
 These commands will intall `geth`, `clef`, `devp2p`, `abigen`, `bootnode`, `evm`, `rlpdump` and `puppeth`
 
@@ -78,18 +78,6 @@ sudo apt-get install ethereum
 # Arch
 sudo pacman -Syyuu geth nodejs
 ```
-
-### Features
-
-* Running an Ethereum node
-* Communicating with Ethereum network
-* Signing & Sending transactions
-* Interacting with Smart Contracts
-* Accounts Management
-* Wallet Functionality
-* Validating and ...
-
-### Starting
 
 An accurate clock is required to participate in the Ethereum network
 
@@ -121,7 +109,11 @@ sudo iptables -A INPUT -i ens3 -p udp -m multiport --dports 1900,5351,5353 -j AC
 sudo iptables -A INPUT -i ens3 -p tcp -m multiport --dports 49152 -j ACCEPT
 ```
 
-Creat a new account with `Clef`:
+### Clef
+
+`Clef` is the `Accounts Management` and has the responsibility of generating and storing keys, and signing transactions.
+
+Create a new account with `Clef`:
 
 ```bash
 mkdir enode
@@ -134,14 +126,16 @@ To start `Clef`, run the `Clef` executable passing as arguments the `keystore` f
 clef --keystore enode/keystore --configdir enode/clef --chainid 11155111
 ```
 
+### Geth
+
+`Geth` is responsible for running the Ethereum node. Communicating with the network, `sending and validating transactions`, and interacting with `Smart Contracts`. `Geth` also keep the `state` of the blockchain.
+
 By default, `Geth` uses `snap-sync` which download blocks sequentially from a `relatively recent block`, not the genesis block.  
 Your `ISP` must also allow `UDP` and `TCP` traffics to pass through.
 
 ```bash
 geth --sepolia --datadir enode --authrpc.addr 0.0.0.0 --authrpc.port 8551 --authrpc.vhosts "*" --authrpc.jwtsecret enode/jwtsecret --http --http.api eth,net,admin --signer enode/clef/clef.ipc --verbosity 5 --maxpeers 100 --allow-insecure-unlock --discv5 --bootnodes "enode://ec66ddcf1a974950bd4c782789a7e04f8aa7110a72569b6e65fcd51e937e74eed303b1ea734e4d19cfaec9fbff9b6ee65bf31dcb50ba79acce9dd63a6aca61c7@52.14.151.177:30303","enode://9246d00bc8fd1742e5ad2428b80fc4dc45d786283e05ef6edbd9002cbc335d40998444732fbe921cb88e1d2c73d1b1de53bae6a2237996e9bfe14f871baf7066@18.168.182.86:30303"
 # --nat=none --maxpendpeers 10 --nodiscover
-
-
 ```
 
 Get some Sepolia ETH from `https://www.infura.io/faucet/sepolia`.  
@@ -171,6 +165,13 @@ eth.accounts;
 ```
 
 The console will hang, because `Clef` is waiting for approval. approve it.  
+
+### Consensus clients
+
+`Consensus client` is responsible for `Block Proposals`, `Agreement Process` and `Final Decision`.
+
+A `consensus client` alongside `geth` is required to function as an Ethereum node and start syncing the blockchain.
+
 Check the account balance
 
 ```bash
