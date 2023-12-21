@@ -2,7 +2,7 @@
 
 :::info
 
-it is not possible to run an execution client on its own anymore. After The Merge, **both execution** and **consensus clients** must be run together in order for a user to gain access to the Ethereum network.
+it is not possible to run an execution client on its own anymore. After The Merge, **both execution and consensus clients** must be run together in order for a user to gain access to the Ethereum network.
 
 :::
 
@@ -32,39 +32,111 @@ You can either run your `own` ethereum `layers` (node) or use `free providers`.
 geth attach https://eth.getblock.io/token/mainnet/
 ```
 
-## Run your own node
+## Self Host Node
 
-### Geth
+### Geth, Clef, consensus client
 
-> Official implementation of the Ethereum execution layer in [Go](https://geth.ethereum.org/)
+> `Geth` is Official implementation of the Ethereum execution layer in [Go](https://geth.ethereum.org/)
 
-`Geth` is a command-line interface for the Ethereum blockchain. It is a full node, meaning that it is capable of maintaining the entire blockchain, including all transactions and state. It is also capable of running a light client, which is a subset of the full node that only contains the state of the chain and the current block.  
+`Geth` is a command-line interface for the Ethereum blockchain. `Geth` is an Ethereum client written in Go. This means running `Geth` turns a computer into an `Ethereum node`. Ethereum is a `peer-to-peer` network where information is shared directly between nodes rather than being managed by a central server. Every 12 seconds one node is randomly selected to generate a new block containing a list of transactions that nodes receiving the block should execute. This `block proposer` node sends the new block to its peers. On receiving a new block, each node checks that it is `valid` and adds it to their database. The sequence of discrete blocks is called a `blockchain`. The information provided in each block is used by Geth to `update` its `state`.  
+`Clef` is an account management tool external to `Geth` itself that allows users to sign transactions.  
+`Geth` also needs to be connected to a `consensus client` in order to function as an Ethereum node.  
 
-#### Installation
+### Installation
+
+These commands will intall `geth`, `clef`, `devp2p`, `abigen`, `bootnode`, `evm`, `rlpdump` and `puppeth`
 
 ```bash
 # Ubuntu
 sudo add-apt-repository -y ppa:ethereum/ethereum
 
+# Arch
 sudo pacman -Syyuu geth nodejs
-sudo npm install -g solc@latest
 ```
 
-#### Features
+### Features
 
-1. Running an Ethereum node
-2. Communicating with Ethereum network
-3. Sending transactions
-4. Interacting with Smart Contracts
-5. Creating accounts
-6. Wallet Functionality
-7. Mining and ...
+* Running an Ethereum node
+* Communicating with Ethereum network
+* Signing & Sending transactions
+* Interacting with Smart Contracts
+* Accounts Management
+* Wallet Functionality
+* Validating and ...
 
-#### Starting
+### Starting
+
+Creat a new account with `Clef`:
 
 ```bash
-geth --goerli --ws --ws.api="eth,net,web3,personal,txpool,,admin" --ws.origins '*' --syncmode=light --http --http.port 3334 --http.corsdomain "*" --http.api="eth,net,web3,personal,txpool,admin" --allow-insecure-unlock
-# make sure you 30311 and 37608 ports are open
+mkdir enode
+clef newaccount --keystore enode/keystore
+```
+
+To start `Clef`, run the `Clef` executable passing as arguments the `keystore` file location, config directory location and a `chain ID`. The config directory was automatically created inside the geth-tutorial directory during the previous step. The chain ID is an integer that defines which Ethereum network to connect to. Ethereum mainnet has `chain ID 1`. In this tutorial `Chain ID 11155111` is used which is that of the `Sepolia` testnet
+
+```bash
+clef --keystore enode/keystore --configdir enode/clef --chainid 11155111
+```
+
+By default, `Geth` uses `snap-sync` which download blocks sequentially from a `relatively recent block`, not the genesis block
+
+```bash
+geth --sepolia --datadir enode --authrpc.addr localhost --authrpc.port 8551 --authrpc.vhosts localhost --authrpc.jwtsecret enode/jwtsecret --http --http.api eth,net,admin --signer enode/clef/clef.ipc
+
+# geth --sepolia --datadir enode --authrpc.addr localhost --authrpc.port 8551 --authrpc.vhosts localhost --authrpc.jwtsecret enode/jwtsecret --ws --ws.api="eth,net,web3,personal,txpool,,admin" --ws.origins '*' --http --http.corsdomain "*" --http.api eth,net,web3,personal,txpool,admin --signer enode/clef/clef.ipc --allow-insecure-unlock
+
+# Make sure 8545, 8551, 3334, 30311, 30303 and 37608 ports are open
+sudo iptables -I INPUT -p tcp --dport 30311 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 30311 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 30303 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 30303 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 37608 -j ACCEPT
+sudo  iptables -I INPUT -p udp --dport 37608 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 8546 -j ACCEPT
+sudo  iptables -I INPUT -p udp --dport 8546 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 8551 -j ACCEPT
+sudo  iptables -I INPUT -p udp --dport 8551 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 3334 -j ACCEPT
+sudo  iptables -I INPUT -p udp --dport 3334 -j ACCEPT
+```
+
+Get some Sepolia ETH from `https://www.infura.io/faucet/sepolia`.  
+Connet to your `geth` node
+
+```bash
+geth attach http://127.0.0.1:8545
+```
+
+Check if `geth` has connected to the network
+
+```bash
+admin.peers
+```
+
+To manullay add static peers to the netwrok, first find the `enode` address of the peer you want to connect to. for example, for `sepolia` you can find some [here](https://github.com/eth-clients/sepolia)
+
+```bash
+admin.addPeer("enode://ec66ddcf1a974950bd4c782789a7e04f8aa7110a72569b6e65fcd51e937e74eed303b1ea734e4d19cfaec9fbff9b6ee65bf31dcb50ba79acce9dd63a6aca61c7@52.14.151.177:30303")
+admin.addPeer("enode://9246d00bc8fd1742e5ad2428b80fc4dc45d786283e05ef6edbd9002cbc335d40998444732fbe921cb88e1d2c73d1b1de53bae6a2237996e9bfe14f871baf7066@18.168.182.86:30303")
+```
+
+Get connected accounts
+
+```bash
+eth.accounts;
+```
+
+The console will hang, because `Clef` is waiting for approval. approve it.  
+Check the account balance
+
+```bash
+web3.fromWei(eth.getBalance('0x7e932ab056a3dce4bcdd73092430c3f967e1bea3'), 'ether');
+```
+
+Make sure `8545`, `3334`, `30311` and `37608` ports are open
+
+```bash
 sudo iptables -I INPUT -p tcp --dport 30311 -j ACCEPT
 sudo iptables -I INPUT -p udp --dport 30311 -j ACCEPT
 sudo iptables -I INPUT -p tcp --dport 37608 -j ACCEPT
