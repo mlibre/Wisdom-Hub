@@ -79,11 +79,11 @@ To start `Clef`, run the `Clef` executable passing as arguments the `keystore` f
 clef --keystore enode/keystore --configdir enode/clef --chainid 11155111
 ```
 
-By default, `Geth` uses `snap-sync` which download blocks sequentially from a `relatively recent block`, not the genesis block
+By default, `Geth` uses `snap-sync` which download blocks sequentially from a `relatively recent block`, not the genesis block.  
+Your `ISP` must also allow `UDP` and `TCP` traffic.
 
 ```bash
-geth --sepolia --datadir enode --authrpc.addr localhost --authrpc.port 8551 --authrpc.vhosts localhost --authrpc.jwtsecret enode/jwtsecret --http --http.api eth,net,admin --signer enode/clef/clef.ipc --verbosity 5
-
+geth --sepolia --datadir enode --authrpc.addr 0.0.0.0 --authrpc.port 8551 --authrpc.vhosts "*" --authrpc.jwtsecret enode/jwtsecret --http --http.api eth,net,admin --signer enode/clef/clef.ipc --verbosity 5 --maxpeers 100 --maxpendpeers 100 --allow-insecure-unlock --discv5
 # geth --sepolia --datadir enode --authrpc.addr localhost --authrpc.port 8551 --authrpc.vhosts localhost --authrpc.jwtsecret enode/jwtsecret --ws --ws.api="eth,net,web3,personal,txpool,,admin" --ws.origins '*' --http --http.corsdomain "*" --http.api eth,net,web3,personal,txpool,admin --signer enode/clef/clef.ipc --allow-insecure-unlock
 
 # Make sure 8545, 8551, 3334, 30311, 30303 and 37608 ports are open
@@ -327,3 +327,11 @@ And as a **user**, it makes things much easier. for example, you don't have to s
 > Ethereum & IPFS APIs [infura.io](https://infura.io/)
 
 As it says they are providing APIs, so we can easily communicate with the Ethereum network. in the background, they probably have `geth` nodes or other kinds of nodes running.
+
+
+
+
+    --nodiscover                        (default: false)                   ($GETH_NODISCOVER)
+          Disables the peer discovery mechanism (manual peer addition)
+
+--bootnodes
