@@ -236,6 +236,8 @@ voter.addOption("mlibre" , {from: "0xD8f24D419153E5D03d614C5155f900f4B5C8A65C"})
 
 ## Private Network
 
+[nimbus](https://nimbus.team/) has both eth1(execution) and eth2(consensus) layers.
+
 
 ## Transaction Info
 
