@@ -82,7 +82,7 @@ clef --keystore enode/keystore --configdir enode/clef --chainid 11155111
 By default, `Geth` uses `snap-sync` which download blocks sequentially from a `relatively recent block`, not the genesis block
 
 ```bash
-geth --sepolia --datadir enode --authrpc.addr localhost --authrpc.port 8551 --authrpc.vhosts localhost --authrpc.jwtsecret enode/jwtsecret --http --http.api eth,net,admin --signer enode/clef/clef.ipc
+geth --sepolia --datadir enode --authrpc.addr localhost --authrpc.port 8551 --authrpc.vhosts localhost --authrpc.jwtsecret enode/jwtsecret --http --http.api eth,net,admin --signer enode/clef/clef.ipc --verbosity 5
 
 # geth --sepolia --datadir enode --authrpc.addr localhost --authrpc.port 8551 --authrpc.vhosts localhost --authrpc.jwtsecret enode/jwtsecret --ws --ws.api="eth,net,web3,personal,txpool,,admin" --ws.origins '*' --http --http.corsdomain "*" --http.api eth,net,web3,personal,txpool,admin --signer enode/clef/clef.ipc --allow-insecure-unlock
 
