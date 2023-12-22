@@ -1,7 +1,7 @@
 # Ethereum
 
 `Ethereum` is a decentralized blockchain. It uses proof-of-stake (PoS) consensus mechanism.  
-One of the key features of `Ethereum` is the ability to create and execute `smart contracts`. `Smart contracts` are simply programs written and can be executed on the blockchain.
+One of the key features of `Ethereum` is the ability to create and execute `Smart Contracts`. `Smart contracts` are programs written and can be executed on the blockchain.
 
 ## Table of content
 
@@ -22,6 +22,16 @@ One of the key features of `Ethereum` is the ability to create and execute `smar
 * [References](#references)
 * [My ETH Address](#my-eth-address)
 
+## Basic Concepts
+
+A `blockchain` is a `public database` that is updated and shared across many computers in a network.
+
+`Blocks` are data structures within the blockchain database, where transactions are stored. If you send ETH to someone else, the `transaction` data needs to be `added to a block` to be successful. each block contains number of `transactions`.
+
+`Chain` refers to the fact that each block cryptographically references its parent. In other words, blocks get chained together. The data in a block cannot change without changing all subsequent blocks..
+
+Every computer in the network `must agree` upon `each new block` and `the chain as a whole`. These computers are known as `nodes`. `Nodes` ensure everyone interacting with the blockchain has the `same data`. To accomplish this `distributed agreement`, blockchains need a `consensus mechanism`.
+
 ## A visual representation of how Ethereum works - detailed diagram
 
 A mind map of how Ethereum works:
@@ -32,22 +42,31 @@ You can find the `Pencil` project file here: [pencil-file](./assets/eth.epgz)
 
 ## Proof-of-stake protocol
 
-Proof-of-stake means the following:
+`Ethereum` uses a `proof-of-stake-based` consensus mechanism.  
 
-* Validating nodes have to stake 32 ETH into a deposit contract as collateral against bad behavior. This helps protect the network because provably dishonest activity leads to some or all of that stake being destroyed.
-* In every slot (spaced twelve seconds apart) a validator is randomly selected to be the block proposer. They bundle transactions together, execute them and determine a new 'state'. They wrap this information into a block and pass it around to other validators.
-* Other validators who hear about the new block re-execute the transactions to ensure they agree with the proposed change to the global state. Assuming the block is valid, they add it to their own database.
-* If a validator hears about two conflicting blocks for the same slot they use their fork-choice algorithm to pick the one supported by the most staked ETH.
+* `Validators` can then be randomly selected to propose blocks that other validators check and add to the blockchain
+* Validating nodes have to stake 32 ETH into a deposit contract as collateral against bad behavior. This helps protect the network because provably dishonest activity leads to some or all of that stake being destroyed
+* In every slot (spaced twelve seconds apart) a validator is randomly selected to be the block proposer. They bundle transactions together, execute them and determine a new 'state'. They wrap this information into a block and pass it around to other validators
+* Other validators who hear about the new block re-execute the transactions to ensure they agree with the proposed change to the global state. Assuming the block is valid, they add it to their own database
+* If a validator hears about two conflicting blocks for the same slot they use their fork-choice algorithm to pick the one supported by the most staked ETH
 
 ## Ether
 
-Ether (ETH) is the cryptocurrency used for many things on the Ethereum network. Fundamentally, it is the only acceptable form of payment for transaction fees, and is required to validate and propose blocks on Mainnet
+Ether (ETH) is the cryptocurrency used for many things on the Ethereum network. Fundamentally, it is the only acceptable form of payment for `transaction fees`, and is required to `validate` and `propose` blocks. `ETH` also being used to secure the network in 3 ways:
+
+1. It is used as a means to reward validators who propose blocks or call out dishonest behavior by other validators
+2. It is staked by validators, acting as collateral against dishonest behavior—if validators attempt to misbehave their ETH can be destroyed
+3. It is used to weigh `votes` for newly proposed blocks, feeding into the fork-choice part of the consensus mechanism
 
 ## Gas
 
 What happens when we run out of gas in the middle of an Ethereum transaction?
 
 If we run out of gas in the middle of an Ethereum transaction, the transaction will fail and the state of the blockchain will revert to what it was before. However, we will still have to pay for the gas that was consumed up to that
+
+## Smart Contracts
+
+A reusable code (a program) which someone publishes into `Ethereum network`. Anyone can request that the `smart contract` code be executed by making a `transaction request`. `Smart Contracts` exceution can result a `state changes`.
 
 ## Accounts
 
@@ -108,11 +127,6 @@ Blocks are batches of transactions with a hash of the previous block in the chai
 ## Merkle Patricia Trees
 
 The Merkle Patricia tree/trie, previously envisioned by Alan Reiner and implemented in the Ripple protocol, is the primary data structure of Ethereum, and is used to store all account state, as well as transactions and receipts in each block.
-
-## Smart Contracts
-
-For this more advance feature, a more sophisticated analogy than a distributed ledger (like bitcoin) introduced.  
-Instead of a **distributed ledger**, **Ethereum** is a **distributed state machine**. Ethereum's state is a large data structure which holds not only all accounts and balances, but a machine state, which can change from block to block according to a pre-defined set of rules, and which can execute arbitrary machine code
 
 ## Etehreum Structure
 
