@@ -15,6 +15,9 @@ One of the key features of `Ethereum` is the ability to create and execute `smar
 * [Blocks](#blocks)
 * [Merkle Patricia Trees](#merkle-patricia-trees)
 * [Smart Contracts](#smart-contracts)
+* [Etehreum Structure](#etehreum-structure)
+  * [Transactions Types](#transactions-types)
+  * [Block info](#block-info)
 * [Ethereum Explorer](#ethereum-explorer)
 * [References](#references)
 * [My ETH Address](#my-eth-address)
@@ -110,6 +113,104 @@ The Merkle Patricia tree/trie, previously envisioned by Alan Reiner and implemen
 
 For this more advance feature, a more sophisticated analogy than a distributed ledger (like bitcoin) introduced.  
 Instead of a **distributed ledger**, **Ethereum** is a **distributed state machine**. Ethereum's state is a large data structure which holds not only all accounts and balances, but a machine state, which can change from block to block according to a pre-defined set of rules, and which can execute arbitrary machine code
+
+## Etehreum Structure
+
+### Transactions Types
+
+A transaction in ETH-2 looks like this:
+
+```js
+eth.getTransaction("0x43ad3737b39356024aa13bc396237208e66b73bc5f99ab33e08c60731b8a14a9")
+{
+  accessList: [],
+  blockHash: "0x24635aee8638d9c34f01fdc3a6a80b39dc081df59d33550be92a0badff0c93bb",
+  blockNumber: 17641198,
+  chainId: "0x1",
+  from: "0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5",
+  gas: 21000,
+  gasPrice: 22310851574,
+  hash: "0xa78d2e8e676ad408ad75399c36946ee27968beec36fe38f4c284ffd2c39f20af",
+  input: "0x",
+  maxFeePerGas: 22310851574,
+  maxPriorityFeePerGas: 0,
+  nonce: 383610,
+  r: "0x16bb14d65b1e768d6671e69c7ee6189ca070b90a8519c34e97169a4fe0e72865",
+  s: "0x3107edfd2b4a1cf2d03ce305b74323486e70e9ee0c29ee02c61ed74376e88298",
+  to: "0xe688b84b23f322a994a53dbf8e15fa82cdb71127",
+  transactionIndex: 168,
+  type: "0x2",
+  v: "0x0",
+  value: 44186254496743523
+}
+
+// OR
+
+{
+  accessList: [],
+  blockHash: "0x424483e1970781103b9f4f22b2d906eeb25ebab5d417b8d706802fec10b4197d",
+  blockNumber: 17619068,
+  chainId: "0x1",
+  from: "0xbc0f14d6bdd2f46ab1d56bfd5f28eb6c2a2d2777",
+  gas: 274223,
+  gasPrice: 24387282490,
+  hash: "0x43ad3737b39356024aa13bc396237208e66b73bc5f99ab33e08c60731b8a14a9",
+  input: "0x3593564c0000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000002890df158d76e584877a1d17a85fea3aeeb85aa600000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000",
+  maxFeePerGas: 31580923735,
+  maxPriorityFeePerGas: 10000000000,
+  nonce: 3895,
+  r: "0x5b7f1d328c3c85b0c74e23511938817f338066f34dabaa2f72fe161c187dac3e",
+  s: "0x6583f2d3db02c51e9acbfb700f6dd28fac62108a58e397306871e5769d3b7443",
+  to: "0xef1c6e67703c7bd7107eed8303fbe6ec2554bf6b",
+  transactionIndex: 0,
+  type: "0x2",
+  v: "0x1",
+  value: 0
+}
+```
+
+### Block info
+
+A block in `Ethereum` looks like this:
+
+```js
+web3.eth.getBlock(eth.blockNumber)
+{
+  baseFeePerGas: 14387282490,
+  difficulty: 0,
+  extraData: "0x496c6c756d696e61746520446d6f63726174697a6520447374726962757465",
+  gasLimit: 30000000,
+  gasUsed: 13371853,
+  hash: "0x424483e1970781103b9f4f22b2d906eeb25ebab5d417b8d706802fec10b4197d",
+  logsBloom: "0xd16bc008ef900be8452b8128845c1b3014251b90402259020c4520c4746a88b301a403c34060b54ef2109a3663e0190546c195e861a2af47429380824635a81439a7ccdf4ea0be044870a028497f86c170de301fe3f44580c99137f49eef2b",
+  miner: "0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5",
+  mixHash: "0xfc5ce5faa47e9198054791dff0372514fb876038b605b02abd82fa3b510adbeb",
+  nonce: "0x0000000000000000",
+  number: 17619068,
+  parentHash: "0x8afcef307dfe111676d5baa35ab148131fd4918b499c807c657c6291429f8be0",
+  receiptsRoot: "0xc04575fad7649ea33ec114a2626e6ad87d902c1bea0ac51ef47e5aeb03aadafb",
+  sha3Uncles: "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+  size: 162982,
+  stateRoot: "0x9fce67ea0ac4c8e9bb310e538663203544ed2f9216a5562ca389f66e154a8af3",
+  timestamp: 1688455619,
+  totalDifficulty: 5.8750003716598352816469e+22,
+  transactions: ["0x43ad3737b39356024aa13bc396237208e66b73bc5f99ab33e08c60731b8a14a9", "0xe2588a39acfb64ede45f2372954952b69a0effc9d953b6ff954e624ec9ef7e7a", "0x10a61db4c6b065cf91de037fbb5eb30717c97b9857c26a42028ab9d0704256e8", "0x4e0c96c3d942f79384fef9498d022b76ebae4b1097606996d0a4c77abfc2d5b4", "0xe2a973235b5563490b2b4edbc77f9d98bebad087b70b8238a4476a7ac86d6aa5", "0x4adc76b7e31c97e84dc705c79042ecc6b4e53cbe751a586f1f5b13496f0e5968", "0x0656b67f8bddbfac490c114f2e5ea5e09b3256b5d242649546b9184c65f989fd", "0xbc2b9acc05f0b01b2311c438243d5bcf6120981672c014f76e5cdb62b8158dc4"],
+  transactionsRoot: "0x5113e5b9bb408a7b82ad324135d75543333ada8276bb13a2b8dca6f38b58edac",
+  uncles: [],
+  withdrawals: [{
+      address: "0x210b3cb99fa1de0a64085fa80e18c22fe4722a1b",
+      amount: "0xd827da",
+      index: "0x8e9d47",
+      validatorIndex: "0x82c3d"
+  }, {
+      address: "0xb9d7934878b5fb9610b3fe8a5e441e8fad7e293f",
+      amount: "0xd87c41",
+      index: "0x8e9d4f",
+      validatorIndex: "0x82c45"
+  },
+  withdrawalsRoot: "0x4915e375cb0b2df0dfb9115fab5c0acef3abebd037cdc693edc065f3a8da44b0"
+}
+```
 
 ## Ethereum Explorer
 
