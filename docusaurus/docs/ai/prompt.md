@@ -38,3 +38,7 @@ I've written an article that needs improvement. I'm looking for help with:
 * Reviewing naming issues
 
 Please assist in enhancing my markdown article.
+
+## Extract important sections from article
+
+Extract only important and technical parts from this article. I don't want a long article with unnecessary, less important information.
