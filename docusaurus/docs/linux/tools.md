@@ -32,6 +32,22 @@ tldr apt
 
 ## Shell
 
+### tbmk
+
+A commands bookmark for terminal
+
+```bash
+git clone https://github.com/linhx/tbmk.git
+cd tbmk
+go build .
+./install
+```
+
+* Search: type and `ctrl + space`
+* Delete: in the result screen, select the item then press `ctrl + d`
+* Add: `ctrl + t`. you can type the command first then press `ctrl + t`
+* Edit: Override the old one by add new command with the same title.
+
 ### ble.sh
 
 Syntax highlighting and auto suggestions for bash
