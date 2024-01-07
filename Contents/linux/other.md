@@ -8,6 +8,8 @@ tags:
   - Manjaro
   - Windows 11
   - swap
+  - Fix
+  - Repair
 ---
 
 # Other
@@ -224,6 +226,30 @@ sudo systemctl restart systemd-journald
 ```
 
 ## Manjaro
+
+### Fix broken System
+
+1. Boot into Manjaro Live
+2. `chroot` to yoour linux (`manjaro-chroot -a`)
+
+```bash
+sudo pacman -Rns xf86-video-amdgpu
+sudo pacman -S xf86-video-amdgpu
+
+# Remove the word splash & quiet from the Grub command line options
+nano /etc/default/grub
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg 
+sudo pacman -Rsn plymouth plymouth-theme-manjaro plymouth-kcm
+
+# remove "plymouth" from mkinitcpio HOOKS and add "ext4 vfat" to MODULES
+nano /etc/mkinitcpio.conf
+
+sudo mkinitcpio -P
+sudo update-grub
+
+sudo pacman -S linux61 linux
+```
 
 ### Things to do before installing
 
