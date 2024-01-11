@@ -129,7 +129,7 @@ net.ipv4.conf.icmp_echo_ignore_all = 1
 
 ### Change server hostname
   
-- vultr.com -> server setting -> ipv4 -> reverse DNS
+* vultr.com -> server setting -> ipv4 -> reverse DNS
 
 ```bash
   proxychains ssh -p port true@000.000.13.13
@@ -148,13 +148,13 @@ net.ipv4.conf.icmp_echo_ignore_all = 1
 
 ### Add domain to the cloudflare
   
-- SSL/TLS: Full
-- Disable DNSSEC, Always Use HTTPS, Automatic HTTPS Rewrites
-- Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network/SSL tab
-- Enable Development mode
-- Add a "A" DNS record: domain.ga, DNS only ( no proxy )
-- Add a "A" DNS record: v4p.domain.ga, proxy
-- Add a "AAAA" DNS record: v6.domain.ga, proxy ( don't make dns-only for ipv6 )
+* SSL/TLS: Full
+* Disable DNSSEC, Always Use HTTPS, Automatic HTTPS Rewrites
+* Enable TLS 1.3, HTTP2/3, GRPC, WS and ... in Network/SSL tab
+* Enable Development mode
+* Add a "A" DNS record: domain.ga, DNS only ( no proxy )
+* Add a "A" DNS record: v4p.domain.ga, proxy
+* Add a "AAAA" DNS record: v6.domain.ga, proxy ( don't make dns-only for ipv6 )
 
 ### XUI Panel
 
@@ -239,13 +239,13 @@ acme.sh --list
 # lsof -i :80
 ```
 
-- Open Panel (<https://domain.ga:8443/xui/inbounds>)
-- trojan-tls-TCP-443-allow-insecure-alp-all-sni-stackoverflow.com
-- vmess-ws-tls-2053-allow-insecure-aph-all
-- vmess-h2-TLS-H2-HTTP1-allow-insecure-stackoverflow.com-80
-- vmess-h2-TLS-H2-allow-insecure-8443
-- vless-2096-h2-reality-no-sniff
-- In firefox: Check Proxy DNS when using SOCKS v5
+* Open Panel (<https://domain.ga:8443/xui/inbounds>)
+* trojan-tls-TCP-443-allow-insecure-alp-all-sni-stackoverflow.com
+* vmess-ws-tls-2053-allow-insecure-aph-all
+* vmess-h2-TLS-H2-HTTP1-allow-insecure-stackoverflow.com-80
+* vmess-h2-TLS-H2-allow-insecure-8443
+* vless-2096-h2-reality-no-sniff
+* In firefox: Check Proxy DNS when using SOCKS v5
 
 <!-- - Create a free domain from freenom.com
   > Use Shekan DNS, Use fake american IP address -->
@@ -253,8 +253,8 @@ acme.sh --list
 
 ### Nekoray
 
-- Nekoray Supports SS, Vmess and ....
-- Download from <https://github.com/Matsuridayo/nekoray/releases>
+* Nekoray Supports SS, Vmess and ....
+* Download from <https://github.com/Matsuridayo/nekoray/releases>
 
 ```bash
 aria2c -x 10 "https://github.com/MatsuriDayo/nekoray/releases/download/2.9/nekoray-2.9-2022-12-19-linux64.zip"
@@ -266,7 +266,7 @@ cd nekoray
 # paste vmess setting. Address: iv6.domain.ga, host: iv6.domain.ga
 ```
 
-- Open Nekoray -> Routing Settings -> remote DNS: localhost
+* Open Nekoray -> Routing Settings -> remote DNS: localhost
 
 ## ShadowSocks Server
 
@@ -440,9 +440,9 @@ sudo wg
 
 ### VPNBook
 
-- Download OpenVpn file: <https://www.vpnbook.com/freevpn>
-- Import in NetworkManger
-- Enter username and password from here: <https://www.vpnbook.com/freevpn>
+* Download OpenVpn file: <https://www.vpnbook.com/freevpn>
+* Import in NetworkManger
+* Enter username and password from here: <https://www.vpnbook.com/freevpn>
 
 ### Protonvpn
 
@@ -458,9 +458,9 @@ protonvpn
 
 #### OpenVpn
 
-- Download openVpn config file form here: <https://account.protonvpn.com/downloads>
-- Copy openVPn credentials: <https://account.protonvpn.com/account>
-- Network Manager: New -> Import OpenVpn Saved Configuration. Paste credentials
+* Download openVpn config file form here: <https://account.protonvpn.com/downloads>
+* Copy openVPn credentials: <https://account.protonvpn.com/account>
+* Network Manager: New -> Import OpenVpn Saved Configuration. Paste credentials
 
 #### WireGuard
 
