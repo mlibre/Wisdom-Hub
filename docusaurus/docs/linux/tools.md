@@ -197,6 +197,12 @@ yd "link"
 sudo pamac install genymotion
 ```
 
+## Download using aria2 and proxy
+
+```bash
+aria2c -x 15 "https://link.zip" --all-proxy="http://127.0.0.1:2081"
+```
+
 ## Instant cloud file share
 
 ```bash
