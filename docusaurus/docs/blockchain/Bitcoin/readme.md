@@ -4,7 +4,7 @@ A `blockchain` is a list of records, called blocks, which are linked and secured
 Each block contains a cryptographic hash of the previous block, a timestamp, and a list of transactions.  
 A blockchain is simply a public distributed ledger, and `bitcoin` is a `blockchain`.  
 
-I have also implemented a simple Proof-of-Work (POW) blockchain like bitcoin, you can find it [here](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/pow-from-scratch)
+Here is also implemented a simple Proof-of-Work (POW) blockchain like bitcoin, you can find it [here](https://github.com/mlibre/GoodChain)
 
 ## Table of content
 
@@ -145,7 +145,7 @@ When you broadcast a transaction to the Bitcoin network, your wallet can downloa
 
 ## Simple POW Blockchain in nodejs
 
-[Here you can find a simple complete POW blockchain written in nodejs](https://github.com/mlibre/blockchain/tree/master/Tutorials/Bitcoin/pow-from-scratch)
+[Here you can find a simple complete POW blockchain written in nodejs](https://github.com/mlibre/GoodChain)
 
 ## References
 
