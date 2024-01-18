@@ -65,23 +65,23 @@ Bitcoin achieves consensus through a process called `proof-of-work mining`. Mine
 
 The Bitcoin protocol offers two main incentives for mining:
 
-- Block rewards: New bitcoins are minted with each block, and the miner who finds the block receives the block reward
-- Transaction fees: Each transaction on the Bitcoin network includes a transaction fee, paid to the miner who includes that transaction in a block
+* Block rewards: New bitcoins are minted with each block, and the miner who finds the block receives the block reward
+* Transaction fees: Each transaction on the Bitcoin network includes a transaction fee, paid to the miner who includes that transaction in a block
 
 ## Addresses And Wallets
 
 There is no such thing as a `Wallet` in the Bitcoin network. It is `abstract`.  
 
-- Address
+* Address
 
 An address is a hash of a bitcoin public-key wallet.  
 You can use an address as many as you want to send and receive Bitcoin.  
 
-- Wallet
+* Wallet
 
 A wallet is a software program that stores `key-pairs`, created `addresses`, and other information needed to access and manage your `Bitcoins`.  
 
-- Key-pairs
+* Key-pairs
 
 Key-pairs are a public key of an address to which some amount bitcoin was previously sent and the corresponding unique private key, which authorizes the bitcoin previously sent to the above public key (address) to be sent elsewhere.
 
@@ -92,9 +92,9 @@ When a `Bitcoin` transaction is created, it is `broadcast` to the Bitcoin networ
 
 A transaction components are:
 
-- Inputs - Information about the Bitcoin previously sent to Mark's address. For example, imagine Mark previously received 0.6 BTC from Alice and 0.6 BTC from Bob. Now, in order to send 1 BTC to Jessica, there might be two inputs: one input of 0.6 BTC previously from Alice and one input of 0.6 BTC previously from Bob.
-- Amount - The amount being sent, In this case Mark wants to send 1 BTC.
-- Outputs - The destination addresses of the Bitcoins. The first is 1.2 BTC (0.6 BTC + 0.6 BTC) to Jessica’s public address. The second is 0.2 BTC returned as 'change' to Mark.
+* Inputs - Information about the Bitcoin previously sent to Mark's address. For example, imagine Mark previously received 0.6 BTC from Alice and 0.6 BTC from Bob. Now, in order to send 1 BTC to Jessica, there might be two inputs: one input of 0.6 BTC previously from Alice and one input of 0.6 BTC previously from Bob.
+* Amount - The amount being sent, In this case Mark wants to send 1 BTC.
+* Outputs - The destination addresses of the Bitcoins. The first is 1.2 BTC (0.6 BTC + 0.6 BTC) to Jessica’s public address. The second is 0.2 BTC returned as 'change' to Mark.
 
 ## Longest chain
 
@@ -149,13 +149,13 @@ When you broadcast a transaction to the Bitcoin network, your wallet can downloa
 
 ## References
 
-- <https://www.bitcoin.com/get-started/>
-- <https://academy.binance.com/en/articles/double-spending-explained>
-- <https://www.youtube.com/watch?v=phLSjZdDc5A>
-- <https://learnmeabitcoin.com/technical/longest-chain>
-- <https://www.geeksforgeeks.org/blockchain-merkle-trees/>
-- <https://www.geeksforgeeks.org/blockchain-merkle-trees/>
-- <https://academy.binance.com/en/articles/merkle-trees-and-merkle-roots-explained>
+* <https://www.bitcoin.com/get-started/>
+* <https://academy.binance.com/en/articles/double-spending-explained>
+* <https://www.youtube.com/watch?v=phLSjZdDc5A>
+* <https://learnmeabitcoin.com/technical/longest-chain>
+* <https://www.geeksforgeeks.org/blockchain-merkle-trees/>
+* <https://www.geeksforgeeks.org/blockchain-merkle-trees/>
+* <https://academy.binance.com/en/articles/merkle-trees-and-merkle-roots-explained>
 
 ## My Bitcoin Address
 
