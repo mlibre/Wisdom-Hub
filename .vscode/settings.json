@@ -12,5 +12,6 @@
 		"**/docs/*/**": true,
 		"**/docusaurus/.docusaurus/**": true,
 		"**/docusaurus/build/**": true
-	}
+	},
+	"editor.cursorBlinking": "phase"
 }
