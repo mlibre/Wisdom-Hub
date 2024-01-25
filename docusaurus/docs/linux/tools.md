@@ -32,6 +32,15 @@ tldr apt
 
 ## Shell
 
+## Atuin
+
+Sync, search and backup shell history with [Atuin](https://atuin.sh/)
+
+```bash
+bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
+atuin import auto
+```
+
 ### tbmk
 
 A commands bookmark for terminal
@@ -219,73 +228,4 @@ source myvirtenv/bin/activate
 pip install --upgrade open-interpreter
 export COHERE_API_KEY=APY_KEY
 interpreter --model command-nightly
-```
-
-## Timewarrior
-
-A simple time tracking tool for command line.
-
-```bash
-sudo pacman -S timew
-```
-
-### Usage
-
-|             Command             |            Description            |
-| :-----------------------------: | :-------------------------------: |
-|             `timew`             | Create the database if not exist  |
-|   `timew start tag1 "tag 2"`    | Start tracking with multiple tags |
-|          `timew stop`           | Stop tracking time for last task  |
-|        `timew continue`         |      Continue the last task       |
-| `timew track 9:00 - 11:00 tag1` |     Historical track for tag1     |
-|   `timew modify end @1 12:45`   |      Modify end @1 to 12:45       |
-
-### Advanced Usage
-
-|               Command                |        Description        |
-| :----------------------------------: | :-----------------------: |
-| `timew track 12:00:00 to 13:00 tag1` | Historical track for tag1 |
-|    `timew track 7pm for 2h tag1`     | Historical track for tag1 |
-|       `timew move @1 11:00:00`       |   Moving @1 to 11:00:00   |
-|      `timew lengthen @1 30min`       |   lengthing @1 by 30min   |
-
-### Features
-
-|             Command             |           Description            |
-| :-----------------------------: | :------------------------------: |
-|         `timew summary`         |        View time summary         |
-| `timew summary yesterday - now` | View time summary from yesterady |
-|      `timew summary tag1`       | View summary for tasks with tag1 |
-|      `timew summary :ids`       |    View time summary with ids    |
-|           `timew day`           |        Show daily summary        |
-|          `timew tags`           |     List all available tags      |
-|       `timew help delete`       |            Using help            |
-|        `timew delete @1`        |        Delete ID@1 entry         |
-|         `timew export`          |  Export data for today to JSON   |
-
-### backup
-
-```bash
-tar -czvf  tm.tar.gz /home/mlibre/.local/share/timewarrior
-```
-
-### Restpre
-
-```bash
-tar -xzvf tm.tar.gz /home/mlibre/.local/share/timewarrior
-tar -xvzf tm.tar.gz -C /
-```
-
-### Alies
-
-```bash
-nano .bashrc
-alias tm='timew'
-alias tms='timew start'
-alias tmt='timew track'
-alias tmd='timew delete'
-alias tmo='timew summary :ids'
-alias tmm='timew move'
-alias tml='timew lengthen'
-alias tmm='timew modify'
 ```
