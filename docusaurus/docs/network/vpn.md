@@ -505,8 +505,26 @@ yay -S aur/windscribe-bin
 
 ### Warp
 
+Scan clean ips
+
 ```bash
-pamac insatll cloudflare-warp-bin
+sudo pacman -S parallel
+git clone https://github.com/MortezaBashsiz/CFScanner.git
+cd CFScanner/bash
+chmod +x ../bin/*
+curl -s https://raw.githubusercontent.com/MortezaBashsiz/CFScanner/main/bash/ClientConfig.json -o config.real
+bash cfScanner.sh SUBNET DOWN threads tryCount config.real speed custom.subnets
+bash cfScanner.sh SUBNET DOWN 8 1 config.real 100 custom.subnets
+```
+
+```bash
+sudo pacman -S python-requests
+pamac install python-ping3
+git clone https://github.com/vfarid/cf-ip-scanner-py.git
+```
+
+```bash
+pamac install cloudflare-warp-bin
 
 sudo nano /etc/systemd/resolved.conf
 ResolveUnicastSingleLabel=yes
@@ -514,6 +532,8 @@ sudo systemctl restart systemd-resolved.service
 
 sudo systemctl restart warp-svc.service 
 sudo systemctl enable warp-svc.service 
+systemctl --user start --now warp-taskbar 
+
 warp-cli set-families-mode off
 warp-cli delete
 warp-cli register
@@ -522,6 +542,7 @@ warp-cli disconnect
 warp-cli connect
 warp-cli status
 warp-cli settings
+warp-cli set-custom-endpoint 185.18.250.153
 
 warp-cli set-mode --help
 warp-cli set-mode warp
