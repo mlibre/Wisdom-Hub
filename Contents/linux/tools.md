@@ -32,7 +32,7 @@ tldr apt
 
 ## Shell
 
-## Atuin
+### Atuin
 
 Sync, search and backup shell history with [Atuin](https://atuin.sh/)
 
@@ -94,6 +94,25 @@ bash-it enable plugin man
 
 cd $BASH_IT
 ./uninstall.sh
+```
+
+### Toolong
+
+A terminal application to view, tail, merge, and search log files (plus JSONL)
+
+```bash
+pipx install toolong
+tl mylogfile.log
+```
+
+### synth-shell
+
+synth-shell improves your terminal experience and productivity by adding color, extra info, and convenience
+
+```bash
+git clone --recursive https://github.com/andresgongora/synth-shell.git
+cd synth-shell
+./setup.sh
 ```
 
 ## System monitoring
