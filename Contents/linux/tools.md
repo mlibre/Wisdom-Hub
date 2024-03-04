@@ -115,6 +115,15 @@ cd synth-shell
 ./setup.sh
 ```
 
+### hstr
+
+A command history search tool for bash
+https://github.com/dvorka/hstr
+
+```bash
+sudo pamac install hstr
+```
+
 ## System monitoring
 
 ### Neofetch
