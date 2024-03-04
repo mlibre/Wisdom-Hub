@@ -122,6 +122,16 @@ https://github.com/dvorka/hstr
 
 ```bash
 sudo pamac install hstr
+hstr
+```
+
+To comes up with CTRL-R
+
+```bash
+# bash
+hstr --show-bash-configuration >> ~/.bashrc
+# zsh
+hstr --show-zsh-configuration >> ~/.zshrc
 ```
 
 ## System monitoring
