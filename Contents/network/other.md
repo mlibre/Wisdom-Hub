@@ -46,3 +46,10 @@ sudo ip route add 192.168.1.0/24 dev ppp0
 ```bash
 python3 -m http.server --bind 0.0.0.0 --cgi 8000
 ```
+
+## Monitoring traffic
+
+```bash
+sudo pacman -Sy sniffnet
+sniffnet
+```
