@@ -75,13 +75,12 @@ tags:
 |     `-v`     |                Verbose output                 |
 | `--progress` |         Show progress during transfer         |
 |     `-z`     |         Compress data during transfer         |
-|     `-P`     |         Keep partially transferred files |
+|     `-P`     |       Keep partially transferred files        |
 |  `--delete`  | Delete extraneous files on the receiving side |
 |     `-A`     |     Preserve ACLs (Access Control Lists)      |
 |     `-X`     |         Preserve extended attributes          |
 |     `-H`     |              Preserve hard links              |
 |     `-n`     |               Perform a dry run               |
-
 
 ```bash
 # Backup local directory to another location
@@ -123,4 +122,11 @@ sudo tar -czvf backup.tar.gz $(locate x-ui) /root/
 sudo tar -czvf backup.tar.gz $(locate x-ui) /root/cert /root/cert.crt /root/private.key /root/.acme.sh
 
 sudo tar xvf backup.tar.gz -C / # Extract in root directory
+```
+
+## Automatic mount using fstab
+
+```bash
+sudo nano /etc/fstab
+UUID=0CCB69562B33DFDD                       /home/mlibre/media/D   ntfs-3g        uid=1000,gid=1000,rw,auto,user,exec,umask=000 0 0
 ```
