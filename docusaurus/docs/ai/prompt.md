@@ -30,8 +30,6 @@ Alice has 5 apples, throws 3 apples, gives 2 to Bob and Bob gives one back, how 
 
 ### Least-to-most prompting
 
-## Examples
-
 * Prompt: How to perform data science in 5 steps?
 
 * Answer:
@@ -40,6 +38,12 @@ Alice has 5 apples, throws 3 apples, gives 2 to Bob and Bob gives one back, how 
   * Analyze data
   * Plot data
   * Present data
+
+## Temperature
+
+Use temperature to vary your output allows you to introduce randomness and creativity. Temperature is a value between 0 and 1, where 0 is the most deterministic and 1 is the most varied.
+
+## Examples
 
 ### Markdown table of Linux commands
 
