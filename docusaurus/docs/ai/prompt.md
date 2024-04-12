@@ -8,7 +8,40 @@ tags:
 
 # Prompt
 
-## Markdown table of Linux commands
+## Types of prompts
+
+### Zero-shot prompting
+
+* Prompt: "What is Algebra?"
+* Answer: "Algebra is a branch of mathematics that studies mathematical symbols and the rules for manipulating these symbols."
+
+### Few-shot prompting
+
+* Prompt: "Write a poem in the style of Shakespeare. Here are a few examples of Shakespearean sonnets.: Sonnet 18: 'Shall I compare thee to a summer's day? Thou art more lovely and more temperate...'
+Sonnet 116: 'Let me not to the marriage of true minds Admit impediments. Love is not love Which alters when it alteration finds...'
+Sonnet 132: 'Thine eyes I love, and they, as pitying me, Knowing thy heart torment me with disdain,...' Now, write a sonnet about the beauty of the moon."
+* Answer: "Upon the sky, the moon doth softly gleam, In silv'ry light that casts its gentle grace,..."
+
+### Chain-of-thought prompting
+
+* Prompt: "Lisa has 7 apples, throws 1 apple, gives 4 apples to Bart and Bart gives one back: 7 -1 = 6 6 -4 = 2 2 +1 = 3
+Alice has 5 apples, throws 3 apples, gives 2 to Bob and Bob gives one back, how many apples does Alice have?"
+* Answer: 1
+
+### Least-to-most prompting
+
+## Examples
+
+* Prompt: How to perform data science in 5 steps?
+
+* Answer:
+  * Collect data
+  * Clean data
+  * Analyze data
+  * Plot data
+  * Present data
+
+### Markdown table of Linux commands
 
 Please provide a Markdown table with centered text alignment that lists the following Linux commands, their short descriptions and examples: "free", "uptime"
 The table has two columns only: 'Command', 'Description'.
@@ -28,7 +61,7 @@ The table format is:
 | `very advance example of command 2` | Description |
 ```
 
-## Rewriting artiicle
+### Rewriting artiicle
 
 I've written an article that needs improvement. I'm looking for help with:
 
@@ -39,6 +72,10 @@ I've written an article that needs improvement. I'm looking for help with:
 
 Please assist in enhancing my markdown article.
 
-## Extract important sections from article
+### Extract important sections from article
 
 Extract only important and technical parts from this article. I don't want a long article with unnecessary, less important information.
+
+## References
+
+* <https://microsoft.github.io/generative-ai-for-beginners/>
