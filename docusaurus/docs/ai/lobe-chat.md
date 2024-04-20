@@ -22,5 +22,9 @@ git --depth 1 clone https://github.com/lobehub/lobe-chat.git
 # git pull --all
 cd lobe-chat
 pnpm install
+mv .env.example .env
+OLLAMA_PROXY_URL=http://127.0.0.1:11434/v1
+OLLAMA_MODEL_LIST=llama2
+
 pnpm dev
 ```
