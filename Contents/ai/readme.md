@@ -16,6 +16,7 @@ This repository is organized into several sections, each containing tutorials fo
 * [Geneartive AI](./generative%20ai.md) - Tutorials on using AI
 * [Prompt](./prompt.md)
 * [Langchain](./langchain.md)
+* [lobeChat](./lobe-chat.md)
 
 ## My ETH Address
 
