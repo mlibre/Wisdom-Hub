@@ -38,6 +38,12 @@ tldr apt
 
 ```bash
 npm install -g @microsoft/inshellisense
+
+# bash
+is init bash >> ~/.bashrc
+
+# zsh
+is init zsh >> ~/.zshrc
 ```
 
 ### Atuin
