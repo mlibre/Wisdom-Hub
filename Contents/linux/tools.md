@@ -32,6 +32,14 @@ tldr apt
 
 ## Shell
 
+## inshellisense
+
+`inshellisense` provides IDE style autocomplete for shells. It's a terminal native runtime for `autocomplete` which has support for 600+ command line tools.
+
+```bash
+npm install -g @microsoft/inshellisense
+```
+
 ### Atuin
 
 Sync, search and backup shell history with [Atuin](https://atuin.sh/)
