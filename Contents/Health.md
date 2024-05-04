@@ -10,12 +10,14 @@ tags:
 * **Avoid processed foods**: sausages, processed or industrial sauces and oils, Processed drinks (soda, industrial malt, etc.)
 
 * **Avoid artificial sweeteners and added sugar**: `processed chocolate milk`, `processed banana milk`, `processed fruit juice`, and other artificially made combinations that contain unhealthy additives such as `refined or added sugar` and `preservatives`. These `refined sugar` weaken the `immune system` and have other negative effects
-* Limit daily `milk` intake to `one` glass maximum. `Mixed` with **honey**. Drinking more than one glass can be harmful.
+* Limit daily `milk` intake to maximum `one` glass `Mixed` with **honey**
+* Avoid consuming cold foods or drinks right after waking up
+* It's best to start your day with something warm, such as green tea or honey tea with dates
 * **Use bran bread**: The bran is the outer layer of the grain and is rich in fiber, vitamins, minerals, and antioxidants. It provides essential nutrients like B vitamins, iron, magnesium, and dietary fiber
 
 * Do not drink **water** with **meals**. From half an hour before the meal to 1.5 hours after the meal. It puts pressure on the stomach.
 * Avoid straining to poop, as it can put pressure on the stomach.
-* Maintain your body's energy.
+* Maintain your body's energy levels.
 * Avoid self-indulgence and masturbation, as it weakens the body.
 * Reduce stress levels, as stress weakens the immune system.
 * Going to bed late is not good for digestion. you should be Sleep by 11 max.
@@ -41,7 +43,6 @@ Foods
 
 * Strawberry juice
 * Pineapple juice
-* Apple juice
 * Pomegranate juice
 * Mulberry juice
 * Carrot juice
