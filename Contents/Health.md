@@ -41,8 +41,9 @@ Foods
 
 # Juice
 
-* Strawberry juice
 * Pineapple juice
+* Cantaloupe juice
+* Strawberry juice
 * Pomegranate juice
 * Mulberry juice
 * Carrot juice
