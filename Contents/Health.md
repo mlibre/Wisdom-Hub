@@ -29,7 +29,7 @@ tags:
 
 # Back, Neck, and Body
 
-* Do daily light core exercises. Perform a few sessions per day, such as 4 sessions.
+* Do daily light core exercises
 * Do isometric neck exercises to strengthen your neck muscles. make sure your head is not in the middle. For example, if you are doing resistance exercise in front of your head, your head better be slightly bent forward. Do this for all directions. several sessions per day, such as 3 sessions. Each movement 10 seconds or 10 repetitions.
 * Stay active and avoid keeping your neck still. Move your neck every 30 minutes.
 * Limit work to a maximum of 6 hours per day.
