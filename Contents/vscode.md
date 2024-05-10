@@ -74,17 +74,19 @@ Disable all the extensions by default. Use enable for workspace option in projec
 
 ## Editor Shortcuts
 
-- `Copy` an entire `line` (when no text is selected)  **CTRL + C**
-- `Delete` an entire `line` (when no text is selected)  **CTRL + SHIFT+K**
-- `Cut` an entire `line` (when no text is selected)  **CTRL + X**
-- `Move` an entire `line`  **ALT+ARROWS**
-- `Select` the current `line`  **CTRL + L**
-- Invoke IntelliSense  **CTRL + SPACE**
-- `Multiple` selections (multi-cursor)  Hold **ALT** and **select**
-- Code Folding  **CTRL + Shift+[** , **]**
-- `Rename` Refactoring  **F2**
-- `Navigating` on Errors and Warnings  **F8**
-- Go to `Definition` **F12**
+* **CTRL + .**: Suggest `Quick Fix`
+* **CTRL + C**: `Copy` an entire line (when no text is selected)
+* **CTRL + SHIFT + K**: `Delete` an entire line (when no text is selected)
+* **CTRL + X**: `Cut` an entire line (when no text is selected)
+* **ALT + ARROWS**: `Move` an entire line
+* **CTRL + L**: `Select` the current line
+* **CTRL + SPACE**: Invoke IntelliSense
+* **Hold ALT and select**: Multiple selections (multi-cursor)
+* **CTRL + SHIFT + [ , ]**: Code `Folding`
+* **CTRL + SHIFT + R**: All `Refactoring`
+* **F2**: `Rename` Refactoring
+* **F8**: `Navigating` on Errors and Warnings
+* **F12**: Go to Definition
 
 ---
 
@@ -304,11 +306,16 @@ sudo pacman -S nodejs-lts-fermium npm
     "editor.stickyScroll.enabled": true,
     "editor.tabSize": 3,
     "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always",
+        "source.fixAll": "always"
+    },
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "[jsonc]": {
         "editor.quickSuggestions": {
             "strings": true
         },
+        "editor.defaultFormatter": "vscode.json-language-features",
     },
     "[markdown]": {
         "editor.defaultFormatter": "yzhang.markdown-all-in-one"
@@ -325,7 +332,10 @@ sudo pacman -S nodejs-lts-fermium npm
     "eslint.codeAction.showDocumentation": {
         "enable": true
     },
-    "eslint.codeActionsOnSave.rules": null,
+    // "typescript.inlayHints.parameterNames.enabled": "all",
+    // "typescript.inlayHints.variableTypes.enabled": true,
+    "typescript.referencesCodeLens.enabled": true,
+    // "eslint.codeActionsOnSave.rules": null,
     "eslint.debug": true,
     "eslint.enable": true,
     "eslint.experimental.useFlatConfig": true,
@@ -351,6 +361,14 @@ sudo pacman -S nodejs-lts-fermium npm
         "**/logs/*/**": true,
         "**/node_modules/*/**": true,
         "**/.git": true
+    },
+    "files.exclude": {
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "**/**.js": {
+            "when": "$(basename).tsx"
+        }
     },
     "security.workspace.trust.untrustedFiles": "open",
     "telemetry.telemetryLevel": "off",
