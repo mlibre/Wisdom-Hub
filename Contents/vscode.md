@@ -9,19 +9,19 @@ tags:
 
 A cheat sheet for Vscode.
 
-- [Vscode](#vscode)
-- [Extensions](#extensions)
-- [Editor Shortcuts](#editor-shortcuts)
-- [Keybindings](#keybindings)
-- [Git](#git)
-  - [Vscode for merge and diff](#vscode-for-merge-and-diff)
-  - [Git Configs](#git-configs)
-  - [Github Actions](#github-actions)
-    - [Publish A Package On the NPM Registry](#publish-a-package-on-the-npm-registry)
-    - [Bundling and Committing a Node Module using Browserify](#bundling-and-committing-a-node-module-using-browserify)
-- [Cleaning NPM Cache](#cleaning-npm-cache)
-- [Settings JSON](#settings-json)
-- [Eslint Configuration](#eslint-configuration)
+* [Vscode](#vscode)
+* [Extensions](#extensions)
+* [Editor Shortcuts](#editor-shortcuts)
+* [Keybindings](#keybindings)
+* [Git](#git)
+  * [Vscode for merge and diff](#vscode-for-merge-and-diff)
+  * [Git Configs](#git-configs)
+  * [Github Actions](#github-actions)
+    * [Publish A Package On the NPM Registry](#publish-a-package-on-the-npm-registry)
+    * [Bundling and Committing a Node Module using Browserify](#bundling-and-committing-a-node-module-using-browserify)
+* [Cleaning NPM Cache](#cleaning-npm-cache)
+* [Settings JSON](#settings-json)
+* [Eslint Configuration](#eslint-configuration)
 
 ## Vscode
 
@@ -286,294 +286,95 @@ sudo pacman -S nodejs-lts-fermium npm
 
 ```json
 {
- "update.mode": "none",
- "telemetry.telemetryLevel": "off",
- "workbench.iconTheme": "vscode-great-icons",
- "workbench.enableExperiments": false,
- "window.titleBarStyle": "custom",
- "window.dialogStyle": "custom",
- "explorer.compactFolders": false,
- "explorer.confirmDelete": false,
- "explorer.confirmDragAndDrop": false,
- "explorer.autoReveal": false,
- "editor.maxTokenizationLineLength": 20000,
- "editor.minimap.enabled": false,
- "editor.largeFileOptimizations": false,
- "editor.insertSpaces": false,
- "editor.tabSize": 3,
- "editor.defaultFormatter": "dbaeumer.vscode-eslint",
- "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Fira Code Retina'",
- // "editor.fontFamily": "Fira Code Retina",
- // "editor.fontLigatures": true,
- "editor.mouseWheelZoom": true,
- "editor.inlineSuggest.enabled": true,
- "editor.inlineSuggest.suppressSuggestions": true,
- "editor.formatOnSave": true,
- "editor.accessibilitySupport": "off",
- "editor.copyWithSyntaxHighlighting": false,
- "git.confirmSync": false,
- "git.pullTags": false,
- "git.autofetch": true,
- "git.enableSmartCommit": true,
- "git.ignoreRebaseWarning": true,
- "diffEditor.ignoreTrimWhitespace": false,
- "extensions.autoCheckUpdates": false,
- "extensions.autoUpdate": "onlyEnabledExtensions",
- "markdown.extension.tableFormatter.normalizeIndentation": true,
- "markdown.extension.toc.unorderedList.marker": "*",
- "markdown.extension.toc.updateOnSave": false,
- "markdown.extension.toc.levels": "2..6",
- "markdown.extension.completion.respectVscodeSearchExclude": true,
- "markdown.extension.theming.decoration.renderCodeSpan": false,
- "eslint.codeAction.showDocumentation": {
-  "enable": true
- },
- "eslint.format.enable": true,
- "debug.inlineValues": "on",
- "debug.javascript.autoExpandGetters": false,
- "debug.javascript.suggestPrettyPrinting": true,
- "editor.cursorBlinking": "phase",
- "javascript.validate.enable": false,
- "github.copilot.enable": {
-  "*": true,
-  "yaml": true,
-  "plaintext": true,
-  "markdown": true
- },
- "[json]": {
-  "editor.quickSuggestions": {
-   "strings": true
-  },
-  "editor.defaultFormatter": "vscode.json-language-features"
- },
- "[jsonc]": {
-  "editor.quickSuggestions": {
-   "strings": true
-  },
-  "editor.defaultFormatter": "vscode.json-language-features"
- },
- "[solidity]": {
-  "editor.defaultFormatter": "JuanBlanco.solidity"
- },
- "[javascript]": {
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint"
- },
- "[html]": {
-  "editor.suggest.insertMode": "replace",
-  "editor.defaultFormatter": "vscode.html-language-features"
- },
- "[markdown]": {
-  "editor.defaultFormatter": "yzhang.markdown-all-in-one"
- },
- "terminal.explorerKind": "integrated",
- "terminal.integrated.smoothScrolling": true,
- "terminal.integrated.scrollback": 10000,
- "terminal.integrated.defaultProfile.linux": "JavaScript Debug Terminal",
- "terminal.integrated.persistentSessionScrollback": 1000,
- "markdownlint.config": {
-  "single-h1": false
- },
- "terminal.integrated.profiles.linux": {
-  "bash": {
-   "path": "bash",
-   "icon": "terminal-bash"
-  },
-  "zsh": {
-   "path": "zsh"
-  },
-  "fish": {
-   "path": "fish"
-  },
-  "tmux": {
-   "path": "tmux",
-   "icon": "terminal-tmux"
-  },
-  "pwsh": {
-   "path": "pwsh",
-   "icon": "terminal-powershell"
-  },
-  "JavaScript Debug Terminal": {
-   "extensionIdentifier": "ms-vscode.js-debug",
-   "icon": "debug",
-   "id": "extension.js-debug.debugTerminal",
-   "title": "JavaScript Debug Terminal"
-  },
-  "bash (migrated)": {
-   "path": "bash",
-   "args": []
-  },
-  "/usr/bin/bash (migrated)": {
-   "path": "/usr/bin/bash",
-   "args": []
-  }
- },
- "editor.unicodeHighlight.allowedCharacters": {
-  "ا": true,
-  "ه": true,
-  "‌": true,
-  "۰": true,
-  "۵": true
- },
- "cSpell.userWords": [
-  "adduser",
-  "AGIFA",
-  "Ajenti",
-  "allman",
-  "alloc",
-  "AMDGPU",
-  "autofetch",
-  "AUTOMINE",
-  "Automount",
-  "Autostarts",
-  "Balena",
-  "bigscience",
-  "bindgen",
-  "bitcoinjs",
-  "blockcypher",
-  "bluestack",
-  "borsh",
-  "browserslist",
-  "Claimtrie",
-  "clamscan",
-  "cname",
-  "coinjoin",
-  "commandline",
-  "coreutils",
-  "corsdomain",
-  "Datahub",
-  "dbaeumer",
-  "difftool",
-  "Doomslug",
-  "Dota",
-  "Eleuther",
-  "fileupload",
-  "Fira",
-  "Fullscreen",
-  "Genymotoin",
-  "geoip",
-  "getblock",
-  "getfunding",
-  "goodchain",
-  "Grammarly",
-  "hashex",
-  "hdwallet",
-  "healight",
-  "heartpulse",
-  "inputrc",
-  "IPFS",
-  "JOSN",
-  "journaling",
-  "jshashes",
-  "keras",
-  "killall",
-  "LBRY",
-  "lbrynet",
-  "linebreak",
-  "liveshare",
-  "lutris",
-  "mainchain",
-  "maticjs",
-  "maticnetwork",
-  "mergetool",
-  "Merkle",
-  "metacoin",
-  "mforgood",
-  "mkdir",
-  "MLBR",
-  "mlibre",
-  "monero",
-  "monospace",
-  "mystate",
-  "nameserver",
-  "neardev",
-  "Nekoray",
-  "newbot",
-  "nltk",
-  "nocheck",
-  "NTFS",
-  "optim",
-  "pacman",
-  "pamac",
-  "paren",
-  "parens",
-  "preprocess",
-  "prestart",
-  "Pretrained",
-  "Protonvpn",
-  "proxychains",
-  "pwsh",
-  "Radeon",
-  "redlist",
-  "Reiner",
-  "reposted",
-  "resolv",
-  "resolvectl",
-  "rpcapi",
-  "rpccorsdomain",
-  "rustup",
-  "scrollback",
-  "sharded",
-  "signup",
-  "sklearn",
-  "skynet",
-  "solcjs",
-  "sshuttle",
-  "Stretchly",
-  "struct",
-  "stylesheet",
-  "subaccounts",
-  "Swapfile",
-  "swapon",
-  "syncmode",
-  "Syyuu",
-  "Thresholded",
-  "tmpfs",
-  "TOKENNAME",
-  "torsocks",
-  "Tradingview",
-  "TWRP",
-  "txid",
-  "txpool",
-  "unstake",
-  "usermod",
-  "UTXO",
-  "UTXOs",
-  "Vulkan",
-  "Windscribe",
-  "xrandr",
-  "yocto"
- ],
- "search.useIgnoreFiles": false,
- "search.exclude": {
-  "**/docs/*/**": true,
-  "**/logs/**": true,
-  "**/logs/*/**": true,
-  "**/node_modules/*/**": true,
-  "**/.git": true
- },
- "editor.parameterHints.enabled": true,
- "breadcrumbs.enabled": false,
- "workbench.layoutControl.type": "menu",
- "workbench.layoutControl.enabled": false,
- "workbench.list.smoothScrolling": true,
- "editor.smoothScrolling": true,
- "editor.cursorSmoothCaretAnimation": "on",
- "editor.stickyScroll.enabled": true,
- "mergeEditor.diffAlgorithm": "experimental",
- "window.zoomLevel": 1,
- "files.associations": {
-  "*.js": "javascript"
- },
- "security.workspace.trust.untrustedFiles": "open",
- "http.proxyStrictSSL": false,
- "editor.unicodeHighlight.ambiguousCharacters": false,
- "files.exclude": {
-  "**/__pycache__": true
- },
- "cSpell.diagnosticLevel": "Hint",
- "cSpell.showStatus": false,
- "cody.serverEndpoint": "https://sourcegraph.com/",
- "cody.experimental.inline": true
+    "breadcrumbs.enabled": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.accessibilitySupport": "off",
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Fira Code Retina'",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.inlineSuggest.suppressSuggestions": true,
+    "editor.insertSpaces": false,
+    "editor.minimap.enabled": false,
+    "editor.mouseWheelZoom": true,
+    "editor.parameterHints.enabled": true,
+    "editor.smoothScrolling": true,
+    "editor.stickyScroll.enabled": true,
+    "editor.tabSize": 3,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "[jsonc]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    },
+    "eslint.codeAction.showDocumentation": {
+        "enable": true
+    },
+    "eslint.codeActionsOnSave.rules": null,
+    "eslint.debug": true,
+    "eslint.enable": true,
+    "eslint.experimental.useFlatConfig": true,
+    "eslint.format.enable": true,
+    "explorer.autoReveal": false,
+    "explorer.compactFolders": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.ignoreRebaseWarning": true,
+    "git.pullTags": false,
+    "http.proxyStrictSSL": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.validate.enable": false,
+    "markdownlint.config": {
+        "single-h1": false
+    },
+    "search.exclude": {
+        "**/docs/*/**": true,
+        "**/logs/**": true,
+        "**/logs/*/**": true,
+        "**/node_modules/*/**": true,
+        "**/.git": true
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "telemetry.telemetryLevel": "off",
+    "terminal.explorerKind": "integrated",
+    "terminal.integrated.defaultProfile.linux": "JavaScript Debug Terminal",
+    "terminal.integrated.persistentSessionScrollback": 1000,
+    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.smoothScrolling": true,
+    "update.mode": "none",
+    "window.commandCenter": false,
+    "window.dialogStyle": "custom",
+    "window.titleBarStyle": "custom",
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Default Light Modern",
+    "workbench.iconTheme": "vscode-great-icons",
+    "workbench.layoutControl.enabled": false,
+    "workbench.layoutControl.type": "menu",
+    "workbench.list.smoothScrolling": true,
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "markdown.extension.tableFormatter.normalizeIndentation": true,
+    "markdown.extension.toc.unorderedList.marker": "*",
+    "markdown.extension.toc.updateOnSave": false,
+    "markdown.extension.toc.levels": "2..6",
+    "markdown.extension.completion.respectVscodeSearchExclude": true,
+    "markdown.extension.theming.decoration.renderCodeSpan": false,
+    "cody.telemetry.level": "off"
 }
 ```
 
