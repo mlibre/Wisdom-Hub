@@ -291,7 +291,6 @@ sudo pacman -S nodejs-lts-fermium npm
     "editor.accessibilitySupport": "off",
     "editor.copyWithSyntaxHighlighting": false,
     "editor.cursorSmoothCaretAnimation": "on",
-    "editor.defaultFormatter": "vscode.json-language-features",
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Fira Code Retina'",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
@@ -305,6 +304,7 @@ sudo pacman -S nodejs-lts-fermium npm
     "editor.stickyScroll.enabled": true,
     "editor.tabSize": 3,
     "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "[jsonc]": {
         "editor.quickSuggestions": {
             "strings": true
@@ -318,6 +318,9 @@ sudo pacman -S nodejs-lts-fermium npm
     },
     "[javascript]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "eslint.codeAction.showDocumentation": {
         "enable": true
@@ -361,7 +364,6 @@ sudo pacman -S nodejs-lts-fermium npm
     "window.dialogStyle": "custom",
     "window.titleBarStyle": "custom",
     "window.zoomLevel": 1,
-    "workbench.colorTheme": "Default Light Modern",
     "workbench.iconTheme": "vscode-great-icons",
     "workbench.layoutControl.enabled": false,
     "workbench.layoutControl.type": "menu",
@@ -374,7 +376,8 @@ sudo pacman -S nodejs-lts-fermium npm
     "markdown.extension.toc.levels": "2..6",
     "markdown.extension.completion.respectVscodeSearchExclude": true,
     "markdown.extension.theming.decoration.renderCodeSpan": false,
-    "cody.telemetry.level": "off"
+    "cody.telemetry.level": "off",
+    "workbench.colorTheme": "Default Dark+"
 }
 ```
 
