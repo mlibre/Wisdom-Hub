@@ -307,7 +307,7 @@ sudo pacman -S nodejs-lts-fermium npm
     "editor.tabSize": 3,
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "editor.codeActionsOnSave": {
-        "source.organizeImports": "always",
+        // "source.organizeImports": "always",
         "source.fixAll": "always"
     },
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
