@@ -11,7 +11,8 @@ tags:
 
 * **Avoid artificial sweeteners and added sugar**: `processed chocolate milk`, `processed banana milk`, `processed fruit juice`, and other artificially made combinations that contain unhealthy additives such as `refined or added sugar` and `preservatives`. These `refined sugar` weaken the `immune system` and have other negative effects
 * Limit daily `milk` intake to maximum `one` glass `Mixed` with **honey**
-* Avoid consuming cold foods or drinks right after waking up
+* Avoid consuming cold **temperature** foods or drinks right after waking up, like cold milk or cold juice
+* Avoid consuming cold **nature** foods or drinks right after waking up, like cheese or yogurt
 * It's best to start your day with something warm, such as green tea or honey tea with dates
 * **Use bran bread**: The bran is the outer layer of the grain and is rich in fiber, vitamins, minerals, and antioxidants. It provides essential nutrients like B vitamins, iron, magnesium, and dietary fiber
 
