@@ -185,8 +185,8 @@ sudo blkid ## FA709D69709D2CFF
 id -u ## 1000
 id -g ## 1000
 sudo nano /etc/fstab
-UUID=FA709D69709D2CFF /media/gamedisk ntfs uid=1000,gid=1000,rw,user,exec,umask=000 0 0
-## UUID=FA709D69709D2CFF /media/gamedisk lowntfs-3g uid=1000,gid=1000,rw,user,exec,umask=000 0 0
+# UUID=FA709D69709D2CFF /media/gamedisk ntfs uid=1000,gid=1000,rw,user,exec,umask=000 0 0
+UUID=FA709D69709D2CFF /media/gamedisk ntfs-3g uid=1000,gid=1000,rw,user,exec,umask=000 0 0
 mkdir -p ~/.steam/steam/steamapps/compatdata
 sudo reboot
 ln -s ~/.steam/steam/steamapps/compatdata /media/gamedisk/Steam/steamapps/
