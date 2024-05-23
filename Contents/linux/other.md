@@ -256,11 +256,13 @@ sudo pacman -S linux61 linux
 - Backup important data. Recovery-keys, Passwords, Postman and ...  
 
 ```bash
-cp -rf /home/mlibre/.local/share/TelegramDesktop /run/media/mlibre/D/Linux/caches/
-cp $HISTFILE /run/media/mlibre/D/Linux/caches/
-cp .bashrc /run/media/mlibre/D/Linux/caches/
-cp .bash_profile /run/media/mlibre/D/Linux/caches/
-sudo cp -r /etc /run/media/mlibre/D/Linux/caches/
+backupPath=/home/mlibre/media/D/Linux/caches/
+cp -rf /home/mlibre/.local/share/TelegramDesktop $backupPath
+cp $HISTFILE $backupPath
+cp .bashrc $backupPath
+cp .bash_profile $backupPath
+sudo cp -r /etc $backupPath
+sudo cp -r /usr/lib/systemd/ $backupPath
 
 # Or full backup
 sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/D/Linux/backup/
