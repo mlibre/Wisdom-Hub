@@ -315,6 +315,12 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
   cp -r /run/media/mlibre/D/Linux/caches/TelegramDesktop /home/mlibre/.local/share/
   ```
 
+- Aliases
+  
+  ```bash
+  echo "alias nn='npm run'" >> ~/.bashrc
+  ```
+
 - Make an XDG autostart script for gamma adjustment
 - Put the gamma script in the `.bashrc` and `.zshrc` as well
 - Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disabsetle mail signature
