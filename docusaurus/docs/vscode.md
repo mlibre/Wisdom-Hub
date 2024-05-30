@@ -381,7 +381,7 @@ sudo pacman -S nodejs-lts-fermium npm
     "window.commandCenter": false,
     "window.dialogStyle": "custom",
     "window.titleBarStyle": "custom",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 1.3,
     "workbench.iconTheme": "vscode-great-icons",
     "workbench.layoutControl.enabled": false,
     "workbench.layoutControl.type": "menu",
@@ -559,7 +559,7 @@ export default [
 			"stylistic/comma-spacing": [ "error" ],
 			"stylistic/function-call-spacing": [ "error", "never" ],
 			"stylistic/space-before-function-paren": [ "error", "always" ],
-			"stylistic/space-in-parens": [ "error", "always", { exceptions: [ "{}" ] } ],
+			"stylistic/space-in-parens": [ "error", "always", { exceptions: [ "{}" , "empty" ] } ],
 			"stylistic/keyword-spacing": [ "error" ],
 			"stylistic/space-unary-ops": [ "error" ],
 			"stylistic/key-spacing": [ "error" ],
@@ -622,7 +622,6 @@ export default [
 			"no-extra-bind": [ "error" ],
 			"no-self-compare": [ "error" ],
 			"no-useless-call": [ "error" ],
-			"no-undefined": [ "error" ],
 			"no-array-constructor": [ "error" ],
 			"prefer-destructuring": [
 				"error", {
