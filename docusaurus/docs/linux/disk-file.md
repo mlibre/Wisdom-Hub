@@ -93,7 +93,7 @@ rsync -avz /path/to/local/directory user@remote.server:/path/to/remote/directory
 rsync -avz --delete /path/to/local/directory user@remote.server:/path/to/remote/directory
 
 # Create a full backup of the system to an external drive
-sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/H/OS/full-copy/
+sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*","/home/mlibre/media/*"} / /run/media/mlibre/D/Linux/backup/
 
 # Backup to a server
 rsync -e "ssh -p 2222" source/ user@host:/destination/

@@ -265,7 +265,7 @@ sudo cp -r /etc $backupPath
 sudo cp -r /usr/lib/systemd/ $backupPath
 
 # Or full backup
-sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*"} / /run/media/mlibre/D/Linux/backup/
+sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*","/home/mlibre/media/*"} / /run/media/mlibre/D/Linux/backup/
 ```
 
 - Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
