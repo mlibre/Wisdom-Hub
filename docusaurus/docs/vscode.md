@@ -24,6 +24,7 @@ A cheat sheet for Vscode.
 * [Eslint Configuration](#eslint-configuration)
   * [Nodejs](#nodejs)
   * [Typescript](#typescript)
+* [TSConfig](#tsconfig)
 
 ## Vscode
 
@@ -655,4 +656,35 @@ export default [
 		extends: [ tseslint.configs.disableTypeChecked ]
 	}
 ];
+```
+
+## TSConfig
+
+```js
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		// "module": "commonjs",
+		// "module": "ESNext",
+		// "moduleResolution": "node",
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"esModuleInterop": true,
+		"importHelpers": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"useUnknownInCatchVariables": true,
+		"noUnusedLocals": true
+		// "isolatedModules": true
+	},
+	// "include": [
+	// 	"**/*.ts",
+	// 	"**/*.tsx",
+	// 	"src/**/*"
+	// ]
+}
 ```
