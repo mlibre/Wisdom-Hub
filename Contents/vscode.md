@@ -22,6 +22,8 @@ A cheat sheet for Vscode.
 * [Cleaning NPM Cache](#cleaning-npm-cache)
 * [Settings JSON](#settings-json)
 * [Eslint Configuration](#eslint-configuration)
+  * [Nodejs](#nodejs)
+  * [Typescript](#typescript)
 
 ## Vscode
 
