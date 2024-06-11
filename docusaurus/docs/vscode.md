@@ -28,32 +28,32 @@ A cheat sheet for Vscode.
 
 ## Vscode
 
-- `Palette`  **CTRL + P**
-- `Command Palette`  **CTRL + SHIFT + P**
-  - `Git Clone`
-  - `Merge`
-- `Type Checking`
+* `Palette`  **CTRL + P**
+* `Command Palette`  **CTRL + SHIFT + P**
+  * `Git Clone`
+  * `Merge`
+* `Type Checking`
 
  ```javascript
  // @ts-nocheck
  // @ts-check
  ```
 
-- Built-in `Terminal`  **CTRL + `**
-  - Select `Javascript Debug Terminal` as `Default Profile`
-- Extensions **CTRL + SHIFT + X**
-- Closing built-in `Terminal`  **CTRL + D**
-- Find And `Replace`  **CTRL + F**, **CTRL + H**
-- Find And `Replace Globally`  **CTRL + SHIFT + F**, **CTRL + SHIFT + H**
-- Side By Side Editing  **CTRL + \\**
-- Fullscreen  **F11**
-- Markdown Preview **CTRL + SHIFT + V**
-- Split Markdown Preview **ALT + O**
-- Sidebar Toggle **CTRL + B**
-- Zoom in/out the whole vscode **CTRL + and CTRL -**
-- Font size **CTRL + Mouse wheel**
-- Fast Scrolling **ALT + Mouse wheel**
-- Folding Level 1 **Alt+1**
+* Built-in `Terminal`  **CTRL + `**
+  * Select `Javascript Debug Terminal` as `Default Profile`
+* Extensions **CTRL + SHIFT + X**
+* Closing built-in `Terminal`  **CTRL + D**
+* Find And `Replace`  **CTRL + F**, **CTRL + H**
+* Find And `Replace Globally`  **CTRL + SHIFT + F**, **CTRL + SHIFT + H**
+* Side By Side Editing  **CTRL + \\**
+* Fullscreen  **F11**
+* Markdown Preview **CTRL + SHIFT + V**
+* Split Markdown Preview **ALT + O**
+* Sidebar Toggle **CTRL + B**
+* Zoom in/out the whole vscode **CTRL + and CTRL -**
+* Font size **CTRL + Mouse wheel**
+* Fast Scrolling **ALT + Mouse wheel**
+* Folding Level 1 **Alt+1**
 
 ---
 
@@ -61,19 +61,19 @@ A cheat sheet for Vscode.
 
 Disable all the extensions by default. Use enable for workspace option in projects.
 
-- bungcip.better-toml
-- streetsidesoftware.code-spell-checker
-- dbaeumer.vscode-eslint
-- GitHub.copilot
-- yzhang.markdown-all-in-one
-  - Run command `Create Table of Contents` to insert a new table of contents.
-- davidanson.vscode-markdownlint
-- emmanuelbeziat.vscode-great-icons
-- ms-vscode-remote.remote-containers
-- ms-vscode-remote.remote-ssh
-- ms-vscode-remote.remote-ssh-edit
-- rangav.vscode-thunder-client
-- JuanBlanco.solidity
+* bungcip.better-toml
+* streetsidesoftware.code-spell-checker
+* dbaeumer.vscode-eslint
+* GitHub.copilot
+* yzhang.markdown-all-in-one
+  * Run command `Create Table of Contents` to insert a new table of contents.
+* davidanson.vscode-markdownlint
+* emmanuelbeziat.vscode-great-icons
+* ms-vscode-remote.remote-containers
+* ms-vscode-remote.remote-ssh
+* ms-vscode-remote.remote-ssh-edit
+* rangav.vscode-thunder-client
+* JuanBlanco.solidity
 
 ## Editor Shortcuts
 
@@ -337,7 +337,7 @@ sudo pacman -S nodejs-lts-fermium npm
     },
     // "typescript.inlayHints.parameterNames.enabled": "all",
     // "typescript.inlayHints.variableTypes.enabled": true,
-    "typescript.referencesCodeLens.enabled": true,
+    "typescript.referencesCodeLens.enabled": false,
     // "eslint.codeActionsOnSave.rules": null,
     "eslint.debug": true,
     "eslint.enable": true,
@@ -530,131 +530,131 @@ import stylistic from "@stylistic/eslint-plugin";
 
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile} */
 export default [
-	eslint.configs.recommended,
-	...tseslint.configs.strict,
-	...tseslint.configs.stylisticTypeChecked,
-	{
-		languageOptions: {
-			globals: globals.node,
-			parserOptions: {
-				project: true,
-				tsconfigRootDir: import.meta.dirname
-			}
-		}
-	},
-	{
-		plugins: {
-			stylistic
-		},
-		rules: {
-			"stylistic/indent": [
-				"error",
-				"tab",
-				{
-					"MemberExpression": 0
-				}
-			],
-			"stylistic/no-tabs": 0,
-			"stylistic/brace-style": [ "error", "allman" ],
-			"stylistic/comma-style": [ "error" ],
-			"stylistic/array-bracket-spacing": [ "error", "always" ],
-			"stylistic/space-before-blocks": [ "warn" ],
-			"stylistic/comma-spacing": [ "error" ],
-			"stylistic/function-call-spacing": [ "error", "never" ],
-			"stylistic/space-before-function-paren": [ "error", "always" ],
-			"stylistic/space-in-parens": [ "error", "always", { exceptions: [ "{}" , "empty" ] } ],
-			"stylistic/keyword-spacing": [ "error" ],
-			"stylistic/space-unary-ops": [ "error" ],
-			"stylistic/key-spacing": [ "error" ],
-			"stylistic/arrow-parens": [
-			 "error",
-			 "always"
-			],
-			"stylistic/function-paren-newline": [ "warn" ],
-			"stylistic/linebreak-style": [ "error", "unix" ],
-			"stylistic/quotes": [ "error", "double" ],
-			"stylistic/semi": "error",
-			"stylistic/no-trailing-spaces": "error",
-			"stylistic/block-spacing": [ "error" ],
-			"stylistic/arrow-spacing": [ "error" ],
-			"stylistic/space-infix-ops": [ "error" ],
-			"stylistic/object-curly-spacing": [ "error", "always" ],
-			"stylistic/no-multi-spaces": [ "error" ],
-			"stylistic/operator-linebreak": [ "error", "after" ],
-			"stylistic/no-extra-parens": [
-				"error",
-				"all",
-				{
-					"conditionalAssign": false
-				}
-			],
-			"stylistic/comma-dangle": [ "error" ]
-		}
-	},
-	{
-		rules: {
-			"@typescript-eslint/no-this-alias": [
-				"error",
-				{
-					"allowedNames": [ "self" ]
-				}
-			],
-			"@typescript-eslint/prefer-nullish-coalescing": "off",
-			"curly": [ "error", "multi-line" ],
-			"one-var": [ "error", "never" ],
-			"arrow-body-style": [ "error", "always" ],
-			"no-template-curly-in-string": [ "error" ],
-			"prefer-const": [
-				"error",
-				{
-					"destructuring": "any",
-					"ignoreReadBeforeAssign": false
-				}
-			],
-			"no-new-object": [ "error" ],
+ eslint.configs.recommended,
+ ...tseslint.configs.strict,
+ ...tseslint.configs.stylisticTypeChecked,
+ {
+  languageOptions: {
+   globals: globals.node,
+   parserOptions: {
+    project: true,
+    tsconfigRootDir: import.meta.dirname
+   }
+  }
+ },
+ {
+  plugins: {
+   stylistic
+  },
+  rules: {
+   "stylistic/indent": [
+    "error",
+    "tab",
+    {
+     "MemberExpression": 0
+    }
+   ],
+   "stylistic/no-tabs": 0,
+   "stylistic/brace-style": [ "error", "allman" ],
+   "stylistic/comma-style": [ "error" ],
+   "stylistic/array-bracket-spacing": [ "error", "always" ],
+   "stylistic/space-before-blocks": [ "warn" ],
+   "stylistic/comma-spacing": [ "error" ],
+   "stylistic/function-call-spacing": [ "error", "never" ],
+   "stylistic/space-before-function-paren": [ "error", "always" ],
+   "stylistic/space-in-parens": [ "error", "always", { exceptions: [ "{}" , "empty" ] } ],
+   "stylistic/keyword-spacing": [ "error" ],
+   "stylistic/space-unary-ops": [ "error" ],
+   "stylistic/key-spacing": [ "error" ],
+   "stylistic/arrow-parens": [
+    "error",
+    "always"
+   ],
+   "stylistic/function-paren-newline": [ "warn" ],
+   "stylistic/linebreak-style": [ "error", "unix" ],
+   "stylistic/quotes": [ "error", "double" ],
+   "stylistic/semi": "error",
+   "stylistic/no-trailing-spaces": "error",
+   "stylistic/block-spacing": [ "error" ],
+   "stylistic/arrow-spacing": [ "error" ],
+   "stylistic/space-infix-ops": [ "error" ],
+   "stylistic/object-curly-spacing": [ "error", "always" ],
+   "stylistic/no-multi-spaces": [ "error" ],
+   "stylistic/operator-linebreak": [ "error", "after" ],
+   "stylistic/no-extra-parens": [
+    "error",
+    "all",
+    {
+     "conditionalAssign": false
+    }
+   ],
+   "stylistic/comma-dangle": [ "error" ]
+  }
+ },
+ {
+  rules: {
+   "@typescript-eslint/no-this-alias": [
+    "error",
+    {
+     "allowedNames": [ "self" ]
+    }
+   ],
+   "@typescript-eslint/prefer-nullish-coalescing": "off",
+   "curly": [ "error", "multi-line" ],
+   "one-var": [ "error", "never" ],
+   "arrow-body-style": [ "error", "always" ],
+   "no-template-curly-in-string": [ "error" ],
+   "prefer-const": [
+    "error",
+    {
+     "destructuring": "any",
+     "ignoreReadBeforeAssign": false
+    }
+   ],
+   "no-new-object": [ "error" ],
 
-			"no-empty-function": [ "error" ],
-			"no-empty": [
-				"warn",
-				{
-					"allowEmptyCatch": true
-				}
-			],
-			"no-eq-null": [ "error" ],
-			"no-extra-bind": [ "error" ],
-			"no-self-compare": [ "error" ],
-			"no-useless-call": [ "error" ],
-			"no-array-constructor": [ "error" ],
-			"prefer-destructuring": [
-				"error", {
-					"VariableDeclarator": {
-						"array": true,
-						"object": true
-					},
-					"AssignmentExpression": {
-						"array": false,
-						"object": false
-					}
-				},
-				{
-					"enforceForRenamedProperties": false
-				}
-			],
-			"object-shorthand": [ "warn" ],
-			"prefer-spread": [ "warn" ],
-			"prefer-template": [ "warn" ],
-			"no-loop-func": [ "warn" ],
-			"prefer-rest-params": [ "warn" ],
-			"no-new-func": [ "warn" ],
-			"no-unneeded-ternary": [ "warn" ],
-			"no-process-exit": "off",
-			"require-await": "warn"
-		}
-	},
-	{
-		files: [ "**/*.js" ],
-		extends: [ tseslint.configs.disableTypeChecked ]
-	}
+   "no-empty-function": [ "error" ],
+   "no-empty": [
+    "warn",
+    {
+     "allowEmptyCatch": true
+    }
+   ],
+   "no-eq-null": [ "error" ],
+   "no-extra-bind": [ "error" ],
+   "no-self-compare": [ "error" ],
+   "no-useless-call": [ "error" ],
+   "no-array-constructor": [ "error" ],
+   "prefer-destructuring": [
+    "error", {
+     "VariableDeclarator": {
+      "array": true,
+      "object": true
+     },
+     "AssignmentExpression": {
+      "array": false,
+      "object": false
+     }
+    },
+    {
+     "enforceForRenamedProperties": false
+    }
+   ],
+   "object-shorthand": [ "warn" ],
+   "prefer-spread": [ "warn" ],
+   "prefer-template": [ "warn" ],
+   "no-loop-func": [ "warn" ],
+   "prefer-rest-params": [ "warn" ],
+   "no-new-func": [ "warn" ],
+   "no-unneeded-ternary": [ "warn" ],
+   "no-process-exit": "off",
+   "require-await": "warn"
+  }
+ },
+ {
+  files: [ "**/*.js" ],
+  extends: [ tseslint.configs.disableTypeChecked ]
+ }
 ];
 ```
 
@@ -662,29 +662,29 @@ export default [
 
 ```js
 {
-	"compilerOptions": {
-		"target": "ESNext",
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
-		// "module": "commonjs",
-		// "module": "ESNext",
-		// "moduleResolution": "node",
-		"rootDir": "./src",
-		"outDir": "./dist",
-		"esModuleInterop": true,
-		"importHelpers": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-		"skipLibCheck": true,
-		"sourceMap": true,
-		"useUnknownInCatchVariables": true,
-		"noUnusedLocals": true
-		// "isolatedModules": true
-	},
-	// "include": [
-	// 	"**/*.ts",
-	// 	"**/*.tsx",
-	// 	"src/**/*"
-	// ]
+ "compilerOptions": {
+  "target": "ESNext",
+  "module": "NodeNext",
+  "moduleResolution": "NodeNext",
+  // "module": "commonjs",
+  // "module": "ESNext",
+  // "moduleResolution": "node",
+  "rootDir": "./src",
+  "outDir": "./dist",
+  "esModuleInterop": true,
+  "importHelpers": true,
+  "forceConsistentCasingInFileNames": true,
+  "strict": true,
+  "skipLibCheck": true,
+  "sourceMap": true,
+  "useUnknownInCatchVariables": true,
+  "noUnusedLocals": true
+  // "isolatedModules": true
+ },
+ // "include": [
+ //  "**/*.ts",
+ //  "**/*.tsx",
+ //  "src/**/*"
+ // ]
 }
 ```
