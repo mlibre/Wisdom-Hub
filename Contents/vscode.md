@@ -435,7 +435,7 @@ module.exports = [
    "comma-style": "error",
    "space-infix-ops": "error",
    "array-bracket-spacing": "error",
-   "object-curly-spacing": "error",
+   "object-curly-spacing": ["error", "always"],
    "no-multi-spaces": "error",
    "operator-linebreak": "error",
    "function-paren-newline": "warn",
