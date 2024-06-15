@@ -9,6 +9,8 @@ tags:
   - ln
   - mount
   - dd
+  - clone
+  - rescue
 ---
 
 # Disk
@@ -113,6 +115,16 @@ rsync -LvzP -e "ssh -p 8756" pro@65.21.54.29:/home/pro/largeFile.zip file.zip
 |   `dd if=/dev/random of=randomfile bs=1M count=1`    |        Generate a 1MB file filled with random data        |
 |          dd if=in \| gzip > backup.dd.gzip           | Compress 'in' data using 'gzip', save as 'backup.dd.gzip' |
 | `dd if=ubuntu.iso of=/dev/sdX bs=4M status=progress` |      Write 'ubuntu.iso' to a USB drive ('/dev/sdX')       |
+
+## ddrescue
+
+`ddrescue` is a program that can be used to recover damaged hard disks. like flash memories, sd cards and ...
+
+It can be used to recover data from a hard disk that has been corrupted by a disk error, or from a hard disk that has been damaged by a software error.
+
+```bash
+sudo ddrescue -f -n /dev/sdb sd-card-copy.img r.log 
+```
 
 ## Backup using locate
 
