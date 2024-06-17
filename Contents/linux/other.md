@@ -324,7 +324,6 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 
 - Make an XDG autostart script for gamma adjustment
 - Put the gamma script in the `.bashrc` and `.zshrc` as well
-- Remove Mainspring from startups. Use 24-hour clock. Uncheck automatically load images. Disabsetle mail signature
 - KDE Settings -> Disable Mouse acceleration
 - KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver, Review background services and Autostarts.
 - KDE Settings -> Appearance -> Theme -> Breeze Dark, Breath Dark
