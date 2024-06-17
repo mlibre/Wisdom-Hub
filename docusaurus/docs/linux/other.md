@@ -256,7 +256,7 @@ sudo pacman -S linux61 linux
 - Backup important data. Recovery-keys, Passwords, Postman and ...  
 
 ```bash
-backupPath=/home/mlibre/media/D/Linux/caches/
+backupPath=/home/mlibre/media/H/Linux/caches/
 cp -rf /home/mlibre/.local/share/TelegramDesktop $backupPath
 cp $HISTFILE $backupPath
 cp .bashrc $backupPath
@@ -265,7 +265,8 @@ sudo cp -r /etc $backupPath
 sudo cp -r /usr/lib/systemd/ $backupPath
 
 # Or full backup
-sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*","/home/mlibre/media/*"} / /run/media/mlibre/D/Linux/backup/
+fullBackupPath=/home/mlibre/media/H/Linux/backup
+sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/var/*","/media/*","/usr/*","/lib/*","/lib64/","/lost+found","/swapfile",".npm*",".npm/*","node_modules*","node_modules/*","mesa_shader_cache*","steamapps*","Data*","Steam*","/home/mlibre/media/*"} / $fullBackupPath
 ```
 
 - Mark EFI partition while installing Manjaro/Arch Linux as /boot/efi. Don't check Format option.
