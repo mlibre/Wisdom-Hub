@@ -303,7 +303,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
   sudo pacman -S mlocate telegram-desktop unzip thermald ntfs-3g firefox vlc aria2 base-devel xorg-xrandr code dnsutils
-  sudo pacman -S qbittorrent meld ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo steam-native-runtime gparted amdvlk lib32-amdvlk
+  sudo pacman -S qbittorrent meld ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo steam-native-runtime gparted amdvlk lib32-amdvlk net-tools
   sudo pacman -S clamav libreoffice-fresh tor torsocks
   sudo systemctl enable --now thermald.service
   sudo updatedb

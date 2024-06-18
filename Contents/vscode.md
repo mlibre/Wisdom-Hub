@@ -195,6 +195,8 @@ git config --global core.autocrlf true
 ```bash
 git config user.email m.gh@linuxmail.org
 git config user.name mlibre
+git config --global user.email m.gh@linuxmail.org
+git config --global user.name mlibre
 git config --global credential.helper store
 
 git config --global user.name "mlibre"
