@@ -29,7 +29,9 @@ mkdir debian
 cd debian
 vagrant init debian/bookworm64
 nano Vagrantfile
-config.vm.network "forwarded_port", guest: 3000, host: 3000
+# config.vm.network "forwarded_port", guest: 3000, host: 3000
+# config.vm.box_check_update = false
+# config.vm.network "public_network"
 
 # Method 1
 export http_proxy="http://127.0.0.1:2081"
@@ -45,6 +47,7 @@ vagrant up
 vagrant ssh
 sudo apt update
 sudo apt install curl wget nano net-tools
+sudo cp /sbin/ifconfig /bin
 
 # git, nodejs
 sudo apt install git
