@@ -11,16 +11,17 @@ tags:
 
 `Systemd` is a modern initialization and management system for Linux systems that replaces the traditional SysV init system. It provides more advanced features for managing system services and boot processes.
 
-|                               Commands                                |                Description                |
-| :-------------------------------------------------------------------: | :---------------------------------------: |
-|                 `systemctl show --property=UnitPath`                  |        Display paths of unit files        |
-|        `systemctl show --property=UnitPath --user --no-pager`         | Display user-specific paths of unit files |
-|                 `systemctl list-units --type=target`                  |              Systemd Targets              |
-|            `systemctl list-unit-files --type target --all`            |   all target units, regardless of state   |
-| `sudo systemctl list-unit-files --type=service --state=enabled --all` |      List all enabled service units       |
-|            sudo systemctl list-unit-files \| grep enabled             |       List enabled units using grep       |
-|                      `systemctl --state=failed`                       |             List failed units             |
-|               `systemctl --state=active --type=target`                |            List active targets            |
+|                                Commands                                 |                Description                |
+| :---------------------------------------------------------------------: | :---------------------------------------: |
+|                  `systemctl show --property=UnitPath`                   |        Display paths of unit files        |
+|         `systemctl show --property=UnitPath --user --no-pager`          | Display user-specific paths of unit files |
+|                  `systemctl list-units --type=target`                   |              Systemd Targets              |
+|             `systemctl list-unit-files --type target --all`             |   all target units, regardless of state   |
+|  `sudo systemctl list-unit-files --type=service --state=enabled --all`  |      List all enabled service units       |
+| `systemctl list-unit-files --type=service --state=enabled --all --user` |    List all user enabled service units    |
+|             sudo systemctl list-unit-files \| grep enabled              |       List enabled units using grep       |
+|                       `systemctl --state=failed`                        |             List failed units             |
+|                `systemctl --state=active --type=target`                 |            List active targets            |
 
 |                   Commands                   |                  Description                  |
 | :------------------------------------------: | :-------------------------------------------: |

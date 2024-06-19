@@ -60,6 +60,9 @@ gh auth login
 
 # reload
 vagrant reload
+
+# halt
+vargant halt
 ```
 
 ## systemd-nspawn
