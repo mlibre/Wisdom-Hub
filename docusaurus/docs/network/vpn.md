@@ -159,12 +159,16 @@ net.ipv4.conf.icmp_echo_ignore_all = 1
 ### XUI Panel
 
 ```bash
-sudo su
-cd
-apt purge snapd 
+ssh root@ip
 apt update
+apt purge snapd ufw firewalld
 apt dist-upgrade
-apt install git
+apt install sudo git bash-completion zip unzip aria2 curl nano htop
+adduser mlibre
+usermod -a -G sudo mlibre
+sudo sh -c "echo 'mlibre ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
+# passwd mlibre
+reboot
 
 sudo ufw allow 2053
 sudo ufw allow 2053/udp
@@ -228,7 +232,12 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 sudo su
 x-ui
 # Open ports, active firewall
-# install BBR
+# install BBR, WARP
+
+    # warp u => Uninstall Warp
+    # warp a => Change Warp Account Type (free, plus, ...)
+    # warp y => Turn on/off WireProxy
+
 # revoke certificate the root domain
 # issue certificate
 # Set Panel port 8443
@@ -240,11 +249,11 @@ acme.sh --list
 ```
 
 * Open Panel (<https://domain.ga:8443/xui/inbounds>)
+* vless-2096-h2-reality-no-sniff-stackoverflow.com:443
 * trojan-tls-TCP-443-allow-insecure-alp-all-sni-stackoverflow.com
 * vmess-ws-tls-2053-allow-insecure-aph-all
 * vmess-h2-TLS-H2-HTTP1-allow-insecure-stackoverflow.com-80
 * vmess-h2-TLS-H2-allow-insecure-8443
-* vless-2096-h2-reality-no-sniff
 * In firefox: Check Proxy DNS when using SOCKS v5
 
 <!-- - Create a free domain from freenom.com
