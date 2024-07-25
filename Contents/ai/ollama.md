@@ -160,7 +160,6 @@ sudo rm -r /usr/share/ollama
 sudo rm -r ~/.ollama
 sudo userdel ollama
 sudo groupdel ollama
-
 ```
 
 ## Reference
