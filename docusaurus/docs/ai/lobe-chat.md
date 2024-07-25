@@ -8,7 +8,6 @@ tags:
 
 # LobeChat
 
-
 ## Install
 
 ```bash
