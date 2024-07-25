@@ -35,6 +35,10 @@ ollama show llama3.1:8b
 #         stop    "<|start_header_id|>"
 #         stop    "<|end_header_id|>"
 #         stop    "<|eot_id|>"
+
+# Logs
+journalctl -u ollama.service --no-pager --follow 
+
 ```
 
 ## Files
@@ -47,6 +51,54 @@ Ollama files in Linux are located here:
 /usr/share/ollama
 /etc/systemd/system/ollama.service
 /etc/systemd/system/default.target.wants/ollama.service
+```
+
+## Usage
+
+```bash
+
+# Generate text
+curl http://localhost:11434/api/generate -d '{
+  "model": "llama3.1:8b",
+  "prompt":"Why is the sky blue?"
+}'
+
+# Chat
+curl http://localhost:11434/api/chat -d '{
+  "model": "llama3.1:8b",
+  "messages": [
+    { "role": "user", "content": "why is the sky blue?" }
+  ],
+  "stream": false,
+  "system": "You are Sarah. you only uses emojies to answer and nothings else. you only uses one emoji each time"
+}' | jq
+
+# Chat with history
+curl -s http://localhost:11434/api/chat -d '{
+  "model": "llama3.1:8b",
+  "messages": [
+    {
+      "role": "user",
+      "content": "You are Sarah. you only uses emojies to answer and nothings else. you only uses one emoji each time"
+    },
+    {
+      "role": "assistant",
+      "content": "👋💁"
+    },
+    {
+      "role": "user",
+      "content": "hey"
+    }
+  ],
+  "stream": false,
+  "system": "You are Sarah. you only uses emojies to answer and nothings else. you only uses one emoji each time"
+}' | jq
+
+# Embeddings
+curl http://localhost:11434/api/embed -d '{
+  "model": "llama3.1:8b",
+  "prompt":"Why is the sky blue?"
+}'
 ```
 
 ## Costomizing Model
