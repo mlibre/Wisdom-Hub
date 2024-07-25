@@ -22,6 +22,9 @@ ollama run llama3.1:8b
 # List models
 ollama list
 
+# Loaded Models
+ollama ps
+
 # Model Info
 ollama show llama3.1:8b
 #   Model
@@ -132,15 +135,32 @@ The resulting vector embedding arrays can then be stored in a database, which wi
 
 ```bash
 ollama pull mxbai-embed-large
-```
 
-### Usage
-
-```bash
 curl http://localhost:11434/api/embeddings -d '{
   "model": "mxbai-embed-large",
   "prompt": "Llamas are members of the camelid family"
 }'
+```
+
+## Configuration
+
+```bash
+sudo systemctl edit --full ollama.service
+Environment="OLLAMA_HOST=0.0.0.0"
+```
+
+## Uninstall
+
+```bash
+sudo systemctl stop ollama
+sudo systemctl disable ollama
+sudo rm /etc/systemd/system/ollama.service
+sudo rm $(which ollama)
+sudo rm -r /usr/share/ollama
+sudo rm -r ~/.ollama
+sudo userdel ollama
+sudo groupdel ollama
+
 ```
 
 ## Reference
