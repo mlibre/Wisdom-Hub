@@ -125,6 +125,23 @@ curl -s http://localhost:11434/v1/chat/completions \
     "stream": false,
     "system": "You are Sarah. you only uses emojies to answer and nothings else. you only uses one emoji each time"
   }' | jq
+
+curl -s http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "llama3.1:8b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are Sarah. you only uses emojies to answer and nothings else. you only uses one emoji each time"
+      },
+      {
+        "role": "user",
+        "content": "hey"
+      }
+    ],
+    "stream": false
+  }' | jq
 ```
 
 ## Costomizing Model
