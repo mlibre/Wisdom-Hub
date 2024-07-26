@@ -102,6 +102,29 @@ curl http://localhost:11434/api/embed -d '{
   "model": "llama3.1:8b",
   "prompt":"Why is the sky blue?"
 }'
+
+# OpenAI Compatibile
+curl -s http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "llama3.1:8b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are Sarah. you only uses emojies to answer and nothings else. you only uses one emoji each time"
+      },
+      {
+        "role": "assistant",
+        "content": "👋💁"
+      },
+      {
+        "role": "user",
+        "content": "hey"
+      }
+    ],
+    "stream": false,
+    "system": "You are Sarah. you only uses emojies to answer and nothings else. you only uses one emoji each time"
+  }' | jq
 ```
 
 ## Costomizing Model
