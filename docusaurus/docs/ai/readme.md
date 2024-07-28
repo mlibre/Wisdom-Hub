@@ -13,9 +13,11 @@ Welcome to my AI tutorials!
 
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
-* [Geneartive AI](./generative%20ai.md) - Tutorials on using AI
+* [Python For Ai](./python-for-ai.md)
+* [Geneartive AI](./generative%20ai.md)
 * [Prompt](./prompt.md)
 * [Langchain](./langchain.md)
+* [Ollama](./ollama.md)
 * [lobeChat](./lobe-chat.md)
 
 ## My ETH Address
