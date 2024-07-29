@@ -63,7 +63,7 @@ text4 = "a big number {:,.3f}"
 print(text4.format(3000.14567)) # a big number 3,000.146
 ```
 
-### Numbers
+### Number
 
 ```python
 piString = "3.14"
@@ -78,7 +78,7 @@ Exponentiation: {pi ** b}
 ''')
 ```
 
-### Lists
+### List
 
 ```python
 mixed = ["apple", 2, 3.5, True]
@@ -90,7 +90,7 @@ squares = [x ** 2 for x in range(10)]
 print(squares) # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 ```
 
-### Tuples
+### Tuple
 
 ```python
 fruits = ("apple", "banana", "cherry")
@@ -106,5 +106,8 @@ person = {
   "age": 25,
   "city": "New York"
 }
-print(person["name"])
+print(person) # {'name': 'Alice', 'age': 25, 'city': 'New York'}
+print(person["name"]) # Alice
+print(person.keys()) # dict_keys(['name', 'age', 'city'])
+print(person.items()) # dict_items([('name', 'Alice'), ('age', 25), ('city', 'New York')])
 ```
