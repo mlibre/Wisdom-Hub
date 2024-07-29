@@ -111,3 +111,30 @@ print(person["name"]) # Alice
 print(person.keys()) # dict_keys(['name', 'age', 'city'])
 print(person.items()) # dict_items([('name', 'Alice'), ('age', 25), ('city', 'New York')])
 ```
+
+### Loop
+
+```python
+text = "abcd"
+for i in text:
+  print(i)
+# a b c d
+
+for i in range(5):
+    print(i)
+# 0 1 2 3 4
+
+# Looping through a list
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+# apple banana cherry
+
+# Looping through a dictionary
+person = {"name": "Alice", "age": 25, "city": "New York"}
+for key, value in person.items():
+    print(f"{key}: {value}")
+# name: Alice
+# age: 25
+# city: New York
+```
