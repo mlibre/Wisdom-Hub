@@ -78,6 +78,18 @@ Exponentiation: {pi ** b}
 ''')
 ```
 
+### Lists
+
+```python
+mixed = ["apple", 2, 3.5, True]
+mixed.append("orange")
+mixed.remove(3.5)
+print(mixed) # ['apple', 2, True, 'orange']
+
+squares = [x ** 2 for x in range(10)]
+print(squares) # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+```
+
 ### Arrays
 
 ```python
