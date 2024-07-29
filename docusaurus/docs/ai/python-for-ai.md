@@ -56,11 +56,17 @@ print (f'''thanks
 text2 = "pi is {pi:.2f}"
 print(text2.format(pi = 3.144444)) # pi is 3.14
 
-text3 = "pi is {0} or {1}"
+text3 = "pi is {} or {}"
 print(text3.format(3.14, 3)) # pi is 3.14 or 3
 
-text4 = "a big number {:,.3f}"
-print(text4.format(3000.14567)) # a big number 3,000.146
+text4 = "pi is {0} or {1}"
+print(text4.format(3.14, 3)) # pi is 3.14 or 3
+
+text5 = "a big number {0:,.3f}"
+print(text5.format(3000.14567)) # a big number 3,000.146
+
+text6 = "a big number {:,.3f}"
+print(text6.format(3000.14567)) # a big number 3,000.146
 ```
 
 ### Number
