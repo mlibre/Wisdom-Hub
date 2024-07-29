@@ -37,21 +37,30 @@ pip install notebook --break-system-packages
 jupyter notebook
 ```
 
-You can also open `http://localhost:8888/tree` or `http://localhost:8888/lab` yourself
+You can also open `http://localhost:8888/tree` or `http://localhost:8888/lab`
 
 ## Concepts
 
 ### String
 
 ```python
-userInput = input("write something :)") # abcd
-print ("thank :) %s" % userInput) # abcd
-print (f"thank :) {userInput[0:3]}") # abc
+text = "abcd"
+print ("thank :) %s" % text) # abcd
+print (f"thank :) {text[0:3]}") # abc
 print (f'''thanks
 :)
-{userInput[1:]} # bcd
-{userInput[-1]} # d
+{text[1:]} # bcd
+{text[-1]} # d
 ''')
+
+text2 = "pi is {pi:.2f}"
+print(text2.format(pi = 3.144444)) # pi is 3.14
+
+text3 = "pi is {0} or {1}"
+print(text3.format(3.14, 3)) # pi is 3.14 or 3
+
+text4 = "a big number {:,.3f}"
+print(text4.format(3000.14567)) # a big number 3,000.146
 ```
 
 ### Numbers
