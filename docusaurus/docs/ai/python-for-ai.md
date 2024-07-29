@@ -90,9 +90,21 @@ squares = [x ** 2 for x in range(10)]
 print(squares) # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 ```
 
-### Arrays
+### Tuples
 
 ```python
-myArray = [1, 2, 3, 4, 5]
-myArray[0]
+fruits = ("apple", "banana", "cherry")
+# Tuples are immutable, so you can't modify them directly
+fruits[0] = "kiwi" # would raise an error
+```
+
+### Dictionary
+
+```python
+person = {
+  "name": "Alice",
+  "age": 25,
+  "city": "New York"
+}
+print(person["name"])
 ```
