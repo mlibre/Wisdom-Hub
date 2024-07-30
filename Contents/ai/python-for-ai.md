@@ -19,15 +19,28 @@ python --version
 
 ```python
 import sys
-print ('\n'.join(sys.path))
-print (sys.executable)
 
+print ('\n'.join(sys.path))
 # /usr/lib/python312.zip
 # /usr/lib/python3.12
 # /usr/lib/python3.12/lib-dynload
 # /home/mlibre/.local/lib/python3.12/site-packages
 # /usr/lib/python3.12/site-packages
+
+print (sys.executable)
 # /usr/bin/python
+
+help("a".find)
+# Help on built-in function find:
+
+# find(...) method of builtins.str instance
+#     S.find(sub[, start[, end]]) -> int
+
+#     Return the lowest index in S where substring sub is found,
+#     such that sub is contained within S[start:end].  Optional
+#     arguments start and end are interpreted as in slice notation.
+
+#     Return -1 on failure.
 ```
 
 ## Jupyter Notebook
@@ -147,4 +160,17 @@ for key, value in person.items():
 # name: Alice
 # age: 25
 # city: New York
+```
+
+## Math
+
+```python
+import math as m
+m.pi # 3.141592653589793
+
+from math import *
+print(pi)
+
+import random as r
+print(r.random())
 ```
