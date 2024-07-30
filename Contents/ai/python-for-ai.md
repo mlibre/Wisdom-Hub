@@ -67,6 +67,10 @@ print(text5.format(3000.14567)) # a big number 3,000.146
 
 text6 = "a big number {:,.3f}"
 print(text6.format(3000.14567)) # a big number 3,000.146
+
+text7 = "pi is a number"
+isLoc, isLoc2 = text7.find("is"), text2.index("is")
+print(isLoc, isLoc2) # 3 3
 ```
 
 ### Number
