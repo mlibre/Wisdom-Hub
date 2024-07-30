@@ -162,6 +162,60 @@ for key, value in person.items():
 # city: New York
 ```
 
+### Functions
+
+```python
+def greet(name="Guest"):
+    return f"Hello, {name}!"
+
+print(greet()) # Hello, Guest!
+print(greet("Bob")) # Hello, Bob!
+
+
+def sum_all(*args):
+    return sum(args)
+
+print(sum_all(1, 2, 3, 4)) # 10
+
+
+def describe_person(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+describe_person(name="Alice", age=25, city="New York")
+# name: Alice
+# age: 25
+# city: New York
+
+
+add = lambda x, y: x + y
+print(add(3, 5)) # 8
+
+# Using lambda with sort
+points = [(2, 3), (1, 2), (4, 1)]
+secondValue = lambda point: point[1] # always returns second value
+points.sort(key=secondValue)
+print(points) # [(4, 1), (1, 2), (2, 3)]
+
+
+def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        func()
+        print("Something is happening after the function is called.")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello!")
+
+say_hello()
+# Output:
+# Something is happening before the function is called.
+# Hello!
+# Something is happening after the function is called.
+```
+
 ## Math
 
 ```python
