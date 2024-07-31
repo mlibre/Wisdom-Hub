@@ -337,3 +337,68 @@ np.save('array.npy', arr)
 loaded_arr = np.load('array.npy')
 print(loaded_arr) # [1 2 3 4 5]
 ```
+
+## Pandas
+
+```bash
+pip install pandas --break-system-packages
+```
+
+```python
+import pandas as pd
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'City': ['New York', 'Los Angeles', 'Chicago']
+}
+df = pd.DataFrame(data)
+
+print(df)
+#       Name  Age         City
+# 0    Alice   25     New York
+# 1      Bob   30  Los Angeles
+# 2  Charlie   35      Chicago
+
+df['Age'] = df['Age'] + 1
+print(df['Age']) # Age column
+# 0    26
+# 1    31
+# 2    36
+
+print(df.head(2)) # First And Second rows
+#     Name  Age      City
+# 0  Alice   25  New York
+# 1      Bob   30  Los Angeles
+
+print(df.iloc[0])  # First row
+# Name       Alice
+# Age           25
+# City    New York
+
+
+df1 = pd.DataFrame({
+    'Name': ['Alice', 'Bob'],
+    'Age': [25, 30]
+})
+
+df2 = pd.DataFrame({
+    'Name': ['Alice', 'David'],
+    'Age': [35, 40]
+})
+
+# Concatenating DataFrames
+df_concat = pd.concat([df1, df2])
+
+# Merging DataFrames on a key
+df3 = pd.DataFrame({
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'City': ['New York', 'Los Angeles', 'Chicago']
+})
+
+merged_df = pd.merge(df_concat, df3, on='Name')
+print(merged_df)
+#     Name  Age         City
+# 0  Alice   25     New York
+# 1    Bob   30  Los Angeles
+# 2  Alice   35     New York
+```
