@@ -302,4 +302,38 @@ pip install numpy --break-system-packages
 
 ```python
 import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+print(arr) # [1 2 3 4 5]
+
+
+# Creating a 2D array
+arr2d = np.array([[1, 2, 3], [4, 5, 6]])
+print(arr2d)
+# [[1 2 3]
+#  [4 5 6]]
+print(arr2d.shape) # (2, 3)
+
+
+# Creating a 2D array
+arr2d = np.array([[1, 2, 3], [4, 5, 6, 7]])
+# Raises ValueError. The requested array has an inhomogeneous shape after 1 dimensions
+
+
+arr = np.array([1, 2, 3, 4, 5])
+# Mean
+print(np.mean(arr)) # 3.0
+# Sum
+print(np.sum(arr)) # 15
+# Standard deviation
+print(np.std(arr)) # 1.4142135623730951
+# Minimum and Maximum
+print(np.min(arr)) # 1
+print(np.max(arr)) # 5
+
+# Save to a file
+np.save('array.npy', arr)
+# Load from a file
+loaded_arr = np.load('array.npy')
+print(loaded_arr) # [1 2 3 4 5]
 ```
