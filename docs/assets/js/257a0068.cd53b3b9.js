@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[3264],{7700:e=>{e.exports=JSON.parse('{"label":"Geenrative","permalink":"/Wisdom-Hub/tags/geenrative","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"ai/generative-ai","title":"Geenrative AI","description":"How do large language models work?","permalink":"/Wisdom-Hub/ai/generative-ai"}]}')}}]);

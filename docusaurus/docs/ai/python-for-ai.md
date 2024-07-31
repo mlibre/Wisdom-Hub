@@ -1,7 +1,6 @@
 ---
 sidebar_position: 1
 tags:
-  - Linux
   - python
   - ai
 ---
@@ -421,5 +420,3 @@ plt.ylabel('Y Axis')
 plt.title('Simple Line Plot')
 plt.show()
 ```
-
-## Neural Network
