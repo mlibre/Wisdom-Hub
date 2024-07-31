@@ -52,6 +52,12 @@ jupyter notebook
 
 You can also open `http://localhost:8888/tree` or `http://localhost:8888/lab`
 
+## Spyder
+
+```bash
+sudo pacman -S spyder
+```
+
 ## Concepts
 
 ### String
@@ -214,6 +220,44 @@ say_hello()
 # Something is happening before the function is called.
 # Hello!
 # Something is happening after the function is called.
+```
+
+## class
+
+```python
+class Person:
+    def __init__(self, name):
+        self._name = name
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value): # now we can set and get with "name" not "_name"
+        self._name = value
+
+
+class Employee(Person): # inherits from Person
+    species = "Homo sapiens"  # Class variable
+    def __init__(self, name, employee_id):
+        super().__init__(name)
+        self.employee_id = employee_id
+        self._test1 = "test1"  # Protected attribute
+        self.__test2 = "test2"   # Private attribute
+
+    def get_employee_details(self):
+        return f"Name: {self.name}, Employee ID: {self.employee_id}"
+
+# Creating an instance of the subclass
+employee1 = Employee("Bob", "E1234")
+print(employee1.get_employee_details())
+# Name: Bob, Age: 30, Employee ID: E1234
+employee1.name = "Alice"
+print(employee1.get_employee_details())
+# Name: Alice, Age: 30, Employee ID: E1234
+employee1.employee_id = "E1235"
+print(employee1.get_employee_details())
 ```
 
 ## Math
