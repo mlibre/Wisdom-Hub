@@ -52,12 +52,6 @@ jupyter notebook
 
 You can also open `http://localhost:8888/tree` or `http://localhost:8888/lab`
 
-## Spyder
-
-```bash
-sudo pacman -S spyder
-```
-
 ## Concepts
 
 ### String
@@ -222,7 +216,7 @@ say_hello()
 # Something is happening after the function is called.
 ```
 
-## class
+### class
 
 ```python
 class Person:
@@ -260,6 +254,33 @@ employee1.employee_id = "E1235"
 print(employee1.get_employee_details())
 ```
 
+### Error handling
+
+```python
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+except ValueError:
+    print("Invalid value!")
+else:
+    print("error is not ValueError or ZeroDivisionError")
+finally:
+    print("This will execute no matter what")
+
+
+# Rasing and error
+def check_age(age):
+    if age < 5:
+        raise ValueError("Age must be 5 or older")
+    return "Access granted"
+
+try:
+    check_age(4)
+except ValueError as e:
+    print(e)
+```
+
 ## Math
 
 ```python
@@ -271,4 +292,14 @@ print(pi)
 
 import random as r
 print(r.random())
+```
+
+## NumPy
+
+```bash
+pip install numpy --break-system-packages
+```
+
+```python
+import numpy as np
 ```
