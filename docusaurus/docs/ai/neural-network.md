@@ -2,28 +2,29 @@
 sidebar_position: 2
 tags:
   - Network
-  - ai
+  - AI
   - Neural
 ---
 
 # Neural Network
 
-## Install Packges
+## Install Packages
 
 ```bash
 pip install --upgrade pip --break-system-packages
-# if you have permission issue
+# If you have permission issues
 # sudo chmod a+rwx /usr/lib/python3.12/ -R
-
 
 # https://wiki.archlinux.org/title/GPGPU
 sudo pamac install opencl-amd --no-confirm
-# Or sudo pamac install rocm-core rocm-hip-sdk rocm-opencl-sdk --no-confirm
+# Or
+# sudo pamac install rocm-core rocm-hip-sdk rocm-opencl-sdk --no-confirm
 sudo usermod -a -G render,video $LOGNAME
 rocminfo
 
-# If you are using RDNA or RDNA 2 architecture like AMD Radeon RX 6500 XT you may need to follow this step
+# If you are using RDNA or RDNA 2 architecture like AMD Radeon RX 6500 XT, you may need to follow this step:
 sudo nano ~/.profile
+# Add the following lines:
 export HSA_OVERRIDE_GFX_VERSION=10.3.0
 export ROC_ENABLE_PRE_VEGA=1
 
@@ -43,13 +44,13 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 ```python
 import tensorflow as tf   # TensorFlow registers PluggableDevices here
-import torch as torch
+import torch
 
-tf.config.list_physical_devices()
+print(tf.config.list_physical_devices())
 print(tf.__version__)
 
-torch.cuda.is_available()
-torch.version.hip
+print(torch.cuda.is_available())
+print(torch.version.hip)
 ```
 
 ## Concepts
@@ -59,17 +60,21 @@ torch.version.hip
 A neuron is a function that takes some inputs, applies a weighted sum to them, and then generates an output using an activation function
 
 ```python
-
 def neuronFunc(inputs):
-  weights = [0.5, -0.5]
-  sum = inputs[0] * weights[0] + inputs[1] * weights[1]
-  return sum
+    weights = [0.5, -0.5]
+    bias = 0.0
+    output = inputs[0] * weights[0] + inputs[1] * weights[1] + bias
+    return output
+
 neuronOut = neuronFunc([1.0, 2.0])
+print("Neuron output:", neuronOut)
 ```
 
-### Activation function
+### Activation Function
 
 An activation function is applied to the output of a neuron to introduce non-linearity into the model. This helps the neural network learn complex patterns
+
+#### Sigmoid Activation Function
 
 ```python
 import math
@@ -79,6 +84,7 @@ def sigmoid(x):
 
 # Apply the activation function
 activeOutput = sigmoid(neuronOut)
+print("Activated output (sigmoid):", activeOutput)
 ```
 
 #### Linear Activation Function
@@ -90,15 +96,15 @@ def linear(x):
     return x
 
 activeOutput = linear(neuronOut)
+print("Activated output (linear):", activeOutput)
 ```
 
-### Lose function
+### Loss Function
 
-A loss function measures how well a neural network model performs a certain task by calculating the difference between the predicted output and the actual output. The goal of training is to minimize this loss
+A loss function measures how well a neural network model performs a certain task by calculating the difference between the predicted output and the actual output. The goal of training is to minimize this loss.
 
 ```python
 y_true = 0.8
-
 loss = (y_true - activeOutput)
 print("Loss:", loss)
 ```
@@ -113,12 +119,14 @@ In neural networks, gradients are used to update the model parameters to minimiz
 def f(x):
     return x**2
 
-def gradient(x):
-    return 2 * x
+def gradient(f, x):
+    h = 1e-7  # A small number for numerical approximation
+    return (f(x + h) - f(x - h)) / (2 * h)
 
 x = 3
-grad = gradient(x)
-print("Gradient at x = {}: {}".format(x, grad))
+grad = gradient(f, x)
+print("Gradient of f at x = {}: {}".format(x, grad))
+
 ```
 
 #### Gradient Descent
@@ -126,16 +134,16 @@ print("Gradient at x = {}: {}".format(x, grad))
 Gradient Descent is an optimization algorithm used to minimize the loss function by iteratively moving towards the steepest descent direction defined by the negative of the gradient.
 
 ```python
-def gradient_descent(starting_point, learning_rate, num_iterations):
+def gradient_descent(f, starting_point, learning_rate, num_iterations):
     x = starting_point
     for _ in range(num_iterations):
-        grad = gradient(x)
+        grad = gradient(f, x)
         x = x - learning_rate * grad
     return x
 
 starting_point = 3
 learning_rate = 0.1
 num_iterations = 100
-optimal_x = gradient_descent(starting_point, learning_rate, num_iterations)
+optimal_x = gradient_descent(f, starting_point, learning_rate, num_iterations)
 print("Optimal x:", optimal_x)
 ```
