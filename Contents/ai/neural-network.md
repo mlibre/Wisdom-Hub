@@ -109,11 +109,9 @@ loss = (y_true - activeOutput)
 print("Loss:", loss)
 ```
 
-### Optimization Methods
+### Gradient
 
-#### Gradient
-
-In neural networks, gradients are used to update the model parameters to minimize the loss function
+In neural networks, gradients are used to update the model parameters to minimize the loss function. it is called optimization.
 
 ```python
 def f(x):
@@ -129,7 +127,7 @@ print("Gradient of f at x = {}: {}".format(x, grad))
 
 ```
 
-#### Gradient Descent
+### Gradient Descent
 
 Gradient Descent is an optimization algorithm used to minimize the loss function by iteratively moving towards the steepest descent direction defined by the negative of the gradient.
 
@@ -147,3 +145,76 @@ num_iterations = 100
 optimal_x = gradient_descent(f, starting_point, learning_rate, num_iterations)
 print("Optimal x:", optimal_x)
 ```
+
+There are 3 types of gradient descent:
+
+- Batch Gradient Descent
+- Stochastic Gradient Descent
+- Mini-Batch Gradient Descent
+
+#### Batch Gradient Descent
+
+Batch Gradient Descent computes the gradient of the loss function with respect to the entire training dataset. It updates the parameters in the direction of the gradient computed from the entire dataset
+
+```python
+def batch_gradient_descent(X, y, learning_rate, num_iterations):
+    m = len(y)
+    theta = np.zeros(X.shape[1])
+    for _ in range(num_iterations):
+        gradients = 2/m * X.T.dot(X.dot(theta) - y)
+        theta = theta - learning_rate * gradients
+    return theta
+
+# Example usage
+import numpy as np
+X = np.array([[1, 1], [1, 2], [2, 2], [2, 3]])
+y = np.dot(X, np.array([1, 2])) + 3
+theta = batch_gradient_descent(X, y, 0.1, 1000)
+print("Theta (Batch Gradient Descent):", theta)
+```
+
+#### Stochastic Gradient Descent (SGD)
+
+Stochastic Gradient Descent updates the parameters for each training example, rather than the entire dataset, which often leads to faster convergence.
+
+```python
+def stochastic_gradient_descent(X, y, learning_rate, num_iterations):
+    m = len(y)
+    theta = np.zeros(X.shape[1])
+    for _ in range(num_iterations):
+        for i in range(m):
+            random_index = np.random.randint(m)
+            xi = X[random_index:random_index+1]
+            yi = y[random_index:random_index+1]
+            gradients = 2 * xi.T.dot(xi.dot(theta) - yi)
+            theta = theta - learning_rate * gradients
+    return theta
+
+theta = stochastic_gradient_descent(X, y, 0.1, 1000)
+print("Theta (Stochastic Gradient Descent):", theta)
+```
+
+#### Mini-Batch Gradient Descent
+
+Mini-Batch Gradient Descent strikes a balance between Batch Gradient Descent and Stochastic Gradient Descent by updating the parameters using small batches of the training dataset.
+
+```python
+def mini_batch_gradient_descent(X, y, learning_rate, num_iterations, batch_size):
+    m = len(y)
+    theta = np.zeros(X.shape[1])
+    for _ in range(num_iterations):
+        shuffled_indices = np.random.permutation(m)
+        X_shuffled = X[shuffled_indices]
+        y_shuffled = y[shuffled_indices]
+        for i in range(0, m, batch_size):
+            xi = X_shuffled[i:i+batch_size]
+            yi = y_shuffled[i:i+batch_size]
+            gradients = 2/len(yi) * xi.T.dot(xi.dot(theta) - yi)
+            theta = theta - learning_rate * gradients
+    return theta
+
+theta = mini_batch_gradient_descent(X, y, 0.1, 1000, batch_size=2)
+print("Theta (Mini-Batch Gradient Descent):", theta)
+```
+
+## Resources
