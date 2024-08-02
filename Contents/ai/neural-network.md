@@ -118,7 +118,7 @@ def f(x):
     return x**2
 
 def gradient(f, x, delta_x=0.00001):
-    return (f(x + h) - f(x)) / delta_x
+    return (f(x + delta_x) - f(x)) / delta_x
 
 x = 3
 grad = gradient(f, x)
