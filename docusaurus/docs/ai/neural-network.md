@@ -102,3 +102,40 @@ y_true = 0.8
 loss = (y_true - activeOutput)
 print("Loss:", loss)
 ```
+
+### Optimization Methods
+
+#### Gradient
+
+In neural networks, gradients are used to update the model parameters to minimize the loss function
+
+```python
+def f(x):
+    return x**2
+
+def gradient(x):
+    return 2 * x
+
+x = 3
+grad = gradient(x)
+print("Gradient at x = {}: {}".format(x, grad))
+```
+
+#### Gradient Descent
+
+Gradient Descent is an optimization algorithm used to minimize the loss function by iteratively moving towards the steepest descent direction defined by the negative of the gradient.
+
+```python
+def gradient_descent(starting_point, learning_rate, num_iterations):
+    x = starting_point
+    for _ in range(num_iterations):
+        grad = gradient(x)
+        x = x - learning_rate * grad
+    return x
+
+starting_point = 3
+learning_rate = 0.1
+num_iterations = 100
+optimal_x = gradient_descent(starting_point, learning_rate, num_iterations)
+print("Optimal x:", optimal_x)
+```
