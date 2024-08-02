@@ -330,12 +330,28 @@ print(np.std(arr)) # 1.4142135623730951
 print(np.min(arr)) # 1
 print(np.max(arr)) # 5
 
+
+# Dot for 1d array
+vector_a = np.array([1, 2, 3])
+vector_b = np.array([4, 5, 6])
+dot_product = np.dot(vector_a, vector_b) # 1∗4 + 2∗5 + 3∗6 = 4+10+18=32
+print("Dot product of vectors:", dot_product) # Dot product of vectors: 32
+
+# Dot for 2d array
+matrix_a = np.array([[1, 2], [3, 4]])
+matrix_b = np.array([[5, 6], [7, 8]])
+matrix_product = np.dot(matrix_a, matrix_b)
+print("Dot product of matrices:\n", matrix_product)
+#  [ [19 22], [43 50] ]
+
 # Save to a file
 np.save('array.npy', arr)
 # Load from a file
 loaded_arr = np.load('array.npy')
 print(loaded_arr) # [1 2 3 4 5]
 ```
+
+![python-dot](python-dot.png)
 
 ## Pandas
 
@@ -420,3 +436,7 @@ plt.ylabel('Y Axis')
 plt.title('Simple Line Plot')
 plt.show()
 ```
+
+## References
+
+- <https://www.youtube.com/watch?v=ZUeSxQ67wD8>
