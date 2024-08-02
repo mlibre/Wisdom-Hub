@@ -111,7 +111,7 @@ print("Loss:", loss)
 
 ### Gradient
 
-In neural networks, gradients are used to update the model parameters to minimize the loss function. it is called optimization.
+In neural networks, gradients are used to update the model parameters to minimize the loss function
 
 ```python
 def f(x):
