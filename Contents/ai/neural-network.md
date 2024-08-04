@@ -74,20 +74,6 @@ print("Neuron output:", neuronOut)
 
 An activation function is applied to the output of a neuron to introduce non-linearity into the model. This helps the neural network learn complex patterns
 
-#### Linear Activation Function
-
-The linear activation function directly outputs the input value without any modification.
-
-```python
-def linear(x):
-    return x
-
-activeOutput = linear(neuronOut)
-print("Activated output (linear):", activeOutput)
-```
-
-#### Sigmoid Activation Function
-
 ```python
 import math
 
