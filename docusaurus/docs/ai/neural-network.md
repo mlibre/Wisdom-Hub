@@ -145,22 +145,4 @@ optimal_x = gradient_descent(f, starting_point, learning_rate, num_iterations)
 print("Optimal x:", optimal_x)
 ```
 
-There are 3 types of gradient descent:
-
-- Batch Gradient Descent
-- Stochastic Gradient Descent
-- Mini-Batch Gradient Descent
-
-#### Batch Gradient Descent
-
-Batch Gradient Descent computes the gradient of the loss function with respect to the entire training dataset. It updates the parameters in the direction of the gradient computed from the entire dataset
-
-#### Stochastic Gradient Descent (SGD)
-
-Stochastic Gradient Descent updates the parameters for each training example, rather than the entire dataset, which often leads to faster convergence.
-
-#### Mini-Batch Gradient Descent
-
-Mini-Batch Gradient Descent strikes a balance between Batch Gradient Descent and Stochastic Gradient Descent by updating the parameters using small batches of the training dataset.
-
 ## Resources
