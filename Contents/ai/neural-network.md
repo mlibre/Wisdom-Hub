@@ -16,7 +16,12 @@ curl https://pyenv.run | bash
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+source  ~/.zshrc
 pyenv install 3.10
+pyenv versions
+pyenv global 3.10
+# or use system to get back to system python
+# pyenv global system
 
 
 pip install --upgrade pip --break-system-packages
