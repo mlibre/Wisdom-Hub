@@ -32,9 +32,8 @@ export ROC_ENABLE_PRE_VEGA=1
 # https://www.tensorflow.org/install/pip
 pip uninstall tensorflow-rocm numpy
 pip install tensorflow --break-system-packages
-
 pip install https://repo.radeon.com/rocm/manylinux/rocm-rel-6.1.3/tensorflow_rocm-2.15.1-cp310-cp310-manylinux_2_28_x86_64.whl numpy==1.26.4 --break-system-packages
-
+# cp310 means you need to have python 3.10
 
 # https://pytorch.org/
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --break-system-packages
