@@ -17,9 +17,9 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 source  ~/.zshrc
-pyenv install 3.10
+pyenv install 3.12
 pyenv versions
-pyenv global 3.10
+pyenv global 3.12
 # or use system to get back to system python
 # pyenv global system
 
@@ -45,10 +45,10 @@ export ROC_ENABLE_PRE_VEGA=1
 
 
 # https://www.tensorflow.org/install/pip
-pip uninstall tensorflow-rocm numpy
+pip uninstall tensorflow tensorflow-rocm numpy --break-system-packages
 pip install tensorflow --break-system-packages
-pip install https://repo.radeon.com/rocm/manylinux/rocm-rel-6.1.3/tensorflow_rocm-2.15.1-cp310-cp310-manylinux_2_28_x86_64.whl numpy==1.26.4 --break-system-packages
-# cp310 means you need to have python 3.10
+pip install https://repo.radeon.com/rocm/manylinux/rocm-rel-6.1.3/tensorflow_rocm-2.15.1-cp312-cp312-manylinux_2_28_x86_64.whl numpy==1.26.4 --break-system-packages
+# cp312 means you need to have python 3.12
 
 
 # https://pytorch.org/
@@ -58,7 +58,7 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 ## Check GPU Support
 
 ```python
-import tensorflow as tf   # TensorFlow registers PluggableDevices here
+import tensorflow as tf
 import torch
 
 print(tf.config.list_physical_devices())
