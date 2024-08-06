@@ -146,4 +146,28 @@ optimal_x = gradient_descent(f, starting_point, learning_rate, num_iterations)
 print("Optimal x:", optimal_x)
 ```
 
+## TensorFlow
+
+* `Dense(5)`: This creates a dense (fully connected) layer with 5 neurons
+* `activation='linear'`: Specifies the activation function for this layer. 'linear' means no activation function (i.e., the output is the same as the input)
+* `input_shape=(12,)`: Specifies the shape of the input data, which is a vector of size 12. This is needed for the first layer to define the input shape
+
+```python
+from tensorflow.keras.layers import Dense, Activation
+from tensorflow.keras.models import Sequential
+model = Sequential()
+model.add(Dense(5, activation='linear', input_shape=(12,)))
+```
+
+In a neural network, each neuron in the dense layer receives the entire input vector at once, not individual elements of the vector sequentially. for example
+
+```python
+[
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+]
+```
+
+Each input vector (e.g., [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) is processed as a whole by each neuron in the dense layer. so in this example each input vector will be sent to all 5 neurons in the layer.
+
 ## Resources
