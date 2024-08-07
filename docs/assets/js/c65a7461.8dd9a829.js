@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[967],{8130:e=>{e.exports=JSON.parse('{"label":"resources","permalink":"/Wisdom-Hub/tags/resources","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"ai/good-resources","title":"good-resources","description":"* Artificial Intelligence","permalink":"/Wisdom-Hub/ai/good-resources"}]}')}}]);
