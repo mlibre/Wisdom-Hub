@@ -14,7 +14,6 @@ Welcome to my AI tutorials!
 This repository is organized into several sections, each containing tutorials for specific topics. Here's a brief overview:
 
 * [Python For Ai](./python-for-ai.md)
-* [Neural Network](./neural-network.md)
 * [Geneartive AI](./generative-ai.md)
 * [Prompt](./prompt.md)
 * [Langchain](./langchain.md)
