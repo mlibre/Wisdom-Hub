@@ -19,7 +19,6 @@ This repository is organized into several sections, each containing tutorials fo
 * [Langchain](./langchain.md)
 * [Ollama](./ollama.md)
 * [lobeChat](./lobe-chat.md)
-* [Good Resources](./good-resources.md)
 
 ## My ETH Address
 
