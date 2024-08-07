@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[8711],{3751:e=>{e.exports=JSON.parse('{"label":"Neural","permalink":"/Wisdom-Hub/tags/neural","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"ai/neural-network","title":"Neural Network","description":"Install Packages","permalink":"/Wisdom-Hub/ai/neural-network"}]}')}}]);
