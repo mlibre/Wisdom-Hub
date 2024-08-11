@@ -11,6 +11,84 @@ tags:
 
 Ollama is an open-source AI model server. It can get and run large language models (LLMs) locally on your machine.
 
+## Rocm
+
+First make sure you have rocm or NVIDIA CUDA installed.
+
+```bash
+# pyenv is a tool to manage multiple versions of Python
+curl https://pyenv.run | bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+source  ~/.zshrc
+pyenv install 3.12
+pyenv versions
+pyenv global 3.12
+# or use system to get back to system python
+# pyenv global system
+
+
+pip install --upgrade pip --break-system-packages
+# If you have permission issues
+# sudo chmod a+rwx /usr/lib/python3.12/ -R
+
+
+# Arch users
+# https://wiki.archlinux.org/title/GPGPU
+sudo pamac install opencl-amd --no-confirm
+# Or
+# sudo pamac install rocm-core rocm-hip-sdk rocm-opencl-sdk --no-confirm
+sudo usermod -a -G render,video $LOGNAME
+sudo reboot
+rocminfo
+
+
+# Ubuntu Users
+# https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/quick-start.html
+# https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/native-install/ubuntu.html
+# https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/amdgpu-install.html
+# https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/post-install.html
+sudo apt update
+sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
+sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+wget https://repo.radeon.com/amdgpu-install/6.2/ubuntu/noble/amdgpu-install_6.2.60200-1_all.deb
+sudo apt install ./amdgpu-install_6.2.60200-1_all.deb
+sudo apt update
+sudo apt install amdgpu-dkms rocm
+
+
+# If you are using RDNA or RDNA 2 architecture like AMD Radeon RX 6500 XT, you may need to follow this step:
+sudo nano ~/.profile
+# Add the following lines:
+export HSA_OVERRIDE_GFX_VERSION=10.3.0
+export ROC_ENABLE_PRE_VEGA=1
+
+
+# https://www.tensorflow.org/install/pip
+pip uninstall tensorflow tensorflow-rocm numpy --break-system-packages
+pip install tensorflow --break-system-packages
+pip install https://repo.radeon.com/rocm/manylinux/rocm-rel-6.1.3/tensorflow_rocm-2.15.1-cp312-cp312-manylinux_2_28_x86_64.whl numpy==1.26.4 --break-system-packages
+# cp312 means you need to have python 3.12
+
+
+# https://pytorch.org/
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --break-system-packages
+```
+
+* Check GPU support
+
+```bash
+import tensorflow as tf
+import torch
+
+print(tf.config.list_physical_devices())
+print(tf.__version__)
+
+print(torch.cuda.is_available())
+print(torch.version.hip)
+```
+
 ## Install
 
 ```bash
