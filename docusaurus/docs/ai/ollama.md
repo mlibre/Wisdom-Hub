@@ -216,6 +216,27 @@ sudo systemctl edit --full ollama.service
 Environment="OLLAMA_HOST=0.0.0.0"
 ```
 
+## Memory and Quantization Options
+
+When working with models like the Codestral 22B, you have several quantization options that affect both memory usage and accuracy:
+
+* 32-bit floating-point: Uses 88 GB of memory (22 x 4 = 88G) and is the most accurate
+* 16-bit floating-point: Uses 44 GB of memory (22 x 2 = 44G)
+* 8-bit floating-point: Uses 22 GB of memory (22 x 1 = 22G)
+* 4-bit floating-point: Uses 11 GB of memory (22 x 1/2 = 11G) and is less accurate
+
+These options allow you to balance between model accuracy and the amount of memory used, depending on your system's resources and the specific needs of your application.
+
+### GPU Compatibility
+
+To effectively run models like Codestral 22B, you need a GPU with sufficient memory to handle the model's requirements:
+
+* **RTX 6000**: With 48 GB of memory, this GPU can handle 16-bit floating-point quantization (44G) and lower, providing a good balance of accuracy and performance.
+* **NVIDIA RTX 4090**: With 24 GB of memory, this GPU is suited for 8-bit floating-point quantization (22G) and below.
+* **GeForce GTX 1080 Ti**: With 11 GB of memory, this GPU is limited to 4-bit floating-point quantization (11G), which may result in reduced accuracy but still allows you to run the model on less capable hardware.
+
+You can find full list of ollama supported gpus here: <https://github.com/ollama/ollama/blob/main/docs/gpu.md>
+
 ## Uninstall
 
 ```bash
