@@ -173,6 +173,8 @@ The resulting vector embedding arrays can then be stored in a database, which wi
 
 You can store as many text as you want in these vector databases, such as a [vector database](https://www.trychroma.com/). for example you can embed some books, and then ask chroma to find the most similar text to a given input. you then send chroma output to a LLM, and the LLM can use the context of the text to generate a response.
 
+> more information is here: <https://ollama.com/blog/embedding-models>
+
 ### Installation
 
 ```bash
