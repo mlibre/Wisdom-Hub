@@ -169,7 +169,9 @@ Embedding models are models that are trained specifically to generate vector emb
 
 ![alt text](embedding-models.png)
 
-The resulting vector embedding arrays can then be stored in a database, which will compare them as a way to search for data that is similar in meaning
+The resulting vector embedding arrays can then be stored in a database, which will compare them as a way to search for data that is similar in meaning.
+
+You can store as many text as you want in these vector databases, such as a [vector database](https://www.trychroma.com/). for example you can embed some books, and then ask chroma to find the most similar text to a given input. you then send chroma output to a LLM, and the LLM can use the context of the text to generate a response.
 
 ### Installation
 
