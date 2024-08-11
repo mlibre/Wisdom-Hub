@@ -44,6 +44,29 @@ journalctl -u ollama.service --no-pager --follow
 
 ```
 
+## Docker
+
+ollama supports docker images. You can either use official images or build your own.
+
+You need to have [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation) installed for NVIDIA GPUs.  
+
+And `rocm` for AMD GPUs.
+
+```bash
+# NVIDIA
+docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+# AMD
+docker run -d --device /dev/kfd --device /dev/dri -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama:rocm
+# Run a model
+docker exec -it ollama ollama run llama2
+```
+
+You can also build your own GPU supported image:
+
+```bash
+./scripts/build_linux.sh
+```
+
 ## Files
 
 Ollama files in Linux are located here:
