@@ -245,6 +245,33 @@ curl -s http://localhost:11434/v1/chat/completions \
   }' | jq
 ```
 
+## Debug
+
+```bash
+sudo systemctl edit --full ollama.service
+
+[Unit]
+Description=Ollama Service
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/ollama serve
+User=ollama
+Group=ollama
+Restart=always
+RestartSec=3
+Environment="PATH=/home/mlibre/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+Environment="OLLAMA_HOST=0.0.0.0"
+Environment="OLLAMA_DEBUG=1"
+[Install]
+WantedBy=default.target
+# you may also add Environment="HSA_OVERRIDE_GFX_VERSION=10.3.0" to support older AMD GPUs
+
+
+sudo systemctl restart ollama.service
+journalctl -u ollama --no-pager -f
+```
+
 ## Costomizing Model
 
 ```bash
