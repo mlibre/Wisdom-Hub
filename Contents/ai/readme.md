@@ -18,7 +18,7 @@ This repository is organized into several sections, each containing tutorials fo
 * [Prompt](./prompt.md)
 * [Langchain](./langchain.md)
 * [Ollama](./ollama.md)
-* [lobeChat](./lobe-chat.md)
+* [Chat UIs](./chat-ui.md)
 
 ## My ETH Address
 
