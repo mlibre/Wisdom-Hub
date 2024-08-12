@@ -312,6 +312,11 @@ curl http://localhost:11434/api/embeddings -d '{
   "model": "mxbai-embed-large",
   "prompt": "Llamas are members of the camelid family"
 }'
+
+curl http://localhost:11434/api/embeddings -d '{
+  "model": "llama3.1:8b",
+  "prompt": "Llamas are members of the camelid family"
+}'
 ```
 
 ## Configuration
