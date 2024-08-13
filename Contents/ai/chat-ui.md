@@ -15,6 +15,12 @@ sudo systemctl enable mongodb.service
 sudo systemctl restart mongodb.service
 mongosh 'mongodb://localhost:27017'
 
+sudo pacman -S meilisearch redis
+sudo systemctl enable redis
+sudo systemctl restart redis
+sudo systemctl enable meilisearch
+sudo systemctl restart meilisearch
+
 git clone https://github.com/danny-avila/LibreChat.git --depth=1
 cd LibreChat
 cp .env.example .env
@@ -81,7 +87,7 @@ npm run backend
 
 ## <https://github.com/mckaywrigley/chatbot-ui>
 
-## https://github.com/open-webui/open-webui
+## <https://github.com/open-webui/open-webui>
 
 ## LobeChat
 
