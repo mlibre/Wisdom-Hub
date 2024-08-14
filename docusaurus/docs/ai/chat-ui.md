@@ -89,6 +89,11 @@ npm run backend
 
 ## <https://github.com/open-webui/open-webui>
 
+## <https://github.com/huggingface/chat-ui>
+
+## <https://github.com/nomic-ai/gpt4all>
+
+
 ## LobeChat
 
 ```bash
