@@ -16,6 +16,7 @@ Here is also implemented a simple Proof-of-Work (POW) blockchain like bitcoin, y
 * [Incentives](#incentives)
 * [Addresses And Wallets](#addresses-and-wallets)
 * [Transaction](#transaction)
+* [Unspent Transaction Outputs (UTXOs)](#unspent-transaction-outputs-utxos)
 * [Longest chain](#longest-chain)
 * [Chain Reorganisation](#chain-reorganisation)
 * [Double Spending](#double-spending)
@@ -95,6 +96,32 @@ A transaction components are:
 * Inputs - Information about the Bitcoin previously sent to Mark's address. For example, imagine Mark previously received 0.6 BTC from Alice and 0.6 BTC from Bob. Now, in order to send 1 BTC to Jessica, there might be two inputs: one input of 0.6 BTC previously from Alice and one input of 0.6 BTC previously from Bob.
 * Amount - The amount being sent, In this case Mark wants to send 1 BTC.
 * Outputs - The destination addresses of the Bitcoins. The first is 1.2 BTC (0.6 BTC + 0.6 BTC) to Jessica’s public address. The second is 0.2 BTC returned as 'change' to Mark.
+
+## Unspent Transaction Outputs (UTXOs)
+
+In Bitcoin, the concept of `Unspent Transaction Outputs (UTXOs)` is fundamental to how transactions are structured and validated. A `UTXO` represents a certain amount of Bitcoin that has been received and is available to be spent in a future transaction. Each `UTXO` is associated with a specific output of a previous transaction.
+
+### How UTXOs Work
+
+When you receive Bitcoin, what you actually receive is a `UTXO`, a chunk of Bitcoin that was previously sent to `your address`. Each `UTXO` is unique and can be `spent only once`. When you send Bitcoin, you are using one or more of `your UTXOs as inputs` in your transaction. The transaction specifies how much Bitcoin is sent to new addresses and any leftover amount (change) is returned to your address as a `new UTXO`.
+
+### Checking Validity Without Tracing Back to Genesis
+
+Bitcoin nodes do not need to check all transactions back to the `Genesis` block to verify whether someone has this Bitcoin to spend. This is because each input in a Bitcoin transaction references a specific output from a previous transaction.
+
+To verify a transaction, a node checks the following:
+
+1. **Existence of the Referenced UTXO**: The node verifies that the `UTXO` referenced by the input exists and is valid. This means that it was indeed created in a previous transaction and is available to be spent.
+
+2. **Unspent Status**: The node ensures that the referenced `UTXO` has not already been spent in another transaction. This prevents double spending.
+
+Since Bitcoin nodes track the state of all `UTXOs`, they can quickly verify transactions by checking whether the referenced `UTXOs` are available and unspent. This eliminates the need to trace all the way back to the Genesis block, significantly improving efficiency.
+
+### Multiple UTXOs Sent to the Same Address
+
+When multiple people send Bitcoin to the `same address`, **each transaction creates a separate UTXO**. If you later want to spend the Bitcoin received at that address, your transaction will reference the specific UTXOs (i.e., the outputs of the previous transactions) rather than the address itself.
+
+**This approach ensures that even if all Bitcoin is sent to the same address, each transaction remains distinct because it has a unique output. When creating a new transaction, you mention the specific outputs (UTXOs) that are being spent**, and as long as these outputs have not been used in another transaction, they are valid for spending. Thus, the Bitcoin network efficiently prevents double spending without needing to check the entire history of transactions across the network.
 
 ## Longest chain
 
