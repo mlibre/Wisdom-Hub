@@ -119,6 +119,7 @@ Since Bitcoin nodes track the state of all `UTXOs`, they can quickly verify tran
 
 ### Multiple UTXOs Sent to the Same Address
 
+It is simply because as the name suggests, `UTXO` is `unspent transaction output`. and not `unspent address` or `UTA` :)  
 When multiple people send Bitcoin to the `same address`, **each transaction creates a separate UTXO**. If you later want to spend the Bitcoin received at that address, your transaction will reference the specific UTXOs (i.e., the outputs of the previous transactions) rather than the address itself.
 
 **This approach ensures that even if all Bitcoin is sent to the same address, each transaction remains distinct because it has a unique output. When creating a new transaction, you mention the specific outputs (UTXOs) that are being spent**, and as long as these outputs have not been used in another transaction, they are valid for spending. Thus, the Bitcoin network efficiently prevents double spending without needing to check the entire history of transactions across the network.
