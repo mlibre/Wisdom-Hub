@@ -34,18 +34,6 @@ ssh -L 9050:localhost:9050 -N mlibre@176.124.193.114
 
 ## SSH
 
-### HTTP/S proxy over SSH
-
-* Install squid on the server
-
-  ```bash
-    sudo pacman -S squid
-    sudo systemctl enable squid
-    sudo systemctl start squid
-    sudo nano /etc/squid/squid.conf
-    http_port 3128
-  ```
-
 * Configure the client
 
 ```bash
