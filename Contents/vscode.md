@@ -334,6 +334,9 @@ sudo pacman -S nodejs-lts-fermium npm
     "[typescript]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
     "eslint.codeAction.showDocumentation": {
         "enable": true
     },
@@ -343,7 +346,7 @@ sudo pacman -S nodejs-lts-fermium npm
     // "eslint.codeActionsOnSave.rules": null,
     "eslint.debug": true,
     "eslint.enable": true,
-    "eslint.experimental.useFlatConfig": true,
+    "eslint.useFlatConfig": true,
     "eslint.format.enable": true,
     "explorer.autoReveal": false,
     "explorer.compactFolders": false,
@@ -384,9 +387,9 @@ sudo pacman -S nodejs-lts-fermium npm
     "terminal.integrated.smoothScrolling": true,
     "update.mode": "none",
     "window.commandCenter": false,
+    "window.zoomLevel": 1.3,
     "window.dialogStyle": "custom",
     "window.titleBarStyle": "custom",
-    "window.zoomLevel": 1.3,
     "workbench.iconTheme": "vscode-great-icons",
     "workbench.layoutControl.enabled": false,
     "workbench.layoutControl.type": "menu",
@@ -400,7 +403,11 @@ sudo pacman -S nodejs-lts-fermium npm
     "markdown.extension.completion.respectVscodeSearchExclude": true,
     "markdown.extension.theming.decoration.renderCodeSpan": false,
     "cody.telemetry.level": "off",
-    "workbench.colorTheme": "Default Dark+"
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "explorer.confirmPasteNative": false,
+    "git.openRepositoryInParentFolders": "never",
+    "editor.cursorBlinking": "phase",
+    "terminal.integrated.cursorBlinking": true
 }
 ```
 
@@ -409,16 +416,21 @@ sudo pacman -S nodejs-lts-fermium npm
 ### Nodejs
 
 ```javascript
-// eslint.config.cjs
+// eslint.config.js
+const globals = require("globals");
+const js = require("@eslint/js");
 module.exports = [
  {
+  js.configs.recommended,
   languageOptions: {
-   parserOptions: {
-    ecmaVersion: 13,
-    impliedStrict: true,
-   }
+    globals: {
+      ...globals.node
+    },
+    ecmaVersion: "latest",
+    sourceType: "commonjs"
   },
   rules: {
+    semi: ["error", "always"],
    "no-trailing-spaces": "error",
    "linebreak-style": ["error", "unix"],
    "quotes": ["error", "double"],
