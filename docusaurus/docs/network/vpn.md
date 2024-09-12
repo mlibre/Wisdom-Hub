@@ -8,6 +8,30 @@ tags:
 
 # VPN
 
+## Tor
+
+In VPS:
+
+```bash
+sudo apt install tor
+sudo systemctl enable tor
+sudo systemctl restart tor
+sudo nano /etc/tor/torrc
+SocksPort 0.0.0.0:9050 # Bind to this address:port too.
+SocksPolicy accept *
+
+sudo systemctl restart tor
+journalctl -u tor
+curl --socks5 localhost:9050 https://check.torproject.org/
+
+```
+
+In local Linux:
+
+```bash
+ssh -L 9050:localhost:9050 -N mlibre@176.124.193.114
+```
+
 ## SSH
 
 ### HTTP/S proxy over SSH
@@ -276,300 +300,6 @@ cd nekoray
 ```
 
 * Open Nekoray -> Routing Settings -> remote DNS: localhost
-
-## ShadowSocks Server
-
-### Server
-
-```bash
-sudo apt install shadowsocks-libev -y
-sudo nano /etc/shadowsocks-libev/config.json
-{
-    "server":["::1", "0.0.0.0"],
-    "mode":"tcp_and_udp",
-    "server_port":9090,
-    "password":"password",
-    "method":"chacha20-ietf-poly1305",
-    "timeout":1000,
-    "nameserver":"1.1.1.1",
-    "fast_open": true
-}
-sudo ufw allow 9090/udp
-sudo ufw allow 9090/tcp
-sudo ufw allow 1080/udp
-sudo ufw allow 1080/tcp
-sudo ufw allow 443
-sudo systemctl enable shadowsocks-libev.service
-sudo systemctl restart shadowsocks-libev.service
-sudo journalctl -f -u shadowsocks-libev.service
-
-# Custom instance
-sudo nano /etc/systemd/system/direct.service
-[Unit]
-Description=Shadowsocks
-After=network.target
-
-StartLimitIntervalSec=30s
-StartLimitBurst=5
-
-[Service]
-Type=simple
-User=mlibre
-Group=mlibre
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_BIND_SERVICE
-ExecStart=ss-server -c /etc/shadowsocks-libev/config.json
-
-Restart=always
-RestartSec=3s
-
-[Install]
-WantedBy=multi-user.target
-```
-
-### Client
-
-```bash
-sudo pamac install shadowsocks-rust-bin
-sudo nano /etc/shadowsocks/config.json 
-{
-    "servers": [
-      {
-          "address": "51.89.88.80",
-          "port": 9090,
-          "password": "password",
-          "method":"chacha20-ietf-poly1305",
-          "timeout": 1000
-      }
-    ],
-    "mode":"tcp_and_udp",
-    "local_port":1080,
-    "local_address": "127.0.0.1",
-    "fast_open": true,
-    "dns": "1.1.1.1",
-    "remote_dns_address": "8.8.8.8"
-}
-
-# sudo systemctl disable shadowsocks-rust-local@config
-# sudo systemctl enable shadowsocks-rust-local@config
-# sudo systemctl restart shadowsocks-rust-local@config
-# sudo systemctl status shadowsocks-rust-local@config
-# journalctl -f -u shadowsocks-rust-local@config
-
-# sslocal -c /etc/shadowsocks/config.json -d
-# sslocal --config /etc/shadowsocks-rust/germany.json -v --outbound-bind-interface lo --tun-interface-name tun0
-
-sudo nano /lib/systemd/system/shadowsocks-rust-local@.service
-[Unit]
-Description=Shadowsocks-rust Local Client Service for %I
-After=network.target
-
-StartLimitIntervalSec=30s
-StartLimitBurst=5
-
-[Service]
-Type=simple
-DynamicUser=yes
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_BIND_SERVICE
-ExecStart=/usr/bin/sslocal --log-without-time -c /etc/shadowsocks/config.json
-
-Restart=always
-RestartSec=3s
-
-[Install]
-WantedBy=multi-user.target
-
-
-## Firefox
-socks host: 127.0.0.1
-socks port: 1080
-enable dns over proxy
-
-sudo resolvectl dns enp3s0 1.1.1.1
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-```
-
-## WireGuard VPN Server
-
-```bash
-sudo pacman -Syyuu wireguard extra/wireguard-tools resolvconf
-sudo apt update
-apt-get purge nftables
-sudo apt dist-upgrade
-sudo apt install htop sudo wireguard wireguard-tools resolvconf iptables
-update-alternatives --set iptables /usr/sbin/iptables-legacy
-```
-
-### Server Configuration
-
-```bash
-https://github.com/angristan/wireguard-install
-curl -O https://raw.githubusercontent.com/angristan/wireguard-install/master/wireguard-install.sh
-chmod +x wireguard-install.sh
-sudo ./wireguard-install.sh
-```
-
-### Peer Configuration
-
-```bash
-resolvectl dns
-sudo resolvectl dns enp3s0 10.8.0.1
-# sudo resolvectl dns enp3s0 208.67.222.222
-
-
-# ON THE CLIENT
-sudo wg-quick up wg0
-sudo wg-quick down wg0
-```
-
-```bash
-ip route list default
-# Copy Device Name: eth0
-ip -brief address show eth0
-# Copy The server public ip
-```
-
-```bash
-# https://github.com/mlibre/wireguard-install
-```
-
-```bash
-sudo systemctl stop wg-quick@wg0.service
-sudo systemctl disable wg-quick@wg0.service
-sudo systemctl enable wg-quick@wg0.service
-sudo systemctl start wg-quick@wg0.service
-sudo systemctl status wg-quick@wg0.service
-sudo wg
-# sudo wg-quick down wg0
-# sudo systemctl daemon-reload 
-```
-
-## Free VPNs
-
-### VPNBook
-
-* Download OpenVpn file: <https://www.vpnbook.com/freevpn>
-* Import in NetworkManger
-* Enter username and password from here: <https://www.vpnbook.com/freevpn>
-
-### Protonvpn
-
-#### Install
-
-```bash
-sudo systemctl stop firewalld.service
-yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
-# proxychains yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm"  -S protonvpn
-protonvpn
-# proxychain protonvpn
-```
-
-#### OpenVpn
-
-* Download openVpn config file form here: <https://account.protonvpn.com/downloads>
-* Copy openVPn credentials: <https://account.protonvpn.com/account>
-* Network Manager: New -> Import OpenVpn Saved Configuration. Paste credentials
-
-#### WireGuard
-
-```bash
-sudo pacman -R firewalld
-sudo ufw disable
-sudo nano /etc/sysctl.conf
-# add: net.ipv4.ip_forward=1
-# net.ipv6.conf.all.forwarding=1
-sudo sysctl -p
-sudo pacman -S extra/wireguard-tools
-# yay -S  qomui
-# https://account.protonvpn.com/downloads#wireguard-configuration
-sudo nano /etc/wireguard/wg0.conf
-# past
-
-resolvectl dns
-sudo resolvectl dns enp3s0 10.2.0.1 # ip addr:(enp3s0). resolvectl dnsglobal:(10.2.0.1). can be added in POSTup wirgurd conf
-sudo wg-quick up wg0
-sudo wg-quick down wg0
-sudo wg
-```
-
-### Hide.me
-
-```bash
-sudo systemctl stop firewalld.service
-curl -L https://hide.me/download/linux-amd64 | tar -xJ && sudo ./install.sh
-# Extend free trail 
-# https://member.hide.me/en/
-proxychains sudo ./hide.me token free-unlimited.hideservers.net
-proxychains sudo ./hide.me connect free-unlimited.hideservers.net
-```
-
-### Windscribe
-
-```bash
-sudo systemctl stop firewalld.service
-yay -S aur/windscribe-bin
-# proxychains yay -S aur/windscribe-bin
-```
-
-### Warp
-
-Scan clean ips
-
-```bash
-sudo pacman -S parallel
-git clone https://github.com/MortezaBashsiz/CFScanner.git
-cd CFScanner/bash
-chmod +x ../bin/*
-curl -s https://raw.githubusercontent.com/MortezaBashsiz/CFScanner/main/bash/ClientConfig.json -o config.real
-bash cfScanner.sh SUBNET DOWN threads tryCount config.real speed custom.subnets
-bash cfScanner.sh SUBNET DOWN 8 1 config.real 100 custom.subnets
-```
-
-```bash
-sudo pacman -S python-requests
-pamac install python-ping3
-git clone https://github.com/vfarid/cf-ip-scanner-py.git
-```
-
-```bash
-pamac install cloudflare-warp-bin
-
-sudo nano /etc/systemd/resolved.conf
-ResolveUnicastSingleLabel=yes
-sudo systemctl restart systemd-resolved.service
-
-sudo systemctl restart warp-svc.service 
-sudo systemctl enable warp-svc.service 
-systemctl --user start --now warp-taskbar 
-
-warp-cli set-families-mode off
-warp-cli delete
-warp-cli register
-warp-cli disconnect
-
-warp-cli connect
-warp-cli status
-warp-cli settings
-warp-cli set-custom-endpoint 185.18.250.153
-
-warp-cli set-mode --help
-warp-cli set-mode warp
-warp-cli set-mode doh
-warp-cli set-mode warp+doh
-warp-cli set-mode proxy
-warp-cli set-proxy-port 4040 # Set the listening port for WARP proxy (127.0.0.1:{port})
-
-warp-cli -vvv -l connect
-warp-cli -l status
-warp-cli enable-dns-log
-warp-cli -l enable-dns-log
-journalctl -xeu warp-svc.service
-journalctl -u systemd-resolved -f
-warp-diag
-
-proxychains midori
-```
 
 ### Cloudflare worker
 
