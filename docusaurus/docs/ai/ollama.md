@@ -37,9 +37,7 @@ pip install --upgrade pip --break-system-packages
 
 # Arch users
 # https://wiki.archlinux.org/title/GPGPU
-sudo pamac install opencl-amd --no-confirm
-# Or
-# sudo pamac install rocm-core rocm-hip-sdk rocm-opencl-sdk --no-confirm
+sudo pamac install rocm-core hsa-rocr rocm-opencl-runtime comgr roctracer hsakmt-roct rocm-language-runtime rocminfo rocm-cmake hip rocm-smi-lib rocm-clang-ocl rocm-hip-runtime rocm-hip-sdk rocm-opencl-sdk rocm-device-libs --no-confirm
 sudo usermod -a -G render,video $LOGNAME
 sudo reboot
 rocminfo
@@ -79,7 +77,7 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 * Check GPU support
 
-```bash
+```python
 import tensorflow as tf
 import torch
 
