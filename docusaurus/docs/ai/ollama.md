@@ -16,6 +16,7 @@ Ollama is an open-source AI model server. It can get and run large language mode
 First make sure you have rocm or NVIDIA CUDA installed.
 
 ```bash
+sudo pacman -S base-devel cmake gcc python3
 # pyenv is a tool to manage multiple versions of Python
 curl https://pyenv.run | bash
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
