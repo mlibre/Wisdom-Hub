@@ -31,8 +31,8 @@ pyenv global 3.12
 
 pip install --upgrade pip --break-system-packages
 # If you have permission issues
+# sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGED
 # sudo chmod a+rwx /usr/lib/python3.12/ -R
-
 
 # Arch users
 # https://wiki.archlinux.org/title/GPGPU
