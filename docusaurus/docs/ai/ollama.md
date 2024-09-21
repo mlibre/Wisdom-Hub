@@ -72,7 +72,12 @@ pip install https://repo.radeon.com/rocm/manylinux/rocm-rel-6.1.3/tensorflow_roc
 
 
 # https://pytorch.org/
+# pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.2
+
+
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --break-system-packages
+pip3 install -U torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --user
+sudo pip3 install -U torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
 pip3 install -U xformers
 ```
 
