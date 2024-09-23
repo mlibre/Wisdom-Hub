@@ -68,20 +68,16 @@ pip install -U transformers datasets evaluate accelerate --user
 sudo pip install -U transformers datasets evaluate accelerate
 
 # https://www.tensorflow.org/install/pip
-pip uninstall tensorflow tensorflow-rocm numpy --break-system-packages
-pip install tensorflow --break-system-packages
-pip install https://repo.radeon.com/rocm/manylinux/rocm-rel-6.1.3/tensorflow_rocm-2.15.1-cp312-cp312-manylinux_2_28_x86_64.whl numpy==1.26.4 --break-system-packages
+# https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/3rd-party/tensorflow-install.html#install-tensorflow-versions
+pip install --user tensorflow-rocm=="2.16.1" -f "https://repo.radeon.com/rocm/manylinux/rocm-rel-6.2/" --upgrade
 # cp312 means you need to have python 3.12
 
-
 # https://pytorch.org/
-# pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.2
-
-
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --break-system-packages
 pip3 install -U torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --user
-sudo pip3 install -U torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
-pip3 install -U xformers
+# sudo pip3 install -U torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
+pip3 install -U xformers --user
+# sudo pip3 install -U xformers
 ```
 
 * Check GPU support
