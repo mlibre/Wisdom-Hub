@@ -64,6 +64,9 @@ export HSA_OVERRIDE_GFX_VERSION=10.3.0
 export ROC_ENABLE_PRE_VEGA=1
 
 
+pip install -U transformers datasets evaluate accelerate --user
+sudo pip install -U transformers datasets evaluate accelerate
+
 # https://www.tensorflow.org/install/pip
 pip uninstall tensorflow tensorflow-rocm numpy --break-system-packages
 pip install tensorflow --break-system-packages
