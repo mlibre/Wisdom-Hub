@@ -24,6 +24,7 @@ sudo systemctl restart meilisearch
 git clone https://github.com/danny-avila/LibreChat.git --depth=1
 cd LibreChat
 cp .env.example .env
+nano .env
 # Comment PLUGIN_MODELS, GOOGLE_API_KEY, openAI and other providers to disable them
 # you may want to change ENDPOINTS variable and add ollama as well. not necessary
 RAG_API_URL=http://127.0.0.1:11434/v1/
@@ -85,14 +86,13 @@ npm run frontend
 npm run backend
 ```
 
-## <https://github.com/mckaywrigley/chatbot-ui>
+#### <https://github.com/mckaywrigley/chatbot-ui>
 
-## <https://github.com/open-webui/open-webui>
+#### <https://github.com/open-webui/open-webui>
 
-## <https://github.com/huggingface/chat-ui>
+#### <https://github.com/huggingface/chat-ui>
 
-## <https://github.com/nomic-ai/gpt4all>
-
+#### <https://github.com/nomic-ai/gpt4all>
 
 ## LobeChat
 
