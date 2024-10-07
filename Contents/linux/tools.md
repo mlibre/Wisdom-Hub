@@ -132,7 +132,7 @@ cd synth-shell
 ### hstr
 
 A command history search tool for bash
-https://github.com/dvorka/hstr
+<https://github.com/dvorka/hstr>
 
 ```bash
 sudo pamac install hstr
@@ -263,6 +263,10 @@ sudo pamac install genymotion
 ```bash
 aria2c -x 15 "https://link.zip" --all-proxy="http://127.0.0.1:2081"
 ```
+
+## Download protected file, like cookie or token need to login
+
+<https://addons.mozilla.org/en-US/firefox/addon/cliget/>
 
 ## Instant cloud file share
 
