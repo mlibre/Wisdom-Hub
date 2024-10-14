@@ -15,6 +15,8 @@ Ollama is an open-source AI model server. It can get and run large language mode
 
 First make sure you have rocm or NVIDIA CUDA installed.
 
+### Arch
+
 ```bash
 sudo pacman -S base-devel cmake gcc python3
 # pyenv is a tool to manage multiple versions of Python
@@ -35,15 +37,16 @@ pip install --upgrade pip --break-system-packages
 # sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGED
 # sudo chmod a+rwx /usr/lib/python3.12/ -R
 
-# Arch users
 # https://wiki.archlinux.org/title/GPGPU
 sudo pamac install rocm-core hsa-rocr rocm-opencl-runtime comgr roctracer hsakmt-roct rocm-language-runtime rocminfo rocm-cmake hip rocm-smi-lib rocm-clang-ocl rocm-hip-runtime rocm-hip-sdk rocm-opencl-sdk rocm-device-libs --no-confirm
 sudo usermod -a -G render,video $LOGNAME
 sudo reboot
 rocminfo
+```
 
+### Ubuntu
 
-# Ubuntu Users
+```bash
 # https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/quick-start.html
 # https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/native-install/ubuntu.html
 # https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/amdgpu-install.html
@@ -55,22 +58,34 @@ wget https://repo.radeon.com/amdgpu-install/6.2/ubuntu/noble/amdgpu-install_6.2.
 sudo apt install ./amdgpu-install_6.2.60200-1_all.deb
 sudo apt update
 sudo apt install amdgpu-dkms rocm
+```
 
+### Old GPUs
 
+```bash
 # If you are using RDNA or RDNA 2 architecture like AMD Radeon RX 6500 XT, you may need to follow this step:
 sudo nano ~/.profile
 # Add the following lines:
 export HSA_OVERRIDE_GFX_VERSION=10.3.0
 export ROC_ENABLE_PRE_VEGA=1
 
+sudo systemctl edit --full ollama.service
+Environment="HSA_OVERRIDE_GFX_VERSION=10.3.0"
+Environment="ROC_ENABLE_PRE_VEGA=1"
+```
 
+### Test
+
+```bash
 pip install -U transformers datasets evaluate accelerate --user
 sudo pip install -U transformers datasets evaluate accelerate
+
 
 # https://www.tensorflow.org/install/pip
 # https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/3rd-party/tensorflow-install.html#install-tensorflow-versions
 pip install --user tensorflow-rocm=="2.16.1" -f "https://repo.radeon.com/rocm/manylinux/rocm-rel-6.2/" --upgrade
 # cp312 means you need to have python 3.12
+
 
 # https://pytorch.org/
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --break-system-packages
@@ -79,8 +94,6 @@ pip3 install -U torch torchvision torchaudio --index-url https://download.pytorc
 pip3 install -U xformers --user
 # sudo pip3 install -U xformers
 ```
-
-* Check GPU support
 
 ```python
 import tensorflow as tf
@@ -94,6 +107,8 @@ print(torch.version.hip)
 ```
 
 ## Install
+
+### Native
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
@@ -126,7 +141,7 @@ journalctl -u ollama.service --no-pager --follow
 
 ```
 
-## Docker
+### Docker
 
 ollama supports docker images. You can either use official images or build your own.
 
@@ -159,6 +174,35 @@ Ollama files in Linux are located here:
 /usr/share/ollama
 /etc/systemd/system/ollama.service
 /etc/systemd/system/default.target.wants/ollama.service
+```
+
+## Debug
+
+```bash
+sudo systemctl edit --full ollama.service
+
+[Unit]
+Description=Ollama Service
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/ollama serve
+User=ollama
+Group=ollama
+Restart=always
+RestartSec=3
+Environment="PATH=/home/mlibre/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+Environment="OLLAMA_HOST=0.0.0.0"
+Environment="OLLAMA_DEBUG=1"
+Environment="HSA_OVERRIDE_GFX_VERSION=10.3.0"
+Environment="ROC_ENABLE_PRE_VEGA=1"
+[Install]
+WantedBy=default.target
+# you may also add Environment="HSA_OVERRIDE_GFX_VERSION=10.3.0" to support older AMD GPUs
+
+
+sudo systemctl restart ollama.service
+journalctl -u ollama --no-pager -f
 ```
 
 ## Usage
@@ -247,33 +291,6 @@ curl -s http://localhost:11434/v1/chat/completions \
     ],
     "stream": false
   }' | jq
-```
-
-## Debug
-
-```bash
-sudo systemctl edit --full ollama.service
-
-[Unit]
-Description=Ollama Service
-After=network-online.target
-
-[Service]
-ExecStart=/usr/local/bin/ollama serve
-User=ollama
-Group=ollama
-Restart=always
-RestartSec=3
-Environment="PATH=/home/mlibre/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-Environment="OLLAMA_HOST=0.0.0.0"
-Environment="OLLAMA_DEBUG=1"
-[Install]
-WantedBy=default.target
-# you may also add Environment="HSA_OVERRIDE_GFX_VERSION=10.3.0" to support older AMD GPUs
-
-
-sudo systemctl restart ollama.service
-journalctl -u ollama --no-pager -f
 ```
 
 ## Costomizing Model
