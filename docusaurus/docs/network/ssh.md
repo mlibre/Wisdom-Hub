@@ -111,6 +111,25 @@ Example:
 ssh -J root@host1,root@host2 root@destination
 ```
 
+## SSH Remote Port Forwarding Systemd Service
+
+```bash
+[Unit]
+Description=SSH Reverse Tunnel Service
+After=network.target
+
+[Service]
+Environment="AUTOSSH_GATETIME=0"
+ExecStart=/usr/bin/autossh -N -M 0 -o "ExitOnForwardFailure=yes" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R 0.0.0.0:11434:0.0.0.0:11434 mlibre@176.124.193.114
+#ExecStart=/usr/bin/ssh -N -R 0.0.0.0:11434:0.0.0.0:11434 mlibre@176.124.193.114
+Restart=always
+RestartSec=2
+User=mlibre
+KillMode=control-group
+[Install]
+WantedBy=multi-user.target
+```
+
 ## Script to fix ssh and reset to default configs
 
 ```bash
