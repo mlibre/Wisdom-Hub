@@ -36,10 +36,8 @@ Allah withholds excessive wealth from some individuals, even good ones, to preve
 
 God allows some individuals to stray in their wrongdoing, letting them increase in wealth temporarily as a form of trial or punishment. Ultimately, such wealth lacks blessing and may lead to ruin.
 
-> **Surah Al-Mu’minun (23:55-56)**
+> **Surah Al-Mu’minun (23:55-56)**  
 > "Do they think that We extend to them wealth and children? We hasten for them good things in this life, but they do not perceive."
-
-
 
 # ثروت در قرآن
 
