@@ -79,7 +79,7 @@ God allows some individuals to stray in their wrongdoing, letting them increase 
 > **سوره مؤمنون (۲۳:۵۵-۵۶)**  
 > «أَیَحْسَبُونَ أَنَّمَا نُمِدُّهُم بِهِ مِن مَّالٍ وَبَنِینَ * نُسَارِعُ لَهُمْ فِی الْخَیْرَاتِ ۚ بَل لَّا یَشْعُرُونَ»
 
-# Resources
+# منابع
 
 * Quran
 * <https://quran.inoor.ir>
