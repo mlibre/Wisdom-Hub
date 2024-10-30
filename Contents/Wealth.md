@@ -39,6 +39,8 @@ God allows some individuals to stray in their wrongdoing, letting them increase 
 > **Surah Al-Mu’minun (23:55-56)**
 > "Do they think that We extend to them wealth and children? We hasten for them good things in this life, but they do not perceive."
 
+
+
 # ثروت در قرآن
 
 |             انسان خوب             |        عمل        |            انسان بد             |
