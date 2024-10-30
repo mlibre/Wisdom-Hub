@@ -81,8 +81,8 @@ God allows some individuals to stray in their wrongdoing, letting them increase 
 
 # Resources
 
-> Quran
-> <https://quran.inoor.ir>
-> <http://quran.isca.ac.ir>
-> <https://chatgpt.com>
-> <https://claude.ai/>
+* Quran
+* <https://quran.inoor.ir>
+* <http://quran.isca.ac.ir>
+* <https://chatgpt.com>
+* <https://claude.ai/>
