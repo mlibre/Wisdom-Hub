@@ -24,8 +24,7 @@ This repository is organized into several markdown files, each containing tutori
 * [Raspberry pi](./raspberry%20pi.md): Contains guides and tutorials related to Raspberry Pi, such as installing an operating system
 * [Lovely Tools](./Lovely%20Tools.md): List of **lovely**, **simple**, and **friendly** tools
 * [Docusaurus](./docusaurus.md): Contains documentation related to Docusaurus, a static site generator used to build the Linux Cheat Sheet website
-* [Health](./Health.md): Health Related Information
-* [Wealth](./Wealth.md): Wealth In Quran
+* [Life](./Life.md): Life Related Information
 
 ## My ETH Address
 
