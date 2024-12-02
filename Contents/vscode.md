@@ -385,6 +385,7 @@ sudo pacman -S nodejs-lts-fermium npm
     "terminal.integrated.persistentSessionScrollback": 1000,
     "terminal.integrated.scrollback": 10000,
     "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.showExitAlert": false,
     "update.mode": "none",
     "window.commandCenter": false,
     "window.zoomLevel": 1.3,
