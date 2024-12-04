@@ -141,23 +141,28 @@ journalctl --user -f -u my-service
 ## Run a script after suspending has finished (resume)
 
 ```bash
+touch ~/.Xauthority
+xauth generate :0 . trusted
+xauth list
 sudo nano /etc/systemd/system/gamma.service
 ```
 
 ```bash
 [Unit]
-Description=Start Script in terminal
-After=suspend.target graphical.target
+Description=Run gamma correction after resume
+After=display-manager.service
 
 [Service]
 User=mlibre
-Type=idle
 Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/mlibre/.Xauthority
+Type=simple
 ExecStartPre=/bin/sleep 10
 ExecStart=/bin/bash /usr/local/bin/gamma_on_startup
+Restart=always
 
 [Install]
-WantedBy=suspend.target graphical.target
+WantedBy=graphical.target suspend.target suspend-then-hibernate.target
 ```
 
 ```bash
