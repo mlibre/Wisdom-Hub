@@ -156,10 +156,9 @@ After=display-manager.service
 User=mlibre
 Environment=DISPLAY=:0
 Environment=XAUTHORITY=/home/mlibre/.Xauthority
-Type=simple
-ExecStartPre=/bin/sleep 10
-ExecStart=/bin/bash /usr/local/bin/gamma_on_startup
-Restart=always
+Type=idle
+ExecStartPre=/bin/sleep 5
+ExecStart=xterm -e "/usr/local/bin/gamma_on_startup"
 
 [Install]
 WantedBy=graphical.target suspend.target suspend-then-hibernate.target
