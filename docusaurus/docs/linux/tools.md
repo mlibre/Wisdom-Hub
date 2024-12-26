@@ -277,12 +277,15 @@ sudo waydroid shell
 # https://docs.waydro.id/faq/google-play-certification
 cage waydroid show-full-ui
 
+sudo systemctl restart waydroid-container.service && waydroid session stop && waydroid show-full-ui
+
 # removing / fixing
 sudo systemctl stop waydroid-container.service
-rm -rf ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
+sudo rm -rf /var/lib/waydroid /home/.waydroid ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
 waydroid init -f
 sudo killall adb
 waydroid session stop
+sudo waydroid container stop
 ```
 
 ## Download using aria2 and proxy
