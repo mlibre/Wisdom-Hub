@@ -251,11 +251,38 @@ youtube-dl -f best "https://www.youtube.com/link"
 nano ~/.bashrc
 alias yd='yt-dlp -f b --write-auto-sub --write-subs --embed-subs --write-info-json --max-filesize 100M'
 yd "link"
+```
 
-## Install Genymotoin Android emulator
+## Install Waydroid Android emulator
 
 ```bash
-sudo pamac install genymotion
+sudo pacman -S wl-clipboard xclip cage python-pyclipper
+sudo pamac install binder_linux-dkms
+sudo modprobe binder-linux devices=binder,hwbinder,vndbinder
+
+nano /etc/modules-load.d/binder_linux.conf
+binder_linux
+
+nano /etc/modprobe.d/binder_linux.conf 
+options binder_linux devices=binder,hwbinder,vndbinder
+
+sudo pamac install waydroid
+# waydroid init
+sudo waydroid init -s GAPPS
+sudo systemctl enable waydroid-container.service
+sudo systemctl restart waydroid-container.service
+
+cage waydroid session start
+sudo waydroid shell
+# https://docs.waydro.id/faq/google-play-certification
+cage waydroid show-full-ui
+
+# removing / fixing
+sudo systemctl stop waydroid-container.service
+rm -rf ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
+waydroid init -f
+sudo killall adb
+waydroid session stop
 ```
 
 ## Download using aria2 and proxy
