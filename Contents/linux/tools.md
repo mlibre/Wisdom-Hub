@@ -256,7 +256,7 @@ yd "link"
 ## Install Waydroid Android emulator
 
 ```bash
-sudo pacman -S wl-clipboard xclip cage python-pyclipper
+sudo pacman -S wl-clipboard xclip cage python-pyclipper lzip
 sudo pamac install binder_linux-dkms
 sudo modprobe binder-linux devices=binder,hwbinder,vndbinder
 
@@ -283,6 +283,13 @@ cage waydroid show-full-ui
 
 sudo systemctl restart waydroid-container.service && waydroid session stop && waydroid show-full-ui
 alias wayr='sudo systemctl restart waydroid-container.service && waydroid session stop && waydroid show-full-ui'
+
+git clone https://github.com/casualsnek/waydroid_script
+cd waydroid_script
+python3 -m venv venv
+venv/bin/pip install -r requirements.txt
+sudo venv/bin/python3 main.py
+
 
 # removing / fixing
 sudo systemctl stop waydroid-container.service
