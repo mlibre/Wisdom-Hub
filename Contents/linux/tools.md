@@ -266,6 +266,10 @@ binder_linux
 nano /etc/modprobe.d/binder_linux.conf 
 options binder_linux devices=binder,hwbinder,vndbinder
 
+pip install pyclip --user --break-system-packages
+pip3 install pyclip --user --break-system-packages
+sudo pip3 install pyclip --break-system-packages
+
 sudo pamac install waydroid
 # waydroid init
 sudo waydroid init -s GAPPS
