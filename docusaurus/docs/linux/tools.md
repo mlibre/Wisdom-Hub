@@ -283,6 +283,9 @@ cage waydroid show-full-ui
 
 sudo systemctl restart waydroid-container.service && waydroid session stop && waydroid show-full-ui
 alias wayr='sudo systemctl restart waydroid-container.service && waydroid session stop && waydroid show-full-ui'
+waydroid prop set persist.waydroid.multi_windows true
+waydroid prop set persist.waydroid.width 2880 
+waydroid prop set persist.waydroid.height 1620 
 
 git clone https://github.com/casualsnek/waydroid_script
 cd waydroid_script
