@@ -278,6 +278,7 @@ sudo waydroid shell
 cage waydroid show-full-ui
 
 sudo systemctl restart waydroid-container.service && waydroid session stop && waydroid show-full-ui
+alias wayr='sudo systemctl restart waydroid-container.service && waydroid session stop && waydroid show-full-ui'
 
 # removing / fixing
 sudo systemctl stop waydroid-container.service
