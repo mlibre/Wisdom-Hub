@@ -395,6 +395,8 @@ sudo pacman -S nodejs-lts-fermium npm
     "workbench.layoutControl.enabled": false,
     "workbench.layoutControl.type": "menu",
     "workbench.list.smoothScrolling": true,
+    "workbench.activityBar.location": "bottom",
+    "window.customTitleBarVisibility": "auto",
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": "onlyEnabledExtensions",
     "markdown.extension.tableFormatter.normalizeIndentation": true,
