@@ -284,9 +284,9 @@ cage waydroid show-full-ui
 sudo systemctl restart waydroid-container.service && waydroid session stop && waydroid show-full-ui
 alias wayr='sudo systemctl restart waydroid-container.service && waydroid session stop && waydroid show-full-ui'
 
-waydroid prop set persist.waydroid.multi_windows true
 waydroid prop set persist.waydroid.width 2800 
 waydroid prop set persist.waydroid.height 1420 
+waydroid prop set persist.waydroid.multi_windows true
 
 # sudo waydroid shell wm set-fix-to-user-rotation enabled
 # sudo waydroid shell settings put system user_rotation 0
