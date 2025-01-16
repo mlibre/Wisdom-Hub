@@ -291,6 +291,8 @@ sudo waydroid shell wm set-fix-to-user-rotation enabled
 
 # sudo waydroid shell settings put system user_rotation 0
 # sudo waydroid shell settings put system user_rotation 1
+# waydroid prop set persist.waydroid.cursor_on_subsurface true
+# waydroid prop set persist.waydroid.fake_touch "*" 
 
 git clone https://github.com/casualsnek/waydroid_script
 cd waydroid_script
