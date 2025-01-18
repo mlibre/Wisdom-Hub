@@ -77,6 +77,9 @@ WantedBy=graphical.target
 sudo pacman -S sshuttle
 
 sudo sshuttle -v -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
+# sudo nano /etc/resolv.conf
+# nameserver 1.1.1.1
+# nameserver 4.2.2.4
 # sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
 # sudo sshuttle -vvvv -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
 ```
