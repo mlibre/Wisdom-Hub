@@ -8,12 +8,13 @@ tags:
 
 # Network Tips
 
-This section is a comprehensive guide to various topics related to Networking, including disabling IPv6, setting up DNS servers, VPN servers, and proxy servers. There are also topics on how to use different VPN services and redirect network traffic. This section provides in-depth information on how to configure different VPN protocols like OpenVPN, V2Ray, ShadowSocks, and WireGuard.
+This section is a comprehensive guide to various topics related to Networking, including disabling IPv6. There are also topics on how to use different VPN services and redirect network traffic.
 
 * [Disable IPV6](#disable-ipv6)
 * [Open an application over socks](#open-an-application-over-socks)
 * [Redirecting the whole network traffic](#redirecting-the-whole-network-traffic)
 * [Simple python http server](#simple-python-http-server)
+* [Monitoring traffic](#monitoring-traffic)
 
 ## Disable IPV6
 
