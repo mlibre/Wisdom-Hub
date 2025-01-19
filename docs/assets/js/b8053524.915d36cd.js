@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[4787],{6026:e=>{e.exports=JSON.parse('{"label":"proxy","permalink":"/Wisdom-Hub/tags/proxy","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"network/vpn","title":"VPN & Proxy","description":"Proxy to VPN","permalink":"/Wisdom-Hub/network/vpn"}]}')}}]);
