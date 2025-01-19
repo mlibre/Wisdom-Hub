@@ -92,11 +92,11 @@ sudo sshuttle -v -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --disable-ipv6
 # nameserver 4.2.2.4
 # sudo systemctl restart systemd-resolved.service
 # sudo sshuttle -v -r mlibre@176.124.193.114 0/0 -x 0.0.0.0/0 --dns --disable-ipv6
+# sudo sshuttle -v -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
 
 
 # sudo sshuttle -v -r mlibre@51.89.88.80 0.0.0.0/0 --dns --disable-ipv6
 # sudo sshuttle -vv -r mlibre@176.124.193.114 0/0 -x 0.0.0.0  --dns --disable-ipv6
-# sudo sshuttle -vvvv -r mlibre@51.89.88.80 0/0 -x 51.89.88.80 --dns --disable-ipv6
 ```
 
 ## openVPN Over Socks
