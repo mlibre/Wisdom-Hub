@@ -46,11 +46,6 @@ sudo pamac install rocm-core hsa-rocr rocm-opencl-runtime comgr roctracer hsakmt
 sudo usermod -a -G render,video $LOGNAME
 sudo reboot
 rocminfo
-
-# rocminfo error
-echo 'export LD_LIBRARY_PATH=/opt/hsa/lib/:$LD_LIBRARY_PATH' >> ~/.bashrc
-source ~/.bashrc
-sudo ldconfig
 ```
 
 ### Ubuntu
