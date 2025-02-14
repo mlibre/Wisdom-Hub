@@ -38,10 +38,19 @@ pip install --upgrade pip --break-system-packages
 # sudo chmod a+rwx /usr/lib/python3.12/ -R
 
 # https://wiki.archlinux.org/title/GPGPU
+# Remove old packages
+sudo pacman -Rns hsakmt-roct comgr hsa-rocr rocm-opencl-sdk rocm-opencl-runtime hip-runtime-amd miopen-hip rocm-clang-ocl roctracer rocminfo rocprim rocrand rocsolver rocsparse rocthrust rocm-smi-lib rocm-language-runtime rocm-hip-sdk rocm-hip-runtime rocalution rocm-hip-libraries rocfft rocblas rccl hipsparse hipcub hipsolver hiprand hipfft hipblas composable-kernel rocm-ml-libraries rocm-opencl-sdk rocm-ml-sdk
+
+# Install rocm
 sudo pamac install rocm-core hsa-rocr rocm-opencl-runtime comgr roctracer hsakmt-roct rocm-language-runtime rocminfo rocm-cmake hip rocm-smi-lib rocm-clang-ocl rocm-hip-runtime rocm-hip-sdk rocm-opencl-sdk rocm-device-libs --no-confirm
 sudo usermod -a -G render,video $LOGNAME
 sudo reboot
 rocminfo
+
+# rocminfo error
+echo 'export LD_LIBRARY_PATH=/opt/hsa/lib/:$LD_LIBRARY_PATH' >> ~/.bashrc
+source ~/.bashrc
+sudo ldconfig
 ```
 
 ### Ubuntu
