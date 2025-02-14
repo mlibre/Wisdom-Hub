@@ -92,9 +92,10 @@ pip install --user tensorflow-rocm=="2.16.1" -f "https://repo.radeon.com/rocm/ma
 
 
 # https://pytorch.org/
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4 --break-system-packages
-# pip cache dir 
-# mv /path/to/torch-2.6.0+rocm6.2.4-cp313-cp313-manylinux_2_28_x86_64.whl ~/.cache/pip/wheels/
+# if you have downloaded torch-2.6.0+rocm6.2.4-cp313-cp313-manylinux_2_28_x86_64.whl manually
+pip3 install -U torch torchvision torchaudio /usr/lib/python3.13/site-packages/torch-2.6.0+rocm6.2.4-cp313-cp313-manylinux_2_28_x86_64.whl --index-url https://download.pytorch.org/whl/rocm6.2.4 --break-system-packages
+
+# pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4 --break-system-packages
 
 pip3 install -U torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --user
 # sudo pip3 install -U torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
