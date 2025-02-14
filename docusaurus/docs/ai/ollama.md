@@ -92,7 +92,7 @@ pip install --user tensorflow-rocm=="2.16.1" -f "https://repo.radeon.com/rocm/ma
 
 
 # https://pytorch.org/
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --break-system-packages
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4 --break-system-packages
 pip3 install -U torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --user
 # sudo pip3 install -U torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1
 pip3 install -U xformers --user
