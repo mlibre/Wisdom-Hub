@@ -31,7 +31,8 @@ sudo bash -c 'cat > /etc/docker/daemon.json <<EOF
   "insecure-registries" : ["https://docker.arvancloud.ir"],
   "registry-mirrors": ["https://docker.arvancloud.ir"],
   "features": {
-    "containerd-snapshotter": true
+    "containerd-snapshotter": true,
+    "buildkit": true
   }
 }
 EOF' 
@@ -73,6 +74,16 @@ USER vllm
 ```bash
 docker pull docker.iranserver.com/rocm/vllm-dev:main
 docker build -t vllm-toolkit .
+
+
+docker run -it --rm \
+    --device=/dev/kfd --device=/dev/dri \
+    --group-add=$(getent group video | cut -d: -f3) \
+    --group-add=$(getent group render | cut -d: -f3) \
+    --ipc=host \
+    --security-opt seccomp=unconfined \
+    -p 8000:8000 \
+    vllm-toolkit
 ```
 
 ## Env config
