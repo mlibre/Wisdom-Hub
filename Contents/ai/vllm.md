@@ -26,19 +26,16 @@ sudo pamac pacman -Ss docker containerd
 sudo usermod -aG docker $USER
 
 sudo mkdir /etc/docker/
-sudo nano /etc/docker/daemon.json
+sudo bash -c 'cat > /etc/docker/daemon.json <<EOF
 {
-  "registry-mirrors": ["https://docker.iranserver.com"]
+  "insecure-registries" : ["https://docker.arvancloud.ir"],
+  "registry-mirrors": ["https://docker.arvancloud.ir"]
 }
-sudo nano /etc/containers/registries.conf
-[[registry]]
-prefix = "docker.iranserver.com"
-location = "https://docker.iranserver.com"
-insecure = true
-
+EOF' 
 
 sudo systemctl enable docker
 sudo systemctl daemon-reload
+docker logout
 sudo systemctl restart docker
 
 sudo reboot
@@ -48,7 +45,7 @@ nano dockerfile
 
 ```dockerfile
 #FROM rocm/vllm-dev:main
-FROM docker.iranserver.com/rocm/vllm-dev:main
+FROM rocm/vllm-dev:main
 
 # Install development tools
 RUN apt-get update && apt-get install -y \
