@@ -25,6 +25,18 @@ cat /proc/sys/kernel/numa_balancing
 sudo pamac pacman -Ss docker containerd
 sudo usermod -aG docker $USER
 
+sudo mkdir /etc/docker/
+sudo nano /etc/docker/daemon.json
+{
+  "registry-mirrors": ["https://docker.iranserver.com"]
+}
+sudo nano /etc/containers/registries.conf
+[[registry]]
+prefix = "docker.iranserver.com"
+location = "https://docker.iranserver.com"
+insecure = true
+
+
 sudo systemctl enable docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
