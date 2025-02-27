@@ -29,7 +29,10 @@ sudo mkdir /etc/docker/
 sudo bash -c 'cat > /etc/docker/daemon.json <<EOF
 {
   "insecure-registries" : ["https://docker.arvancloud.ir"],
-  "registry-mirrors": ["https://docker.arvancloud.ir"]
+  "registry-mirrors": ["https://docker.arvancloud.ir"],
+  "features": {
+    "containerd-snapshotter": true
+  }
 }
 EOF' 
 
