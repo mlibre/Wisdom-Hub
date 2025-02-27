@@ -10,7 +10,7 @@ tags:
   - Sheet
 ---
 
-# Wisdom Hub
+# Wisdom Hub 🇵🇸
 
 Welcome to the My Wisdom Hub Repository!
 
@@ -25,6 +25,10 @@ This repository is organized into several markdown files, each containing tutori
 * [Lovely Tools](./Lovely%20Tools.md): List of **lovely**, **simple**, and **friendly** tools
 * [Docusaurus](./docusaurus.md): Contains documentation related to Docusaurus, a static site generator used to build the Linux Cheat Sheet website
 * [Life](./Life.md): Life Related Information
+
+## Support Palestine 🇵🇸
+
+Stand with Palestine. Peace and justice for all.
 
 ## My ETH Address
 
