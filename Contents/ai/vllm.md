@@ -27,7 +27,7 @@ sudo usermod -aG docker $USER
 sudo usermod -aG video,render,docker $(whoami)
 sudo groupadd -g 2000 vllm
 sudo useradd -u 2000 -g vllm -m vllm
-sudo usermod -aG video,render,docker vllm
+sudo usermod -aG video,render,docker,network vllm
 sudo mkdir -p /home/vllm/.cache/huggingface
 sudo chown -R 2000:2000 /home/vllm/.cache
 sudo chmod -R 777 /home/vllm/.cache
@@ -50,6 +50,7 @@ docker logout
 sudo systemctl restart docker
 
 sudo reboot
+rocminfo | grep -i gfx
 
 nano dockerfile
 ```
@@ -85,7 +86,6 @@ docker build -t vllm-toolkit .
 
 docker run -it --rm \
     --device=/dev/kfd --device=/dev/dri \
-    --group-add video \
     --group-add=$(getent group video | cut -d: -f3) \
     --group-add=$(getent group render | cut -d: -f3) \
     --ipc=host \
@@ -104,7 +104,7 @@ docker run -it --rm \
     -e VLLM_USE_TRITON_FLASH_ATTN=0 \
     -e TORCH_USE_HIP_DSA=1 \
     -e HIP_VISIBLE_DEVICES=0 \
-    -e PYTORCH_ROCM_ARCH=gfx1031 \
+    -e PYTORCH_ROCM_ARCH=gfx1030 \
     vllm-toolkit
 
 
