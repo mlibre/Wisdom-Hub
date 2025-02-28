@@ -99,6 +99,8 @@ docker run -it --rm \
     -e ROC_ENABLE_PRE_VEGA=1 \
     -e VLLM_USE_TRITON_FLASH_ATTN=0 \
     -e TORCH_USE_HIP_DSA=1 \
+    -e HIP_VISIBLE_DEVICES=0 \
+    -e PYTORCH_ROCM_ARCH=gfx1031 \
     vllm-toolkit
 
 
