@@ -89,6 +89,7 @@ docker run -it --rm \
     --group-add=$(getent group video | cut -d: -f3) \
     --group-add=$(getent group render | cut -d: -f3) \
     --ipc=host \
+    --network=host \
     --security-opt seccomp=unconfined \
     --security-opt apparmor=unconfined \
     --cap-add=SYS_PTRACE \
