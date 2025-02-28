@@ -24,6 +24,13 @@ cat /proc/sys/kernel/numa_balancing
 ```bash
 sudo pamac pacman -Ss docker containerd
 sudo usermod -aG docker $USER
+sudo usermod -aG video,render,docker $(whoami)
+sudo groupadd -g 2000 vllm
+sudo useradd -u 2000 -g vllm -m vllm
+sudo usermod -aG video,render,docker vllm
+sudo mkdir -p /home/vllm/.cache/huggingface
+sudo chown -R 2000:2000 /home/vllm/.cache
+sudo chmod -R 777 /home/vllm/.cache
 
 sudo mkdir /etc/docker/
 sudo bash -c 'cat > /etc/docker/daemon.json <<EOF
@@ -49,7 +56,7 @@ nano dockerfile
 
 ```dockerfile
 #FROM rocm/vllm-dev:main
-FROM rocm/vllm-dev:main
+FROM rocm/vllm:main
 
 # Install development tools
 RUN apt-get update && apt-get install -y \
@@ -72,7 +79,7 @@ USER vllm
 ```
 
 ```bash
-docker pull docker.iranserver.com/rocm/vllm-dev:main
+# docker pull docker.arvancloud.ir/rocm/vllm-dev:main
 docker build -t vllm-toolkit .
 
 
@@ -83,7 +90,19 @@ docker run -it --rm \
     --ipc=host \
     --security-opt seccomp=unconfined \
     -p 8000:8000 \
+    -v /etc/group:/etc/group:ro \
+    -v /etc/passwd:/etc/passwd:ro \
+    -v /home/vllm/.cache:/home/vllm/.cache \
+    -e HF_HOME=/home/vllm/.cache/huggingface \
+    --user 2000:2000 \
+    -e HSA_OVERRIDE_GFX_VERSION=10.3.0 \
+    -e ROC_ENABLE_PRE_VEGA=1 \
+    -e VLLM_USE_TRITON_FLASH_ATTN=0 \
+    -e TORCH_USE_HIP_DSA=1 \
     vllm-toolkit
+
+
+vllm serve Qwen/Qwen2.5-1.5B-Instruct
 ```
 
 ## Env config
