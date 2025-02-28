@@ -85,10 +85,13 @@ docker build -t vllm-toolkit .
 
 docker run -it --rm \
     --device=/dev/kfd --device=/dev/dri \
+    --group-add video \
     --group-add=$(getent group video | cut -d: -f3) \
     --group-add=$(getent group render | cut -d: -f3) \
     --ipc=host \
     --security-opt seccomp=unconfined \
+    --security-opt apparmor=unconfined \
+    --cap-add=SYS_PTRACE \
     -p 8000:8000 \
     -v /etc/group:/etc/group:ro \
     -v /etc/passwd:/etc/passwd:ro \
