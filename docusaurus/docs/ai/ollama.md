@@ -383,10 +383,14 @@ sudo systemctl stop ollama
 sudo systemctl disable ollama
 sudo rm /etc/systemd/system/ollama.service
 sudo rm $(which ollama)
+sudo rm /usr/local/bin/ollama
+sudo rm -r /usr/local/lib/ollama
 sudo rm -r /usr/share/ollama
 sudo rm -r ~/.ollama
 sudo userdel ollama
 sudo groupdel ollama
+sudo updatedb
+locate ollama
 ```
 
 ## Ollama.js
