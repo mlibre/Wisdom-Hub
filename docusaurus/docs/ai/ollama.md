@@ -376,6 +376,19 @@ To effectively run models like Codestral 22B, you need a GPU with sufficient mem
 
 You can find full list of ollama supported gpus here: <https://github.com/ollama/ollama/blob/main/docs/gpu.md>
 
+## Proxy Server
+
+```ini
+server {
+    listen 80;
+    server_name example.com;  # Replace with your domain or IP
+    location / {
+        proxy_pass http://localhost:11434;
+        proxy_set_header Host localhost:11434;
+    }
+}
+```
+
 ## Uninstall
 
 ```bash
