@@ -35,7 +35,6 @@ Here are some of the topics that we will cover in this repository:
 * [Summary](#summary)
   * [Pros](#pros)
   * [Cons](#cons)
-* [My NEAR Account ID](#my-near-account-id)
 * [Resources](#resources)
 
 ## Introduction to NEAR
@@ -325,10 +324,6 @@ Near Blockchain like many other blockchain has it is own cons and pros. here is 
 * Complex Design
 * [Asynchronous Desgin](https://stackoverflow.com/questions/76551032/how-does-near-asynchronous-actually-works)
 * Token Loss
-
-## My NEAR Account ID
-
-> mlibre.near
 
 ## Resources
 
