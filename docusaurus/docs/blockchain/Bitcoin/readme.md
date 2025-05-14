@@ -25,7 +25,6 @@ Here is also implemented a simple Proof-of-Work (POW) blockchain like bitcoin, y
 * [Merkle Root](#merkle-root)
 * [Simple POW Blockchain in nodejs](#simple-pow-blockchain-in-nodejs)
 * [References](#references)
-* [My Bitcoin Address](#my-bitcoin-address)
 
 ## Visualization of how Bitcoin is Workings
 
@@ -184,7 +183,3 @@ When you broadcast a transaction to the Bitcoin network, your wallet can downloa
 * <https://www.geeksforgeeks.org/blockchain-merkle-trees/>
 * <https://www.geeksforgeeks.org/blockchain-merkle-trees/>
 * <https://academy.binance.com/en/articles/merkle-trees-and-merkle-roots-explained>
-
-## My Bitcoin Address
-
-> bc1qgwu903shgs4fse3s8u2vsufrsaxhnz26skqmzu

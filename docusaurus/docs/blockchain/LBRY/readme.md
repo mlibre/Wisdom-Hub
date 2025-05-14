@@ -25,7 +25,6 @@ A blockchain for content. A protocol for accessing and publishing digital conten
   - [Adding new content](#adding-new-content)
   - [Tipping something](#tipping-something)
 - [References](#references)
-- [My LBC Wallet Address](#my-lbc-wallet-address)
 
 ## introduction
 
@@ -322,7 +321,3 @@ curl --header "Content-Type: application/json" --data '{ "method": "support_crea
 ## References
 
 - <https://lbry.tech/spec>
-
-## My LBC Wallet Address
-
-bSbZzpNRSn6cPpc6nua6S9cCSckH4W72PD
