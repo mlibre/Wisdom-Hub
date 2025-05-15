@@ -257,10 +257,12 @@ sudo pacman -S linux61 linux
 
 ```bash
 backupPath=/home/mlibre/media/H/Linux/caches/
+cd
 cp -rf /home/mlibre/.local/share/TelegramDesktop $backupPath
 cp $HISTFILE $backupPath
 cp .bashrc $backupPath
 cp .bash_profile $backupPath
+cp -r .config/ $backupPath
 sudo cp -r /etc $backupPath
 sudo cp -r /usr/lib/systemd/ $backupPath
 
