@@ -263,6 +263,7 @@ cp $HISTFILE $backupPath
 cp .bashrc $backupPath
 cp .bash_profile $backupPath
 cp -r .config/ $backupPath
+cp -r .cache/ $backupPath
 sudo cp -r /etc $backupPath
 sudo cp -r /usr/lib/systemd/ $backupPath
 
