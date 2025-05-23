@@ -295,6 +295,7 @@ sudo pacman -S nodejs-lts-fermium npm
 {
     "breadcrumbs.enabled": false,
     "diffEditor.ignoreTrimWhitespace": false,
+    "chat.commandCenter.enabled": false,
     "editor.accessibilitySupport": "off",
     "editor.copyWithSyntaxHighlighting": false,
     "editor.cursorSmoothCaretAnimation": "on",
