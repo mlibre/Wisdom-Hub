@@ -261,6 +261,7 @@ cd
 cp -rf /home/mlibre/.local/share/TelegramDesktop $backupPath
 cp $HISTFILE $backupPath
 cp .bashrc $backupPath
+cp .zshrc $backupPath
 cp .bash_profile $backupPath
 cp -r .config/ $backupPath
 cp -r .cache/ $backupPath
