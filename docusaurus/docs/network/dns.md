@@ -88,10 +88,10 @@ sudo resolvectl dns docker0 "$DNS_SERVER"
 sudo resolvectl dns
 ```
 
-### 403
+### Begzar
 
 ```bash
-DNS_SERVER="10.202.10.102"
+DNS_SERVER="185.55.226.26"
 sudo sh -c "echo nameserver $DNS_SERVER > /etc/resolv.conf"
 sudo sed -i '/^\s*#*DNS=/d' /etc/systemd/resolved.conf && sudo sed -i '$ a\DNS='"$DNS_SERVER" /etc/systemd/resolved.conf
 sudo systemctl daemon-reload; wait;
