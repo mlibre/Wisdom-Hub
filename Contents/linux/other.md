@@ -306,7 +306,7 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
   pamac update -a
   sudo pacman-mirrors --fasttrack
   sudo pacman -Syyuu
-  sudo pacman -S mlocate telegram-desktop unzip thermald ntfs-3g firefox vlc aria2 base-devel xorg-xrandr code dnsutils
+  sudo pacman -S mlocate telegram-desktop unzip thermald ntfs-3g firefox vlc aria2 base-devel xorg-xrandr code dnsutils libva-utils intel-media-driver libva-intel-driver libvpl nvtop vdpauinfo
   sudo pacman -S qbittorrent meld ttf-ubuntu-font-family gnome-keyring libsecret core/iputils clinfo steam-native-runtime gparted amdvlk lib32-amdvlk net-tools
   sudo pacman -S clamav libreoffice-fresh tor torsocks
   sudo systemctl enable --now thermald.service
@@ -329,7 +329,9 @@ sudo rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt
 - Make an XDG autostart script for gamma adjustment
 - Put the gamma script in the `.bashrc` and `.zshrc` as well
 - KDE Settings -> Disable Mouse acceleration
-- KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver, Review background services and Autostarts.
+- KDE Settings -> Startup and Shutdown: Start with empty session, Choose KDE Screen Saver
+- Review background services
+- Review Autostarts
 - KDE Settings -> Appearance -> Theme -> Breeze Dark, Breath Dark
 - KDE Settings -> Appearance -> Font -> Enabled Anti-Aliasing, RGB, Slight. all +1 PT
 - KDE Settings -> Workspace -> Search -> Disable Web Search Keywords
