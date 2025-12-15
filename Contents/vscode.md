@@ -411,7 +411,9 @@ sudo pacman -S nodejs-lts-fermium npm
     "explorer.confirmPasteNative": false,
     "git.openRepositoryInParentFolders": "never",
     "editor.cursorBlinking": "phase",
-    "terminal.integrated.cursorBlinking": true
+    "terminal.integrated.cursorBlinking": true,
+    "chat.agent.enabled": false,
+    "chat.disableAIFeatures": true
 }
 ```
 
