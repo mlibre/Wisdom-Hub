@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[4277],{4230:t=>{t.exports=JSON.parse('{"label":"python","permalink":"/Wisdom-Hub/tags/python","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"ai/python-for-ai","title":"Python","description":"Install","permalink":"/Wisdom-Hub/ai/python-for-ai"}]}')}}]);

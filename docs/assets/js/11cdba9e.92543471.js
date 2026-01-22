@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[9224],{5383:p=>{p.exports=JSON.parse('{"label":"prompt","permalink":"/Wisdom-Hub/tags/prompt","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"ai/prompt","title":"Prompt","description":"Types of prompts","permalink":"/Wisdom-Hub/ai/prompt"}]}')}}]);
