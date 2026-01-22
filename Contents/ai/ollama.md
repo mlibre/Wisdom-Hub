@@ -16,7 +16,7 @@ Ollama is an open-source AI model server. It can get and run large language mode
 ```bash
 sudo pacman -Syuu base-devel cmake gcc python3 rocm-hip-sdk rocm-opencl-sdk rocm-opencl-runtime rocm-ml-libraries rocm-device-libs
 
-sudo rm -rf /usr/lib/ollama /etc/systemd/system/ollama.service
+sudo rm -rf /usr/local/lib/ollama /usr/lib/ollama /etc/systemd/system/ollama.service
 
 curl -fsSL https://ollama.com/install.sh | sh
 
