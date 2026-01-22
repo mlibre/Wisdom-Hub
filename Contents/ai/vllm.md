@@ -12,14 +12,17 @@ tags:
 
 ## Rocm
 
-### Install
+### Install CPU
 
 ```bash
-sh -c 'echo 0 > /proc/sys/kernel/numa_balancing'
-cat /proc/sys/kernel/numa_balancing
+mkdir vllm-cpu
+cd vllm-cpu
+uv venv vllm-cpu
+source vllm-cpu/bin/activate
+uv pip install vllm --extra-index-url https://wheels.vllm.ai/0.14.0/cpu --torch-backend cpu
 ```
 
-#### Using Docker
+#### Docker GPU
 
 ```bash
 sudo pacman -Ss docker containerd
@@ -65,18 +68,18 @@ docker run --rm \
     --device /dev/kfd \
     --device /dev/dri \
     -v ~/.cache/huggingface:/root/.cache/huggingface \
-    -e HSA_OVERRIDE_GFX_VERSION=10.3.0 \
-    -e ROC_ENABLE_PRE_VEGA=1 \
-    -e VLLM_USE_TRITON_FLASH_ATTN=0 \
-    -e TORCH_USE_HIP_DSA=1 \
-    -e HIP_VISIBLE_DEVICES=0 \
-    -e PYTORCH_ROCM_ARCH=gfx1030 \
+    --env HSA_OVERRIDE_GFX_VERSION=10.3.0 \
+    --env ROC_ENABLE_PRE_VEGA=1 \
+    --env VLLM_USE_TRITON_FLASH_ATTN=0 \
+    --env TORCH_USE_HIP_DSA=1 \
+    --env HIP_VISIBLE_DEVICES=0 \
+    --env PYTORCH_ROCM_ARCH=gfx1030 \
     --env "HF_TOKEN=token" \
     -e HTTPS_PROXY=http://localhost:10808 \
     -p 8000:8000 \
     --ipc=host \
     --network=host \
-    vllm/vllm-openai-rocm:v0.14.0 \
     --max-model-len auto \
+    vllm/vllm-openai-rocm:v0.14.0 \
     Qwen/Qwen3-0.6B
 ```
