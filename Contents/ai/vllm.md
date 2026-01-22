@@ -83,3 +83,15 @@ docker run --rm \
     vllm/vllm-openai-rocm:v0.14.0 \
     Qwen/Qwen3-0.6B
 ```
+
+### Run
+
+```bash
+vllm serve --speculative-config.method mtp \
+     --speculative-config.num_speculative_tokens 1 \
+     --tool-call-parser glm47 \
+     --reasoning-parser glm45 \
+     --enable-auto-tool-choice \
+     --max-model-len 1000 \
+     "unsloth/GLM-4.7-Flash-GGUF"
+```
