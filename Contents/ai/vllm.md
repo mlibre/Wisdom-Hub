@@ -12,7 +12,7 @@ tags:
 
 ## Rocm
 
-### Install CPU
+### Install
 
 ```bash
 mkdir vllm-cpu
@@ -20,6 +20,7 @@ cd vllm-cpu
 uv venv vllm-cpu
 source vllm-cpu/bin/activate
 uv pip install vllm --extra-index-url https://wheels.vllm.ai/0.14.0/cpu --torch-backend cpu
+# uv pip install vllm --extra-index-url https://wheels.vllm.ai/rocm/
 ```
 
 #### Docker GPU
@@ -54,7 +55,6 @@ sudo systemctl restart docker
 
 sudo reboot
 rocminfo | grep -i gfx
-
 ```
 
 ```bash
