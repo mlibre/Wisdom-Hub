@@ -32,4 +32,14 @@ sudo nano ~/.profile
 export HSA_OVERRIDE_GFX_VERSION=10.3.0
 export ROC_ENABLE_PRE_VEGA=1
 export ROCM_PATH=/opt/rocm
+export VLLM_USE_TRITON_FLASH_ATTN=0
+export TORCH_USE_HIP_DSA=1
+export HIP_VISIBLE_DEVICES=0
+export PYTORCH_ROCM_ARCH=gfx1030
+```
+
+## Run
+
+```bash
+llama-server -hf unsloth/GLM-4.7-Flash-GGUF:Q2_K_XL
 ```
