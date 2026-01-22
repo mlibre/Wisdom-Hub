@@ -37,3 +37,9 @@ export TORCH_USE_HIP_DSA=1
 export HIP_VISIBLE_DEVICES=0
 export PYTORCH_ROCM_ARCH=gfx1030
 ```
+
+## Run
+
+```bash
+llama-server -hf unsloth/GLM-4.7-Flash-GGUF:Q2_K_XL
+```
