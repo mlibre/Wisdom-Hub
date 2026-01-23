@@ -60,10 +60,14 @@ Group=ollama
 Restart=always
 RestartSec=3
 Environment="PATH=$PATH"
+Environment="HSA_OVERRIDE_GFX_VERSION=10.3.0"
+Environment="ROC_ENABLE_PRE_VEGA=1"
+Environment="TORCH_USE_HIP_DSA=1"
+Environment="HIP_VISIBLE_DEVICES=0"
+Environment="PYTORCH_ROCM_ARCH=gfx1030"
 
 [Install]
 WantedBy=multi-user.target
 
 journalctl -u ollama.service --no-pager --follow 
-
 ```
