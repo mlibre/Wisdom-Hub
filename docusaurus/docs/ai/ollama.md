@@ -21,7 +21,7 @@ sudo rm -rf /usr/local/lib/ollama /usr/lib/ollama /etc/systemd/system/ollama.ser
 curl -fsSL https://ollama.com/install.sh | sh
 
 # Run a model
-ollama run llama3.1:8b
+ollama run ministral-3:3b
 
 # List models
 ollama list
@@ -30,7 +30,7 @@ ollama list
 ollama ps
 
 # Model Info
-ollama show llama3.1:8b
+ollama show ministral-3:3b
 #   Model
 #         arch                    llama
 #         parameters              8.0B
@@ -65,6 +65,7 @@ Environment="ROC_ENABLE_PRE_VEGA=1"
 Environment="TORCH_USE_HIP_DSA=1"
 Environment="HIP_VISIBLE_DEVICES=0"
 Environment="PYTORCH_ROCM_ARCH=gfx1030"
+Environment="OLLAMA_CONTEXT_LENGTH=12000"
 
 [Install]
 WantedBy=multi-user.target
