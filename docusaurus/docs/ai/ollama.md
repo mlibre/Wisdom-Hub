@@ -49,7 +49,8 @@ sudo useradd -r -s /bin/false -U -m -d /usr/share/ollama ollama
 sudo usermod -a -G ollama $(whoami)
 sudo nano /etc/systemd/system/ollama.service
 rocminfo | grep -i -C 3 uuid # GPU-XX 
-  
+sudo setcap cap_perfmon+ep /usr/local/bin/ollama
+
 [Unit]
 Description=Ollama Service
 After=network-online.target
