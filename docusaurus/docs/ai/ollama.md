@@ -48,7 +48,8 @@ ollama show ministral-3:3b
 sudo useradd -r -s /bin/false -U -m -d /usr/share/ollama ollama
 sudo usermod -a -G ollama $(whoami)
 sudo nano /etc/systemd/system/ollama.service
-
+rocminfo | grep -i -C 3 uuid # GPU-XX 
+  
 [Unit]
 Description=Ollama Service
 After=network-online.target
@@ -61,10 +62,13 @@ Restart=always
 RestartSec=3
 Environment="PATH=$PATH"
 Environment="HSA_OVERRIDE_GFX_VERSION=10.3.0"
+Environment="HSA_OVERRIDE_GFX_VERSION_0=10.3.0"
 Environment="ROC_ENABLE_PRE_VEGA=1"
 Environment="TORCH_USE_HIP_DSA=1"
 Environment="HIP_VISIBLE_DEVICES=0"
 Environment="PYTORCH_ROCM_ARCH=gfx1030"
+Environment="ROCR_VISIBLE_DEVICES=GPU-XX"
+Environment="OLLAMA_VULKAN=1"
 Environment="OLLAMA_CONTEXT_LENGTH=12000"
 
 [Install]
