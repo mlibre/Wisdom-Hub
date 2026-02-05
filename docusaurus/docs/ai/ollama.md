@@ -70,6 +70,7 @@ Environment="HIP_VISIBLE_DEVICES=0"
 Environment="PYTORCH_ROCM_ARCH=gfx1030"
 Environment="ROCR_VISIBLE_DEVICES=GPU-XX"
 Environment="OLLAMA_VULKAN=1"
+Environment="GGML_VK_VISIBLE_DEVICES=0"
 Environment="OLLAMA_CONTEXT_LENGTH=12000"
 
 [Install]
