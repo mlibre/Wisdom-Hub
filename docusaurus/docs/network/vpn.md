@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
 tags:
-  - Linux
-  - VPN
-  - openVPN
+  - linux
+  - vpn
+  - openvpn
   - proxy
 ---
 

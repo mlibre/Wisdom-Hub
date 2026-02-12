@@ -3,11 +3,11 @@ title: Introduction
 slug: /
 sidebar_position: 1
 tags:
-  - Mlibre
-  - Wisdom Hub
-  - Tutorial
-  - Cheat
-  - Sheet
+  - mlibre
+  - wisdom-hub
+  - tutorial
+  - cheat
+  - sheet
 ---
 
 # Wisdom Hub 🇵🇸
@@ -20,9 +20,9 @@ This repository is organized into several markdown files, each containing tutori
 * [Linux](./linux/readme.md): Contains various Linux-related tips and tricks
 * [Network](./network/readme.md): Contains tutorials and tips related to networking in Linux, such as setting up a VPN or configuring a firewall
 * [AI](./ai/readme.md): AI Related Information
-* [Vscode](./vscode.md): A cheat sheet for Vscode
-* [Raspberry pi](./raspberry%20pi.md): Contains guides and tutorials related to Raspberry Pi, such as installing an operating system
-* [Lovely Tools](./Lovely%20Tools.md): List of **lovely**, **simple**, and **friendly** tools
+* [VSCode](./vscode.md): A cheat sheet for VSCode
+* [Raspberry Pi](./raspberry-pi.md): Contains guides and tutorials related to Raspberry Pi, such as installing an operating system
+* [Lovely Tools](./lovely-tools.md): List of **lovely**, **simple**, and **friendly** tools
 * [Docusaurus](./docusaurus.md): Contains documentation related to Docusaurus, a static site generator used to build the Linux Cheat Sheet website
 * [Life](./Life.md): Life Related Information
 

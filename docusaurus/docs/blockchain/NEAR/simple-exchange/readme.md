@@ -1,8 +1,8 @@
 ---
 title: Swap DApp From Scratch
 tags:
-  - DEX
-  - NEAR
+  - dex
+  - near
 ---
 
 # Building a simple swap DApp On The NEAR Blockchain

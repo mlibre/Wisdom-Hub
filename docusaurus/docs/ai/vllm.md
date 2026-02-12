@@ -1,11 +1,11 @@
 ---
 sidebar_position: 6
 tags:
-  - Linux
+  - linux
   - vllm
   - offline
   - ai
-  - LLM
+  - llm
 ---
 
 # vllm

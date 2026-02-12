@@ -2,8 +2,8 @@
 sidebar_position: 4
 title: Network
 tags:
-  - Mlibre
-  - Network
+  - mlibre
+  - network
 ---
 
 # Learn Network

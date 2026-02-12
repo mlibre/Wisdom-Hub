@@ -1,10 +1,10 @@
 ---
 sidebar_position: 7
 tags:
-  - Raspberry pi
+  - raspberry-pi
 ---
 
-# Raspberry pi
+# Raspberry Pi
 
 Welcome to the `Raspberry Pi` Readme! This guide covers lots of topics.  
 From `performance` tweaks to `network configuration`, `Docker setup` to custom Python installation.  
@@ -45,23 +45,23 @@ Let's get started and unlock the full potential of your Raspberry Pi!
 
 ## Raspberry Pi OS
 
-- Download the [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) image
-- Install `rpi-imager`
+* Download the [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) image
+* Install `rpi-imager`
 
 ```bash
 sudo pacman -S rpi-imager
 ```
 
-- Connect your SD card to your computer and run:
+* Connect your SD card to your computer and run:
 
 ```bash
 rpi-imager
 ```
 
-- First use `Erase the SD card` options
-- From the settings menu, you can set the `Hostname` and ...
-- Select `Write` and wait for the process to finish
-- Connect the Raspberry Pi to your computer or router and run:
+* First use `Erase the SD card` options
+* From the settings menu, you can set the `Hostname` and ...
+* Select `Write` and wait for the process to finish
+* Connect the Raspberry Pi to your computer or router and run:
 
 ```bash
 sudo nmap -sP 192.168.1.0/24 | grep -B 2 -i raspberry
@@ -71,7 +71,7 @@ Host is up (0.00047s latency).
 MAC Address: DC:A6:32:9A:EF:16 (Raspberry Pi Trading)
 ```
 
-- Now you can connect to your Raspberry Pi using `ssh`:
+* Now you can connect to your Raspberry Pi using `ssh`:
 
 ```bash
 sudo ssh-copy-id -i .ssh/id_rsa.pub -p 22 mlibre@192.168.1.136
@@ -116,10 +116,10 @@ sudo reboot
 sudo raspi-config
 ```
 
-- `Update`
-- `Display Options`: `VNC Resolution`
-- `Performance`: `GPU Memory` to min of `896`
-- `Advance Options`: `Expand filesystem`, `Predicetd Network Interface Names`
+* `Update`
+* `Display Options`: `VNC Resolution`
+* `Performance`: `GPU Memory` to min of `896`
+* `Advance Options`: `Expand filesystem`, `Predicetd Network Interface Names`
 
 ## Fix $PATH
 
@@ -313,7 +313,7 @@ sudo systemctl start ajenti.service
 sudo tail -f /var/log/ajenti/ajenti.log
 ```
 
-- Open `http://192.168.1.136:8000` and login with `root` and `password`
+* Open `http://192.168.1.136:8000` and login with `root` and `password`
 
 ## Nekoray
 
@@ -328,7 +328,7 @@ cmake -GNinja ..
 ninja
 ```
 
-- Install `Traffic Widget`, `Cron`, `Date And Time` and `Network` plugins
+* Install `Traffic Widget`, `Cron`, `Date And Time` and `Network` plugins
 
 ## NodeJs
 

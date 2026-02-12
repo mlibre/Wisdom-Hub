@@ -2,8 +2,8 @@
 sidebar_position: 3
 title: Linux
 tags:
-  - Mlibre
-  - Linux
+  - mlibre
+  - linux
 ---
 
 # Learn Linux

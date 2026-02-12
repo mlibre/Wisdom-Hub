@@ -1,8 +1,8 @@
 ---
 sidebar_position: 1
 tags:
-  - Linux
-  - access control
+  - linux
+  - access-control
   - permissions
 ---
 

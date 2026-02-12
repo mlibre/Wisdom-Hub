@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
 tags:
-  - Linux
-  - SSH
-  - Port Forwarding
+  - linux
+  - ssh
+  - port-forwarding
 ---
 
 # SSH

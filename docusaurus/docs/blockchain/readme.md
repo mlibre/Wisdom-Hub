@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: Blockchain
 tags:
-  - Mlibre
+  - mlibre
   - blockchain
 ---
 
@@ -20,7 +20,6 @@ This repository is organized into several sections, each containing tutorials fo
 * [Hyperledger](Hyperledger/readme.md)
 * [LBRY](LBRY/readme.md)
 * [NEAR](NEAR/readme.md)
-* [Polygon](Polygon/readme.md)
 
 ## My ETH Address
 

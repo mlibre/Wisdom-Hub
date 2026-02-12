@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[4241],{5770:e=>{e.exports=JSON.parse('{"label":"Quran","permalink":"/Wisdom-Hub/tags/quran","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"Life","title":"Life","description":"General","permalink":"/Wisdom-Hub/Life"}]}')}}]);

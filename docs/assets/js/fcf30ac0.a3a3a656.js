@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[4582],{3475:e=>{e.exports=JSON.parse('{"label":"health","permalink":"/Wisdom-Hub/tags/health","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"Life","title":"Life","description":"General","permalink":"/Wisdom-Hub/Life"}]}')}}]);

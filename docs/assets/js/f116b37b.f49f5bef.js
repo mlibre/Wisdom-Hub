@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[1062],{4376:e=>{e.exports=JSON.parse('{"label":"Automatic","permalink":"/Wisdom-Hub/tags/automatic","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/other","title":"Other","description":"Time and Date","permalink":"/Wisdom-Hub/linux/other"}]}')}}]);

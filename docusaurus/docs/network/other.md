@@ -1,8 +1,8 @@
 ---
 sidebar_position: 5
 tags:
-  - Network
-  - IPV6
+  - network
+  - ipv-6
   - socks
 ---
 

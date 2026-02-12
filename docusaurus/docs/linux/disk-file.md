@@ -1,11 +1,11 @@
 ---
 sidebar_position: 2
 tags:
-  - Linux
-  - Backup
-  - Disk
-  - Rsync
-  - Restore
+  - linux
+  - backup
+  - disk
+  - rsync
+  - restore
   - ln
   - mount
   - dd

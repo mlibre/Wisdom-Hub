@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[6931],{5674:s=>{s.exports=JSON.parse('{"label":"access-control","permalink":"/Wisdom-Hub/tags/access-control","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/access","title":"Access","description":"User and Groups","permalink":"/Wisdom-Hub/linux/access"}]}')}}]);

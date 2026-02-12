@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[3764],{2239:i=>{i.exports=JSON.parse('{"label":"vm","permalink":"/Wisdom-Hub/tags/vm","allTagsPath":"/Wisdom-Hub/tags","count":1,"items":[{"id":"linux/vm","title":"Virtual Machine","description":"Check if your system supports virtualization:","permalink":"/Wisdom-Hub/linux/vm"}]}')}}]);

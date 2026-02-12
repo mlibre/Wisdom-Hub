@@ -1,8 +1,8 @@
 ---
 sidebar_position: 3
 tags:
-  - Linux
-  - Systemd
+  - linux
+  - systemd
   - startup
   - service
 ---

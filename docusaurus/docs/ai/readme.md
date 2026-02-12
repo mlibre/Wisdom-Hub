@@ -2,7 +2,7 @@
 sidebar_position: 5
 title: AI
 tags:
-  - AI
+  - ai
 ---
 
 # Learn AI
