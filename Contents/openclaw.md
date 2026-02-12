@@ -20,7 +20,9 @@ OpenClaw is an AI-powered automation tool that provides a web interface for inte
 
 ### 1. Create Project Structure
 
-Create a new project with this `package.json`:
+Create these files in your project:
+
+**package.json**
 
 ```json
 {
@@ -31,7 +33,37 @@ Create a new project with this `package.json`:
     "openclaw": "latest"
   },
   "scripts": {
-    "start": "openclaw gateway --host 0.0.0.0 --port $PORT --password $OPENCLAW_GATEWAY_PASSWORD"
+    "start": "openclaw gateway --host 0.0.0.0 --port $PORT"
+  }
+}
+```
+
+**openclaw.json** (Configuration File)
+
+```json
+{
+  "gateway": {
+    "auth": { "password": "env:OPENCLAW_GATEWAY_PASSWORD" }
+  },
+  "agents": {
+    "defaults": {
+      "provider": "openai",
+      "model": "gpt-4o", 
+      "openai": {
+        "baseUrl": "https://unified-ai-router-personal.onrender.com/v1",
+        "apiKey": "env:OPENAI_API_KEY"
+      }
+    }
+  },
+  "channels": {
+    "telegram": { "enabled": true,
+          "botToken": "123:abc", },
+    "whatsapp": { "enabled": true },
+    "discord": { "enabled": true }
+  },
+  "plugins": {
+    "enabled": true,
+    "autoInstall": true
   }
 }
 ```
@@ -49,13 +81,14 @@ Create a new project with this `package.json`:
 
 Add these environment variables in Render's dashboard:
 
-| Variable                    | Value                                                | Description                        |
-| --------------------------- | ---------------------------------------------------- | ---------------------------------- |
-| `OPENCLAW_GATEWAY_PASSWORD` | `your_secure_password`                               | Required. Protects your public UI. |
-| `OPENCLAW_STATE_DIR`        | `/var/data`                                          | Where to save sessions/logins.     |
-| `OPENAI_BASE_URL`           | `https://unified-ai-router-personal.onrender.com/v1` | AI Provider URL.                   |
-| `OPENAI_API_KEY`            | `api_key`                                            | AI Provider Password.              |
-| `PORT`                      | `8080`                                               | Port to run the service.           |
+| Variable                    | Value                  | Description                                                      |
+| --------------------------- | ---------------------- | ---------------------------------------------------------------- |
+| `OPENCLAW_GATEWAY_PASSWORD` | `your_secure_password` | Required. Protects your public UI (referenced in openclaw.json). |
+| `OPENCLAW_STATE_DIR`        | `/var/data`            | Where to save sessions/logins.                                   |
+| `OPENAI_API_KEY`            | `masoudsam`            | AI Provider Password (referenced in openclaw.json).              |
+| `PORT`                      | `8080`                 | Port to run the service.                                         |
+
+**Note**: The `OPENAI_BASE_URL` and model configuration are now specified in the `openclaw.json` file.
 
 ### 4. Alternative: Quick Install
 
