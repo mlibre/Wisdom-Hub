@@ -16,7 +16,7 @@ Welcome to the My Wisdom Hub Repository!
 
 This repository is organized into several markdown files, each containing tutorials for specific topics. Here's a brief overview of the files:
 
-* [Blockchain](./blockchain/readme.md): Contains various Linux-related tips and tricks
+* [Blockchain](./blockchain/readme.md): Contains various blockchain-related tutorials and information
 * [Linux](./linux/readme.md): Contains various Linux-related tips and tricks
 * [Network](./network/readme.md): Contains tutorials and tips related to networking in Linux, such as setting up a VPN or configuring a firewall
 * [AI](./ai/readme.md): AI Related Information
