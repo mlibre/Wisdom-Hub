@@ -1,7 +1,7 @@
 ---
 sidebar_position: 9
 tags:
-  - Docusaurus
+  - docusaurus
 ---
 
 # Docusaurus
