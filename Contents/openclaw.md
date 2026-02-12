@@ -66,8 +66,8 @@ Create these files in your project:
   "models": {
     "providers": {
       "localai": {
-        "baseUrl": "https://unified-ai-router-personal.onrender.com/",
-        "apiKey": "API_KEY",
+        "baseUrl": "env:MODEL_BASE_URL",
+        "apiKey": "env:MODEL_API_KEY",
         "api": "openai-completions",
         "models": [
           {
@@ -115,7 +115,7 @@ Create these files in your project:
   "channels": {
     "telegram": {
       "enabled": true,
-      "botToken": "8189218311:AAH92Xt33VMtJVO9TbnnjLT0drq24pN8Wo0",
+      "botToken": "env:OPENCLAW_TELEGRAM_TOKEN",
       "dmPolicy": "open",
       "allowFrom": [
         "*"
@@ -210,14 +210,14 @@ Create these files in your project:
 
 Add these environment variables in Render's dashboard:
 
-| Variable                    | Value                  | Description                                                      |
-| --------------------------- | ---------------------- | ---------------------------------------------------------------- |
-| `OPENCLAW_GATEWAY_PASSWORD` | `your_secure_password` | Required. Protects your public UI (referenced in openclaw.json). |
-| `OPENCLAW_STATE_DIR`        | `/var/data`            | Where to save sessions/logins.                                   |
-| `MY_MODEL_API_KEY`          | `sk-moytoken`          | AI Provider API token (referenced in openclaw.json).             |
-| `PORT`                      | `8080`                 | Port to run the service.                                         |
-
-**Note**: The `OPENAI_BASE_URL` and model configuration are now specified in the `openclaw.json` file.
+| Variable                    | Value                | Description                       |
+| --------------------------- | -------------------- | --------------------------------- |
+| `OPENCLAW_GATEWAY_PASSWORD` | `your_password`      | Required. Protects your public UI |
+| `OPENCLAW_STATE_DIR`        | `/var/data`          | Where to save sessions/logins.    |
+| `MODEL_API_KEY`             | `provider-api-key`   | AI Provider API token             |
+| `MODEL_BASE_URL`            | `provider-base=url`  | AI Provider Base URL              |
+| `OPENCLAW_TELEGRAM_TOKEN`   | `telegram-bot-token` | Telegram Bot                      |
+| `PORT`                      | `8080`               | Port to run the service           |
 
 ## Usage
 
