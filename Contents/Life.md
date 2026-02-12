@@ -2,9 +2,9 @@
 sidebar_position: 10
 title: Life
 tags:
-  - Health
-  - Quran
-  - Wealth
+  - health
+  - quran
+  - wealth
 ---
 
 # Health
