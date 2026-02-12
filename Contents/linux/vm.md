@@ -1,10 +1,10 @@
 ---
 sidebar_position: 12
 tags:
-  - Linux
-  - VM
-  - Virtual Machine
-  - KDM
+  - linux
+  - vm
+  - virtual-machine
+  - kdm
 ---
 
 # Virtual Machine

@@ -1,8 +1,8 @@
 ---
 sidebar_position: 8
 tags:
-  - Linux
-  - Automation
+  - linux
+  - automation
 ---
 
 # Automation

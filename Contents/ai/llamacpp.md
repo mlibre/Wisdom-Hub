@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 tags:
-  - Linux
+  - linux
   - llama.cpp
   - offline
   - ai
