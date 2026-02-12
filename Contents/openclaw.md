@@ -42,30 +42,100 @@ Create these files in your project:
 
 ```json
 {
-  "gateway": {
-    "auth": { "password": "env:OPENCLAW_GATEWAY_PASSWORD" }
+  "messages": {
+    "ackReactionScope": "group-mentions"
   },
   "agents": {
     "defaults": {
-      "provider": "openai",
-      "model": "gpt-4o", 
-      "openai": {
-        "baseUrl": "https://unified-ai-router-personal.onrender.com/v1",
-        "apiKey": "env:OPENAI_API_KEY"
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "workspace": "/home/mlibre/.openclaw/workspace",
+      "model": {
+        "primary": "somemodel"
+      },
+      "models": {
+        "somemodel": {}
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "password",
+      "password": "env:OPENCLAW_GATEWAY_PASSWORD"
+    },
+    "port": 8080,
+    "bind": "loopback",
+    "tailscale": {
+      "mode": "funnel",
+      "resetOnExit": true
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
       }
     }
   },
   "channels": {
-    "telegram": { "enabled": true,
-          "botToken": "123:abc", },
-    "whatsapp": { "enabled": true },
-    "discord": { "enabled": true }
+    "telegram": {
+      "enabled": true,
+      "botToken": "8189218311:AAH92Xt33VMtJVO9TbnnjLT0drq24pN8Wo0",
+      "dmPolicy": "open",
+      "allowFrom": [
+        "*"
+      ]
+    }
   },
-  "plugins": {
-    "enabled": true,
-    "autoInstall": true
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "session-memory": {
+          "enabled": true
+        },
+        "command-logger": {
+          "enabled": true
+        },
+        "boot-md": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-12T16:31:53.392Z",
+    "lastRunVersion": "2026.2.9",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.2.9",
+    "lastTouchedAt": "2026-02-12T16:31:53.399Z"
   }
 }
+
 ```
 
 ### 2. Deploy on Render
@@ -89,26 +159,6 @@ Add these environment variables in Render's dashboard:
 | `PORT`                      | `8080`                 | Port to run the service.                                         |
 
 **Note**: The `OPENAI_BASE_URL` and model configuration are now specified in the `openclaw.json` file.
-
-### 4. Alternative: Quick Install
-
-For local installation or other environments:
-
-```bash
-curl -fsSL https://openclaw.ai/install.sh | bash
-
-openclaw onboard --non-interactive \
-  --mode local \
-  --install-daemon \
-  --gateway-port 18789 \
-  --gateway-bind loopback \
-  --auth-choice custom-api-key \
-  --custom-provider-id "custom-router" \
-  --custom-base-url "https://unified-ai-router-personal.onrender.com/v1" \
-  --custom-api-key "masoudsam" \
-  --custom-model-id "openai/gpt-4o" \
-  --custom-compatibility openai
-```
 
 ## Usage
 
