@@ -25,6 +25,7 @@ This repository is organized into several markdown files, each containing tutori
 * [Lovely Tools](./lovely-tools.md): List of **lovely**, **simple**, and **friendly** tools
 * [Docusaurus](./docusaurus.md): Contains documentation related to Docusaurus, a static site generator used to build the Linux Cheat Sheet website
 * [Life](./Life.md): Life Related Information
+* [OpenClaw](./openclaw.md): Guide to installing OpenClaw on server/headless environments
 
 ## Support Palestine 🇵🇸
 
