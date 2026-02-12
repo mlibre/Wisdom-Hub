@@ -56,10 +56,25 @@ Create these files in your project:
       },
       "workspace": "/home/mlibre/.openclaw/workspace",
       "model": {
-        "primary": "somemodel"
+        "primary": "localai/mymodel"
       },
       "models": {
-        "somemodel": {}
+        "localai/mymodel": {}
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "localai": {
+        "baseUrl": "https://unified-ai-router-personal.onrender.com/",
+        "apiKey": "API_KEY",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "local model",
+            "name": "Local AI Model"
+          }
+        ]
       }
     }
   },
@@ -68,6 +83,10 @@ Create these files in your project:
     "auth": {
       "mode": "password",
       "password": "env:OPENCLAW_GATEWAY_PASSWORD"
+    },
+    "controlUi": {
+      "allowInsecureAuth": true,
+      "enabled": true
     },
     "port": 8080,
     "bind": "loopback",
@@ -155,7 +174,7 @@ Add these environment variables in Render's dashboard:
 | --------------------------- | ---------------------- | ---------------------------------------------------------------- |
 | `OPENCLAW_GATEWAY_PASSWORD` | `your_secure_password` | Required. Protects your public UI (referenced in openclaw.json). |
 | `OPENCLAW_STATE_DIR`        | `/var/data`            | Where to save sessions/logins.                                   |
-| `OPENAI_API_KEY`            | `masoudsam`            | AI Provider Password (referenced in openclaw.json).              |
+| `MY_MODEL_API_KEY`          | `sk-moytoken`          | AI Provider API token (referenced in openclaw.json).             |
 | `PORT`                      | `8080`                 | Port to run the service.                                         |
 
 **Note**: The `OPENAI_BASE_URL` and model configuration are now specified in the `openclaw.json` file.
