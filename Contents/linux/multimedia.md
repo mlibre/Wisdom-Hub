@@ -1,11 +1,11 @@
 ---
 sidebar_position: 9
 tags:
-  - Linux
-  - Vulkan
-  - Game
-  - Graphic
-  - GUI
+  - linux
+  - vulkan
+  - game
+  - graphic
+  - gui
 ---
 
 # Multimedia

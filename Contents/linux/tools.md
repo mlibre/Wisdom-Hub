@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 tags:
-  - Linux
+  - linux
   - tools
 ---
 

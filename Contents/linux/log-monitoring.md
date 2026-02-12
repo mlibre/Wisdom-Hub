@@ -1,10 +1,10 @@
 ---
 sidebar_position: 4
 tags:
-  - Linux
-  - Log
+  - linux
+  - log
   - syslog
-  - ring buffer
+  - ring-buffer
   - journalctl
   - monitoring
 ---
