@@ -119,7 +119,47 @@ Create these files in your project:
       "dmPolicy": "open",
       "allowFrom": [
         "*"
-      ]
+      ],
+      "groupPolicy": "open",
+      "groupAllowFrom": [
+        "*"
+      ],
+      "groups": {
+        "*": {
+          "requireMention": false,
+          "groupPolicy": "open"
+        }
+      },
+      "commands": {
+        "native": "auto"
+      },
+      "streamMode": "partial",
+      "draftChunk": {
+        "minChars": 200,
+        "maxChars": 800,
+        "breakPreference": "paragraph"
+      },
+      "blockStreaming": false,
+      "textChunkLimit": 4000,
+      "chunkMode": "newline",
+      "linkPreview": true,
+      "mediaMaxMb": 5,
+      "historyLimit": 50,
+      "dmHistoryLimit": 100,
+      "replyToMode": "first",
+      "reactionNotifications": "all",
+      "reactionLevel": "extensive",
+      "configWrites": true,
+      "capabilities": {
+        "inlineButtons": "all"
+      },
+      "actions": {
+        "sendMessage": true,
+        "editMessage": true,
+        "deleteMessage": true,
+        "reactions": true,
+        "sticker": true
+      }
     }
   },
   "skills": {
