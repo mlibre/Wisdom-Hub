@@ -16,7 +16,6 @@ This repository is organized into several sections, each containing tutorials fo
 * [llamacpp](./llamacpp.md)
 * [ollama](./ollama.md)
 * [vllm](./vllm.md)
-* [OpenClaw](../openclaw.md): Installation guide for OpenClaw on server/headless environments
 
 ## My ETH Address
 
