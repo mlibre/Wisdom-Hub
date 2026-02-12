@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 tags:
-  - Linux
+  - linux
   - editor
   - cat
   - less

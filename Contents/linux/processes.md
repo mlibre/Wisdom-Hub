@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 tags:
-  - Linux
+  - linux
   - process
   - monitor
 ---

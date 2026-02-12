@@ -1,15 +1,15 @@
 ---
 sidebar_position: 11
 tags:
-  - Linux
-  - XDG
-  - Automatic
-  - Shutdown
-  - Manjaro
-  - Windows 11
+  - linux
+  - xdg
+  - automatic
+  - shutdown
+  - manjaro
+  - windows-11
   - swap
-  - Fix
-  - Repair
+  - fix
+  - repair
 ---
 
 # Other
